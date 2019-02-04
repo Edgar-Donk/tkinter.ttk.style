@@ -53,13 +53,13 @@ we take a look at the button widget we have a rectangular shape divided into 4 c
 spacing and label. Look at
 ```
 ```
-![button:components](/images/01button.png) 
+![button:components](/images/01button_components.png) 
 
 
 this is a typical example of how a button may be constructed. We shall see that when a widget is modified or called by various themes
 the component and element names may change. While we are thinking of components look at the vertical scrollbar 
 
-![scrollbar:components](/images/01scrollbar.png) ,
+![scrollbar:components](/images/01scrollbar_components.png) ,
 
 we have an up and down arrow as well as a thumb component all contained in a trough. We have a method within the Style module whereby we
 can easily find out the component names and their relative positions, so there is no real reason to worry or fret about trying to
