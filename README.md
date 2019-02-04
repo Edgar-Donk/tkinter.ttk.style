@@ -915,7 +915,9 @@ theme_create is:-
 ```           
 The horizontal separator works as expected, but the vertical separator image is forced to react as the horizontal image. As with the
 scrollbar example use the place manager to display the widget and make the horizontal separator widg.place(x=5, y=5, width=150) then
-vertical separator has widg1.place(x=75, y=50, height=150, width=5) which gives the best looking widget, but not perfect. 
+vertical separator has widg1.place(x=75, y=50, height=150, width=5) which gives the best looking widget, but not perfect. We can improve
+the situation if we add a second state then the vertical separator improves considerably, but we require a call to this second state
+in the vertical mode.
 
 Let us try the entry widget. The thinking here is that we have a fairly simple widget, so an image of an old yellowed document may be
 appropriate. The image has irregular edges, so instead of a smooth expansion I have purposefully chosen border values that create more
