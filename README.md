@@ -213,6 +213,13 @@ for button already? No, then well we'll have to use the right component name in 
 interactive session, and if you were on the right track you should get the answer together with 11 other elements. Now you are no longer
 limited to just foreground, background and font. 
 
+As an aside we may wish to have the colours expressed in a different manner. The colour names in various programs do not all agree, 
+further tkinter favours hash while PIL/Pillow prefers RGB values. Use 02colour_codes.py as an aid, each representation will produce
+an alternative code style and the colour is shown on a label. Be warned that green shows half the true value, (0,128,0) instead of
+(0,256,0) - this appears to be associated with winfo_rgb() - otherwise it works well. We can detect how light a colour may be by using
+the luminance property of yiq, the NSTC television colour system, then we can adjust the foreground to produce the required contrast
+to the background colour.
+
 When using configure we require a reference to the style change using the format *newStyleName.oldStyleName*, where oldStyleName
 corresponds to our class name, in this case TButton. Normally we choose a descriptive name for the newStyleName, so for the button widget we can write :-
 ````
@@ -930,51 +937,55 @@ create but has no need for layout. All the ubuntu images have a brown-beige look
 07list_colours.py and 07shift_colours.py, this then matches our label widget. If we list the colours sorted by the sum of the colour
 components, we can detect the different shades, then we apply the darkest shade of brown-beige to the shift colours as our main source
 colour. The shift script sorts out the shades of brown-beige and substitutes shades of aquamarine. It is best to skip over arrows which
-are grey. Afterwards the arrows are removed by painting over using the appropriate image background colour using an image editor. The
-arrow is replaced by an anchor. If we have a more demanding colour substitution then it would be appropriate to select according to 
-contrast (darkness) using yiq colour scheme. Quite apart from yiq being easy to convert from rgb, the y channel gives an easy method to
-determine how dark or light a colour may be, compare the values obtained for red, green and blue where in hsv and hls luminosity and
-saturation are identical, whereas in yiq we have 76.25, 149.68 and 29.07 respectively (black is 0).
+are grey by commenting out the relevant mask. Afterwards the arrows are removed by painting over using the appropriate image background
+colour using an image editor. The arrow is then replaced by an anchor. There are various options available to change the colours, the
+system chosen is not the most rigorous, but seems to produce surprisingly good results. To create a finished colour 3 colours are
+required, the source pixel, a notional main source colour (called pivot in the program) by which each pixel is compared and a target
+colour from which the required colour is produced by lightening the target colour. If a widget appears to use a different hue we can
+substitute new pivot and target colours - a commented example is included. The 3 colour channels are linearly adjusted based on 
+two constant points, if the source was white then the sum of the channels would be 765 and the individual channel of the final colour
+would would be 255, the other point we know is that if the source is the same as our pivot colour, then the channel values of the final
+colour would be the same as our target colour.
 
-If we look at the scrollbars next, they have more components which will change with orientation, so with changes of state there are
+If we look at the scrollbars next, they have components which will change with orientation, so with changes of state there are
 quite a few images used. 07pirate_scrollbar.py is the relevant script. I like the images from ubuntu so we can change their colours to
 aquamarine and subsititute the coconut tree from pirate_label for the arrows (steppers). The thumb image is a coconut, so there is no
-need for grip. The trough has been copied from elegance, with a colour change, this shows how the trough can be created from an image.
-Ubuntu used the trough from the parent theme and changed its colour with a configure command - obviously both approaches are equally
-valid, but the image can give more flexibility. Since there are changes to the arrangement compared to the parent theme we will need a
-layout, which will need to be copied and changed as appropriate for the other orientation. It is important that the thumb component has
-the element expand set to True or 1, otherwise the thumb cannot be moved using the mouse - this in turn means that the thumb will no
-longer remain circular but becomes oval. Just as it was necessary to set the border limits in pirate_label so thumb needs to have its
-border set (try experimenting with a border of 1).
+real need for grip. The trough has been copied from elegance, with a colour change, this shows how the trough can be created from an
+image. Ubuntu used the trough from the parent theme and changed its colour with a configure command - obviously both approaches are
+equally valid, but the image can give more flexibility. Since there are changes to the arrangement compared to the parent theme we will
+need a layout, which will need to be copied and changed as appropriate for the other orientation. It is important that the thumb
+component has the element "expand" set to True or 1, otherwise the thumb cannot be moved using the mouse - this in turn means that the
+thumb will no longer remain circular but becomes oval. Just as it was necessary to set the border limits in pirate_label so thumb needs
+to have its border set (try experimenting with a border of 1).
 
 Both radio- and check buttons are created in a similar fashion, in that multiple images were created for the various states. All images
 need to be the same size.
 
-The widgets notebook and treeview both use sails in their tabs, the adjustment of the border and padding was a little tricky, but
+The widgets notebook and treeview both use sails for their tabs, the adjustment of the border and padding was a little tricky, but
 followed along the lines already developed for label. Treeview had used a bordercolor with an alias name, so do not forget to set it
 up in the piratz_theme.py.
 
 The button widget is based on the rear view of a sailing ship. This gives us an opportunity to create rather different states from the
 normal, where we can use the lights and raise the flag. The vertical border was limited to a few pixels so that the name stays intact. 
 An outside dashed line was wanted, which required both configure and layout. These do not work if run as separate clauses, it is best to
-run them under a single call to the button class TButton. This differs from the tcl scripts where configure and layout are run
+run them under a single call to the button class "TButton". This differs from the tcl scripts where configure and layout are run
 separately.
 
 The last two are on the face of it not particularly exciting. Check out how a progressbar and scale work in an ordinary theme, or even a 
 ttktheme, not exactly gripping stuff is it? However with a bit of thought we can "improve" these somewhat. In progressbar the graphics
 come from the game funny boat, I'm no artist, so the horizontal progressbar is a pirate ship sailing left to right, all we need is to
-detect the value then use this to trigger another state just as the value reaches 100. I am using the after universal widget function
-that fires after a time delay calling a customised function this checks on the widget value if it reaches 100 it changes the state and
-the direction flag. When the value reaches 0 it changes back to the original state and the direction flag. The states in element_create
-and the customised function need compound states that have the negative second state as well as the called state. The vertical
+detect the value then use this to trigger another state just as the value reaches 100. I am using the "after" universal widget function
+that fires after a time delay and calls a customised function which checks on the widget value, if it reaches 100 it changes the state
+and the direction flag. When the value reaches 0 it changes back to the original state and direction flag. The states in element_create
+and the customised function need compound states that have a negative second state as well as the called state. The vertical
 progressbar is slightly more complicated as we have a flapping seagull, therefore we require 3 states, and the negative states have to
-include both the other two states apart from the selected state. Run both progressbars in "indeterminate" mode and make the length the
-same as your trough image. In the scale widget we have a similar situation but we can use the command property to trigger our external
-function, which simplifies this function, we need only concentrate on obtaining the scale value then trigger the state changes at pre-
-determined amounts. The horizontal scale not only has several states for the slider but the trough as well. Ensure that the trough
-images match the slider images by using the same states. Alright we need customised functions but I think it a small price to pay -
-or else you need to build customised widgets and that is another ballgame entirely.
+include both the other two as negative states apart from the selected state. Run both progressbars in "indeterminate" mode and make the
+length the same as your trough image. In the scale widget we have a similar situation but we can use the command property to trigger our
+external function, which simplifies matters somewhat, we need only concentrate on obtaining the scale value then trigger the state
+changes at pre-determined settings. The horizontal scale not only has several states for the slider but the trough as well. Ensure that
+the trough images match up to the slider images by using the correct state. Alright we needed customised functions but I think it a
+small price to pay - or else you would need to build customised widgets and that is another ballgame entirely.
 
-Once the widgets have been all tested we can build up piratz_theme.py, there may also be a common colour and font required.
-match the 
+Once the widgets have been all tested we can build up piratz_theme.py, we may also require common colours and a common font.
+
 
