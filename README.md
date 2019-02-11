@@ -901,10 +901,15 @@ theme_create and theme settings work equally well. To increase the height of the
 easier than adding a configure clause. Try changing the border size to [20, 6, 4, 4], it looks reasonable if we have sticky "ew" and
 only one line of code, however let's keep it suitable for more than one line of text and change back to the original border size 
 [19, 9, 7, 7] and sticky "news". Having created the image it is relatively easy to make it grey in our image editor and save the image
-for the disabled state. The padding [19,3,3,3] is required to position the text. If we look at an enlarged image which shows the pixels
+for the disabled state. The padding [19,5,3,3] is required to position the text. If we look at an enlarged image which shows the pixels
 we can estimate the border sizes, after this is made to work the padding can be sorted out. If there is a surrounding area around the
 image (needed for shading) include in your calculations. The text area has been made transparent, in fact the appearance may look better
-without a white surround, instead make the surround transparent. Note we are using png images as later on it will help in subsequent
+without a white surround, instead make the surround transparent. When calculating sizes remember the first line is 0 and we count from
+left to right on the first entry but right to left on the third, look at the image to get a feel.
+
+![label:grid](/images/pir-label-grid.jpg)
+
+Note we are using png images as later on it will help in subsequent
 widgets.
 
 The labelframe was created, and the label was also invoked to ensure that there was no unexpected interaction between the two widgets.
