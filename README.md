@@ -413,18 +413,18 @@ running tkinter 8.5 uncomment the lines as indicated, also comment out the lines
 then use Image.open and Imagetk.PhotoImage finally comment out the lines where PhotoImage is being used by itself). 
 ```
 # with tkinter 8.6
- ...
+
         self.buttonPhoto = PhotoImage(file='../images/butImage.png') 
         buttonPhotoTrans = PhotoImage(file='../images/butImageTrans.png')
- ...
+
 # with tkinter 8.5
 from PIL import Image, ImageTk
- ...
+
         im1 = Image.open('../images/butImage.png') 
         im2 = Image.open('../images/butImageTrans.png') 
         self.buttonPhoto = ImageTk.PhotoImage(im1)  
         buttonPhotoTrans = ImageTk.PhotoImage(im2)
- ... 
+
 ``` 
 PhotoImage is imported from tkinter and loads the image into PhotoImage, where a reference is required which will be used within the
 widget's property option "image". When working with images in a class there is always the problem that the image will not show unless
@@ -821,7 +821,7 @@ construct.
 
 Onto our next exercise - let us create a button where the focus state's dashed line surrounds the button. In radiance we see that the
 button part of the script looks like:-
-````
+```
         ## Buttons.
         #
         ttk::style configure TButton -width -11 -anchor center
