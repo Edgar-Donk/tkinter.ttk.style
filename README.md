@@ -883,34 +883,33 @@ but don't forget that some themes use the common settings to help display states
 We may decide to adapt one of the existing ttktheme themes, using constructs copied from other themes as demonstrated previously - that
 is not what I mean by "Blue Sky Thinking", I mean something a little more unconventional.
 
-The first example is probably best run as a standalone style for frame. The idea is copied from a blog that demonstrated how to use the
-tkinter canvas to contain the background image and some other widgets together with a matplotlib interface. This works but the geometry
-management is limited to the canvas system. If we use frame as our parent widget all the normal geometry managers - grid, pack and
-place - can be used. The only minor problem is that it works best with a full view of the background image. Use the example
-07frame_background_image.py to see what I mean, use a jpg image of your choice as backdrop, typically a panaoramic view. We are using
-jpg as the image type so that it can be downloaded from many digital cameras and is usually half the size of a png or gif of equivalent
-size.
+The first example is probably best run as a standalone style for frame. The idea is copied from a website 
+https://datatofish.com/how-to-create-a-gui-in-python/ that demonstrated how to use the tkinter canvas to contain the background image
+and some other widgets together with a matplotlib interface. This works but the geometry management is limited to the canvas system. If
+we use frame as our parent widget all the normal geometry managers - grid, pack and place - can be used. The only minor problem is that
+it works best with a full view of the background image. Use the example 07frame_background_image.py to see what I mean, use a jpg image
+of your choice as backdrop, typically a panaoramic view. We are using jpg as the image type so that it can be downloaded from many
+digital cameras and is usually half the size of a png or gif of equivalent size.
     
 The next example can be used as a template for subsequent more complex widgets. In my quest for blue sky thinking I'm using piratz as a
 theme, that certainly is different, but should not be taken too seriously, on the other hand it was fun to dream up the widgets and
 their necessary images then see how to display them. The first example 07pirate_label.py can be used as a template for our subsequent
 pirate examples, it can also be used to build up a standalone python script. We need to create our image, this invokes a Caribbean
-island, the palm tree poses a challenge, particularly if the label grows in height. We choose border sizes that give the desired effect,
-then we test using the theme construct rather than styling as an individual widget with configure, layout and map. With this widget both
-theme_create and theme settings work equally well. To increase the height of the widget we can create two lines of text - certainly
-easier than adding a configure clause. Try changing the border size to [20, 6, 4, 4], it looks reasonable if we have sticky "ew" and
-only one line of code, however let's keep it suitable for more than one line of text and change back to the original border size 
-[19, 9, 7, 7] and sticky "news". Having created the image it is relatively easy to make it grey in our image editor and save the image
-for the disabled state. The padding [19,5,3,3] is required to position the text. If we look at an enlarged image which shows the pixels
-we can estimate the border sizes, after this is made to work the padding can be sorted out. If there is a surrounding area around the
-image (needed for shading) include in your calculations. The text area has been made transparent, in fact the appearance may look better
-without a white surround, instead make the surround transparent. When calculating sizes remember the first line is 0 and we count from
-left to right on the first entry but right to left on the third, look at the image to get a feel.
+island, the palm tree poses a challenge, particularly if the label grows in height. We choose border sizes that give the desired
+effect, then we test using the theme construct rather than styling as an individual widget with configure, layout and map. With this
+widget both theme_create and theme settings work equally well. To increase the height of the widget we can create two lines of text -
+certainly easier than adding a configure clause. Try changing the border size to [20, 6, 4, 4], it looks reasonable if we have sticky
+"ew" and only one line of code, however let's keep it suitable for more than one line of text and change back to the original border
+size [19, 9, 7, 7] and sticky "news". Having created the image it is relatively easy to make it grey in our image editor and save the
+image for the disabled state. The padding [19,5,3,3] is required to position the text. If we look at an enlarged image which shows the
+pixels we can estimate the border sizes, after this is made to work the padding can be sorted out. If there is a surrounding area
+around the image (maybe needed for shading) include this in your calculations. The text area has been made transparent, in fact the
+appearance may look better without a white surround, instead make the surround transparent. When calculating sizes remember the first
+line is 0 and we count from left to right on the first entry but right to left on the third, look at the image to get a feel.
 
 ![label:grid](/images/pir-label-grid.jpg)
 
-Note we are using png images as later on it will help in subsequent
-widgets.
+Note we are using png images as later on it will help in subsequent widgets.
 
 The labelframe was created, and the label was also invoked to ensure that there was no unexpected interaction between the two widgets.
 The labelframe required padding to ensure that any widget placed inside the frame did not overwrite the frame.
@@ -927,9 +926,9 @@ theme_create is:-
 ```           
 The horizontal separator works as expected, but the vertical separator image is forced to react as the horizontal image. As with the
 scrollbar example use the place manager to display the widget and make the horizontal separator widg.place(x=5, y=5, width=150) then
-vertical separator has widg1.place(x=75, y=50, height=150, width=5) which gives the best looking widget, but not perfect. We can improve
-the situation if we add a second state then the vertical separator improves considerably, but we require a call to this second state
-in the vertical mode.
+vertical separator has widg1.place(x=75, y=50, height=150, width=5) which gives the best looking widget, but not perfect. We can
+improve the situation if we add a second state then the vertical separator improves considerably, but we require a call to this second
+state in the vertical mode.
 
 Let us try the entry widget. The thinking here is that we have a fairly simple widget, so an image of an old yellowed document may be
 appropriate. The image has irregular edges, so instead of a smooth expansion I have purposefully chosen border values that create more
