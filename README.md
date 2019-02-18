@@ -997,4 +997,34 @@ same directory as your main program. A few sub-programs have been added to ensur
 result will probably make you say "With a little effort I could do better" - good have a go, in general the images are the most time
 consuming, but the whole is surprisingly straightforward
 
+## 08 Down to Earth
 
+As we have seen it is relatively simple to find an image then use this for a widget. What may be more difficult is to design a widget
+from scratch. If we use an existing widget as a template we can alter its colours to produce similar looking widgets, albeit in
+different colours. We can use simple tools such as PIL ImageDraw or tkinter Canvas. Since all the widgets are quite small more 
+sophisticated tools might be unnecessary. We are lucky in that we can see what has already been achieved in ttktheme. If we enlarge an
+image such as comboarrow-n.png from the Ubuntu theme, we see that the outer border is one pixel wide, there are highlights and shadows
+also one pixel wide. The corners are made from a simple angle construction. The most difficult part is probably the arrow, we can see
+that there is a dark grey outer part and a light grey inner part. Several pixels of varying grey hues surround the arrow, exactly how
+to specify these colours will become clearer a little later.
+
+If we replicate this image in the same size we need only need draw lines one pixel wide and place pixels. In this case we would
+probably choose PIL as we need only work directly in our chosen png image, and there is no worry about changing the image format or
+size. Look at 08combo_new.py, we load matplotlib purely to provide an image of our work, since PIL uses a bmp file to show the image
+which can have problems displaying, particularly in Windows. There is nothing sophisticated in the programming, create your colour
+aliases, create the new image with a background colour, then create the background with gradient, create the outer border and corners.
+The transparent outer corners are made next, followed by the highlights and shadow then finally we draw the arrow. Finally we save and
+display the image. The colours and sizes are picked up directly from the original drawing. There are no arcs since at this size the
+results would be most unsatisfactory. In fact at this size using the polygon or line on inclined lines would not work well either. The
+flakiest part is the arrow, we have no real way of knowing the non-standard pixel colours adjacent to the outside borders, in fact
+those pixels adjacent to the corners look like a problem. I am relatively certain that another approach is required especially where no
+template exists.
+
+In order to make a new widget it would be better to work at a much larger size, draw the widget, then save it at the reduced size. When
+drawing at larger sizes there is no simple way to maintain the colour without using thick lines where we require a single pixel line
+in the final image, if we use a single pixel line in our large image, we create a single pixel line with a washed-out colour. Say we
+choose a working image 10x as large our lines and corners will all need to be 10 pixels wide. At this level of magnification arcs can
+be used. We can also use polygons with an outside outline differing in colour to the internal fill. Unfortunately for us PIL ImageDraw
+is too simple and we cannot create thick arcs. The canvas widget from tkinter produces good looking results, most impressive was how a 
+thick arc ties up to the adjacent thick lines at all four corners. In common with all drawing programs one must make allowances for the
+line thicknesses and how the program places the central axis. This applies both to lines and arcs.
