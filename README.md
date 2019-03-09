@@ -1000,13 +1000,38 @@ consuming, but the whole is surprisingly straightforward
 ## 08 Down to Earth
 
 As we have seen it is relatively simple to find an image then use this for a widget. What may be more difficult is to design a widget
-from scratch. If we use an existing widget as a template we can alter its colours to produce similar looking widgets, albeit in
-different colours. We can use simple tools such as PIL ImageDraw or tkinter Canvas. Since all the widgets are quite small more 
-sophisticated tools might be unnecessary. We are lucky in that we can see what has already been achieved in ttktheme. If we enlarge an
-image such as comboarrow-n.png from the Ubuntu theme, we see that the outer border is one pixel wide, there are highlights and shadows
-also one pixel wide. The corners are made from a simple angle construction. The most difficult part is probably the arrow, we can see
-that there is a dark grey outer part and a light grey inner part. Several pixels of varying grey hues surround the arrow, exactly how
-to specify these colours will become clearer a little later.
+from scratch. If we use an existing widget as a template we can alter its colours to produce similar looking widgets. We can use simple
+tools such as PIL ImageDraw or tkinter Canvas. Since all the widgets are quite small more sophisticated tools might be unnecessary. We
+are lucky in that we can see what has already been achieved in ttktheme. If we enlarge an image such as comboarrow-n.png from the
+Ubuntu theme, we see that the outer border is one pixel wide, there are highlights and shadows also one pixel wide. The corners are
+made from a simple angle construction. The most difficult part is probably the arrow, we can see that there is a dark grey outer part
+and a light grey inner part. Several pixels of varying grey hues surround the arrow and the diagonal lines, exactly how to specify
+these colours will become clearer a little later.
+
+Comparing this widget to others it becomes clear that a lot of the widgets are made in a similar manner. They are all of a similar size
+there are no arcs, all lines are one pixel wide and diagonals are used to give the impression of rounded corners. Angled lines require 
+a special antialias treatment to remove their jagged appearance. At present all screens have a rectangular pixel display, which means
+that angled lines are displayed within the same limitations which we can see in the following image:-
+
+![lines:grid](/images/08enlargedlines.png)
+
+The vertical and horizontal lines have no real problems, but the diagonal lines are shown as aliased - jagged - and antialiased where
+we see that the pixels between the line pixels have an intermediate colour between the line and background colour. You will also 
+notice that the diagonal line has a larger spacing between pixels than either the vertical or horizontal lines. This means that 
+diagonal lines will appear to be slightly lighter. There are several approaches we may use to perform antialiasing. The simplest
+is to make the image larger then restore to the original size applying a resampling filter such as bicubic or lanczos (formerly known
+as antialias in PIL), this creates some differently coloured pixels as we have already noticed in comboarrow-n.png. When applying this
+to a similar image you will notice that the antialias pixels are not as intense as the original image, this could be that back in 2004
+the programs worked to different algorithms. The other effect that this method has is that the colour is leached out of the existing
+lines in particular the diagonal lines and the ends of the horizontal and vertical lines, both these effects are unwanted particurly on
+the diagonal lines. Another promising approach would be to use an application that already has an option to create antialiased lines.
+We could use applications such as aggdraw or cv2, unfortunately tkinter canvas has no such option. Testing aggdraw it has the advantage
+that it creates antialiased lines as required, so vertical and horizontal lines can be left aliased, the antialiased lines create
+pixels similar to those that occurred when the diagonal image was enlarged and reduced with a resampling filter. Unfortunately the 
+colours are much the same as before, so the effect of antialiasing is lost. The next problem occurred when trying to antialias an 
+arrow, the lines did not follow the original scheme and the arrow tip increased from one pixel to two pixels wide. Using cv2 (cv3)
+the antialias pixels were more intense in colour but the antialiased line was foreshortened - in fact small lines 3 or 4 pixels 
+disappeared altogether. 
 
 If we replicate this image in the same size we need only need draw lines one pixel wide and place pixels. In this case we would
 probably choose PIL as we need only work directly in our chosen png image, and there is no worry about changing the image format or
