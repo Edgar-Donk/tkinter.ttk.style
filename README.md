@@ -1022,16 +1022,19 @@ diagonal lines will appear to be slightly lighter. There are several approaches 
 is to make the image larger then restore to the original size applying a resampling filter such as bicubic or lanczos (formerly known
 as antialias in PIL), this creates some differently coloured pixels as we have already noticed in comboarrow-n.png. When applying this
 to a similar image you will notice that the antialias pixels are not as intense as the original image, this could be that back in 2004
-the programs worked to different algorithms. The other effect that this method has is that the colour is leached out of the existing
-lines in particular the diagonal lines and the ends of the horizontal and vertical lines, both these effects are unwanted particurly on
-the diagonal lines. Another promising approach would be to use an application that already has an option to create antialiased lines.
-We could use applications such as aggdraw or cv2, unfortunately tkinter canvas has no such option. Testing aggdraw it has the advantage
-that it creates antialiased lines as required, so vertical and horizontal lines can be left aliased, the antialiased lines create
-pixels similar to those that occurred when the diagonal image was enlarged and reduced with a resampling filter. Unfortunately the 
-colours are much the same as before, so the effect of antialiasing is lost. The next problem occurred when trying to antialias an 
-arrow, the lines did not follow the original scheme and the arrow tip increased from one pixel to two pixels wide. Using cv2 (cv3)
-the antialias pixels were more intense in colour but the antialiased line was foreshortened - in fact small lines 3 or 4 pixels 
-disappeared altogether. 
+the programs worked to different algorithms or else the programmer used a Tk/Tcl solution. The other effect that this method has is
+that the colour is leached out of the existing lines in particular the diagonal lines and the ends of the horizontal and vertical
+lines, both these effects are unwanted particurly on the diagonal lines. Another promising approach would be to use an application that
+already has an option to create antialiased lines. We could use applications such as aggdraw or cv2, unfortunately tkinter canvas has
+no such option. Testing aggdraw it has the advantage that it creates antialiased lines as required, so vertical and horizontal lines
+can be left aliased, the antialiased lines create pixels similar to those that occurred when the diagonal image was enlarged and
+reduced with a resampling filter. Unfortunately the colours are much the same as before, so the effect of antialiasing is lost. The
+next problem occurred when trying to antialias an arrow, the lines did not follow the original scheme and the arrow tip increased from
+one pixel to two pixels wide. Using cv2 (cv3) the antialias pixels were more intense in colour but the antialiased line was
+foreshortened - in fact small lines of 3 or 4 pixels disappeared altogether. We could implement the Xialon Wu antialiasing algorithm,
+but unfortunately at 45 and its multiples it no longer works. All this means it is probably best to implement one's own antialiasing.
+
+We are using two different antialiasing methods, the first is for 45 degrees the second is a more general system as used in arrows.
 
 If we replicate this image in the same size we need only need draw lines one pixel wide and place pixels. In this case we would
 probably choose PIL as we need only work directly in our chosen png image, and there is no worry about changing the image format or
