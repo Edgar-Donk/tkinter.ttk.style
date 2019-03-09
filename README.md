@@ -1034,7 +1034,101 @@ one pixel to two pixels wide. Using cv2 (cv3) the antialias pixels were more int
 foreshortened - in fact small lines of 3 or 4 pixels disappeared altogether. We could implement the Xialon Wu antialiasing algorithm,
 but unfortunately at 45 and its multiples it no longer works. All this means it is probably best to implement one's own antialiasing.
 
-We are using two different antialiasing methods, the first is for 45 degrees the second is a more general system as used in arrows.
+We are using two different antialiasing methods, the first is for 45 degrees the second is used in making arrows. Any line drawn at 45
+degrees, or its multiples, is fairly easy to predict where the line pixels have been drawn, so the antialias pixels can be inserted. If
+you look at the lines image above, notice the two right hand lines, one was drawn ascending the other descending - see how the line  
+follows a slightly different path. We can use the bresenham algorithm to predict the correct path, most examples strictly follow one
+path whichever way they are drawn, the one I managed to find changes with direction but in the opposite manner to PIL.
+
+If you have never drawn with PIL or require a refresher the following paragraph should help. PIL has several modules, the two we
+require are Image and ImageDraw. Image deals with the file whereas ImageDraw gives us the ability to create lines, arcs and polygons -
+a bit like tkinter canvas. We draw directly on the image without needing a canvas. After importing the necessary modules, create a new
+file, then create a function for drawing.
+```
+from PIL import Image, ImageDraw
+
+w = 24  # used to set width
+h = 24  # used to set height
+transparent = (255,255,255,0) # used to set background colour
+
+img = Image.new('RGBA', (w,h), transparent) # create a new image organized with RGBA pixels, of a given size with the set background colour
+idraw = ImageDraw.Draw(img) # create function for drawing within the new image img.
+
+idraw.line([0,0,w-1,0],fill='black',width=1) # draw line on upper part of the image
+idraw.line([0,0,0,h-1],fill='black',width=1) # draw line on left part of the image
+idraw.line([w-1,0,w-1,h-1],fill='black',width=1) # draw line on left part of the image
+idraw.line([0,h-1,w-1,h-1],fill='black',width=1) # draw line on lower part of the image
+
+img.save('line_test.png') # save to file
+```
+This should create a square one pixel wide formed from four lines - we could have used the default values and drawn the lines as a
+single line in order. Note that in order to fit the lines we needed to use the width-1 and height-1, this ensures that the lines are 24 
+pixels long, since the starting point is zero.
+'''
+idraw.line([0,0,w-1,0,w-1,h-1,0,h-1,0,0])
+'''
+We see that the default colour is white, also note that we finish and end at the same point. If we had used polygon then there normally
+is no need to close off. Note the outside border is called outline, fill can be used as an internal filling method.
+```
+idraw.polygon([0,0,w-1,0,w-1,h-1,0,h-1],outline='#FFFFFF',fill='red')
+```
+We saw that often the widget corners look as though they are rounded, but at these sizes arcs are not so useful. We need to draw an
+arc, ellipse or a pieslice in order to best determine the corner arrangements, so we need to know the bounding rectangle that defines
+the size and position of the curve. We can use the square we drew before and utilise its upper left and lower right points to define
+the bounding rectangle for a circle - a special case of the ellipse.
+'''
+idraw.ellipse([0,0,w-1,h-1],outline='red') # not quite right - too small
+idraw.ellipse([0,0,w,h],outline='red') # not right - too big
+```
+A case here of the Goldilocks size, if h and w had been 23 then the first attempt would have been correct - remember that the circle
+overlaps the the bounding rectangle on the top and left sides and touches the other two sides, this is shown in 8.5 Canvas Oval 
+Objects in the tkinter 8.5 documentation which uses a similar system to PIL.
+'''
+idraw.arc([0,0,w-1,h-1],start=0,end=90,fill='red') # the colour parameter is called fill
+idraw.arc([0,0,w-1,h-1],start=90,end=180,fill='green') # Angles are measured from 3 o’clock, increasing clockwise
+idraw.arc([0,0,w-1,h-1],start=180,end=270,fill='yellow')
+idraw.arc([0,0,w-1,h-1],start=270,end=360,fill='blue')
+```
+Note: the arc layouts and which sectors start and end cover, also the bounding rectangle is exactly the same as for the circle.
+
+In order to visualize the required widget corner layout better we can draw a sample corner with some alternative rounded configurations
+in a large enough size to see then reduce to widget sizes. When drawing the larger sizes we will require wider lines and arcs, however
+PIL arcs have no width components, therefore we use pieslice as an alternative. In the first configuration the border runs along the
+sides then an arc joins the 2 borders with a minimum radius.
+```
+from PIL import Image, ImageDraw
+
+w = 23*8  # based on circle sizes
+h = 23*8  
+
+img = Image.new('RGB', (w,h), 'white') # nothing fancy
+idraw = ImageDraw.Draw(img)
+
+idraw.line([8,0,w-1,0],fill='black',width=1) # draw line on upper part of the image, gap at the upper left
+idraw.line([0,8,0,h-1],fill='black',width=1) # draw line on left part of the image, gap at the upper left
+
+img.save('corner_test.png') # save to file
+```
+Not quite right, the lines are thick but the full width does not show, therefore we need to adjust both lines. Now we can add a
+pieslice, use a different colour so we can detect errors a little easier ...
+```
+idraw.line([8,3,w-1,3],fill='black',width=1) # adjusted for width
+idraw.line([3,8,3,h-1],fill='black',width=1) # adjusted for width
+# idraw.pieslice([0,0,16-1,16-1],fill='yellow',outline='yellow') # seems alright, change to black and resize
+idraw.pieslice([0,0,16-1,16-1],fill='black',outline='black')
+
+imgx=img.resize((w//8,h//8))
+imgx.save('corner_testx.png', quality=95) # save to file no resampling filter
+# the corner pixels all black - might need a filter
+
+imgb=img.resize((w//8,h//8),Image.BICUBIC) # LANCZOS
+imgb.save('corner_testb.png', quality=95) # save to file no resampling filter
+'''
+There is no real space for the filter to get to grips, all it can do is produce very dark greys along the borders, with a lighter grey
+at the junction of the 2 lines at 1,1 but this is unlikely to fool most people that we have a rounded corner.
+
+When we enlarge the gap the internal part of the pieslice needs to be taken out with a second pieslice the same colour as the
+background. As the gap increases the pieslice (arc) changes
 
 If we replicate this image in the same size we need only need draw lines one pixel wide and place pixels. In this case we would
 probably choose PIL as we need only work directly in our chosen png image, and there is no worry about changing the image format or
