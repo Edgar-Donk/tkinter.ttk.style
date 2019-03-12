@@ -1134,7 +1134,8 @@ w = 23
 h = 23
 we = w*e  
 he = h*e
-s = 1*e # space
+g = 1 # gap
+s = g*e # space 
 
 
 img = Image.new('RGB', (we,he), 'white') # nothing fancy using the enlarged size
@@ -1143,7 +1144,7 @@ idraw = ImageDraw.Draw(img)
 idraw.line([s,0,w-1,0],fill='black',width=1) # draw line on upper part of the image, gap at the upper left
 idraw.line([0,s,0,h-1],fill='black',width=1) # draw line on left part of the image, gap at the upper left
 
-img.save('corner_test.png') # save to file - seeing what we have drawn in the enlarged size
+img.save('corner_test'+str(g)+'.png') # save to file - seeing what we have drawn in the enlarged size
 ```
 Not quite right, the lines are thick but the full width does not show (magnify until you can see the pixels), therefore we need to
 adjust both lines. Wider lines appear to be referenced from a location close to their centre rather than an outside edge. Lines with
@@ -1158,11 +1159,11 @@ idraw.pieslice([0,0,16-1,16-1],fill='yellow',outline='yellow') # seems alright, 
 # idraw.pieslice([0,0,16-1,16-1],fill='black',outline='black')
 
 imgx=img.resize((w,h))
-imgx.save('corner_testx.png', quality=95) # save to file no resampling filter
+imgx.save('corner_testx'+str(g)+'.png', quality=95) # save to file final size no resampling filter
 # the corner pixels all black - might need a filter
 
 imgb=img.resize((w,h),Image.BICUBIC) # LANCZOS
-imgb.save('corner_testb.png', quality=95) # save to file no resampling filter
+imgb.save('corner_testb'+str(g)+'.png', quality=95) # save to file using bicubic filter
 '''
 There is no real space for the filter to get to grips, all it can do is produce very dark greys along the borders, with a lighter grey
 at the junction of the 2 lines at 1,1 but this is unlikely to fool most people that we have a rounded corner.
@@ -1176,7 +1177,14 @@ def create_pieslice(idraw,c,r,outline='#888888',fill='#888888',start=0,end=90):
     return idraw.pieslice([c[0]-r,c[1]-r,c[0]+r-1,c[1]+r-1],
                           outline=outline,fill=fill,start=start,end=end)
 ```
+As we increase the gap size we can see the effects of the resampling filter and compare whether a bicubic or lanczos works better. Also 
+check what happens if we use an enlargement factor of 8, in particular the original size whether the pieslice marries up with the 
+border lines and whether this noticeably affects the final image after filtering. You should see that at a gap of 5 the final image
+changes from a straight line to a stepped line.
 
+  ### 8.03 Replicating the Widget Images
+  
+We are now in a position to replicate the widget images.  
 
 If we replicate this image in the same size we need only need draw lines one pixel wide and place pixels. In this case we would
 probably choose PIL as we need only work directly in our chosen png image, and there is no worry about changing the image format or
