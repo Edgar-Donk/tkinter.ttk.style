@@ -1019,13 +1019,13 @@ that angled lines are displayed within the same limitations which we can see in 
 The vertical and horizontal lines are smooth, but the diagonal lines have been drawn jagged (aliased) and antialiased where
 we see that the pixels between the line pixels have an intermediate colour between the line and background colour. You will also 
 notice that the diagonal line has a larger spacing between pixels than either the vertical or horizontal lines. This means that 
-diagonal lines will appear to be slightly lighter. 
+diagonal lines will appear to be slightly lighter with no other change. 
 
 There are several approaches we may use to perform antialiasing. The simplest is to make the image larger then restore to the original
 size applying a resampling filter such as bicubic or lanczos (formerly known as antialias in PIL), this creates some differently
 coloured pixels as we have already noticed in comboarrow-n.png. When applying this to a similar image you will notice that the
 antialias pixels are not as intense as the original image, this is a function of the image layout. The other effect that this method
-has is that the colour is leached out of the existing lines noticeably with the diagonal lines and the ends of the horizontal and
+has is that the colour is leached out of the existing lines, noticeably with the diagonal lines and the ends of the horizontal and
 vertical lines, both these effects are unwanted particurly on the diagonal lines. 
 
 Another promising approach would be to use an application that already has an option to create antialiased lines. We could use
@@ -1045,13 +1045,13 @@ We are using two different antialiasing methods, the first is for 45 degrees the
 corners could be antialiased by drawing the image at a larger size, say nine times as large, then we reduce the image size while
 applying a resampling filter. The colour has been intensified by leaching some colour from the borders but mainly because we are 
 compressing arcs into a pixel or two. Unfortunately the arrow has no such aids. If you look at the lines image above, notice the two
-right hand lines, one was drawn ascending the other descending - see how the line follows a slightly different path. We can use a
-bresenham algorithm to predict the correct path, most examples strictly follow one path whichever way they are drawn, the one I managed
-to find changes with direction but in the opposite manner to PIL.
+right hand lines, green one was drawn ascending the red one descending - see how the line follows a slightly different path. We can use
+a bresenham algorithm to predict the correct path, most examples strictly follow only one path whichever way they are drawn, the script
+I managed to find changes with direction but in the opposite manner to PIL.
 
   ### 08.2 Drawing with PIL(Pillow)
-We could used tkinter canvas, but we would still have had to use PIL at some stage, so let's try using PIL only since the drawing is
-not too complicated requiring some of the more sophisticated tools from canvas.
+We could used tkinter canvas, but we would still have had to use PIL at some stage, so let's only try using PIL since the drawing is
+not too complicated requiring some of the more sophisticated methods from canvas.
 
 If you have never drawn with PIL or require a refresher the following few paragraph should help. PIL has several modules, the two we
 will require are Image and ImageDraw. Image deals with the file whereas ImageDraw gives us the ability to create lines, arcs and
@@ -1077,27 +1077,27 @@ idraw.line([0,h-1,w-1,h-1],fill='black',width=1) # draw line on lower part of th
 
 img.save('line_test.png') # save to file
 ```
-This should create a square one pixel wide formed from four black lines - we could have used the default values and drawn the lines as
-a single line in order. Note that in order to fit the lines we needed to use the width-1 and height-1, this ensures that the lines are
-24 pixels long, since the starting point is zero and our image size is 24x24.
+This should create a square formed from four black lines one pixel wide - we could have used the default values and drawn the lines as
+a single line in order. Note that we needed to use the width-1 and height-1, this ensures that the lines fit and are 24 pixels long,
+since the starting point is zero and our image size is 24x24.
 
 '''
 idraw.line([0,0,w-1,0,w-1,h-1,0,h-1,0,0]) # alternative method to draw lines
 '''
-We see that the default colour is white, also note that we finish and end at the same point. 
+Note that we start and finish at the same point, also note that the default colour is white. 
 
-If we had used polygon then there normally is no need to close off. Note the outside border is called outline, fill can be used as an
-internal filling method.
+If we had used polygon then there normally is no need to close off. Note the outside of the polygon is called outline, fill can be used
+as an internal filling method.
 ```
-idraw.polygon([0,0,w-1,0,w-1,h-1,0,h-1],outline='#FFFFFF',fill='red') # the colour is here specified as a hash and named colour
+idraw.polygon([0,0,w-1,0,w-1,h-1,0,h-1],outline='#FFFFFF',fill='red') # the colours specified here are a hash and a named colour
 ```
-We saw that often the widget corners look as though they are rounded, but at these sizes arcs will not work. We need to draw an
-arc, ellipse or a pieslice in order to find out how the various corner arrangements come about. In order to draw curved lines we need
-to know the bounding rectangle that defines the size and position of the curve. We can use the square we drew before and utilise its
-upper left and lower right points to define the bounding rectangle for a circle - a special case of the ellipse. Ellipse also has the
-same methods to colour as used by polygon. PIL is flexible when specifying colours - we can use RGBA, RGB, hash value, a named colour,
-or hsl. Be careful when using names it uses the X11 system that is mostly similar to the CSS3, but it may not always agree with the 
-tkinter list of named colours.
+We saw that often the widget corners look as though they are rounded, but at these sizes arcs will not work. On the other hand we need
+to draw an arc, ellipse or a pieslice in order to find out how the various corner arrangements came into being. In order to draw curved
+lines we need to know the bounding rectangle that defines the size and position of the curve. We can use the square we drew before and
+utilise its upper left and lower right points to define the bounding rectangle for a circle - a special case of the ellipse. Ellipses
+also have the same methods to colour as used by polygons. PIL is flexible when specifying colours - we can use RGBA, RGB, hash value, a
+named colour, or hsl. Be careful when using names it uses the X11 system that is similar to the CSS3, but it may not always agree with
+the tkinter list of named colours.
 '''
 idraw.ellipse([0,0,w-1,h-1],outline='red') # not quite right - too small
 idraw.ellipse([0,0,w,h],outline='red') # also not right - too big
@@ -1105,20 +1105,20 @@ idraw.ellipse([0,0,w,h],outline='red') # also not right - too big
 Maybe a case of the Goldilocks size, if h and w had been 23 then the first attempt would have been correct. If we draw a circle it has
 a radius that must be an integer, so the bounding square must be an even number of pixels wide and high. The outside black square we 
 drew corresponds to the bounding square, not the image size, we see that the circle overlaps the the bounding rectangle on all four
-sides, and our case should touch all four sides of the image, in the real world lines have breadth that is why the bounding rectangle
-is not a simple dimension, this is shown in 8.5 Canvas Oval Objects in the tkinter 8.5 documentation which uses a similar system to
-PIL.
+sides, and our case should touch all four sides of the image, in the real world lines have breadth which is why the bounding rectangle
+is not a simple dimension, this is also shown in 8.5 Canvas Oval Objects in the tkinter 8.5 documentation which uses a similar system
+to PIL.
 '''
-idraw.arc([0,0,w-1,h-1],start=0,end=90,fill='red') # the colour parameter is called fill
-idraw.arc([0,0,w-1,h-1],start=90,end=180,fill='green') # Angles are measured from 3 o’clock, increasing clockwise
+idraw.arc([0,0,w-1,h-1],start=0,end=90,fill='red') # angles are measured from 3 o’clock, increasing clockwise
+idraw.arc([0,0,w-1,h-1],start=90,end=180,fill='green') # the colour parameter is fill
 idraw.arc([0,0,w-1,h-1],start=180,end=270,fill='yellow')
 idraw.arc([0,0,w-1,h-1],start=270,end=360,fill='blue')
 ```
-Note: the arc layouts and how start and end is specified, also the bounding rectangle size for an arc is exactly the same as for the
+Note: the arc layouts and how start and end are specified, also the bounding rectangle size for an arc is exactly the same as for the
 circle. A similar system is used for pieslice. However pieslice has both an outline and fill method, just as we saw in polygon. 
 
 If we wish to produce rounded corners in a large enough size so that curves can be drawn then we will need to enlarge everything,
-image size, lines and their widths. Ordinary lines can be directly drawn with their width without too much trouble. Arcs pose a slight
+image size, lines and their widths. Ordinary lines can be directly drawn with their width without too much trouble. Arcs pose a 
 problem since they have no width or fill method. Pieslice is the solution, we first draw a larger pieslice that picks up on
 the required outside radius, then we draw a smaller pieslice that picks up on the inner radius. The larger pieslice has a colour
 corresponding to the borders whilst the smaller pieslice has a background colour. Both pieslices use the same centre.
@@ -1130,57 +1130,60 @@ from PIL import Image, ImageDraw
 
 e = 9  # enlargement
 d = (e-1)//2 # displacement
-w = 23
-h = 23
-we = w*e  
-he = h*e
+w = 23 # normal image width
+h = 23 # normal image height
+we = w*e # enlarged image width
+he = h*e # enlarged image height
 g = 1 # gap
-s = g*e # space 
+s = g*e # space (enlarged gap)
 
 
-img = Image.new('RGB', (we,he), 'white') # nothing fancy using the enlarged size
+img = Image.new('RGB', (we,he), 'white') # nothing fancy using an enlarged size
 idraw = ImageDraw.Draw(img)
 
-idraw.line([s,0,w-1,0],fill='black',width=1) # draw line on upper part of the image, gap at the upper left
-idraw.line([0,s,0,h-1],fill='black',width=1) # draw line on left part of the image, gap at the upper left
+idraw.line([s,0,we-1,0],fill='black',width=e) # draw line on upper part of the image, gap at the upper left
+idraw.line([0,s,0,he-1],fill='black',width=e) # draw line on left part of the image, gap at the upper left
 
 img.save('corner_test'+str(g)+'.png') # save to file - seeing what we have drawn in the enlarged size
 ```
 Not quite right, the lines are thick but the full width does not show (magnify until you can see the pixels), therefore we need to
 adjust both lines. Wider lines appear to be referenced from a location close to their centre rather than an outside edge. Lines with
-odd sized widths use the central measurement less 1, whereas lines with even sized widths use a measure 1 pixel less. This means that
-lines of 1 or 2 pixels width need no adjustment whereas wider lines will need either a vertical or horizontal displacement.
+odd sized widths use the central measurement less 1, whereas lines with even sized widths use the same size as the previous odd value.
+This means that lines of 1 or 2 pixels width need no adjustment whereas wider lines will need either a vertical or horizontal
+displacement.
 
-Now we can add a pieslice, use a different colour so we can detect errors a little easier ...
+Now we can add a pieslice, using a different colour so we can detect errors a little easier ...
 ```
-idraw.line([e,d,w-1,d],fill='black',width=1) # adjusted for width
-idraw.line([d,e,d,h-1],fill='black',width=1) # adjusted for width
+idraw.line([s,d,we-1,d],fill='black',width=e) # adjusted for width
+idraw.line([d,s,d,he-1],fill='black',width=e) # adjusted for width
 idraw.pieslice([0,0,16-1,16-1],fill='yellow',outline='yellow') # seems alright, change to black and resize
 # idraw.pieslice([0,0,16-1,16-1],fill='black',outline='black')
 
-imgx=img.resize((w,h))
-imgx.save('corner_testx'+str(g)+'.png', quality=95) # save to file final size no resampling filter
-# the corner pixels all black - might need a filter
+imgx=img.resize((w,h)) # changed the image to our reduced size 
+imgx.save('corner_testx'+str(g)+'.png', quality=95) # save to file final size with no resampling filter
+# the corner pixels are all black - might be improved with a filter
 
 imgb=img.resize((w,h),Image.BICUBIC) # LANCZOS
 imgb.save('corner_testb'+str(g)+'.png', quality=95) # save to file using bicubic filter
 '''
 There is no real space for the filter to get to grips, all it can do is produce very dark greys along the borders, with a lighter grey
-at the junction of the 2 lines at 1,1 but this is unlikely to fool most people that we have a rounded corner.
+at the junction of the 2 lines at 1,1 but this is unlikely to fool most people into believing that we have a rounded corner.
 
 When we enlarge the gap the internal part of the pieslice needs to be taken out with a second pieslice using the same colour as the
 background. As the gap increases the pieslice (arc) changes its bounding rectangle not only with increasing pieslice radius but where 
 it is centred. It is much easier to control the pieslice, or any of the other regular curved lines using a simple helping function, 
-such as create_pieslice.
+such as create_pieslice. To aid our investigations each file has a separate name for differing gap sizes.
 ```
 def create_pieslice(idraw,c,r,outline='#888888',fill='#888888',start=0,end=90):
     return idraw.pieslice([c[0]-r,c[1]-r,c[0]+r-1,c[1]+r-1],
                           outline=outline,fill=fill,start=start,end=end)
 ```
 As we increase the gap size we can see the effects of the resampling filter and compare whether a bicubic or lanczos works better. Also 
-check what happens if we use an enlargement factor of 8, in particular the original size whether the pieslice marries up with the 
-border lines and whether this noticeably affects the final image after filtering. You should see that at a gap of 5 the final image
+check what happens if we use an enlargement factor of 8, in particular on the original size and whether the pieslice marries up with
+the border lines and whether this noticeably affects the final image after filtering. You should see that at a gap of 5 the final image
 changes from a straight line to a stepped line.
+
+The example file 08corner_investigation.py has collated the above script excerpts.
 
   ### 8.03 Replicating the Widget Images
   
@@ -1195,14 +1198,14 @@ The transparent outer corners are made next, followed by the highlights and shad
 display the image. The colours and sizes are picked up directly from the original drawing. There are no arcs since at this size the
 results would be most unsatisfactory. In fact at this size using the polygon or line on inclined lines would not work well either. The
 flakiest part is the arrow, we have no real way of knowing the non-standard pixel colours adjacent to the outside borders, in fact
-those pixels adjacent to the corners look like a problem. I am relatively certain that another approach is required especially where no
-template exists.
+those pixels adjacent to the corners look like a problem. 
 
 In order to make a new widget it would be better to work at a much larger size, draw the widget, then save it at the reduced size. When
 drawing at larger sizes there is no simple way to maintain the colour without using thick lines where we require a single pixel line
-in the final image, if we use a single pixel line in our large image, we create a single pixel line with a washed-out colour. Say we
-choose a working image 10x as large our lines and corners will all need to be 10 pixels wide. At this level of magnification arcs can
-be used. We can also use polygons with an outside outline differing in colour to the internal fill. Unfortunately for us PIL ImageDraw
-is too simple and we cannot create thick arcs. The canvas widget from tkinter produces good looking results, most impressive was how a 
-thick arc ties up to the adjacent thick lines at all four corners. In common with all drawing programs one must make allowances for the
-line thicknesses and how the program places the central axis. This applies both to lines and arcs.
+in the final image, if we we were to use a single pixel line in our large image, we create a single pixel line with a washed-out
+colour. Say we choose a working image 9x as large our lines and corners will all need to be 9 pixels wide. At this level of
+magnification arcs can be used. We can also use polygons with an outside outline differing in colour to the internal fill.
+Unfortunately for us PIL ImageDraw cannot create thick arcs without resorting to two pieslices. The canvas widget from tkinter produces
+good looking results, most impressive was how a thick arc ties up to the adjacent thick lines at all four corners. In common with all
+drawing programs one must make allowances for the line thicknesses and how the program places the central axis. This applies both to
+lines and arcs. 
