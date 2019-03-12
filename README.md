@@ -998,7 +998,7 @@ result will probably make you say "With a little effort I could do better" - goo
 consuming, but the whole is surprisingly straightforward
 
 ## 08 Down to Earth
-  # 08.1 Introduction
+  ### 08.1 Introduction
 
 As we have seen it is relatively simple to find an image then use this for a widget. What may be more difficult is to design a widget
 from scratch. If we use an existing widget as a template we can alter its colours to produce similar looking widgets. We can use simple
@@ -1049,14 +1049,16 @@ right hand lines, one was drawn ascending the other descending - see how the lin
 bresenham algorithm to predict the correct path, most examples strictly follow one path whichever way they are drawn, the one I managed
 to find changes with direction but in the opposite manner to PIL.
 
-  # 08.2 Drawing with PIL(Pillow)
+  ### 08.2 Drawing with PIL(Pillow)
 We could used tkinter canvas, but we would still have had to use PIL at some stage, so let's try using PIL only since the drawing is
 not too complicated requiring some of the more sophisticated tools from canvas.
 
 If you have never drawn with PIL or require a refresher the following few paragraph should help. PIL has several modules, the two we
 will require are Image and ImageDraw. Image deals with the file whereas ImageDraw gives us the ability to create lines, arcs and
 polygons - a bit like tkinter canvas. We draw directly on the image without needing a canvas. After importing the necessary modules,
-create a new file, then create a function for drawing.
+create a new file, then create a function for drawing. The coordinate system is the normal computer one with the upper left hand
+corner being 0,0 (x,y coordinates) x increases across the screen y increases down the screen. Note that all coordinates are given to
+the drawing methods as a list (square brackets) [x0,y0,x1,y1 ...] or a list of tuples (round brackets) [(x0,y0),(x1,y1) ...].
 ```
 from PIL import Image, ImageDraw
 
@@ -1077,7 +1079,7 @@ img.save('line_test.png') # save to file
 ```
 This should create a square one pixel wide formed from four black lines - we could have used the default values and drawn the lines as
 a single line in order. Note that in order to fit the lines we needed to use the width-1 and height-1, this ensures that the lines are
-24 pixels long, since the starting point is zero.
+24 pixels long, since the starting point is zero and our image size is 24x24.
 
 '''
 idraw.line([0,0,w-1,0,w-1,h-1,0,h-1,0,0]) # alternative method to draw lines
@@ -1092,69 +1094,89 @@ idraw.polygon([0,0,w-1,0,w-1,h-1,0,h-1],outline='#FFFFFF',fill='red') # the colo
 We saw that often the widget corners look as though they are rounded, but at these sizes arcs will not work. We need to draw an
 arc, ellipse or a pieslice in order to find out how the various corner arrangements come about. In order to draw curved lines we need
 to know the bounding rectangle that defines the size and position of the curve. We can use the square we drew before and utilise its
-upper left and lower right points to define the bounding rectangle for a circle - a special case of the ellipse.
+upper left and lower right points to define the bounding rectangle for a circle - a special case of the ellipse. Ellipse also has the
+same methods to colour as used by polygon. PIL is flexible when specifying colours - we can use RGBA, RGB, hash value, a named colour,
+or hsl. Be careful when using names it uses the X11 system that is mostly similar to the CSS3, but it may not always agree with the 
+tkinter list of named colours.
 '''
 idraw.ellipse([0,0,w-1,h-1],outline='red') # not quite right - too small
 idraw.ellipse([0,0,w,h],outline='red') # also not right - too big
 ```
 Maybe a case of the Goldilocks size, if h and w had been 23 then the first attempt would have been correct. If we draw a circle it has
 a radius that must be an integer, so the bounding square must be an even number of pixels wide and high. The outside black square we 
-drew corresponds to the bounding square, not the image size - we see that the circle overlaps the the bounding rectangle on all four
-sides, the top and left hand boundaries are denoted as 0 height and 0 width indicated on the outer part of the line, whilst the other
-two sides are denoted as h-1 and w-1 denoted on the inner part of the line, this is shown in 8.5 Canvas Oval Objects in the tkinter 8.5
-documentation which uses a similar system to PIL.
+drew corresponds to the bounding square, not the image size, we see that the circle overlaps the the bounding rectangle on all four
+sides, and our case should touch all four sides of the image, in the real world lines have breadth that is why the bounding rectangle
+is not a simple dimension, this is shown in 8.5 Canvas Oval Objects in the tkinter 8.5 documentation which uses a similar system to
+PIL.
 '''
 idraw.arc([0,0,w-1,h-1],start=0,end=90,fill='red') # the colour parameter is called fill
 idraw.arc([0,0,w-1,h-1],start=90,end=180,fill='green') # Angles are measured from 3 o’clock, increasing clockwise
 idraw.arc([0,0,w-1,h-1],start=180,end=270,fill='yellow')
 idraw.arc([0,0,w-1,h-1],start=270,end=360,fill='blue')
 ```
-Note: the arc layouts and which sectors cover start and end, also the bounding rectangle is exactly the same as for the circle. A
-similar system is used for pieslice. However pieslice has both an outline and fill method, just as we saw in polygon. 
+Note: the arc layouts and how start and end is specified, also the bounding rectangle size for an arc is exactly the same as for the
+circle. A similar system is used for pieslice. However pieslice has both an outline and fill method, just as we saw in polygon. 
 
 If we wish to produce rounded corners in a large enough size so that curves can be drawn then we will need to enlarge everything,
 image size, lines and their widths. Ordinary lines can be directly drawn with their width without too much trouble. Arcs pose a slight
-problem since both ellipse and arc have no width method. Pieslice is the solution, we first draw a larger pieslice that picks up on
+problem since they have no width or fill method. Pieslice is the solution, we first draw a larger pieslice that picks up on
 the required outside radius, then we draw a smaller pieslice that picks up on the inner radius. The larger pieslice has a colour
 corresponding to the borders whilst the smaller pieslice has a background colour. Both pieslices use the same centre.
 
-In the first configuration the two borders run along the outside edges then are joined by an arc of the same width as the borders.
+In the first configuration the two borders run along the outside edges then are joined by an arc of the same width as the borders. 
+Let's start a new file:-
 ```
 from PIL import Image, ImageDraw
 
 e = 9  # enlargement
-w = 23*e  
-h = 23*e
-s = 8*e # space
+d = (e-1)//2 # displacement
+w = 23
+h = 23
+we = w*e  
+he = h*e
+s = 1*e # space
 
-img = Image.new('RGB', (w,h), 'white') # nothing fancy
+
+img = Image.new('RGB', (we,he), 'white') # nothing fancy using the enlarged size
 idraw = ImageDraw.Draw(img)
 
 idraw.line([s,0,w-1,0],fill='black',width=1) # draw line on upper part of the image, gap at the upper left
 idraw.line([0,s,0,h-1],fill='black',width=1) # draw line on left part of the image, gap at the upper left
 
-img.save('corner_test.png') # save to file
+img.save('corner_test.png') # save to file - seeing what we have drawn in the enlarged size
 ```
-Not quite right, the lines are thick but the full width does not show, therefore we need to adjust both lines. 
+Not quite right, the lines are thick but the full width does not show (magnify until you can see the pixels), therefore we need to
+adjust both lines. Wider lines appear to be referenced from a location close to their centre rather than an outside edge. Lines with
+odd sized widths use the central measurement less 1, whereas lines with even sized widths use a measure 1 pixel less. This means that
+lines of 1 or 2 pixels width need no adjustment whereas wider lines will need either a vertical or horizontal displacement.
+
 Now we can add a pieslice, use a different colour so we can detect errors a little easier ...
 ```
-idraw.line([8,3,w-1,3],fill='black',width=1) # adjusted for width
-idraw.line([3,8,3,h-1],fill='black',width=1) # adjusted for width
-# idraw.pieslice([0,0,16-1,16-1],fill='yellow',outline='yellow') # seems alright, change to black and resize
-idraw.pieslice([0,0,16-1,16-1],fill='black',outline='black')
+idraw.line([e,d,w-1,d],fill='black',width=1) # adjusted for width
+idraw.line([d,e,d,h-1],fill='black',width=1) # adjusted for width
+idraw.pieslice([0,0,16-1,16-1],fill='yellow',outline='yellow') # seems alright, change to black and resize
+# idraw.pieslice([0,0,16-1,16-1],fill='black',outline='black')
 
-imgx=img.resize((w//8,h//8))
+imgx=img.resize((w,h))
 imgx.save('corner_testx.png', quality=95) # save to file no resampling filter
 # the corner pixels all black - might need a filter
 
-imgb=img.resize((w//8,h//8),Image.BICUBIC) # LANCZOS
+imgb=img.resize((w,h),Image.BICUBIC) # LANCZOS
 imgb.save('corner_testb.png', quality=95) # save to file no resampling filter
 '''
 There is no real space for the filter to get to grips, all it can do is produce very dark greys along the borders, with a lighter grey
 at the junction of the 2 lines at 1,1 but this is unlikely to fool most people that we have a rounded corner.
 
-When we enlarge the gap the internal part of the pieslice needs to be taken out with a second pieslice the same colour as the
-background. As the gap increases the pieslice (arc) changes
+When we enlarge the gap the internal part of the pieslice needs to be taken out with a second pieslice using the same colour as the
+background. As the gap increases the pieslice (arc) changes its bounding rectangle not only with increasing pieslice radius but where 
+it is centred. It is much easier to control the pieslice, or any of the other regular curved lines using a simple helping function, 
+such as create_pieslice.
+```
+def create_pieslice(idraw,c,r,outline='#888888',fill='#888888',start=0,end=90):
+    return idraw.pieslice([c[0]-r,c[1]-r,c[0]+r-1,c[1]+r-1],
+                          outline=outline,fill=fill,start=start,end=end)
+```
+
 
 If we replicate this image in the same size we need only need draw lines one pixel wide and place pixels. In this case we would
 probably choose PIL as we need only work directly in our chosen png image, and there is no worry about changing the image format or
