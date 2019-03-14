@@ -1180,10 +1180,19 @@ def create_pieslice(idraw,c,r,outline='#888888',fill='#888888',start=0,end=90):
 ```
 As we increase the gap size we can see the effects of the resampling filter and compare whether a bicubic or lanczos works better. Also 
 check what happens if we use an enlargement factor of 8, in particular on the original size and whether the pieslice marries up with
-the border lines and whether this noticeably affects the final image after filtering. You should see that at a gap of 5 the final image
-changes from a straight line to a stepped line.
+the border lines and whether this noticeably affects the final image after filtering. As we increase the gap size the final filtered
+image at the corner layout changes, a line is drawn diagonally across the gap, first of all just a simple diagonal line then at a gap
+of 3 the diagonal has a stepped inward part, at a gap of 4 the line becomes straight, while at a gap of 5 the diagonal becomes stepped
+again this time outwards. As an exercise it is instructive to save the reduced image without any filter, then resize this image back
+to the enlarged size. This should create an angular image which we can now once again resize but with a lanczos filter the result
+should be similar to the image created when we used pieslices, but the antialias pixels will be washed out. 
 
-The example file 08corner_investigation.py has collated the above script excerpts.
+The example file 08corner_investigation.py has collated the above script excerpts. We could alter the script to include an outer border
+with the inner border being tied together with the pieslice. This produces similar results to the first script, but is useful in that
+the differences help us to better guess what the original looked like. You should look at the differences between combo-n.png and
+comboarrow-n.png, apart from image size note that the plain combo has an outer lighter border and that the corner diagonal has no step,
+whereas the comboarrow image has a plain border and a stepped diagonal facing outwards. From this information we can now deduce the
+gap size and hence the arc radius.
 
   ### 08.3 Replicating the Widget Images
   
