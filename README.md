@@ -1194,7 +1194,7 @@ comboarrow-n.png, apart from image size note that the plain combo has an outer l
 whereas the comboarrow image has a plain border and a stepped diagonal facing outwards. From this information we can now deduce the
 gap size and hence the arc radius. 
 
-![corners:grid](../images/08corners.png)
+![button:components](/images/08corners.png) 
 
 The upper row of the corner image shows the result of using various gaps starting on the upper line from 1 and increasing to 5 used on
 a simple border, the lower row uses an outer border and the gaps progress from 2 to 6. 
