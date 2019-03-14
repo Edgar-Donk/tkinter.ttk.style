@@ -1188,7 +1188,7 @@ to the enlarged size. This should create an angular image which we can now once 
 should be similar to the image created when we used pieslices, but the antialias pixels will be washed out. 
 
 The example file 08corner_investigation.py has collated the above script excerpts. We could alter the script to include an outer border
-with the inner border being tied together with the pieslice. This produces similar results to the first script, but is useful in that
+with the inner border being tied together with the pieslice. This produces similar results to the first script, but is helpful in that
 the differences help us to better guess what the original looked like. You should look at the differences between combo-n.png and
 comboarrow-n.png, apart from image size note that the plain combo has an outer lighter border and that the corner diagonal has no step,
 whereas the comboarrow image has a plain border and a stepped diagonal facing outwards. From this information we can now deduce the
@@ -1214,26 +1214,26 @@ unsatisfactory.
 
 In order to make a new widget it would probably be better to work at a much larger size, draw the widget, then save it at the reduced
 size. When drawing at larger sizes there is no simple way to maintain the colour without using thick lines, since if we were to use a
-single pixel line in our large image, when we produce the final image the lines have a really washed-out colour. Say we choose a
-working image 9x as large our lines and corners will all need to be 9 pixels wide. At this level of magnification arcs can be used.
-Unfortunately for us PIL ImageDraw cannot create thick arcs directly without resorting to two pieslices. In common with similar drawing
-programs one must make allowances for the line thicknesses and how the program places the line central axis. This applies both to lines
-and arcs. The problem with tkinter canvas is that we can only save images as pdf files, which either need to be converted or captured.
-In this respect PIL is far more flexible, as we have seen we can change the image size with or without a filter and save directly as a
-png image, the drawing shortcomings can be solved. 
+single pixel line in our large image, the final image the lines would have a really washed-out colour. Say we choose a working image 9x
+as large our lines and corners will all need to be 9 pixels wide. At this level of magnification arcs can be used. Unfortunately for us
+PIL ImageDraw cannot create thick arcs directly without resorting to two pieslices. In common with similar drawing programs one must
+make allowances for the line thicknesses and how the program places the line central axis. This applies both to lines and arcs. The
+problem with tkinter canvas is that we can only save images as pdf files, which either need to be converted or captured. In this
+respect PIL is far more flexible, as we have seen we can change the image size with or without a filter and save directly as a
+png image. 
 
 When we tested our corners we found that they could be produced with a reasonable antialiasing effect if we made an enlarged image,
-then drew the corners with pieslice afterwaeds reducing the image to the widget size. Using the corners image above we can find the
-closest match to the layout of the image widget using the correct gap size. With simple borders 
+then drew the corners with pieslice afterwaeds reducing the image to the widget size. Using the corners image above we can using the
+correct gap size find the closest match to the layout of the image widget. With simple borders no further adjustment should be
+necessary where we have an outer border we may need to position these so that we are left with the correct number of oncoloured pixels
+that can be converted to transparent.
 
-This leaves the antialiasing on the arrow to be
-resolved. Our approach is that any antialiasing pixel adjacent to one border pixel should be half the colour change to those adjacent
-to two border pixels, there can never be a situation where it is adjacent to three border pixels. We can treat the arrow and corners as
-separate entities as they are far enough apart as not to influence each other. If we draw the arrow in after the image has been resized
-then there is no arrow colour correction required. If we can predict the line paths it is comparatively simple to establish where the
-antialising pixels should be. 
+This leaves the antialiasing on the arrow to be resolved. Our approach is that any antialiasing pixel adjacent to one border pixel
+should have half the colour change to those adjacent to two border pixels, there can never be a situation where it is adjacent to three
+border pixels. We can treat the arrow and corners as separate entities as they are far enough apart as not to influence each other. If
+we draw the arrow in after the image has been resized no arrow colour correction is required. If we can predict where the line will be
+drawn it is comparatively simple to establish where the antialising pixels should be. 
 
-It is probably best to concentrate on making an enlarged image to make the borders and corners with any background gradient, save an
-intermediate image reduce to the final widget size with a resampling filter if there is an arrow make this then apply the arrow
-antialiasing. Compare 08combo_resize_new.py with 08combo_new.py and judge whether the difference can be seen in the resulting image
-we can use 08compare_combobox.py to assist.
+Compare 08combo_resize_new.py with 08combo_new.py and judge whether the difference can be seen in the resulting image we can use
+08compare_combobox.py to assist. When it comes to creating new widget images either approach is just as valid just use the one that
+suits you best.
