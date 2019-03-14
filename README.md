@@ -1192,7 +1192,12 @@ with the inner border being tied together with the pieslice. This produces simil
 the differences help us to better guess what the original looked like. You should look at the differences between combo-n.png and
 comboarrow-n.png, apart from image size note that the plain combo has an outer lighter border and that the corner diagonal has no step,
 whereas the comboarrow image has a plain border and a stepped diagonal facing outwards. From this information we can now deduce the
-gap size and hence the arc radius.
+gap size and hence the arc radius. 
+
+![corners:grid](/images/08corners.png)
+
+The upper row of the corner image shows the result of using various gaps starting on the upper line from 1 and increasing to 5 used on
+a simple border, the lower row uses an outer border and the gaps progress from 2 to 6. 
 
   ### 08.3 Replicating the Widget Images
   
@@ -1204,21 +1209,24 @@ probably choose PIL as we need only work directly in our chosen png image, and i
 problems displaying in Windows. There is nothing sophisticated in the programming, create your colour aliases, create the new image
 with its background colour, then create the widget background with gradient, create the outer border and corners. The transparent
 outer corners are made next, followed by the highlights and shadow then the arrow. Finally we save and display the image. The colours
-and sizes are picked up directly from the original drawing. There are no arcs since at this size the results would be most
+and sizes are picked up directly from the original drawing. There are no arcs since at this size since the results would be most
 unsatisfactory. 
 
-In order to make a new widget it would be better to work at a much larger size, draw the widget, then save it at the reduced size. When
-drawing at larger sizes there is no simple way to maintain the colour without using thick lines, since if we were to use a single pixel
-line in our large image, when we produce the final image the lines have a really washed-out colour. Say we choose a working image 9x as
-large our lines and corners will all need to be 9 pixels wide. At this level of magnification arcs can be used. We can also use
-polygons with an outside outline differing in colour to the internal fill. Unfortunately for us PIL ImageDraw cannot create thick arcs
-directly without resorting to two pieslices. In common with similar drawing programs one must make allowances for the line thicknesses
-and how the program places the line central axis. This applies both to lines and arcs. The problem with tkinter canvas is that we can
-only save images as pdf files, which either need to be converted or captured. In this respect PIL is far more flexible, as we have seen
-we can change the image size with or without a filter and save directly as a png image, the drawing shortcomings can be solved.
+In order to make a new widget it would probably be better to work at a much larger size, draw the widget, then save it at the reduced
+size. When drawing at larger sizes there is no simple way to maintain the colour without using thick lines, since if we were to use a
+single pixel line in our large image, when we produce the final image the lines have a really washed-out colour. Say we choose a
+working image 9x as large our lines and corners will all need to be 9 pixels wide. At this level of magnification arcs can be used.
+Unfortunately for us PIL ImageDraw cannot create thick arcs directly without resorting to two pieslices. In common with similar drawing
+programs one must make allowances for the line thicknesses and how the program places the line central axis. This applies both to lines
+and arcs. The problem with tkinter canvas is that we can only save images as pdf files, which either need to be converted or captured.
+In this respect PIL is far more flexible, as we have seen we can change the image size with or without a filter and save directly as a
+png image, the drawing shortcomings can be solved. 
 
-When we tested our corners we found that the diagonal lines could produce a reasonable antialiasing effect if we made an enlarged
-image, then drew the corners with pieslice then reduced the image to the widget size. This leaves the antialiasing on the arrow to be
+When we tested our corners we found that they could be produced with a reasonable antialiasing effect if we made an enlarged image,
+then drew the corners with pieslice afterwaeds reducing the image to the widget size. Using the corners image above we can find the
+closest match to the layout of the image widget using the correct gap size. With simple borders 
+
+This leaves the antialiasing on the arrow to be
 resolved. Our approach is that any antialiasing pixel adjacent to one border pixel should be half the colour change to those adjacent
 to two border pixels, there can never be a situation where it is adjacent to three border pixels. We can treat the arrow and corners as
 separate entities as they are far enough apart as not to influence each other. If we draw the arrow in after the image has been resized
