@@ -6,11 +6,11 @@ As you are no doubt aware tkinter introduced a theme (or tile) based module. Sea
 new capabilities were demonstrated, questions and answers concentrated mostly on how to colour widgets and suchlike.
 
 In order to use the scripts developed here, a modern version of Python and Tkinter (>= v 8.5) will be necessary, it is advisable to use
-version 8.6 or greater to use png files. I find it helpful to download the pdf version of “Tkinter 8.5 reference: a GUI for Python” 
+version 8.6 or greater and use png files. I find it helpful to download the pdf version of “Tkinter 8.5 reference: a GUI for Python” 
 http://infohost.nmt.edu/tcc/help/pubs/tkinter/tkinter.pdf, then run it on a pdf reader. At some stage we will be encoding and
 decoding small images using the base64 module. To see what has already been achieved it will be helpful to view and install the
 external module ttkthemes (pip install ttkthemes) found at https://github.com/RedFantom/ttkthemes. Since we will be checking images, a
-graphics editor will also be needed.
+graphics editor will also be useful.
 
 ## What to expect
 
@@ -31,20 +31,20 @@ import the ttk module in an active Python session then there will be no warning 
 
 2 import Tkinter.ttk # applicable to Python 2
 
-To help distinguish which examples refer to any particular paragraph, the file names will be prefixed by the paragraph number.
+To help distinguish which examples refer to any particular paragraph, the file names will be prefixed by the chapter number.
 
 All the widgets previously found in tkinter remain, ttk has 17 widgets and 1 Style module. 2 of the widgets in ttk, Combobox and 
 Treeview are new. The widgets Canvas, Listbox, Message, OptionMenu, Spinbox and Text only exist in tkinter. All other widgets are
 duplicated, with the proviso that their property options do not correspond, so if we take the Button widget, in tkinter there are 24
 more property options than in ttk which has a single <style> option replacing those former options, the remaining 10 property options
-are common to both Button widgets. When we talk about style we are generally only applying it to a single widget, whereas if we create a
-similar looking style in several ttk widgets we could save it as a theme. The example 01Label_config.py shows the differences in
-property configurations found in the tkinter and ttk Label.
+are common to both Button widgets. When we talk about style we are generally only applying it to a single widget, whereas if we create
+a similar looking style in several ttk widgets we could save it as a theme. The example 01Label_config.py shows the differences in
+property configurations found in the older tkinter and newer ttk Label.
   
 Ttk has already created 4 standard themes common to all operating systems. Windows and the MacOS have their own customised
 themes, therefore wherever possible my examples will use one of the 4 common themes alt, clam, classic or default. In any 
-interaction with a ttk widget we will be using the Style() module imported from ttk. There is a summary of all the Style() commands
-in the table 01style_commands.md, we will be going through these commands one by one.
+interaction with a ttk widget we will be using the Style() module imported from ttk. The table 01style_commands.md has a summary of all
+the Style() commands, we will be going through these commands one by one.
   
 We can think of a widget in terms of a collection of components, which in turn are made up of elements. Widgets have one or more
 components that can be referenced directly using the Style module, assisted by the widget "style" property option. Just to clarify -
@@ -61,17 +61,17 @@ the component and element names may change. While we are thinking of components 
 
 ![scrollbar:components](/images/01scrollbar_components.png) ,
 
-we have an up and down arrow as well as a thumb component all contained in a trough. We have a method within the Style module whereby we
-can easily find out the component names and their relative positions, so there is no real reason to worry or fret about trying to
+we have an up and down arrow as well as a thumb component all contained in a trough. We have a method within the Style module whereby
+we can easily find out the component names and their relative positions, so there is no real reason to worry or fret about trying to
 remember everything in detail.
 
-Let us compare two diferent types of button widgets, using the script /examples/01two_buttons.py - found in the examples
-directory. Running this script you will see 3 buttons, the top button is the standard tkinter, the lower two are both ttk buttons. All
-three buttons are grey but the tkinter button is paler. Move the cursor over all three buttons. The two ttk buttons lighten but the
-tkinter button does not react. Click on all three buttons, all three appear to be depressed, but the two ttk buttons show which one of
-the two buttons was depressed last. Buttons, in common with several other widgets, have what we call states, so for example when a
-cursor passes over the widget its state changes to active, so we have just seen how the ttk button's state interacts with its
-appearance. The actual appearance is set up by the individual style or theme.
+Let us compare two diferent types of button widgets, using the script 01two_buttons.py - found in the examples directory. Running this
+script you will see 3 buttons, the top button is the standard tkinter, the lower two are both ttk buttons. All three buttons are grey
+but the tkinter button is paler. Move the cursor over all three buttons. The two ttk buttons lighten but the tkinter button does not
+react. Click on all three buttons, all three appear to be depressed, but the two ttk buttons show which one of the two buttons was
+last activated. Buttons, in common with several other widgets, have what we call states, so for example when a cursor passes over the
+widget its state changes to active, so we have just seen how the ttk button's state affects its appearance. The actual appearance is
+set up by the individual style or theme.
 
 If we had left out the line
 
@@ -89,7 +89,7 @@ Using named elements we can change the colours, width, font and relief of our wi
 widget, we use the Style module together with relevant component and element names. The first task is to determine the relevant
 component and element names of our widget.
 
-The dependancies of the queries to find out the elements and their properties are as follows:-
+The sequence of the queries to find out the elements and their properties is as follows:-
 ````
 --> 1 Widget name
 --> 2 class name (widget.winfo_class)
@@ -97,8 +97,8 @@ The dependancies of the queries to find out the elements and their properties ar
 --> 4 element name (Style.element_options) 
 --> 5 element value (Style.lookup)
 ````
-Each dependancy relies on the information gained from the previous enquiry. Once the queries are set up with an interactive
-session running with Style() you may be able to short circuit one or more steps.
+Each enquiry relies on the information gained from the previous enquiry. Once the queries are set up with an interactive session
+running with Style() you may be able to short circuit one or more steps.
 
 Use the button widget as our first example and run the following queries interactively in Python. 
 Find the class name:-
@@ -121,9 +121,9 @@ The class name is 'TButton'. Now let's find the component name(s):-
 'sticky': 'nswe'})]
 ```
 It creates quite an output, but don't be put off. We have found 4 component names - highlight, border, padding and label (they were all
-preceded with 'Button.'). Be careful to use the correct component name with right theme. That's just completed the third step. As a help
-in determining the component names for every widget check out the table /tables/02Components.md. See how the names change not only with
-the widgets, but can sometimes change with the theme. 
+preceded by the widget name 'Button.'). Be careful to use the correct component name with right theme. That's just completed the third
+step. As a help in determining the component names for every widget check out the table 02Components.md. See how the names change not
+only with the widgets, but may change with the theme. 
 
 Now onto the element names:-
 ```
@@ -163,7 +163,7 @@ Now try the Horizontal orientation.
 >>>s.lookup('Horizontal.Scale.slider', 'troughcolor')
 '#c3c3c3'
 ````
-That wasn't too bad, we had to know that the widget had orientation, where the first letter had to be capitalised. 
+That wasn't too bad, we had to know whether the widget had orientation, which requires a capitalised first letter. 
 
 Let's try a widget with an auxiliary class such as LabelFrame:-
 ````
@@ -176,11 +176,11 @@ Let's try a widget with an auxiliary class such as LabelFrame:-
 [('Label.fill',
   {'children': [('Label.text', {'sticky': 'nswe'})], 'sticky': 'nswe'})]
 ````
-It took a bit of web searching to find the answer in http://wiki.tcl.tk/37973 "Changing Widget Colors". Read the author's
-opening sentences. Strictly the information is for TCL so it may not be totally applicable to ttk, otherwise great information.
-In order to access all the elements of Notebook use TNotebook and TNotebook.Tab, for Treeview use Treeview and Heading. (We can
-optionally use 'Treeview.Heading', it produces the same results as for 'Heading'). Be careful with the component names used in
-the Treeview and Heading layouts (yes the Treeview class is simply Treeview):-
+It took a bit of web searching to find the answer in http://wiki.tcl.tk/37973 "Changing Widget Colors". Strictly the information is for
+TCL so it may not be totally applicable to ttk, otherwise great information. In order to access all the elements of Notebook use
+TNotebook and TNotebook.Tab, for Treeview use Treeview and Heading. (We can optionally use 'Treeview.Heading', it produces the same
+results as for 'Heading'). Be careful with the component names used in the Treeview and Heading layouts (yes the Treeview class is
+simply Treeview):-
 ````
 >>>s.layout('Treeview')
 [('Treeview.field',
@@ -204,24 +204,24 @@ Rather than find out the class names every time we can use the table 02ClassName
 the widget name where only the first letter is capitalised prefixed by a capital T, except for Treeview that retains its widget
 name. Remember that those widgets that have orientation need to be prefixed by either 'Horizontal.' or 'Vertical.'.
 
-After all that we can find the class and element names for all widgets for our chosen theme. We will use Style.configure().
+After all that we now know the class and element names for all widgets for our chosen theme. We will use Style.configure().
 As a first example let's change the button widget, we want to change the text properties, foreground, background and font.
 Foreground and background are both colours which can be expressed as names or a six figure hexadecimal hash. Colour names in
 tkinter are based on those used by TCL/TK colors — symbolic color names recognized by Tk https://tcl.tk/man/tcl8.6/TkCmd/colors.htm,
 note TCL is using RGB values that must first be converted to hash values to be valid in tkinter. Haven't we got all the element names
 for button already? No, then well we'll have to use the right component name in our query (and it wasn't highlight). Using your
-interactive session, and if you were on the right track you should get the answer together with 11 other elements. Now you are no longer
-limited to just foreground, background and font. 
+interactive session, and if you were on the right track you should get the answer together with 11 other elements. Now you are no
+longer limited to just foreground, background and font. 
 
-As an aside we may wish to have the colours expressed in a different manner. The colour names in various programs do not all agree, 
-further tkinter favours hash while PIL/Pillow prefers RGB values. Use 02colour_codes.py as an aid, each representation will produce
-an alternative code style and the colour is shown on a label. Be warned that green shows half the true value, (0,128,0) instead of
-(0,256,0) - this appears to be associated with winfo_rgb() - otherwise it works well. We can detect how light a colour may be by using
-the luminance property of yiq, the NSTC television colour system, then we can adjust the foreground to produce the required contrast
-to the background colour.
+As an aside we may wish to have the colours expressed in a different manner. The colour names used by various programs do not all
+agree, so use 02colour_codes.py as an aid, each input will produce an alternative code style and the colour is shown on a label. Be
+warned that green shows half the true value, (0,128,0) instead of (0,256,0) - this appears to be associated with winfo_rgb() -
+otherwise it works well. We can detect how light a colour may be by using the luminance property of yiq, from the NSTC television
+colour system, then we can adjust the foreground to produce the required contrast to the background colour.
 
-When using configure we require a reference to the style change using the format *newStyleName.oldStyleName*, where oldStyleName
-corresponds to our class name, in this case TButton. Normally we choose a descriptive name for the newStyleName, so for the button widget we can write :-
+When using Style.configure we require a reference to the style change using the format *newStyleName.oldStyleName*, where oldStyleName
+corresponds to our class name, in this case TButton. Normally we choose a descriptive name for the newStyleName, so for the button
+widget we can write :-
 ````
 s.configure('green.TButton', foreground='green')
 b = ttk.Button(self, text='Friday', style='green.TButton')
@@ -231,7 +231,7 @@ built on a previously named style, so we could create red.green.TButton using a 
 another element just list the extra element.
 ````
 s.configure('green.TButton', foreground='green')
-s.configure('red.green.TButton', background='red')
+s.configure('red.green.TButton', background='red') # our compound style
 b = ttk.Button(self, text='Friday', style='red.green.TButton') 
 # now change both style and configure from red.green.TButton to mix.TButton
 ````
@@ -257,7 +257,7 @@ TLabelframe.Label, depending whether we wish to alter the label or the frame, bu
 to TLabelframe with no suffix. This is illustrated in /examples/02labelframe.py. The next example 02treeview.py shows how to
 select a theme then apply some colour changes to the widget treeview, this has two sets of colours so we can confirm which works
 best by first testing, then try uncommenting 'Heading' so that the treeview style reads 'Custom.Treeview.Heading '. The first
-part of the script displays the widget layout in a form that is easy to read - there probably is an better way to do this! To
+part of the script displays the widget layout in a form that is easy to read - there probably is an easier way to do this! To
 view the colour changes we use 2 treeview widgets, the first has not been customised.
 
 Generally try to keep it simple, try looking for an element that looks as though it should work, test it and see. Load a common
@@ -288,7 +288,7 @@ ever used.
 
 We can determine what states are currently being used in a theme. Just as in the simple style change we need to know the class
 name and the element we are interested in. So if we wished to find the situation for the relief element on a button we use 
-map() in the following manner:-
+Style.map() in the following manner:-
 ```
 from tkinter.ttk import Style, Button
 >>>s = Style()
@@ -307,7 +307,7 @@ Weird - we know that the background changed in our button examples, so how to fi
 mapping working here.
 ```
 >>>s.theme_use('default')
->>>s.map('.', 'background') # '.' is the shorthand for common
+>>>s.map('.', 'background') # '.' is the shorthand for common mapping
 [('disabled', '#d9d9d9'), ('active', '#ececec')]
 ```
 Ahha - now we can see that all widgets with a "background" element will react in a similar way, so if you haven't done it see what
@@ -324,7 +324,7 @@ Since the common and button mapping may have more than one state what happens if
  'foreground': [('disabled', '#a3a3a3')]}
  
 >>>s.map('TButton')
-{'relief': [('!disabled', 'pressed', 'sunken')]}
+{'relief': [('!disabled', 'pressed', 'sunken')]} # added element name
 ```
 Note how the element name has been added with the extra curly brackets and full colon.
 
@@ -379,18 +379,19 @@ listbox['state']='normal'
 listbox['state']='disabled'
 ```
 
-The order of mapping states for the element is important. If the active tuple is placed before the pressed tuple then when the button or
-scrollbar is pressed the colour remains as the active colour without changing for other states. As ever - test first.
+The order of mapping states for the element is important. If the active tuple is placed before the pressed tuple then when the button
+or scrollbar is pressed the colour remains as the active colour without changing for other states. As ever - test first.
 
 It is useful to be able to see the individual widgets when changing their states. 03states_themes.py gives you the abilty to do just
 that, there is no problem changing themes, however when changing states we need to cancel the previous state by applying the opposite
 state (you remember the state prefixed with an exclamion mark), we also have to ensure that we are dealing with a string rather than a
 tuple, further we must ensure that the tuple is not empty. In our example we are changing the state of a button, you can modify this
-or add another widget as required. Anticipating what is coming later I have enabled standard themes or additional themes from ttkthemes. 
+or add another widget as required. Anticipating what is coming later I have enabled standard themes or additional themes from
+ttkthemes. 
 
 It should be noted that states are not only used singly, they may be used in combination, particularly in dynamic situations. The 
 common themes do not use the same states for any particular widget, if we are building custom widgets keep this in mind, as ever test
-using different themes. Check out the table 03mapped_states.md to see what states the common themes use with which widget.
+using different themes. Check out the table 03mapped_states.md to see what states the themes commonly use with which widget.
 
 ## 04 Image - First Steps
 
@@ -428,9 +429,9 @@ from PIL import Image, ImageTk
 ``` 
 PhotoImage is imported from tkinter and loads the image into PhotoImage, where a reference is required which will be used within the
 widget's property option "image". When working with images in a class there is always the problem that the image will not show unless
-specialprecautions are taken. When the image is a local variable, reload the image directly after referencing it with the widget,
-alternatively ensure that the image variable is prefixed by self, (compare how the two images self.buttonPhoto and buttonPhotoTrans are
-treated). 
+special precautions are taken. When the image is a local variable, reload the image directly after referencing it with the widget,
+alternatively in class ensure that the image variable is prefixed by self, (compare how the two images self.buttonPhoto and
+buttonPhotoTrans are treated). 
 
 Using 04button_image.py you should see three buttons, the top one with just an image, the second uses the same image with the
 centre made transparent - you may think it looks quite promising, until we see the third button and its text. As it stands it is
@@ -455,9 +456,9 @@ found there listed with their own names suffixed with ".tcl", apart from default
 obvious differences between the scripting language tcl and tkinter but we can recognise some commands such as map and configure,
 we can also spot the element and state names. A new part of the mix is when we look at the OS specific themes such as aqua or
 vista which have variables that are system dependant. Even so we should be able to recognise how some of our scripts will respond. It
-would seem that the common themes allow us to modify all the components and elements are able to give the widest possible support to any
-style alterations we wish to make. By contrast it will be found that if one of the OS dependant themes would require not so
-straightforward an approach. On the other hand the OS specific themes look uptodate and ready to use as is. 
+would seem that the common themes allow us to modify all the components and elements and are able to give the widest possible support
+to any style alterations we wish to make. By contrast it will be found that if one tried to modify one of the OS dependant themes we
+would require not so straightforward an approach. On the other hand the OS specific themes look up-to-date and ready to use as is. 
 
 So far we have seen that the ttk themes achieve uniformity across all widgets, by using common changes on dynamic states, also 
 by using the same element name within a widget or from widget to widget. A third aid to uniformity is by using using descriptive colour
@@ -491,8 +492,8 @@ The border size, 16, is important, it is the allowance needed to create the roun
 resulting widget would look jagged. The single figure 16 is the equivalent of having (16,16,16,16), a border of 16 along all
 sides. The lower frame has obviously grown in comparison to the upper frame and looks pretty smart, both frames have the same style
 'RoundedFrame'. Now is a good time to have a look at the underlying image. To do this we will need to decode the coded image. Since the
-script is quite old it can only be a gif image. (Use all the lines of the coded image - the dotted line below is just a shortcut for
-continuity).
+script is quite old it was assumed to be a gif image. (Use all the lines of the coded image - the dotted line below is just a shortcut
+for continuity).
 ```
 import base64
 with open ('frameFocusBorder.gif','wb') as f:
@@ -507,8 +508,8 @@ created. You should see a file that is 64 by 64 pixels large. Load this on an im
 as squares and move your cursor to the centre of the corner, we then can see why we need to have a border of 16 all round. If we
 reduce this figure to 8 say we will see about 13 indentations on the long side. A border of 12 will still show indentations, 
 although not as pronounced, by 16 the indentations have disappeared altogether. It would seem that when a widget image needs to extend
-only the inner part of the image between the border extremities is utilised for the extension, in this case the middle 32 pixels of each
-side are used during an image extension. Think about what you have just seen, it's pretty awesome isn't it? That small image was 
+only the inner part of the image between the border extremities is utilised for the extension, in this case the middle 32 pixels of
+each side are used during an image extension. Think about what you have just seen, it's pretty awesome isn't it? That small image was 
 automagically enlarged to the required size with the barest of input, apart from telling the widget to change itself by creating an
 element and placing our image at the border.
 
@@ -517,9 +518,9 @@ between a visible frame? Will we need a special method to create the gap? Ah wel
 05rounded_labelframe.py. The labelframe reacts well, we see the label sitting in the frame break, and the colour changes as a
 result of the program logic, try reversing the selection order and choosing one of the widgets with orientation. The
 style.element_create and style.layout remain the same as for the frame example. Since we no longer depend upon an event linked
-to the mouse being clicked the lambda functions are no longer needed, but we do change the state of the labelframes triggered by command
-options of the widgets. You did notice the the frame has a different colour - first obtain the decoded image, make the changes to the
-colour then encode back once again. 
+to the mouse being clicked the lambda functions are no longer needed, but we do change the state of the labelframes triggered by
+command options of the widgets. You did notice the the frame has a different colour - first obtain the decoded image, make the changes
+to the colour then encode back once again. 
 ```
 import base64
 with open('borderGrey1.gif', 'rb') as f:
@@ -528,7 +529,8 @@ with open('borderGrey1.gif', 'rb') as f:
 ```
 I altered the colour of the grey image. The output from the print command is saved as our coded image.
 
-The next example, found by trawling the internet, 05search_entry.py will create a special frame, resembling the mac search element. Once
+The next example, found by trawling the internet, 05search_entry.py will create a special frame, resembling the mac search element.
+Once
 again the image is loaded as encoded data, this time the programmer uses the gif property to make multiple images. Look at the
 PhotoImage lines of code at the format property. The programmer is altering the entry widget, using the PhotoImage alias names "search1"
 rather than the s1 variable. 
@@ -562,9 +564,7 @@ skills we can see how the border layout numbers are derived. 22 pixels clears th
 corner and the top clearance, whilst 14 pixels clears the right hand end. As it stands this widget could be lengthened horizontally, but
 there is no way we can extend it vertically without a strange looking magnifiying glass formed as a result. When substituting an image
 for a border ensure there is a section that can be repeated on complementary sides, that is repeated both left and right, also top and
-bottom.
-
-We should now be able to understand how to manage themes. When we use a simple style change the affected widgets must have that 
+bottom. We should now be able to understand how to manage themes. When we use a simple style change the affected widgets must have that 
 style property cross referenced. When a theme change is made affected widgets require no reference, therefore the reference used in the
 style changes, such as "search1" in 05search_entry.py, would not be appropriate. Instead we should be thinking of class names, once a
 style has been tested and is ready to be part of the customised theme we would use just "TButton" rather than "new.TButton" say,
@@ -573,9 +573,10 @@ then all buttons would be altered by the style change within that themed script.
 Now would be a good a time as any to inspect what ttkthemes has to offer. Apart from the interface to python most is written in 
 TCL scripting language. We can take stock of the themes on offer, most work with gif images, that are used as substitutes for
 the border part of the relevant widget. Almost all ttkthemes use one of the 4 common themes as a parent, clam is the most popular,
-although if you were to use a ttktheme it would be hard to tell which theme is the parent without inspecting the code. It is interesting
-to note that Aquativo uses coded images, whereas the black theme has no images. Three themes use png images, but these are only usable
-with tkinter 8.6 and above. Finally most images are quite small, about 30 by 30 pixels, with corners of one or three pixels radius. 
+although if you were to use a ttktheme it would be hard to tell which theme is the parent without inspecting the code. It is
+interesting to note that Aquativo uses coded images, whereas the black theme has no images. Three themes use png images, but these are
+only usable with tkinter 8.6 and above. Finally most images are quite small, about 30 by 30 pixels, with corners of one or three pixels
+apparent radius - what apparent, yep there is no actual curved line, though it looks like there are corners there.
 
 If you want to modify the gif images in an image editor there should be no great problem, provided you do not try converting to another
 format and back again. Use the image editor for small simple changes. When checking out or modifying an image pixel by pixel using PIL
@@ -599,8 +600,8 @@ When comparing the script of a ttktheme with a standard theme the first obvious 
 using photo (known as PhotoImage in tkinter) on all the images, which are then later referred to by their image name without the gif or
 png suffix. Thereafter the ttkthemes closely follow the standard themes by first loading up the colour aliases, then configuring the
 general settings using configure, followed by mapping the general states. From thereon the themes configure and map out the
-individual widgets, often the simple widgets are left out in which case the parent theme's widgets are used. The images are loaded using
-$I(image filename) as opposed to "image" in python. The padding and border sizes would be shown as:-
+individual widgets, often the simple widgets are left out in which case the parent theme's widgets are used. The images are loaded
+using $I(image filename) as opposed to "image" in python. The padding and border sizes would be shown as:-
 ```
 -padding {6 2 6 2} or -border {22 7 14}
 compared to using python
@@ -622,15 +623,15 @@ How will a widget look when the style or theme is changed. Tkinter is rather for
 difficult, but we can have a list of too many changeable elements and see just how they will react. Using this property we can see how
 and which elements affect our widget, look at the script 06checkbox_themes.py, not only do we have an excess of element names, but we
 can change the theme, we also display the layout of the widget. It is a simple edit to display another widget. Remember as we have seen
-in ttkthemes a widget is affected both by the image and general colours. In this regard tkinter's Text is a useful tool in that the name
-and its colour representation can be made in one line. In 06combobox_text_themes.py we have a dictionary of element_options containing
-a list of elements with their options, colour, size and font, these are then listed in style configure these can then be added to the
-Text widget so that we display each element its option and a colour shows the hash value and a rectangle of colour. Almost all the 
-elements react as expected except for the font for combobox, which is unusual in that it will not react with configure and the style
-property, nor will it change with the font property - as the Entry widget does. A special class is therefore required to allow us to
-change the font of a specified combobox, which is written to allow other properties to be included. A simpler method is to use
+in ttkthemes a widget is affected both by the image and general colours. In this regard tkinter's Text is a useful tool in that the
+name and its colour representation can be made in one line. In 06combobox_text_themes.py we have a dictionary of element_options
+containing a list of elements with their options, colour, size and font, these are then listed in style configure these can then be
+added to the Text widget so that we display each element its option and a colour shows the hash value and a rectangle of colour. Almost
+all the elements react as expected except for the font for combobox, which is unusual in that it will not react with configure and the
+style property, nor will it change with the font property - as the Entry widget does. A special class is therefore required to allow us
+to change the font of a specified combobox, which is written to allow other properties to be included. A simpler method is to use
 option_add but it seems to affect all the other comboboxes. Combobox is derived from the entry and listbox widgets and this might
-contribute to the anomoly in some way.
+explain this anomoly in some way.
 
 When using font we can refer to each instance of the font directly - such as 'Helvetica 12 Bold' - or we can use the generic names
 used by Tk 06tkfonts.md, this has the advantage that they are compatible to all operating systems, and no special precautions should be
@@ -717,9 +718,9 @@ file. Associated with these control files is a subdirectory of image files. Eith
 is yours. The approach on using either is similar, after creating a good quality working widget with all the required states, we
 just replace the ttktheme widget in either green.tcl or orange.py, change the references to any images, altering the border
 sizes as necessary, then add your images to the image subdirectory. When everything works satisfactorily delete the unused images found
-in green or orange image directories. Occasionaly it may be necessary to change the widget layout. In both methods we normally translate
-between tcl and python, use the files plastik.tcl and plastik.py to help spot the differences and similarities between the two
-languages.
+in green or orange image directories. Occasionaly it may be necessary to change the widget layout. In both methods we normally
+translate between tcl and python, use the files plastik.tcl and plastik.py to help spot the differences and similarities between the
+two languages.
 
 Let's see if we can pin the above on an example or two. First let us change the combobox on both our test themes to that used by
 radiance using green.tcl. On my computer, Windows 64 bit python 3.6, the combobox from elegance aka green looks like
@@ -854,9 +855,9 @@ button widget.
 ```        
 Testing this we see no effect which might not be surprising when we see that at this stage the button widget has no element named
 padding. We can test this finding out the component and their element names from an active session. We can change the button layout of
-the green theme and test again. It works! Let's try it out on the orange theme. Checking out the button we see we have a configure and a 
-layout that already has padding, so hopefully it works with only minimal changes. First we add padding to configure. This does not work
-when testing, so we swop the button and padding positions.
+the green theme and test again. It works! Let's try it out on the orange theme. Checking out the button we see we have a configure and
+a layout that already has padding, so hopefully it works with only minimal changes. First we add padding to configure. When testing
+this does not work, so we swop the button and padding positions.
 ```
         "TButton": {
             "configure": {"width": 10, "anchor": "center", "padding": [10, 0]},
@@ -875,8 +876,8 @@ This works. The conclusion is that one may have to test the configure and layout
 06orange_widget_test.py adapted to suit your needs.
 
 When dealing with states it helps to keep in mind what will be required in the program in relation to that widget. It certainly helps
-to view how various themes tackled that problem. Some widgets can operate with a bare minimum of states, others may require quite a few,
-but don't forget that some themes use the common settings to help display states without the need for additional images.
+to view how various themes tackled that problem. Some widgets can operate with a bare minimum of states, others may require quite a
+few, but don't forget that some themes use the common settings to help display states without the need for additional images.
 
 ## 07 Blue Sky Thinking
 
@@ -888,7 +889,7 @@ https://datatofish.com/how-to-create-a-gui-in-python/ that demonstrated how to u
 and some other widgets together with a matplotlib interface. This works but the geometry management is limited to the canvas system. If
 we use frame as our parent widget all the normal geometry managers - grid, pack and place - can be used. The only minor problem is that
 it works best with a full view of the background image. Use the example 07frame_background_image.py to see what I mean, use a jpg image
-of your choice as backdrop, typically a panaoramic view. We are using jpg as the image type so that it can be downloaded from many
+of your choice as backdrop, typically a panoramic view. We are using jpg as the image type so that it can be downloaded from many
 digital cameras and is usually half the size of a png or gif of equivalent size.
     
 The next example can be used as a template for subsequent more complex widgets. In my quest for blue sky thinking I'm using piratz as a
