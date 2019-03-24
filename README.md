@@ -1022,34 +1022,33 @@ we see that the pixels between the line pixels have an intermediate colour betwe
 notice that the diagonal line has a larger spacing between pixel centres than either the vertical or horizontal lines. This means that 
 diagonal lines will appear to be slightly lighter with no other change.
 
-There are several approaches we may use to perform antialiasing. The simplest is to make the image larger then resize to the original
+There are several approaches we may use to perform antialiasing. The simplest is to draw the image larger then resize to the original
 size applying a resampling filter such as bicubic or lanczos (formerly known as antialias in PIL), this creates some differently
-coloured pixels as we have already noticed in comboarrow-n.png. When applying this to a similar image you will notice that the
-antialias pixels are not as intense as the original image, this is a function of the image layout. The other effect that this method
-has is that the colour is leached out of the existing lines, noticeably with the diagonal lines and the ends of the horizontal and
-vertical lines, both these effects are unwanted particurly on the diagonal lines. 
+coloured pixels as we have already notice exist in comboarrow-n.png. When applying this to a similar image you will notice that the
+antialias pixels might not be as intense as the original image, this is a function of the image layout. The other effect that this
+method has is that the colour is leached out of the existing lines, noticeably with the diagonal lines and the ends of the horizontal
+and vertical lines, both these effects are unwanted particurly on the diagonal lines where we need to maintain the colour. 
 
-Another promising approach would be to use an application that already has an option to create antialiased lines. We could use
+Another promising approach might be to use an application that already has an option to create antialiased lines. We could use
 applications such as aggdraw or cv2, unfortunately tkinter canvas has no such option. Testing aggdraw it has the advantage that it
 creates antialiased lines as required, so vertical and horizontal lines can be left aliased, the antialiased lines create pixels
-similar to those that occurred when the diagonal image was enlarged and reduced with a resampling filter. Unfortunately the colours are
-much the same as before, so the effect of antialiasing is lost. The next problem occurred when trying to antialias an arrow, the lines
+similar to those that occurred when the diagonal image was drawn large then reduced with a resampling filter. Unfortunately the colours
+are not intense enough, so the effect of antialiasing is lost. The next problem occurred when trying to antialias an arrow, the lines
 did not follow the original scheme and the arrow tip increased from one pixel to two pixels wide creating a noticeably worse looking
 arrow. 
 
 Using cv2 (cv3) the antialias pixels were more intense in colour but the antialiased line was foreshortened - in fact small lines of 3
-or 4 pixels disappeared altogether, which is the critical size we wish to use. 
+or 4 pixels disappeared altogether, which is the critical diagonal size we wish to use. 
 
 We could implement the Xialon Wu antialiasing algorithm, but unfortunately at 45 and its multiples it no longer works. All this means
 it is probably best to rethink our antialiasing method.
 
-It was found that the corners could be antialiased by drawing the image at a larger size, say nine times as large, then we reduce the
-image size while
-applying a resampling filter. The colour has been intensified by leaching some colour from the borders but mainly because we are 
-compressing arcs into a pixel or two. Unfortunately the arrow has no such aids. If you look at the lines image above, notice the two
-right hand lines, the green one was drawn ascending the red one descending - see how the line follows a slightly different path. We can
-use a bresenham algorithm to predict the correct path, most examples strictly follow only one path whichever way they are drawn, the
-script I managed to find changes with direction but in the opposite manner to PIL.
+It will be shown that the corners can be antialiased by drawing the image at a larger size, say nine times as large, then reduce the
+image size while applying a resampling filter. The antalias pixel colour has been created by leaching some colour from the diagonals
+but we are also compressing arcs into a pixel or two. Unfortunately the arrow has no such aid. If you look at the lines image above,
+notice the two right hand lines both are parallel, the green one was drawn ascending the red one descending - see how the line follows
+a slightly different path. We can use a bresenham algorithm to predict the correct path, most bresenham scripts strictly follow only
+one path whichever way they are drawn, the script I managed to find does change with direction but in the opposite manner to PIL.
 
   ### 08.2 Drawing with PIL(Pillow)
 We could used tkinter canvas, but we would still have had to use PIL at some stage, so let's only try using PIL since the drawing is
@@ -1080,13 +1079,13 @@ idraw.line([0,h-1,w-1,h-1],fill='black',width=1) # draw line on lower part of th
 img.save('line_test.png') # save to file
 ```
 This should create a square formed from four black lines one pixel wide - we could have used the default values and drawn the lines as
-a single line in order. Note that we needed to use the width-1 and height-1, this ensures that the lines fit and are 24 pixels long,
-since the starting point is zero and our image size is 24x24.
+a single line in order. Note that we needed to use the width-1 and height-1 (w-1, h-1), this ensures that the lines fit and are 24
+pixels long, since the starting point is zero and our image size is 24x24.
 
-'''
+```
 idraw.line([0,0,w-1,0,w-1,h-1,0,h-1,0,0]) # alternative method to draw lines
-'''
-Note that we start and finish at the same point, also note that the default colour is white. 
+```
+Note that we start and finish at the same point (in this case 0,0), also note that the default colour is white. 
 
 If we had used polygon then there normally is no need to close off. Note the outside of the polygon is called outline, fill can be used
 as an internal filling method.
@@ -1100,7 +1099,7 @@ utilise its upper left and lower right points to define the bounding rectangle f
 also have the same methods to colour as used by polygons. PIL is flexible when specifying colours - we can use RGBA, RGB, hash value, a
 named colour, or hsl. Be careful when using names it uses the X11 system that is similar to the CSS3, but it may not always agree with
 the tkinter list of named colours.
-'''
+```
 idraw.ellipse([0,0,w-1,h-1],outline='red') # not quite right - too small
 idraw.ellipse([0,0,w,h],outline='red') # also not right - too big
 ```
@@ -1110,7 +1109,7 @@ drew corresponds to the bounding square, not the image size, we see that the cir
 sides, and our case should touch all four sides of the image, in the real world lines have breadth which is why the bounding rectangle
 is not a simple dimension, this is also shown in 8.5 Canvas Oval Objects in the tkinter 8.5 documentation which uses a similar system
 to PIL.
-'''
+```
 idraw.arc([0,0,w-1,h-1],start=0,end=90,fill='red') # angles are measured from 3 o’clock, increasing clockwise
 idraw.arc([0,0,w-1,h-1],start=90,end=180,fill='green') # the colour parameter is fill
 idraw.arc([0,0,w-1,h-1],start=180,end=270,fill='yellow')
@@ -1156,9 +1155,9 @@ displacement.
 
 Now we can add a pieslice, using a different colour so we can detect errors a little easier ...
 ```
-idraw.line([s,d,we-1,d],fill='black',width=e) # adjusted for width
-idraw.line([d,s,d,he-1],fill='black',width=e) # adjusted for width
-idraw.pieslice([0,0,16-1,16-1],fill='yellow',outline='yellow') # seems alright, change to black and resize
+idraw.line([s,d,we-1,d],fill='black',width=e) # adjusted for linewidth using d
+idraw.line([d,s,d,he-1],fill='black',width=e) # adjusted for linewidth
+idraw.pieslice([0,0,16-1,16-1],fill='yellow',outline='yellow') # if alright, change to black and resize
 # idraw.pieslice([0,0,16-1,16-1],fill='black',outline='black')
 
 imgx=img.resize((w,h)) # changed the image to our reduced size 
@@ -1167,14 +1166,14 @@ imgx.save('corner_testx'+str(g)+'.png', quality=95) # save to file final size wi
 
 imgb=img.resize((w,h),Image.BICUBIC) # LANCZOS
 imgb.save('corner_testb'+str(g)+'.png', quality=95) # save to file using bicubic filter
-'''
+```
 There is no real space for the filter to get to grips, all it can do is produce very dark greys along the borders, with a lighter grey
 at the junction of the 2 lines at 1,1 but this is unlikely to fool most people into believing that we have a rounded corner.
 
 When we enlarge the gap the internal part of the pieslice needs to be taken out with a second pieslice using the same colour as the
 background. As the gap increases the pieslice (arc) changes its bounding rectangle not only with increasing pieslice radius but where 
 it is centred. It is much easier to control the pieslice, or any of the other regular curved lines using a simple helping function, 
-such as create_pieslice. To aid our investigations each file has a separate name for differing gap sizes.
+such as create_pieslice. 
 ```
 def create_pieslice(idraw,c,r,outline='#888888',fill='#888888',start=0,end=90):
     return idraw.pieslice([c[0]-r,c[1]-r,c[0]+r-1,c[1]+r-1],
@@ -1185,16 +1184,17 @@ check what happens if we use an enlargement factor of 8, in particular on the or
 the border lines and whether this noticeably affects the final image after filtering. As we increase the gap size the final filtered
 image at the corner layout changes, a line is drawn diagonally across the gap, first of all just a simple diagonal line then at a gap
 of 3 the diagonal has a stepped inward part, at a gap of 4 the line becomes straight, while at a gap of 5 the diagonal becomes stepped
-again this time outwards. As an exercise it is instructive to save the reduced image without any filter, then resize this image back
-to the enlarged size. This should create an angular image which we can now once again resize but with a lanczos filter the result
-should be similar to the image created when we used pieslices, but the antialias pixels will be washed out. 
+again this time outwards. To aid our investigations each file has a separate name for differing gap sizes. As an exercise it is
+instructive to save the reduced image without any filter, then resize this image back to the enlarged size. This should create an
+angular image which we can now once again resize but with a lanczos filter the result should be similar to the image created when we
+used pieslices, but the antialias pixels will be washed out and the result would not fool many. 
 
 The example file 08corner_investigation.py has collated the above script excerpts. We could alter the script to include an outer border
 with the inner border being tied together with the pieslice. This produces similar results to the first script, but is helpful in that
-the differences help us to better guess what the original looked like. You should look at the differences between combo-n.png and
-comboarrow-n.png, apart from image size note that the plain combo has an outer lighter border and that the corner diagonal has no step,
-whereas the comboarrow image has a plain border and a stepped diagonal facing outwards. From this information we can now deduce the
-gap size and hence the arc radius. 
+the differences help us to better guess what the original widget looked like. You should look at the differences between combo-n.png
+and comboarrow-n.png, apart from image size note that the plain combo has an outer lighter border and that the corner diagonal has no
+step, whereas the comboarrow image has a plain border and a stepped diagonal facing outwards. From this information we can now deduce
+the gap size and hence the required arc radius. 
 
 ![button:components](/images/08corners.png) 
 
@@ -1211,7 +1211,7 @@ probably choose PIL as we need only work directly in our chosen png image, and i
 problems displaying in Windows. There is nothing sophisticated in the programming, create your colour aliases, create the new image
 with its background colour, then create the widget background with gradient, create the outer border and corners. The transparent
 outer corners are made next, followed by the highlights and shadow then the arrow. Finally we save and display the image. The colours
-and sizes are picked up directly from the original drawing. There are no arcs since at this size since the results would be most
+and sizes are picked up directly from the original drawing. There are no arcs since at this size the results would be most
 unsatisfactory. 
 
 In order to make a new widget it would probably be better to work at a much larger size, draw the widget, then save it at the reduced
@@ -1238,4 +1238,10 @@ drawn it is comparatively simple to establish where the antialising pixels shoul
 
 Compare 08combo_resize_new.py with 08combo_new.py and judge whether the difference can be seen in the resulting image we can use
 08compare_combobox.py to assist. When it comes to creating new widget images either approach is just as valid just use the one that
-suits you best.
+suits the situation best.
+
+When it comes to new widgets there appears to be only a limited amount of change that can be achieved. All widgets that can expand
+produce a line that grows linearly with no real opportunity to duplicate a pattern - look how the coconut tree grew in size in the
+previous chapter. The most intricate parts are pushed to the corners. Any widget with an arrow, such as scrollbar or combo, may lend 
+itself to a bit of change. Some widgets could be livened up with a colour gradient, a single dimensional gradient being far easier than
+a two dimensional gradient.
