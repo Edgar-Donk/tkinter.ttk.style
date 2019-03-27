@@ -1243,7 +1243,7 @@ The next part is to create the corners, for this we use pieslice as before, but 
 all four corners. Where the corners are pasted the rectangles are overdrawn, so no immediate adjustment is necessary to the border and
 outer rectangles. As before we find it useful to have an assist function so that pieslice is dependant on its centre and radius, rather
 than a bounding rectangle. 08rounded_rectangle.py and 08rounded_rectangle_outer.py are the two scripts that we can base many of our 
-widget scripts.
+widget scripts, the first script has the corner running from the outer border, whereas the second script joins the inner border.
 
   ### 08.3 Replicating the Widget Images
   
@@ -1260,18 +1260,16 @@ unsatisfactory.
 
 In order to make a new widget it would probably be better to work at a much larger size, draw the widget, then save it at the reduced
 size. When drawing at larger sizes there is no simple way to maintain the colour without using thick lines, since if we were to use a
-single pixel line in our large image, the final image the lines would have a really washed-out colour. Say we choose a working image 9x
-as large our lines and corners will all need to be 9 pixels wide. At this level of magnification arcs can be used. Unfortunately for us
-PIL ImageDraw cannot create thick arcs directly without resorting to two pieslices. In common with similar drawing programs one must
-make allowances for the line thicknesses and how the program places the line central axis. This applies both to lines and arcs. The
-problem with tkinter canvas is that we can only save images as pdf files, which either need to be converted or captured. In this
-respect PIL is far more flexible, as we have seen we can change the image size with or without a filter and save directly as a
-png image. 
+single pixel line in our large image, the lines in the final image would have a really washed-out colour. Say we choose a working image
+9x as large our lines and corners will all need to be 9 pixels wide. At this level of magnification arcs can be used. PIL ImageDraw
+cannot create thick arcs directly without resorting to two pieslices. The problem with tkinter canvas is that we can only save images
+as pdf files, which either need to be converted or captured. In this respect PIL is far more flexible, as we have seen we can change
+the image size with or without a filter and save directly as a png image. 
 
 When we tested our corners we found that they could be produced with a reasonable antialiasing effect if we made an enlarged image,
-then drew the corners with pieslice afterwaeds reducing the image to the widget size. Using the corners image above we can using the
+then drew the corners with pieslice afterwards reducing the image to the widget size. Using the corners image above we can deduce the
 correct gap size find the closest match to the layout of the image widget. With simple borders no further adjustment should be
-necessary where we have an outer border we may need to position these so that we are left with the correct number of oncoloured pixels
+necessary where we have an outer border we may need to position these so that we are left with the correct number of uncoloured pixels
 that can be converted to transparent.
 
 This leaves the antialiasing on the arrow to be resolved. Our approach is that any antialiasing pixel adjacent to one border pixel
@@ -1284,8 +1282,8 @@ Compare 08combo_resize_new.py with 08combo_new.py and judge whether the differen
 08compare_combobox.py to assist. When it comes to creating new widget images either approach is just as valid just use the one that
 suits the situation best.
 
-When it comes to new widgets there appears to be only a limited amount of change that can be achieved. All widgets that can expand
-produce a line that grows linearly with no real opportunity to duplicate a pattern - look how the coconut tree grew in size in the
+When it comes to new widgets there appears to be only a limited choice what can be achieved. All widgets that can expand produce a line
+that grows linearly with no real opportunity to replicate a pattern along the widget - look how the coconut tree grew in size in the
 previous chapter. The most intricate parts are pushed to the corners. Any widget with an arrow, such as scrollbar or combo, may lend 
-itself to a bit of change. Some widgets could be livened up with a colour gradient, a single dimensional gradient being far easier than
-a two dimensional gradient.
+itself to a bit of change. Some widgets could be livened up with a colour gradient. In this respect a colour gradient based on the RGB
+values is probably adequate, since we are only altering the colours between similar hues and not across a spectrum.
