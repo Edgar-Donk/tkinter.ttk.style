@@ -1006,7 +1006,7 @@ from scratch. If we use an existing widget as a template, as we did in the previ
 looking widgets. We can use simple drawing tools such as PIL ImageDraw or tkinter Canvas and as all the widgets are quite small more
 sophisticated tools might be unnecessary. We are lucky in that we can see what has already been achieved in ttktheme. If we enlarge an
 image such as comboarrow-n.png from the Ubuntu theme, we see that the outer border is one pixel wide, there are highlights and shadows
-also one pixel wide. The corners are made from a simple angle construction. The most difficult part is probably the arrow, which has a
+also one pixel wide. The corners are made from a simple angle construction. The most tricky part is probably the arrow, which has a
 dark grey outer part and a light grey inner part. Several pixels of varying grey hues surround the arrow and the diagonal lines,
 exactly how these were produced will become clearer a little later.
 
@@ -1024,7 +1024,7 @@ diagonal lines will appear to be slightly lighter with no other change.
 
 There are several approaches we may use to perform antialiasing. The simplest is to draw the image larger then resize to the original
 size applying a resampling filter such as bicubic or lanczos (formerly known as antialias in PIL), this creates some differently
-coloured pixels as we have already notice exist in comboarrow-n.png. When applying this to a similar image you will notice that the
+coloured pixels as we have already noticed exist in comboarrow-n.png. When applying this to a similar image you will notice that the
 antialias pixels might not be as intense as the original image, this is a function of the image layout. The other effect that this
 method has is that the colour is leached out of the existing lines, noticeably with the diagonal lines and the ends of the horizontal
 and vertical lines, both these effects are unwanted particurly on the diagonal lines where we need to maintain the colour. 
@@ -1046,15 +1046,16 @@ it is probably best to rethink our antialiasing method.
 It will be shown that the corners can be antialiased by drawing the image at a larger size, say nine times as large, then reduce the
 image size while applying a resampling filter. The antalias pixel colour has been created by leaching some colour from the diagonals
 but we are also compressing arcs into a pixel or two. Unfortunately the arrow has no such aid. If you look at the lines image above,
-notice the two right hand lines both are parallel, the green one was drawn ascending the red one descending - see how the line follows
-a slightly different path. We can use a bresenham algorithm to predict the correct path, most bresenham scripts strictly follow only
-one path whichever way they are drawn, the script I managed to find does change with direction but in the opposite manner to PIL.
+notice the two parallel lines on the right handside, the green one was drawn ascending the red one descending - see how the lines
+follow slightly different paths. We can use a bresenham algorithm to predict the correct path, but most bresenham scripts strictly
+follow only one path whichever way they are drawn, the script I managed to find does change with direction but in the opposite manner
+to PIL.
 
   ### 08.2 Drawing with PIL(Pillow)
 We could used tkinter canvas, but we would still have had to use PIL at some stage, so let's only try using PIL since the drawing is
-not too complicated requiring some of the more sophisticated methods from canvas.
+not too complicated requiring some of the more sophisticated methods available in canvas.
 
-If you have never drawn with PIL or require a refresher the following few paragraph should help. PIL has several modules, the two we
+If you have never drawn with PIL or require a refresher the following paragraphs should help. PIL has several modules, the two we
 will require are Image and ImageDraw. Image deals with the file whereas ImageDraw gives us the ability to create lines, arcs and
 polygons - a bit like tkinter canvas. We draw directly on the image without needing a canvas. After importing the necessary modules,
 create a new file, then create a function for drawing. The coordinate system is the normal computer one with the upper left hand
@@ -1083,7 +1084,7 @@ a single line in order. Note that we needed to use the width-1 and height-1 (w-1
 pixels long, since the starting point is zero and our image size is 24x24.
 
 ```
-idraw.line([0,0,w-1,0,w-1,h-1,0,h-1,0,0]) # alternative method to draw lines
+idraw.line([0,0,w-1,0,w-1,h-1,0,h-1,0,0]) # alternative method to draw lines, calling line only once
 ```
 Note that we start and finish at the same point (in this case 0,0), also note that the default colour is white. 
 
@@ -1115,8 +1116,9 @@ idraw.arc([0,0,w-1,h-1],start=90,end=180,fill='green') # the colour parameter is
 idraw.arc([0,0,w-1,h-1],start=180,end=270,fill='yellow')
 idraw.arc([0,0,w-1,h-1],start=270,end=360,fill='blue')
 ```
-Note: the arc layouts and how start and end are specified, also the bounding rectangle size for an arc is exactly the same as for the
-circle. A similar system is used for pieslice. However pieslice has both an outline and fill method, just as we saw in polygon. 
+Note: the arc layouts and how start and end are specified, also the bounding rectangle size for the arc is exactly the same as for the
+circle where the arc forms part of that same circle. A similar system is used for pieslice. However pieslice has both an outline and
+fill method, just as we saw in polygon. 
 
 If we wish to produce rounded corners in a large enough size so that curves can be drawn then we will need to enlarge everything,
 image size, lines and their widths. Ordinary lines can be directly drawn with their width without too much trouble. Arcs pose a 
@@ -1200,6 +1202,48 @@ the gap size and hence the required arc radius.
 
 The upper row of the corner image shows the result of using various gaps starting on the upper line from 1 and increasing to 5 used on
 a simple border, the lower row uses an outer border and the gaps progress from 2 to 6. 
+
+It should be noted that we can create rectangles directly using rectangle, this uses a bounding rectangle, just as we used in pieslice,
+and if we use it like pieslice we can create thick rectangles. However what is important is that we can simplify the script
+08corner_investigation.py and the following uses principles derived from http://nadiana.com/pil-tutorial-basic-advanced-drawing.
+The bounding rectangle helps to compensate for size of the image relative to the rectangle. Let us create a rectangle with rounded
+corners, in this instance we shall create an image with diminishing rectangles that start as large as the image, then decrease by 1
+pixel times our enlargement factor. At this stage all we need do is determine the rectangle colours, the corners will be dealt with
+later. We are going to create 3 rectangles, the outer will be a light colour, the next one darker and the last filled with a
+background. Also note that if we only use fill then the rectangle is drawn the same size as if we had used outline - this differs from
+tkinter canvas.
+```
+from PIL import Image, ImageDraw
+
+e = 9 # enlargement
+w,h = 16,24
+we,he = w*e,h*e
+
+def create_rectangle(size, outer, border, background, width):
+    wi,ht = size
+    box = 0,0,wi-1,ht-1 # adjust the size of the rectangle to suit the image size
+    rect = Image.new('RGBA', (wi, ht), (0, 0, 0, 0))
+    draw = ImageDraw.Draw(rect)
+    draw.rectangle(box, fill=outer) # The outer rectangle
+    draw.rectangle( # The border rectangle
+        (box[0] + width, box[1] + width, box[2] - width, box[3] - width),
+        fill=border)
+    draw.rectangle( # The background rectangle
+        (box[0] + 2*width, box[1] + 2*width, box[2] - 2*width, box[3] - 2*width),
+        fill=background)
+    return rect
+
+inp = create_rectangle((we,he), "lightblue", "blue", 'white', e)
+inp.save('rect.png')
+```
+Apart from the initial size adjustment to the image size, the script has no variable requiring "-1", also we have no need to compensate
+for the fact that a line is displaced when it is thick. All we needed to adjust for was the width of the required rectangle. 
+
+The next part is to create the corners, for this we use pieslice as before, but using a small corner image that is pasted in turn on
+all four corners. Where the corners are pasted the rectangles are overdrawn, so no immediate adjustment is necessary to the border and
+outer rectangles. As before we find it useful to have an assist function so that pieslice is dependant on its centre and radius, rather
+than a bounding rectangle. 08rounded_rectangle.py and 08rounded_rectangle_outer.py are the two scripts that we can base many of our 
+widget scripts.
 
   ### 08.3 Replicating the Widget Images
   
