@@ -1268,9 +1268,10 @@ the image size with or without a filter and save directly as a png image.
 
 When we tested our corners we found that they could be produced with a reasonable antialiasing effect if we made an enlarged image,
 then drew the corners with pieslice afterwards reducing the image to the widget size. Using the corners image above we can deduce the
-correct gap size find the closest match to the layout of the image widget. With simple borders no further adjustment should be
-necessary where we have an outer border we may need to position these so that we are left with the correct number of uncoloured pixels
-that can be converted to transparent.
+correct gap size and find the closest match to the layout of the image widget. With simple borders no further adjustment should be
+necessary where we have an outer border we have to be careful that the darker pixels match our required widget, also check the extreme
+top left corner that the layout of the white pixels corresponds to the required widget. Probably the middle corner selection will not
+be needed as the widget will be based upon both outer and inner borders being joined.
 
 This leaves the antialiasing on the arrow to be resolved. Our approach is that any antialiasing pixel adjacent to one border pixel
 should have half the colour change to those adjacent to two border pixels, there can never be a situation where it is adjacent to three
@@ -1285,5 +1286,9 @@ suits the situation best.
 When it comes to new widgets there appears to be only a limited choice what can be achieved. All widgets that can expand produce a line
 that grows linearly with no real opportunity to replicate a pattern along the widget - look how the coconut tree grew in size in the
 previous chapter. The most intricate parts are pushed to the corners. Any widget with an arrow, such as scrollbar or combo, may lend 
-itself to a bit of change. Some widgets could be livened up with a colour gradient. In this respect a colour gradient based on the RGB
-values is probably adequate, since we are only altering the colours between similar hues and not across a spectrum.
+itself to a bit of change. The arrow in Ubuntu is rather bland, just a darker border surrounding a grey fill, in fact most themes use 
+this construction. We could base the arrow on the classic arrow with a wider border as we produced in 02scrollbar.py, we should see
+an arrow divided into three, where we can use highlights and shadows.
+
+Some widgets could be livened up with a colour gradient. In this respect a colour gradient based on the RGB values is probably
+adequate, since we are only altering the colours between similar hues and not across a spectrum.
