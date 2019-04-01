@@ -961,7 +961,11 @@ equally valid, but the image can give more flexibility. Since there are changes 
 need a layout, which will need to be copied and changed as appropriate for the other orientation. It is important that the thumb
 component has the element "expand" set to True or 1, otherwise the thumb cannot be moved using the mouse - this in turn means that the
 thumb will no longer remain circular but becomes oval. Just as it was necessary to set the border limits in pirate_label so thumb needs
-to have its border set (try experimenting with a border of 1).
+to have its border set (try experimenting with a border of 1). An oval coconut is not really what we want, we can keep it circular if
+we change the layout slightly - borrowed from the plastik theme - we utilise a thumb and grip, the grip is our coconut and the thumb is
+a beach, as in the first script the thumb expands and has differing states, but the grip only changes between vertical and horizontal
+orientations. If you want you can uncomment out the third arrow in the layout in this script. The flexibility of the tkinter theme is
+shown to its full limits - quite impressive.
 
 Both radio- and check buttons are created in a similar fashion, in that multiple images were created for the various states. All images
 need to be the same size.
