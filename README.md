@@ -20,7 +20,7 @@ its styling changes on your own ideas and scripts.
 An even more lightning tour through the themes from tkinter.ttk and ttkthemes.
 
 Create a few specials to show what can be achieved then create a standalone version, after that you are only limited by your
-imagination.
+imagination, where an appreciation of PIL (Pillow) will be useful.
 
 ## 01. Basics
 
@@ -1295,4 +1295,10 @@ this construction. We could base the arrow on the classic arrow with a wider bor
 an arrow divided into three, where we can use highlights and shadows.
 
 Some widgets could be livened up with a colour gradient. In this respect a colour gradient based on the RGB values is probably
-adequate, since we are only altering the colours between similar hues and not across a spectrum.
+adequate, since we are only altering the colours between similar hues and not across a spectrum. Where we do find gradients they are
+mostly a simple gradient which can be copied from 08create_gradient.py, the script creates a button based on button-n.gif used 
+by clearlooks. Before using the script the background should be checked to confirm we do have a gradient, as the pixels are found to
+be a patchwork of colours. First convert the gif format to RGB for ease of analysis, next each pixel of the background is averaged line
+by line and the RGB value printed. When we are satisfied that we are dealing with a gradient then apply 08create_gradient.py. Some 
+buttons have more complex gradients, a simple split should cause no real problem, but a highlight is more of a problem, look at the
+buttons in elegance and keramik.
