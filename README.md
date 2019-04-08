@@ -1301,7 +1301,16 @@ def LerpColour(c1,c2,t):
     return (int(c1[0]+(c2[0]-c1[0])*t),int(c1[1]+(c2[1]-c1[1])*t),
             int(c1[2]+(c2[2]-c1[2])*t))
 ```
-The function is much as the numpy function, except that the rgb components are treated separately.
+The function is much as the numpy function, except that the rgb components are treated separately. The line gradient now becomes:-
+```
+for i in range(steps):
+    idraw.line([x0, y0+i, x0+wi, y0+i], fill=LerpColour(from_colour,to_colour,i/(steps-1))
+```
+All the component differences being handled in our function - much simpler.
+
+Using the same principal of linear interpolation we can create a more two dimensional look by using a rectangle or an ellipse,
+remembering to make allowance for the fact that the figure has width as well as height.
+
 
   ### 08.4 Replicating the Widget Images
   
