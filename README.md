@@ -1249,7 +1249,61 @@ outer rectangles. As before we find it useful to have an assist function so that
 than a bounding rectangle. 08rounded_rectangle.py and 08rounded_rectangle_outer.py are the two scripts that we can base many of our 
 widget scripts, the first script has the corner running from the outer border, whereas the second script joins the inner border.
 
-  ### 08.3 Replicating the Widget Images
+  ### 08.3 Simple Gradients
+  
+If you check out some of the widgets, you should be able to detect the use of gradients. Since we are dealing with small images we 
+should be able to use gradients based on simple linear interpolation. Keep the colour change simple, otherwise more complex methods
+become appropriate. The colour representation can be simply an rgb representation, rather than hsv, hsl or cielab. If we take a 
+straightforwaed approach we have a starting and ending colour each of the rgb components changes separately when being used. 
+```
+r,g,b = from_colour
+dr = float(to_colour[0] - r)/steps
+dg = float(to_colour[1] - g)/steps
+db = float(to_colour[2] - b)/steps
+ 
+for i in range(steps):
+    r,g,b = r+dr, g+dg, b+db
+    idraw.line([x0, y0+i, x0+wi, y0+i], fill=(int(r),int(g),int(b)))
+```
+The above snippet of code might be found for use on images larger than our widgets, if used as it stands the first line will be found
+to be different to our starting colour.
+```
+r,g,b = from_colour
+dr = float(to_colour[0] - r)/(steps-1)
+dg = float(to_colour[1] - g)/(steps-1)
+db = float(to_colour[2] - b)/(steps-1)
+r,g,b = r-dr, g-dg, b-db
+ 
+for i in range(steps):
+    r,g,b = r+dr, g+dg, b+db
+    idraw.line([x0, y0+i, x0+wi, y0+i], fill=(int(r),int(g),int(b)))
+```
+The starting colour has been adjusted so that the first line depicts the right colour, so now we need to ensure that the last line is
+on the finishing colour, so the differences have been enlarged slightly.
+
+We can use an assisting function that produces the required linear interpolation.
+```
+import numpy as np
+white = np.array([255, 255, 255])
+my_color = np.array([30, 198, 244])
+
+def lerp(a, b, t):
+    return a*(1 - t) + b*t
+    
+lightened25 = lerp(my_color, white, 0.25)
+>>>array([ 86.25, 212.25, 246.75])
+```
+When using a numpy function the interpolation function lerp is easy to follow, however it may not always be so easy to set all the
+information as numpy arrays. For the small sizes we are using the advantages of numpy are not so obvios, therefore I will be
+illustrating with a different function.
+```
+def LerpColour(c1,c2,t):
+    return (int(c1[0]+(c2[0]-c1[0])*t),int(c1[1]+(c2[1]-c1[1])*t),
+            int(c1[2]+(c2[2]-c1[2])*t))
+```
+The function is much as the numpy function, except that the rgb components are treated separately.
+
+  ### 08.4 Replicating the Widget Images
   
 We are now in a position to replicate the widget images.  
 
