@@ -1253,26 +1253,26 @@ widget scripts, the first script has the corner running from the outer border, w
   
 If you check out some of the widgets, you should be able to detect the use of gradients. Since we are dealing with small images we 
 should be able to use gradients based on simple linear interpolation. Keep the colour change simple, otherwise more complex methods
-become appropriate. The colour representation can be simply an rgb representation, rather than hsv, hsl or cielab. If we take a 
-straightforwaed approach we have a starting and ending colour each of the rgb components changes separately when being used. 
+will be needed. The colour representation can be simply an rgb representation, rather than hsv, hsl or cielab. If we take a 
+straightforwaed approach we have a starting and finishing colour for each of the rgb components, changes need to be separate. 
 ```
 r,g,b = from_colour
-dr = float(to_colour[0] - r)/steps
-dg = float(to_colour[1] - g)/steps
-db = float(to_colour[2] - b)/steps
+dr = float(to_colour[0] - r)/steps # change of r component
+dg = float(to_colour[1] - g)/steps # likewise g
+db = float(to_colour[2] - b)/steps # and b
  
 for i in range(steps):
-    r,g,b = r+dr, g+dg, b+db
+    r,g,b = r+dr, g+dg, b+db # first colour in gradient
     idraw.line([x0, y0+i, x0+wi, y0+i], fill=(int(r),int(g),int(b)))
 ```
 The above snippet of code might be found for use on images larger than our widgets, if used as it stands the first line will be found
 to be different to our starting colour.
 ```
 r,g,b = from_colour
-dr = float(to_colour[0] - r)/(steps-1)
-dg = float(to_colour[1] - g)/(steps-1)
-db = float(to_colour[2] - b)/(steps-1)
-r,g,b = r-dr, g-dg, b-db
+dr = float(to_colour[0] - r)/(steps-1) # slightly increase the change to r 
+dg = float(to_colour[1] - g)/(steps-1) # likewise g
+db = float(to_colour[2] - b)/(steps-1) # and b
+r,g,b = r-dr, g-dg, b-db # correction for first colour in gradient
  
 for i in range(steps):
     r,g,b = r+dr, g+dg, b+db
@@ -1295,21 +1295,24 @@ lightened25 = lerp(my_color, white, 0.25)
 ```
 When using a numpy function the interpolation function lerp is easy to follow, however it may not always be so easy to set all the
 information as numpy arrays. For the small sizes we are using the advantages of numpy are not so obvios, therefore I will be
-illustrating with a different function.
+using a different function.
 ```
-def LerpColour(c1,c2,t):
+def LerpColour(c1,c2,t): # suitable for RGB 
     return (int(c1[0]+(c2[0]-c1[0])*t),int(c1[1]+(c2[1]-c1[1])*t),
             int(c1[2]+(c2[2]-c1[2])*t))
 ```
-The function is much as the numpy function, except that the rgb components are treated separately. The line gradient now becomes:-
+The function is similar to the numpy function, except that the rgb components are treated separately. The line gradient now becomes:-
 ```
 for i in range(steps):
     idraw.line([x0, y0+i, x0+wi, y0+i], fill=LerpColour(from_colour,to_colour,i/(steps-1))
 ```
-All the component differences being handled in our function - much simpler.
+All the component differences are being handled in our function - much simpler.
 
 Using the same principal of linear interpolation we can create a more two dimensional look by using a rectangle or an ellipse,
-remembering to make allowance for the fact that the figure has width as well as height.
+remembering to make allowance for the fact that the figure has width as well as height. This gives the apperance of a radial gradent.
+The figure can be drawn off centre alowing us to create a more realistic highlight. Using points we can also create a radial gradient,
+make the ellipse larger than the required gradient enclosing rectangle - this creates corners that are filled with the starting colour
+and the rest having a gradient with mainly the finishing colour.
 
 
   ### 08.4 Replicating the Widget Images
