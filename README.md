@@ -1254,7 +1254,7 @@ widget scripts, the first script has the corner running from the outer border, w
 If you check out some of the widgets, you should be able to detect the use of gradients. Since we are dealing with small images we 
 should be able to use gradients based on simple linear interpolation. Keep the colour change simple, otherwise more complex methods
 will be needed. The colour representation can be simply an rgb representation, rather than hsv, hsl or cielab. If we take a 
-straightforwaed approach we have a starting and finishing colour for each of the rgb components, changes need to be separate. 
+straightforwaed approach we have a starting and finishing colour for each of the separate rgb components. 
 ```
 r,g,b = from_colour
 dr = float(to_colour[0] - r)/steps # change of r component
@@ -1265,8 +1265,9 @@ for i in range(steps):
     r,g,b = r+dr, g+dg, b+db # first colour in gradient
     idraw.line([x0, y0+i, x0+wi, y0+i], fill=(int(r),int(g),int(b)))
 ```
-The above snippet of code might be found for use on images larger than our widgets, if used as it stands the first line will be found
-to be different to our starting colour.
+The above snippet of code might be found for use on images larger than our widgets, if used as it stands the first colour will be found
+to be different to our starting colour. The finishing colour also needs to be processed correctly. This small error becomes more
+noticeable as the image becomes smaller.
 ```
 r,g,b = from_colour
 dr = float(to_colour[0] - r)/(steps-1) # slightly increase the change to r 
@@ -1279,7 +1280,7 @@ for i in range(steps):
     idraw.line([x0, y0+i, x0+wi, y0+i], fill=(int(r),int(g),int(b)))
 ```
 The starting colour has been adjusted so that the first line depicts the right colour, so now we need to ensure that the last line is
-on the finishing colour, so the differences have been enlarged slightly.
+on the finishing colour, so the component differences have been enlarged slightly.
 
 We can use an assisting function that produces the required linear interpolation.
 ```
@@ -1297,11 +1298,12 @@ When using a numpy function the interpolation function lerp is easy to follow, h
 information as numpy arrays. For the small sizes we are using the advantages of numpy are not so obvios, therefore I will be
 using a different function.
 ```
-def LerpColour(c1,c2,t): # suitable for RGB 
+def LerpColourRGB(c1,c2,t): # suitable for RGB 
     return (int(c1[0]+(c2[0]-c1[0])*t),int(c1[1]+(c2[1]-c1[1])*t),
             int(c1[2]+(c2[2]-c1[2])*t))
 ```
-The function is similar to the numpy function, except that the rgb components are treated separately. The line gradient now becomes:-
+The function is similar to the numpy function, except that the rgb components are treated separately. We have also ensured that the
+result is an integer. The line gradient now becomes:-
 ```
 for i in range(steps):
     idraw.line([x0, y0+i, x0+wi, y0+i], fill=LerpColour(from_colour,to_colour,i/(steps-1))
@@ -1310,10 +1312,23 @@ All the component differences are being handled in our function - much simpler.
 
 Using the same principal of linear interpolation we can create a more two dimensional look by using a rectangle or an ellipse,
 remembering to make allowance for the fact that the figure has width as well as height. This gives the apperance of a radial gradent.
-The figure can be drawn off centre alowing us to create a more realistic highlight. Using points we can also create a radial gradient,
+The figure can be drawn off centre allowing us to create a more realistic highlight. Using points we can also create a radial gradient,
 make the ellipse larger than the required gradient enclosing rectangle - this creates corners that are filled with the starting colour
 and the rest having a gradient with mainly the finishing colour.
 
+When creating colour schemes it is best to stick to the following colour guidelines. A colour wheel helps. White, black and grey can be
+used in any option to produce gradients if used as end colours. However if grey is produced as an intermediate colour then the gradient
+normally needs adjustment.
+First option - stick to one hue adjusting the saturation and value - for this use the hsv colour space. Neutral colours probably work
+best, which means almost anything that is not bright red, orange or yellow. Gradients should be straightforward.
+Second option - use 2 colours - here we may use complimentary colours which are exactly opposite in the colour wheel. This will produce
+vibrant colours especially if both have a large saturation. They will automatically produce a warm and a cool colour. Gradients will be
+tricky if both colours as the end colours.
+Third option - use 3 colours - choosing adjacent colours should look harmonious, it works best if one colour dominates. 
+Fourth option - uses 3 colours - the colours are evenly spaced around the wheel. As with complimentary colours gradients may not be so
+straightforward.
+Fifth option - use 3 colours - choose one colour then select the adjacent colours to the complimentary colour. This should produce a
+toned down complimentary colour scheme.
 
   ### 08.4 Replicating the Widget Images
   
