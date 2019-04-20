@@ -1328,7 +1328,16 @@ Third option - use 3 colours - choosing adjacent colours should look harmonious,
 Fourth option - uses 3 colours - the colours are evenly spaced around the wheel. As with complimentary colours gradients may not be so
 straightforward.
 Fifth option - use 3 colours - choose one colour then select the adjacent colours to the complimentary colour. This should produce a
-toned down complimentary colour scheme.
+toned down complimentary colour scheme. Also be careful of gradients.
+
+The first and third options can produce pleasing gradients, without too much trouble, however if we have one of the other options then
+there could be an unwanted colour produced if the end colours too far apart. Say we have two adjacent colours or only one value apart
+then the gradient will transition smoothly, so yellow to green will transition through yellow-green and appear satisfactory, however if
+we tried purple to green then in the RGB colourspace we will see a greyish intermediate colour, whereas HSV will produce purple-blue,
+blue, blue-green as intermediate colours. Say we tried to transition between blue and yellow then force the intermediate colour to be
+halfway between at green to avoid the grey, additional intermediate colours should make an even better transition. If you wish to
+transition with an alpha change only (transparency) then ensure the starting and finishing hue are the same. 
+
 
   ### 08.4 Replicating the Widget Images
   
