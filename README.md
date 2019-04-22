@@ -1312,15 +1312,18 @@ All the component differences are being handled in our function - much simpler.
 
 Using the same principal of linear interpolation we can create a more two dimensional look by using a rectangle or an ellipse,
 remembering to make allowance for the fact that the figure has width as well as height. This gives the apperance of a radial gradent.
-The figure can be drawn off centre allowing us to create a more realistic highlight. Using points we can also create a radial gradient,
-make the ellipse larger than the required gradient enclosing rectangle - this creates corners that are filled with the starting colour
-and the rest having a gradient with mainly the finishing colour.
+The figure can be drawn off centre allowing us to create a more realistic highlight. We can also create a radial gradient using points,
+this has a similar effect when if we were to make the ellipse larger than the required gradient enclosing rectangle - this creates
+corners that are filled with the starting colour and the rest having a gradient tending towards the finishing colour.
 
-When creating colour schemes it is best to stick to the following colour guidelines. A colour wheel helps. White, black and grey can be
-used in any option to produce gradients if used as end colours. However if grey is produced as an intermediate colour then the gradient
-normally needs adjustment.
-First option - stick to one hue adjusting the saturation and value - for this use the hsv colour space. Neutral colours probably work
-best, which means almost anything that is not bright red, orange or yellow. Gradients should be straightforward.
+When creating colour schemes it is best to stick to the following colour guidelines. White, black and grey can be used in any option to
+produce gradients if used as end colours. However if grey is produced as an intermediate colour then the gradient normally needs
+adjustment. When selecting a colour scheme the normal wheel helps but remember gradients will be created in rgb.
+
+First option - stick to one hue adjusting the saturation and value - for this the hsv colour space is useful. Neutral colours probably
+work best, which means almost anything that is not bright red, orange or yellow. Gradients should be straightforward. Note that the hsv
+colour space is related to the rgb colour space in that the hsv hues are the same as the rgb perimeter colours, so red in rgb is
+(255,0,0) and this is in hsv (0,100,100), yellow (255,255,0) is (60,100,100), green (0,255,0) is (120,100,100) and so on.
 Second option - use 2 colours - here we may use complimentary colours which are exactly opposite in the colour wheel. This will produce
 vibrant colours especially if both have a large saturation. They will automatically produce a warm and a cool colour. Gradients will be
 tricky if both colours as the end colours.
