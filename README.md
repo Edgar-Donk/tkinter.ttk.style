@@ -1249,7 +1249,7 @@ outer rectangles. As before we find it useful to have an assist function so that
 than a bounding rectangle. 08rounded_rectangle.py and 08rounded_rectangle_outer.py are the two scripts that we can base many of our 
 widget scripts, the first script has the corner running from the outer border, whereas the second script joins the inner border.
 
-  ### 08.3 Simple Gradients
+  ### 08.3 Simple Gradients and Colour Schemes
   
 If you check out some of the widgets, you should be able to detect the use of gradients. Since we are dealing with small images we 
 should be able to use gradients based on simple linear interpolation. Keep the colour change simple, otherwise more complex methods
@@ -1318,29 +1318,36 @@ corners that are filled with the starting colour and the rest having a gradient 
 
 When creating colour schemes it is best to stick to the following colour guidelines. White, black and grey can be used in any option to
 produce gradients if used as end colours. However if grey is produced as an intermediate colour then the gradient normally needs
-adjustment. When selecting a colour scheme the normal wheel helps but remember gradients will be created in rgb.
+adjustment. When selecting a colour scheme the normal wheel helps but remember gradients will be created in RGB.
 
 First option - stick to one hue adjusting the saturation and value - for this the hsv colour space is useful. Neutral colours probably
-work best, which means almost anything that is not bright red, orange or yellow. Gradients should be straightforward. Note that the hsv
-colour space is related to the rgb colour space in that the hsv hues are the same as the rgb perimeter colours, so red in rgb is
-(255,0,0) and this is in hsv (0,100,100), yellow (255,255,0) is (60,100,100), green (0,255,0) is (120,100,100) and so on.
-Second option - use 2 colours - here we may use complimentary colours which are exactly opposite in the colour wheel. This will produce
+work best, which means almost anything that is not bright red, orange or yellow. Gradients should be straightforward. Note that the HSV
+colour space is related to the RGB colour space in that the HSV hues are the same as the rgb perimeter colours, so red in RGB is
+(255,0,0) and this is in HSV (0,100,100), yellow (255,255,0) is (60,100,100), green (0,255,0) is (120,100,100) and so on. You should 
+notice that the RGB perimiter colours produce hsv colours with 100 in both saturation and value components.
+
+Second option - use 2 colours - use adjacent colours. 
+
+Third option - use 2 colours - if we use complimentary colours which are exactly opposite in the normal colour wheel. This produces
 vibrant colours especially if both have a large saturation. They will automatically produce a warm and a cool colour. Gradients will be
-tricky if both colours as the end colours.
-Third option - use 3 colours - choosing adjacent colours should look harmonious, it works best if one colour dominates. 
-Fourth option - uses 3 colours - the colours are evenly spaced around the wheel. As with complimentary colours gradients may not be so
-straightforward.
-Fifth option - use 3 colours - choose one colour then select the adjacent colours to the complimentary colour. This should produce a
+tricky since both colours are used as the end colours, intermediate colours may need to be defined to avoid bad looking gradients. If
+you should use the HSV colour scheme it will produce the perimeter rgb colours which will probably not look too clever.
+
+Fourth option - use 3 colours - choosing adjacent colours should look harmonious, it works best if one colour dominates.
+
+Fifth option - uses 3 colours - the colours are evenly spaced around the normal wheel. As with complimentary colours gradients may not
+be so straightforward.
+
+Sixth option - use 3 colours - choose one colour then select the adjacent colours to the complimentary colour. This should produce a
 toned down complimentary colour scheme. Also be careful of gradients.
 
-The first and third options can produce pleasing gradients, without too much trouble, however if we have one of the other options then
-there could be an unwanted colour produced if the end colours too far apart. Say we have two adjacent colours or only one value apart
-then the gradient will transition smoothly, so yellow to green will transition through yellow-green and appear satisfactory, however if
-we tried purple to green then in the RGB colourspace we will see a greyish intermediate colour, whereas HSV will produce purple-blue,
-blue, blue-green as intermediate colours. Say we tried to transition between blue and yellow then force the intermediate colour to be
-halfway between at green to avoid the grey, additional intermediate colours should make an even better transition. If you wish to
-transition with an alpha change only (transparency) then ensure the starting and finishing hue are the same. 
-
+The single hue and adjacent hue options can produce pleasing gradients, without too much trouble, however if we have one of the other
+options then there could be an unwanted colour produced if the end colours too far apart. Say we have two adjacent colours or only one
+value apart then the gradient will transition smoothly, so yellow to green will transition through yellow-green and appear 
+satisfactory, however if we tried purple to green then in the RGB colourspace we will see a greyish intermediate colour, whereas HSV
+will produce purple-blue, blue, blue-green as intermediate colours. Say we tried to transition between blue and yellow then force the
+intermediate colour to be halfway between at green to avoid the grey, additional intermediate colours should make an even better
+transition. If you wish to transition with an alpha change only (transparency) then ensure the starting and finishing hue are the same. 
 
   ### 08.4 Replicating the Widget Images
   
