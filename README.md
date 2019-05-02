@@ -1265,8 +1265,8 @@ for i in range(steps):
     r,g,b = r+dr, g+dg, b+db # first colour in gradient
     idraw.line([x0, y0+i, x0+wi, y0+i], fill=(int(r),int(g),int(b)))
 ```
-The above snippet of code might be found for use on images larger than our widgets, if used as it stands the first colour will be found
-to be different to our starting colour. The finishing colour also needs to be processed correctly. This small error becomes more
+The above snippet of code might be found for use on images larger than our widgets, if used as it stands the first colour will be
+found to be different to our starting colour. The finishing colour also needs to be processed correctly. This small error becomes more
 noticeable as the image becomes smaller.
 ```
 r,g,b = from_colour
@@ -1312,26 +1312,26 @@ All the component differences are being handled in our function - much simpler.
 
 Using the same principal of linear interpolation we can create a more two dimensional look by using a rectangle or an ellipse,
 remembering to make allowance for the fact that the figure has width as well as height. This gives the apperance of a radial gradent.
-The figure can be drawn off centre allowing us to create a more realistic highlight. We can also create a radial gradient using points,
-this has a similar effect when if we were to make the ellipse larger than the required gradient enclosing rectangle - this creates
-corners that are filled with the starting colour and the rest having a gradient tending towards the finishing colour.
+The figure can be drawn off centre allowing us to create a more realistic highlight. We can also create a radial gradient using
+points, this has a similar effect when if we were to make the ellipse larger than the required gradient enclosing rectangle - this
+creates corners that are filled with the starting colour and the rest having a gradient tending towards the finishing colour.
 
-When creating colour schemes it is best to stick to the following colour guidelines. White, black and grey can be used in any option to
-produce gradients if used as end colours. However if grey is produced as an intermediate colour then the gradient normally needs
-adjustment. When selecting a colour scheme the normal wheel helps but remember gradients will be created in RGB.
+When creating colour schemes it is best to stick to the following colour guidelines. White, black and grey can be used in any option
+to produce gradients if used as end colours. However if grey is produced as an intermediate colour then the gradient normally needs
+adjustment. When selecting a colour scheme the normal wheel helps but remember gradients will be created in RGB. 
 
 First option - stick to one hue adjusting the saturation and value - for this the hsv colour space is useful. Neutral colours probably
-work best, which means almost anything that is not bright red, orange or yellow. Gradients should be straightforward. Note that the HSV
-colour space is related to the RGB colour space in that the HSV hues are the same as the rgb perimeter colours, so red in RGB is
+work best, which means almost anything that is not bright red, orange or yellow. Gradients should be straightforward. Note that the
+HSV colour space is related to the RGB colour space in that the HSV hues are the same as the rgb perimeter colours, so red in RGB is
 (255,0,0) and this is in HSV (0,100,100), yellow (255,255,0) is (60,100,100), green (0,255,0) is (120,100,100) and so on. You should 
 notice that the RGB perimiter colours produce hsv colours with 100 in both saturation and value components.
 
 Second option - use 2 colours - use adjacent colours. 
 
 Third option - use 2 colours - if we use complimentary colours which are exactly opposite in the normal colour wheel. This produces
-vibrant colours especially if both have a large saturation. They will automatically produce a warm and a cool colour. Gradients will be
-tricky since both colours are used as the end colours, intermediate colours may need to be defined to avoid bad looking gradients. If
-you should use the HSV colour scheme it will produce the perimeter rgb colours which will probably not look too clever.
+vibrant colours especially if both have a large saturation. They will automatically produce a warm and a cool colour. Gradients will
+be tricky since both colours are used as the end colours, intermediate colours may need to be defined to avoid bad looking gradients.
+If you should use the HSV colour scheme it will produce the perimeter rgb colours which will probably not look too clever.
 
 Fourth option - use 3 colours - choosing adjacent colours should look harmonious, it works best if one colour dominates.
 
@@ -1347,7 +1347,12 @@ value apart then the gradient will transition smoothly, so yellow to green will 
 satisfactory, however if we tried purple to green then in the RGB colourspace we will see a greyish intermediate colour, whereas HSV
 will produce purple-blue, blue, blue-green as intermediate colours. Say we tried to transition between blue and yellow then force the
 intermediate colour to be halfway between at green to avoid the grey, additional intermediate colours should make an even better
-transition. If you wish to transition with an alpha change only (transparency) then ensure the starting and finishing hue are the same. 
+transition. If you wish to transition with an alpha change only (transparency) then ensure the starting and finishing hue are the
+same. 
+
+If you wish to understand what works best in colour schemes it may be helpful to look at the colorspace documentation, 
+https://python-colorspace.readthedocs.io/en/latest/ where some relevant points about what is required to help design the colour scheme
+for visually impaired people, who represent quite a sizeable proportion of your clients.
 
   ### 08.4 Replicating the Widget Images
   
