@@ -1056,8 +1056,10 @@ follow only one path whichever way they are drawn, the script I managed to find 
 to PIL.
 
   ### 08.2 Drawing with PIL(Pillow)
-We could used tkinter canvas, but we would still have had to use PIL at some stage, so let's only try using PIL since the drawing is
-not too complicated requiring some of the more sophisticated methods available in canvas.
+  
+We could used tkinter canvas but the drawing can only be saved as a pdf file. This is not directly useful without conversion to a gif
+or png to do this we need to capture the pdf output using PIL, so let's try only using PIL since the drawing is not too complicated
+requiring some of the more sophisticated methods available in canvas.
 
 If you have never drawn with PIL or require a refresher the following paragraphs should help. PIL has several modules, the two we
 will require are Image and ImageDraw. Image deals with the file whereas ImageDraw gives us the ability to create lines, arcs and
@@ -1097,13 +1099,15 @@ as an internal filling method.
 ```
 idraw.polygon([0,0,w-1,0,w-1,h-1,0,h-1],outline='#FFFFFF',fill='red') # the colours specified here are a hash and a named colour
 ```
-We saw that often the widget corners look as though they are rounded, but at these sizes arcs will not work. On the other hand we need
-to draw an arc, ellipse or a pieslice in order to find out how the various corner arrangements came into being. In order to draw curved
-lines we need to know the bounding rectangle that defines the size and position of the curve. We can use the square we drew before and
-utilise its upper left and lower right points to define the bounding rectangle for a circle - a special case of the ellipse. Ellipses
-also have the same methods to colour as used by polygons. PIL is flexible when specifying colours - we can use RGBA, RGB, hash value, a
-named colour, or hsl. Be careful when using names it uses the X11 system that is similar to the CSS3, but it may not always agree with
-the tkinter list of named colours.
+We saw that often the widget corners look as though they are rounded, without directly using a curved line, we will need to draw an
+arc, ellipse or a pieslice in order to find out how the various corner arrangements came into being maybe on a larger image then
+reduce the image in size, this solves the size problem and helps with the antialiasing requirement. 
+
+In order to draw curved lines we need to know the bounding rectangle that defines the size and position of the curve. We can use the
+square we drew before and utilise its upper left and lower right points to define the bounding rectangle for a circle - a special case
+of the ellipse. Ellipses also use the same methods to colour as used by polygons. PIL is flexible when specifying colours - we can use
+RGBA, RGB, hash value, a named colour, or hsl. Be careful when using names it uses the X11 system that is similar to the CSS3, but it
+may not always agree with the tkinter list of named colours.
 ```
 idraw.ellipse([0,0,w-1,h-1],outline='red') # not quite right - too small
 idraw.ellipse([0,0,w,h],outline='red') # also not right - too big
@@ -1112,8 +1116,7 @@ Maybe a case of the Goldilocks size, if h and w had been 23 then the first attem
 a radius that must be an integer, so the bounding square must be an even number of pixels wide and high. The outside black square we 
 drew corresponds to the bounding square, not the image size, we see that the circle overlaps the the bounding rectangle on all four
 sides, and our case should touch all four sides of the image, in the real world lines have breadth which is why the bounding rectangle
-is not a simple dimension, this is also shown in 8.5 Canvas Oval Objects in the tkinter 8.5 documentation which uses a similar system
-to PIL.
+is not a simple dimension, a similar system to canvas as shown in 8.5 Canvas Oval Objects in the tkinter 8.5 documentation.
 ```
 idraw.arc([0,0,w-1,h-1],start=0,end=90,fill='red') # angles are measured from 3 o’clock, increasing clockwise
 idraw.arc([0,0,w-1,h-1],start=90,end=180,fill='green') # the colour parameter is fill
@@ -1122,7 +1125,7 @@ idraw.arc([0,0,w-1,h-1],start=270,end=360,fill='blue')
 ```
 Note: the arc layouts and how start and end are specified, also the bounding rectangle size for the arc is exactly the same as for the
 circle where the arc forms part of that same circle. A similar system is used for pieslice. However pieslice has both an outline and
-fill method, just as we saw in polygon. 
+fill method, just as we saw in ellipse and polygon whereas arc only colours the outside. 
 
 If we wish to produce rounded corners in a large enough size so that curves can be drawn then we will need to enlarge everything,
 image size, lines and their widths. Ordinary lines can be directly drawn with their width without too much trouble. Arcs pose a 
