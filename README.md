@@ -382,7 +382,7 @@ listbox['state']='disabled'
 The order of mapping states for the element is important. If the active tuple is placed before the pressed tuple then when the button
 or scrollbar is pressed the colour remains as the active colour without changing for other states. As ever - test first.
 
-It is useful to be able to see the individual widgets when changing their states. 03states_themes.py gives you the abilty to do just
+It is useful to be able to see the individual widgets when changing their states. 03states_themes.py gives you the ability to do just
 that, there is no problem changing themes, however when changing states we need to cancel the previous state by applying the opposite
 state (you remember the state prefixed with an exclamion mark), we also have to ensure that we are dealing with a string rather than a
 tuple, further we must ensure that the tuple is not empty. In our example we are changing the state of a button, you can modify this
