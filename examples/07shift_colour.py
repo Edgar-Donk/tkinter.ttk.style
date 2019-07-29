@@ -11,12 +11,13 @@ we will use the target colour for our final colour and if the source is
 white then the final colour will also be white.
 '''
 from PIL import Image
+from colorsys import rgb_to_yiq, yiq_to_rgb
 
-sourceFile = '../images/comboarrowdown-nc' # file name lees .png
-source = (182, 171, 160) # use the combo-n rim as basis
-#source = (233, 135, 94) # use as basis for combo-rf
-#source = (215, 208, 200) # source for comboarrow-a
-ptot = sum(source)
+sourceFile = '../images/comboarrow-n' # file name less .png
+pivot = (182, 171, 160) # use the combo-n rim as basis
+#pivot = (233, 135, 94) # use as basis for combo-rf
+#pivot = (215, 208, 200) # source for comboarrow-a
+ptot = sum(pivot)
 
 #target = (0, 255, 255) # cyan
 #target = (64,224,208) # use as basis for combo-rf
@@ -24,7 +25,6 @@ target = (127,255,212) # aquamarine
 rtar = 127 # use as target 
 gtar = 255 # use as target
 btar = 212 # use as target
-ttot = sum(target)
 
 img = Image.open(sourceFile+'.png')
 img = img.convert("RGBA")
@@ -50,7 +50,7 @@ for x in range(0, img.size[0]):
         
         else:
             alpha = pixdata[x,y][-1]
-            if pixdata[x, y] == source:
+            if pixdata[x, y] == pivot:
                 pixdata[x,y] = (rtar, gtar, btar,alpha)
             else:
                 # first estimate of lightness

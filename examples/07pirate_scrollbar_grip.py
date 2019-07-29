@@ -1,5 +1,5 @@
 '''
-Original Scrollbar script.
+Scrollbar with grip
 
 Create theme extract for custom widgets, include state selection to view
 the result of changing the state using different images and/or different
@@ -7,7 +7,7 @@ settings.
 Setting the thumb ensure that the layout has expand 1 i.e.True, otherwise it
 will not move in the trough. In turn the border must be large enough to ensure
 that the image expands and does not create multiple images.
-Grip is not included.
+
 The trough has been copied from elegance, and we see how it has expanded to
 create 2 outside coloured edges.
 Other ideas are copied from radiance.
@@ -24,12 +24,14 @@ fr.grid(column=0,row=0,sticky='nsew')
 
 img1 = PhotoImage("trough-horiz", file='../images/piratz/trough-horiz.png')
 img2 = PhotoImage("trough-vert", file='../images/piratz/trough-vert.png')
-img3 = PhotoImage("slider-hn", file='../images/piratz/slider-hn.png')
-img4 = PhotoImage("slider-vn", file='../images/piratz/slider-vn.png')
-img5 = PhotoImage("slider-hd", file='../images/piratz/slider-hd.png')
-img6 = PhotoImage("slider-vd", file='../images/piratz/slider-vd.png')
-img7 = PhotoImage("slider-ha", file='../images/piratz/slider-ha.png')
-img8 = PhotoImage("slider-va", file='../images/piratz/slider-va.png')
+img3 = PhotoImage("hthumb-n", file='../images/piratz/hthumb-n.png')
+img4 = PhotoImage("vthumb-n", file='../images/piratz/vthumb-n.png')
+img5 = PhotoImage("hthumb-d", file='../images/piratz/hthumb-d.png')
+img6 = PhotoImage("vthumb-d", file='../images/piratz/vthumb-d.png')
+img7 = PhotoImage("hthumb-a", file='../images/piratz/hthumb-a.png')
+img8 = PhotoImage("vthumb-a", file='../images/piratz/vthumb-a.png')
+img25 = PhotoImage("vgrip", file='../images/piratz/vgrip.png')
+img26 = PhotoImage("hgrip", file='../images/piratz/hgrip.png')
 img9 = PhotoImage("arrowup-a", file='../images/piratz/arrowup-a.png')
 img10 = PhotoImage("arrowup-d", file='../images/piratz/arrowup-d.png')
 img11 = PhotoImage("arrowup-n", file='../images/piratz/arrowup-n.png')
@@ -53,33 +55,40 @@ style.theme_create( "yummy", parent="clam", settings={
 #style.theme_settings('default', {
 # start of theme extract
         "Horizontal.TScrollbar": {"layout": [
+            ("Horizontal.Scrollbar.leftarrow", {"side": "left", "sticky": ''}),
+            ("Horizontal.Scrollbar.rightarrow",
+                {"side": "right", "sticky": ''}),
+            #("Horizontal.Scrollbar.leftarrow",
+                #{"side": "right", "sticky": ''}),
             ("Horizontal.Scrollbar.trough", {"sticky": "ew", "children":
-                 [("Horizontal.Scrollbar.leftarrow", {"side": "left"}),
-                 ("Horizontal.Scrollbar.rightarrow", {"side": "right"}),
-                 ("Horizontal.Scrollbar.thumb", {"side": "left","expand": 1,"sticky": "ew"})]
+                [("Horizontal.Scrollbar.thumb", {"expand": 1, "unit": 1,
+                    "children": [("Horizontal.Scrollbar.grip", {"sticky": ''})]
+                })]
             })]},
         
-     "Horizontal.Scrollbar.thumb": {"element create":
-            ("image", 'slider-hn',
-             ('disabled', 'slider-hd'),
-             ('pressed', 'slider-ha'),
-             ('active', 'slider-ha'),
+        "Horizontal.Scrollbar.thumb": {"element create":
+            ("image", 'hthumb-n',
+             ('disabled', 'hthumb-d'),
+             ('pressed', 'hthumb-a'),
+             ('active', 'hthumb-a'),
              {"border": [9,2]}) #3 , 'sticky': 'ew', 'padding': [7,2] 
         },
 
-     "Horizontal.Scrollbar.trough": {"element create":
-            ('image', 'trough-horiz',
-             {"border": 2, 'width': 32, 'height':21})}, # , 'sticky': 'ew'
+        "Horizontal.Scrollbar.grip": {"element create": ("image", 'hgrip')},
 
-     'Scrollbar.leftarrow': {"element create":
+        "Horizontal.Scrollbar.trough": {"element create":
+            ('image', 'trough-horiz',
+             {"border": 2, 'width': 32, 'height':21})},
+        
+        'Scrollbar.leftarrow': {"element create":
             ("image", 'arrowleft-n',
              ('disabled', 'arrowleft-d'),
              ('pressed', 'arrowleft-p'),
              ('active', 'arrowleft-a'),
              {"border": 1})
             },
-
-     'Scrollbar.rightarrow': {"element create":
+        
+        'Scrollbar.rightarrow': {"element create":
             ("image", 'arrowright-n',
              ('disabled', 'arrowright-d'),
              ('pressed', 'arrowright-p'),
@@ -87,41 +96,45 @@ style.theme_create( "yummy", parent="clam", settings={
              {"border": 1})
             },
 
-     "Vertical.TScrollbar": {"layout": [
+        "Vertical.TScrollbar": {"layout": [
+            ("Vertical.Scrollbar.uparrow", {"side": "top", "sticky": ''}),
+            ("Vertical.Scrollbar.downarrow", {"side": "bottom", "sticky": ''}),
+            #("Vertical.Scrollbar.uparrow", {"side": "bottom", "sticky": ''}),
             ("Vertical.Scrollbar.trough", {"sticky": "ns", "children":
-                 [("Vertical.Scrollbar.uparrow", {"side": "top"}),
-                 ("Vertical.Scrollbar.downarrow", {"side": "bottom"}),
-                 ("Vertical.Scrollbar.thumb", {"side": "top","expand": 1,"sticky": "ns"})]
-            })]},
+                [("Vertical.Scrollbar.thumb", {"expand": 1, "unit": 1,
+                    "children": [("Vertical.Scrollbar.grip", {"sticky": ''})]
+                })]
+            })]}, # "side": "top",
 
-     "Vertical.Scrollbar.thumb": {"element create":
-            ("image", 'slider-vn',
-             ('disabled', 'slider-vd'),
-             ('pressed', 'slider-va'),
-             ('active', 'slider-va'),
+        "Vertical.Scrollbar.thumb": {"element create":
+            ("image", 'vthumb-n',
+             ('disabled', 'vthumb-d'),
+             ('pressed', 'vthumb-a'),
+             ('active', 'vthumb-a'),
              {"border": [2,9]})
         },
 
+        "Vertical.Scrollbar.grip": {"element create": ("image", 'vgrip')},
 
-     "Vertical.Scrollbar.trough": {"element create":
+        "Vertical.Scrollbar.trough": {"element create":
             ('image', 'trough-vert',
              {"border": 2, 'width': 21, 'height':32})},
 
-     'Scrollbar.uparrow': {"element create":
+        'Scrollbar.uparrow': {"element create":
             ("image", 'arrowup-n',
              ('disabled', 'arrowup-d'),
              ('pressed', 'arrowup-p'),
              ('active', 'arrowup-a'),
              {"border": 1})
             },
-
-     'Scrollbar.downarrow': {"element create":
+                                
+        'Scrollbar.downarrow': {"element create":
             ("image", 'arrowdown-n',
              ('disabled', 'arrowdown-d'),
              ('pressed', 'arrowdown-p'),
              ('active', 'arrowdown-a'),
              {"border": 1})
-            }     
+            }   
 
 # end of theme extract - don't forget to add comma at end when inserting
      })

@@ -1,4 +1,6 @@
 '''
+Frame with Image
+
 replace the image with your own image, if the screen size
 is large enough, about 1000 wide by 350 high.
 '''
@@ -10,7 +12,7 @@ from PIL import Image, ImageTk
 root = Tk()
 s = Style()
 
-im = Image.open('images/BountyMoorea.jpg') # change to your own file
+im = Image.open('../images/BountyMoorea.jpg') # change to your own file
 tkim = ImageTk.PhotoImage(im)
 width,height = im.size
 

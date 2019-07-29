@@ -1,4 +1,6 @@
 '''
+Button
+
 Create theme extract for custom widgets, include state selection to view
 the result of changing the state using different images and/or different
 settings.
@@ -9,37 +11,16 @@ separated.
 '''
 
 from tkinter import Tk, PhotoImage, StringVar
-from tkinter.ttk import Style, Label, Radiobutton, Frame, Button
+from tkinter.ttk import Style, Label, Frame, Button
 import tkinter.font as tkFont
+from RunState import run_state
 
 root = Tk()
 
-def change_state():
-    oldstate = widg.state()
-    if len(oldstate) > 0:
-        # convert tuple to string 
-        oldst = " ".join(str(x) for x in oldstate) 
-        widg.state(['!'+oldst])
-        widg1.state(['!'+oldst])
-    newstate = state_val.get()
-    widg.state([newstate])
-    widg1.state([newstate])
-
-
-
+pirate_font = tkFont.Font(family="Palace Script MT", size=14) 
 fr = Frame(root)
 fr.grid(column=0,row=0,sticky='nsew')
-pirate_font = tkFont.Font(family="Palace Script MT", size=14) #Backstroke Brush Script MT
 
-states = ['active', 'alternate', 'background', 'disabled',
-                      'focus', 'invalid', 'pressed', 'readonly', 'selected']
-# Create rasio buttons which will display widget states
-
-state_val = StringVar()
-for iy, state in enumerate(states):
-    st_rb = Radiobutton(fr, value=state, text=state,
-            variable=state_val, command=change_state)
-    st_rb.grid(column=0,row=iy,padx=5,pady=5, sticky='nw')
 
 img1 = PhotoImage("button", file='../images/piratz/button.png')
 img2 = PhotoImage("button-d", file='../images/piratz/button-d.png')
@@ -75,9 +56,11 @@ style.theme_settings('default', {
      })
 
 style.theme_use ('default') #('yummy') #
+
 widg = Button(fr,text='Piratz!')
 widg.grid(column=0,row=11, padx=5, pady=5) #sticky='nsew',
 widg1 = Button(fr,text='Piratz!\nextra line made longer')
 widg1.grid(column=0,row=12, padx=5, pady=5) # sticky='nsew',
+run_state(fr,widg,widg1)
 
 root.mainloop()

@@ -3,7 +3,7 @@
 
 from tkinter import Tk, IntVar, StringVar
 from tkinter.ttk import Frame, Notebook, Separator, Checkbutton, Button, Radiobutton, LabelFrame, Treeview,\
-Scrollbar, Combobox, PanedWindow, Style, Scale, Progressbar, Sizegrip, Label
+Scrollbar, Combobox, PanedWindow, Style, Scale, Progressbar, Sizegrip, Label, Entry
 from tkinter.font import Font
 #from ttkthemes import themed_style as ts 
 import piratz_theme
@@ -17,7 +17,7 @@ class NotebookDemo:
         self._create_demo_panel() # run this before allBtns
         self.allBtns = self.ttkbut + self.cbs[1:] + self.rb
         try:
-            piratz_theme.install('piratz') 
+            piratz_theme.install('../images/piratz') 
         except Exception:
             import warnings
             warnings.warn("piratz theme being used without images")
@@ -69,6 +69,11 @@ class NotebookDemo:
         cb.set(themes[0])
         #cb.bind('<<ComboboxSelected>>', self.change_style) 
         cb.grid(row=0,column=0,sticky='nw', pady=5)
+        
+        lF3 = LabelFrame(frame,text="Entry")
+        lF3.pack(anchor='n')
+        self.en = Entry(lF3)
+        self.en.grid(row=0,column=0,sticky='ew', pady=5, padx=5)
             
         lf1 = LabelFrame(frame, text='Checkbuttons')
         lf1.pack(pady=5,padx=5,side='left',fill='y')
@@ -197,32 +202,39 @@ class NotebookDemo:
         self.dir1 = 1
         # populate the third frame with other widgets
         fr = Frame(nb, name='fr')
-        
-        lF = LabelFrame(fr,text="Slider")
+        lF = LabelFrame(fr,text="Scale")
+        fr3 = Frame(lF)
+        fr3.grid(row=0,column=0,sticky='nsew')
+        scl = Label(fr3,
+            text='Position mouse to flag or map,left mouse click and move')
+        scl.grid(row=0,column=0,sticky='nw')
         fr1 = Frame(lF)
-        fr1.grid(row=0,column=0,sticky='nsew')
+        fr1.grid(row=1,column=0,sticky='nsew')
         from_=100
         to=0
         value=0
         step=10
         fontSize = 9
         self.scvar = IntVar()
+        
         scRange=self.any_number_range(from_,to,step)
         scLen = len(scRange[1]) * (fontSize + 10)
         self.sc = Scale(fr1, from_=from_, to=to, variable=self.scvar,
                     orient='vertical', length=scLen, command=self.v_scale)
         self.sc.set(value)
         l1 = Label(fr1,textvariable=self.scvar,width=5)
-        l1.grid(row=0,column=0,padx=5,pady=5) 
-        self.sc.grid(row=0,column=1,padx=5,pady=5) 
+        l1.grid(row=1,column=0,padx=5,pady=5)
+        self.sc.grid(row=1,column=1,padx=5,pady=5) 
         fr4=Frame(fr1)
-        fr4.grid(row=0, column=2)
+        fr4.grid(row=1, column=2)
         sc_split = '\n'.join(scRange[0].split())
         lb = Label(fr1, text=sc_split, font=('Courier New', str(fontSize)))
-        lb.grid(row=0, column=2,padx=5,pady=5)
+        lb.grid(row=1, column=2,padx=5,pady=5)
 
+        sep = Separator(lF, orient="vertical")
+        sep.grid(row=1,column=2,sticky='ns')
         fr2 = Frame(lF, name='fr2')
-        fr2.grid(row=0,column=1,sticky='nsew')   
+        fr2.grid(row=1,column=3,sticky='nsew')   
         self.schvar = IntVar()
         a=0
         b=100
@@ -232,7 +244,7 @@ class NotebookDemo:
                          orient='horizontal', command = self.h_scale)
 
         self.sch.set(0)
-        l2 = Label(fr2,textvariable=self.schvar)
+        l2 = Label(fr2,textvariable=self.schvar,width=5)
         l2.grid(row=1,column=1,pady=2) 
         self.sch.grid(row=2,column=1,padx=5,pady=5,sticky='nsew')
         l3 = Label(fr2,text=schRange[0], font=('Courier New', str(fontSize)))
@@ -250,11 +262,14 @@ class NotebookDemo:
         self.h_progress()
         self.v_progress()
         self.pbar.grid(row=1,column=0,padx=5,pady=5,sticky='nw')
-        self.pb2.grid(row=1,column=1,padx=5,pady=5,sticky='nw')
+        sep = Separator(lF1, orient="vertical")
+        self.pb2.grid(row=1,column=2,padx=5,pady=5,sticky='nw')
         l3 = Label(lF1,textvariable=pb1var)
         l3.grid(row=0,column=0,pady=2,sticky='nw')
+        
+        sep.grid(row=0,column=1,rowspan=2,sticky='ns')
         l4 = Label(lF1,textvariable=pb2var)
-        l4.grid(row=0,column=1,pady=2,sticky='nw')
+        l4.grid(row=0,column=2,pady=2,sticky='nw')
 
         sg1 = Sizegrip(fr)
         sg1.grid(row=2,column=2,sticky='e')
@@ -263,12 +278,27 @@ class NotebookDemo:
         
 
         # add to notebook (underline = index for short-cut character)
-        nb.add(fr, text='Sliders & Others', underline=0)
+        nb.add(fr, text='Scale & Others', underline=0)
 
     #=========================================================================
     def _toggle_opt(self):
         # state of the option buttons controlled
         # by the state of the Option frame label widget
+        
+        if self.enabled.get() == 1:
+            self.sc.state(['!disabled'])
+            self.sch.state(['!disabled'])
+            self.cb.state(['!disabled'])
+            self.en.state(['!disabled'])
+            self.pbar.state(['!disabled'])
+            self.pb2.state(['!disabled'])
+        else:
+            self.sc.state(['disabled'])
+            self.sch.state(['disabled'])
+            self.cb.state(['disabled'])
+            self.en.state(['disabled'])
+            self.pbar.state(['disabled'])
+            self.pb2.state(['disabled'])
          
         for opt in self.allBtns:
             if opt.winfo_class() != 'TSeparator':
