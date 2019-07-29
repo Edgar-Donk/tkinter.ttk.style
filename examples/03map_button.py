@@ -1,18 +1,23 @@
 '''
-Creating a colour change whenever state is changed, using style.configure and style.map
+Creating a colour change whenever state is changed,
+
+using style.configure and style.map
 '''
 from tkinter import Tk
-from tkinter.ttk import Style,Button
+from tkinter.ttk import Style,Button,Label
 import random
 
 
 def change_style():
-    color = random.choice(['red', 'blue', 'yellow', 'dark gray', 'purple', 'cyan', 'brown', 'orange'])
-    style.configure('Die.TButton', background=color,    # cross reference 'Die.TButton'
+    color = random.choice(['red', 'blue', 'yellow', 'dark gray', 'purple', \
+                           'cyan', 'brown', 'orange'])
+     # cross reference 'Col.TButton'
+    style.configure('Col.TButton', background=color,   
                    foreground=['white' if color != 'yellow' else 'black'],
                     highlightthickness='20',
                     font=('Helvetica', 18, 'bold'))
-    style.map('Die.TButton', foreground=[("pressed", "red"), ("active", "blue")], # cross reference 'Die.TButton'
+     # cross reference 'Col.TButton'
+    style.map('Col.TButton', foreground=[("pressed", "red"), ("active", "blue")],
                             background=[('active', active_color(color))])
 
 
@@ -34,9 +39,11 @@ root = Tk()
 style = Style(root)
 style.theme_use('default')
 
-button = Button(root, text='Test', style='Die.TButton') # cross reference 'Die.TButton'
+Label(text="Dont't forget click and hover").pack(padx=4, pady=10)
+# cross reference 'Col.TButton'
+button = Button(root, text='Test', style='Col.TButton') 
 change_style()
-button.pack()
+button.pack(padx=4, pady=10)
 
 Button(root, command=change_style, text='Change style').pack(padx=4, pady=10)
 
