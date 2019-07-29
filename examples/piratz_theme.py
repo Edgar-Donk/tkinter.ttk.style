@@ -81,7 +81,8 @@ def install(imgdir):
         # LabelFrame
         'Labelframe.border': {"element create":
           ('image', "frame",
-           {'border':7, 'padding':5, 'sticky': "nsew"}) 
+           ('disabled', "frame-d"),
+           {'border':5, 'sticky': "nsew"}) # 'padding':5, 
         },
             
         # Entry
@@ -93,11 +94,21 @@ def install(imgdir):
         },
             
         # Separator
-        'Separator.separator': {"element create":
-          ('image', "separator",
-           #('invalid', "separator-v"), ## uncomment when using 2nd state
-           {'border':[3],'sticky': 'nsew'}) ## change border from 3 to 2 for 2nd state
-        },
+        'Horizontal.TSeparator': {'layout': [
+            ('Horizontal.Separator.separator',{"sticky": "ew"},
+        )]},
+    
+        'Vertical.TSeparator': {'layout': [
+            ('Vertical.Separator.separator',{"sticky": "ns"},
+        )]},
+
+        'Horizontal.Separator.separator': {"element create":
+            ('image', "separator",
+            {'border':[3],'sticky': 'ew'})},
+
+        'Vertical.Separator.separator': {"element create":
+            ('image', "separator-v",
+            {'border':[3],'sticky': 'ns'})},
         
         # Sizegrip
         'sizegrip': {"element create":
@@ -124,19 +135,26 @@ def install(imgdir):
         
         # Scrollbar
         "Horizontal.TScrollbar": {"layout": [
+            ("Horizontal.Scrollbar.leftarrow", {"side": "left", "sticky": ''}),
+            ("Horizontal.Scrollbar.rightarrow",
+                {"side": "right", "sticky": ''}),
+            #("Horizontal.Scrollbar.leftarrow",
+                #{"side": "right", "sticky": ''}),
             ("Horizontal.Scrollbar.trough", {"sticky": "ew", "children":
-                 [("Horizontal.Scrollbar.leftarrow", {"side": "left"}),
-                 ("Horizontal.Scrollbar.rightarrow", {"side": "right"}),
-                 ("Horizontal.Scrollbar.thumb", {"expand": 1,"sticky": "ew"})]
-            })]}, # "side": "left",
+                [("Horizontal.Scrollbar.thumb", {"expand": 1, "unit": 1,
+                    "children": [("Horizontal.Scrollbar.grip", {"sticky": ''})]
+                })]
+            })]},
         
         "Horizontal.Scrollbar.thumb": {"element create":
-            ("image", 'slider-hn',
-             ('disabled', 'slider-hd'),
-             ('pressed', 'slider-ha'),
-             ('active', 'slider-ha'),
+            ("image", 'hthumb-n',
+             ('disabled', 'hthumb-d'),
+             ('pressed', 'hthumb-a'),
+             ('active', 'hthumb-a'),
              {"border": [9,2]}) #3 , 'sticky': 'ew', 'padding': [7,2] 
         },
+
+        "Horizontal.Scrollbar.grip": {"element create": ("image", 'hgrip')},
 
         "Horizontal.Scrollbar.trough": {"element create":
             ('image', 'trough-horiz',
@@ -159,19 +177,24 @@ def install(imgdir):
             },
 
         "Vertical.TScrollbar": {"layout": [
+            ("Vertical.Scrollbar.uparrow", {"side": "top", "sticky": ''}),
+            ("Vertical.Scrollbar.downarrow", {"side": "bottom", "sticky": ''}),
+            #("Vertical.Scrollbar.uparrow", {"side": "bottom", "sticky": ''}),
             ("Vertical.Scrollbar.trough", {"sticky": "ns", "children":
-                 [("Vertical.Scrollbar.uparrow", {"side": "top"}),
-                 ("Vertical.Scrollbar.downarrow", {"side": "bottom"}),
-                 ("Vertical.Scrollbar.thumb", {"expand": 1,"sticky": "ns"})]
+                [("Vertical.Scrollbar.thumb", {"expand": 1, "unit": 1,
+                    "children": [("Vertical.Scrollbar.grip", {"sticky": ''})]
+                })]
             })]}, # "side": "top",
 
         "Vertical.Scrollbar.thumb": {"element create":
-            ("image", 'slider-vn',
-             ('disabled', 'slider-vd'),
-             ('pressed', 'slider-va'),
-             ('active', 'slider-va'),
+            ("image", 'vthumb-n',
+             ('disabled', 'vthumb-d'),
+             ('pressed', 'vthumb-a'),
+             ('active', 'vthumb-a'),
              {"border": [2,9]})
         },
+
+        "Vertical.Scrollbar.grip": {"element create": ("image", 'vgrip')},
 
         "Vertical.Scrollbar.trough": {"element create":
             ('image', 'trough-vert',
@@ -214,6 +237,12 @@ def install(imgdir):
          },
             
         # Notebook
+        'TNotebook': {'configure': {'bordercolor': colors['bordercolor'],
+                                    'tabmargins':[6,6,6,6]}
+       },
+        'TNotebook.tab': {"map":  
+        {'expand': [('selected', [6,6,6,6])]}},
+        
         'tab': {"element create":
           ('image', "sail",
            ('pressed', "sail-p"),
@@ -221,8 +250,6 @@ def install(imgdir):
            ('disabled', "sail-d"),
            {'border':[30, 17, 27, 32], 'padding':[13,8,12,13], 'sticky': "nsew"} 
         ) },
-       'TNotebook': {'configure': {'bordercolor': colors['bordercolor']}
-       },
        
        # Treeview
        'Treeheading.cell': {"element create":
