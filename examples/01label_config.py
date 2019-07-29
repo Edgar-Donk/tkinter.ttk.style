@@ -1,3 +1,4 @@
+""" Compares the configuration options of Label and themed Label"""
 import pprint
 from tkinter import Tk,Label
 from tkinter.ttk import Label as ttklab
@@ -7,7 +8,7 @@ w = Label(root, text="Hello, world!")
 w.pack()
 print('TKINTER')
 print()
-pprint.pprint(w.config()) # this displays all the configuration options of the widget
+pprint.pprint(w.config()) # displays the configuration options of the widget
 print()
 print('##################################################')
 print()
