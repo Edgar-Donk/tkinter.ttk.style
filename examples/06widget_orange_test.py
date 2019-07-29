@@ -8,15 +8,15 @@ from tkinter import Tk, PhotoImage
 
 root = Tk()
 style = Style()
-im0 = PhotoImage('combor-n', file='images/combor-n.gif')
-im1 = PhotoImage('combor-rd',file='images/combor-rd.gif')
-im2 = PhotoImage('combor-rp',file='images/combor-rp.gif')
-im3 = PhotoImage('combor-rf',file='images/combor-rf.gif')
-im4 = PhotoImage('combor-rn',file='images/combor-rn.gif')
-im5 = PhotoImage('comboarrow-n',file='images/comboarrow-n.gif')
-im6 = PhotoImage('comboarrow-p',file='images/comboarrow-p.gif')
-im7 = PhotoImage('comboarrow-a',file='images/comboarrow-a.gif')
-im8 = PhotoImage('comboarrow-d',file='images/comboarrow-d.gif')
+im0 = PhotoImage('combor-n', file='../images/combor-n.gif')
+im1 = PhotoImage('combor-rd',file='../images/combor-rd.gif')
+im2 = PhotoImage('combor-rp',file='../images/combor-rp.gif')
+im3 = PhotoImage('combor-rf',file='../images/combor-rf.gif')
+im4 = PhotoImage('combor-rn',file='../images/combor-rn.gif')
+im5 = PhotoImage('comboarrow-n',file='../images/comboarrow-n.gif')
+im6 = PhotoImage('comboarrow-p',file='../images/comboarrow-p.gif')
+im7 = PhotoImage('comboarrow-a',file='../images/comboarrow-a.gif')
+im8 = PhotoImage('comboarrow-d',file='../images/comboarrow-d.gif')
 
 # Try theme_settings, comment out theme_create uncomment theme_settings
 # also change theme_use 
