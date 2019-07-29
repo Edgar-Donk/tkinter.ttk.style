@@ -42,7 +42,8 @@ fr = Frame(root)
 fr.grid(column=0,row=0)
 fr2 = Frame(root)
 fr2.grid(column=1,row=0)
-lbl = Label(fr,text= 'Enter colour code\n no quotes\n code can be r,g,b\n hash #rrggbb\n or name')
+lbl = Label(fr,text= 'Enter colour code\n use no quotes\n code can be r,g,b\n \
+    hash #rrggbb\n or name')
 lbl.grid(column=0,row=0,padx=5,pady=10)
 
 ey = Entry(fr2)
