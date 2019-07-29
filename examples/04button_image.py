@@ -1,4 +1,6 @@
 '''
+Image on Button
+
 Use png image files, if running tkinter 8.6 or more, this will run - if using tkinter 8.5 then we  need to use
 PIL open the images with PIL.Image then load this with ImageTk.PhotoImage into the Button widget.
 
@@ -14,14 +16,15 @@ class Example:
         fr = Frame(master) 
         master.title('Button Test')
         fr.grid(column=0, row=0, sticky=('nsew'))
-
-        # im1 =  = Image.open('../images/butImage.png') ## uncomment if you are running tkinter 8.5
-        # im2 = Image.open('../images/butImageTrans.png') ## uncomment if you are running tkinter 8.5
-        # self.buttonPhoto = ImageTk.PhotoImage(im1)  ## uncomment if you are running tkinter 8.5
-        # buttonPhotoTrans = ImageTk.PhotoImage(im2)  ## uncomment if you are running tkinter 8.5
+        ## uncomment following 4 lines if you are running tkinter 8.5
+        # im1 =  = Image.open('../images/butImage.png') ##
+        # im2 = Image.open('../images/butImageTrans.png') ##
+        # self.buttonPhoto = ImageTk.PhotoImage(im1)  ##
+        # buttonPhotoTrans = ImageTk.PhotoImage(im2)  ##
         
-        self.buttonPhoto = PhotoImage(file='images/butImage.png') ## comment out if you are running tkinter 8.5
-        buttonPhotoTrans = PhotoImage(file='images/butImageTrans.png') ## comment out if you are running tkinter 8.5
+        ## comment out following 2 lines if you are running tkinter 8.5
+        self.buttonPhoto = PhotoImage(file='../images/butImage.png') ##
+        buttonPhotoTrans = PhotoImage(file='../images/butImageTrans.png') ## 
         '''
         we are using both a local and a variable prefixed with self
         '''
@@ -32,7 +35,8 @@ class Example:
                          style='new.TButton', image=buttonPhotoTrans) 
         myButton.image = buttonPhotoTrans # keep a reference as local variable!
         myButton.grid(column=0, row=1, sticky=('ew'), padx=10, pady=10)
-        myButton2 = Button(master, compound='center', text='Really long now - Click on Me!',
+        myButton2 = Button(master, compound='center', 
+                           text='Really long now - Click on Me!',
                          style='new.TButton', image=buttonPhotoTrans) 
         myButton2.image = buttonPhotoTrans # keep a reference as local variable!
         myButton2.grid(column=0, row=2, sticky=('ew'), padx=10, pady=10)
@@ -41,7 +45,8 @@ if __name__ == "__main__":
     root = Tk()
     s=Style()
     s.theme_use('default') # ensure all see the same
-    s.configure('new.TButton',font='Helvetica 20 bold') # produce a large heavy text, 
+    # produce a large heavy text, 
+    s.configure('new.TButton',font='Helvetica 20 bold') 
     # button font does not work in tkinter 8.6
     example = Example(root)
     root.mainloop()

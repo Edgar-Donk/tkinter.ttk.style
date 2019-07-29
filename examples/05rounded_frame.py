@@ -1,12 +1,14 @@
 '''
+Create a frame with rounded corners and shading
+
 Loading an image into a widget using element_create, layout and configure.
 The image has been loaded as a data file, bypassing the need to open an
 image file. Since the frame widget does not inherintly have a link to
-any states other than the normal state, hence the need to provide
-bind to the entry and text widgets together with lambda functions.
+any states other than the normal state, there is a need to provide
+binds to the entry and text widgets together with lambda functions.
 '''
-from tkinter import Tk, PhotoImage, Text
-from tkinter.ttk import Style, Frame, Entry
+from tkinter import Tk, PhotoImage, Text, StringVar
+from tkinter.ttk import Style, Frame, Entry, Label
 
 root = Tk()
 
@@ -96,20 +98,25 @@ style.element_create("RoundedFrame", "image", "frameBorder",
 style.layout("RoundedFrame", [("RoundedFrame", {"sticky": "nsew"})])
 style.configure("TEntry", borderwidth=0) # general handle widget class Entry
 
+lab = Label(text="Dont't forget to click and hover\n \
+also put a few letters in the entry and text").pack(pady=5)
 frame = Frame(style="RoundedFrame", padding=10)
 frame.pack(fill='x')
 
 frame2 = Frame(style="RoundedFrame", padding=10)
 frame2.pack(fill='both', expand=1)
 
-entry = Entry(frame, text='Test')
+tv = StringVar()
+entry = Entry(frame, textvariable=tv)
 entry.pack(fill='x')
 entry.bind("<FocusIn>", lambda evt: frame.state(["focus"]))
 entry.bind("<FocusOut>", lambda evt: frame.state(["!focus"]))
+tv.set('Entry input here')
 
-text = Text(frame2, borderwidth=0, bg="white", highlightthickness=0)
+text = Text(frame2, borderwidth=0, bg="floral white", highlightthickness=0)
 text.pack(fill='both', expand=1)
 text.bind("<FocusIn>", lambda evt: frame2.state(["focus"]))
 text.bind("<FocusOut>", lambda evt: frame2.state(["!focus"]))
+# text.insert('Text insert here')
 
 root.mainloop()

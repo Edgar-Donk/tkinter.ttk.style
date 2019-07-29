@@ -3,8 +3,10 @@
 Translated from Tcl code by Schelte Bron, http://wiki.tcl.tk/18188
 wish I knew who translated it to Python - but thanks anyway
 
-Since we are directly using widgets and their states the code is somewhat simplified
-compared to the rounded frame.
+Since we are directly using widgets and their states the code is somewhat 
+simplified compared to the rounded frame.
+
+It may be necessary to run in Idle or from command line
 """
 from tkinter import Tk, PhotoImage
 from tkinter.ttk import Style, Entry
@@ -75,9 +77,11 @@ style.configure("Search.entry", background="#b2b2b2")
 root.configure(background="#b2b2b2")
 
 e1 = Entry(style="Search.entry", width=20)
-e2 = Entry(style="Search.entry", width=20)
-
 e1.grid(padx=10, pady=10)
+
+e2 = Entry(style="Search.entry", width=20)
 e2.grid(padx=10, pady=10)
+
+
 
 root.mainloop()
