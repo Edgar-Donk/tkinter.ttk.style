@@ -15,3 +15,6 @@ An even more lightning tour through the themes from tkinter.ttk and ttkthemes.
 Create a few specials to show what can be achieved then create a standalone version, after that you are only limited by your
 imagination, where an appreciation of PIL (Pillow) will be useful.
 
+## See the working copy
+
+https://tkinterttkstyle.readthedocs.io/en/latest/index.html
