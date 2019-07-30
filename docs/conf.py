@@ -14,13 +14,6 @@ import os
 import sys
 sys.path.insert(0, os.path.abspath('.'))
 
-try:
-    import easydev
-    from easydev import get_path_sphinx_themes
-except Exception:
-    print ("Install easydev or set your PYTHONPATH properly")
-    raise Exception
-    
 # -- Project information -----------------------------------------------------
 
 project = 'Putting on the Style'
