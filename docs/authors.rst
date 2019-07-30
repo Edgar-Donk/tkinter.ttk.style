@@ -14,8 +14,7 @@ Any comments please forward to
 
 edga.donk@gmx.de
 
-Just to anticipate what you are probably thinking - I know it's about 4 times 
-too long.
+Just to anticipate what you are probably thinking - I know it's far too long.
 
 Repository
 ==========
