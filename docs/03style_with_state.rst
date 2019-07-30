@@ -174,6 +174,7 @@ Script Map Button
 .. figure:: figures/03map_button.jpg
    :width: 154px
    :height: 92px
+   :align: center
 
 In the example 03map_button.py 
 
@@ -197,6 +198,7 @@ Script Combobox in a Theme
 .. figure:: figures/03map_combo.jpg
    :width: 171px
    :height: 41px
+   :align: center
 
 .. topic:: Remember 
 
@@ -282,6 +284,7 @@ States and Themes
 .. figure:: figures/03themes_states.jpg
    :width: 215px
    :height: 300px
+   :align: center
 
 Script 03states_themes.py
 ^^^^^^^^^^^^^^^^^^^^^^^^^^

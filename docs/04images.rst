@@ -50,6 +50,7 @@ we pass the cursor over it, and press the button. Load up 04button_image.py
 .. figure:: figures/04button_image.jpg
    :width: 467px
    :height: 314px
+   :align: center
 
 Script 04button_image.py
 ^^^^^^^^^^^^^^^^^^^^^^^^
@@ -117,6 +118,7 @@ Check out the example 04button_pictograms.py.
 .. figure:: figures/04button_pictogram.jpg
    :width: 105px
    :height: 40px
+   :align: center
 
 Script 04button_pictograms.py
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

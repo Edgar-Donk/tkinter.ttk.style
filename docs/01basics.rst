@@ -119,6 +119,7 @@ Button Components
 .. figure:: figures/01button_components.png
    :width: 473px
    :height: 246px
+   :align: center
 
    Components of a Button
 
@@ -131,6 +132,7 @@ Scrollbar Components
    figures/01scrollbar_components.png
    :width: 462px
    :height: 373px
+   :align: center
 
    Components of a Scrollbar
 

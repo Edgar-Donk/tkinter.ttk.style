@@ -771,6 +771,7 @@ Piratz Theme
 .. image:: figures/07pir_theme.png
    :width: 592
    :height: 670
+   :align: center
 
 Once the widgets have been all tested we can build up piratz_theme.py, we may 
 also require common colours and a common tkfont. When testing choose a suitable 

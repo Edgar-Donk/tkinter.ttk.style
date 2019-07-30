@@ -91,6 +91,7 @@ text widgets, example 05rounded_frame.py.
 .. figure:: figures/05rounded_frame.jpg
    :width: 244px
    :height: 36px
+   :align: center
 
 05rounded_frame
 ---------------
@@ -200,6 +201,7 @@ the middle 32 pixels of each side are used during an image extension.
 .. figure:: figures/05enlarged.png
    :width: 330px
    :height: 320px
+   :align: center
 
    Top left hand corner showing 16 pixel distances from sides
 
@@ -220,6 +222,7 @@ Rounded LabelFrame
 .. figure:: figures/05rounded_labelframe.jpg
    :width: 123px
    :height: 61px
+   :align: center
 
 Only the element_create and layout parts have been shown.
 
@@ -251,6 +254,7 @@ The next example, was found by trawling the internet, 05search_entry.py
 .. figure:: figures/05search_entry.jpg
    :width: 141px
    :height: 29px
+   :align: center
 
 Script 05search_entry.py
 ------------------------

@@ -14,6 +14,7 @@ Themed notebook
 .. image:: /figures/06themed_notebook.jpg
    :width: 496px
    :height: 318px
+   :align: center
 
 Let us refresh our memory of how a widget looks in the various themes, try 
 06theme_notebook.py, which has most of the important widgets together with a 
@@ -172,12 +173,14 @@ like
 .. image:: images/elegance_cb.jpg
    :width: 377px
    :height: 99px
+   :align: center
 
 whereas radiance looks like
 
 .. image:: images/radiance_cb.jpg
    :width: 344px
    :height: 82px
+   :align: center
 
 Say we prefer the radiance combobox and want to run it in our green theme.
 
@@ -237,6 +240,7 @@ This should look something like:-
 .. image:: images/green_cb_orig.jpg
    :width: 360px
    :height: 73px
+   :align: center
 
 which as you can see on my windows box is not quite the same as the radiance 
 combobox, look at the position of the down arrow. Check green.tcl and see that 
@@ -255,6 +259,7 @@ altered enough - let's try the clam theme instead - ahh far better.
 .. image:: images/green_cb_post.jpg
    :width: 342px
    :height: 72px
+   :align: center
 
 That wasn't too bad was it? Now for the orange theme, taken from orange.py . ::
 
@@ -280,6 +285,7 @@ the python corresponding to the tcl in radiance.tcl.
 .. figure:: figures/06orange_test.jpg
    :width: 332px
    :height: 59px
+   :align: center
 
 It's probably best to run a python test file such as 06widget_orange_test.py. 
 

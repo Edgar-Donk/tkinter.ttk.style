@@ -288,6 +288,7 @@ Two Coloured Buttons
 .. figure:: figures/02two_coloured.jpg
    :width: 154px
    :height: 185px
+   :align: center
 
 .. topic:: Button Background Colour
 
@@ -312,6 +313,7 @@ Horizontal Scrollbar - Style
 .. figure:: figures/02scrollbar.jpg
    :width: 171px
    :height: 83px
+   :align: center
 
 That was easy wasn't it, feel like a challenge? Let's try modifying a 
 horizontal scrollbar, use the layout and element_options to find all likely 
@@ -344,6 +346,7 @@ LabelFrame - Style
 .. figure:: figures/02labelframe.jpg
    :width: 139px
    :height: 450px
+   :align: center
 
 The last type of widget are those with auxiliary parts. Taking LabelFrame as 
 an example, we would normally wish to modify the label part rather than the 
@@ -420,6 +423,7 @@ Entry - Style
 .. figure:: figures/02entry.png
    :width: 173px
    :height: 42px
+   :align: center
 
    Entry style - using the clam theme
 
