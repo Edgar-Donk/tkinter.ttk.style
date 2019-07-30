@@ -1,6 +1,6 @@
 ### tkinter.ttk.style
 
-# Tkinter in Python - you've got to have style!
+# Tkinter in Python - putting on the style!
 
 As you are no doubt aware tkinter introduced a theme (or tile) based module. Searching the web I was struck by how little the
 new capabilities were demonstrated, questions and answers concentrated mostly on how to colour widgets and suchlike.
