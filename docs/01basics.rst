@@ -89,7 +89,7 @@ configurations found in the older tkinter and newer ttk Label.
 Script 01Label_config.py
 ------------------------
 
-
+To view or hide the code just click on the arrow.
 
 .. container:: toggle
 
