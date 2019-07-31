@@ -99,6 +99,7 @@ To view or hide the code just click on the arrow.
 
    .. literalinclude:: examples/01Label_config.py
 
+
 Widget Composition
 ==================
 
