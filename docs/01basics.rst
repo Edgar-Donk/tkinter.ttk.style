@@ -89,8 +89,7 @@ configurations found in the older tkinter and newer ttk Label.
 Script 01Label_config.py
 ------------------------
 
-
-.. note:: To view or hide the code just click on the arrow.
+To view or hide the code just click on the arrow.
 
 .. container:: toggle
 
@@ -99,7 +98,6 @@ Script 01Label_config.py
        *Show/Hide Code* 01Label_config.py
 
    .. literalinclude:: examples/01Label_config.py
-      :linenos:
 
 Widget Composition
 ==================
