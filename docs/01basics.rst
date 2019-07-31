@@ -89,7 +89,7 @@ configurations found in the older tkinter and newer ttk Label.
 Script 01Label_config.py
 ------------------------
 
-To view or hide the code just click on the arrow.
+
 
 .. container:: toggle
 
@@ -97,7 +97,28 @@ To view or hide the code just click on the arrow.
 
        *Show/Hide Code* 01Label_config.py
 
-   .. literalinclude:: examples/01Label_config.py
+   .. code-block:: python
+
+      """ Compares the configuration options of Label and themed Label"""
+      import pprint
+      from tkinter import Tk,Label
+      from tkinter.ttk import Label as ttklab
+
+      root = Tk()
+      w = Label(root, text="Hello, world!")
+      w.pack()
+      print('TKINTER')
+      print()
+      pprint.pprint(w.config()) # displays the configuration options of the widget
+      print()
+      print('##################################################')
+      print()
+      print('TTK')
+      print()
+      w2 = ttklab(root, text="Hello, world!")
+      w2.pack()
+      pprint.pprint(w2.config())
+      root.mainloop()
 
 
 Widget Composition
@@ -222,6 +243,8 @@ affects its appearance.
 
 Script 01two_buttons.py
 ^^^^^^^^^^^^^^^^^^^^^^^^
+
+To view or hide the code just click on the arrow.
 
 .. container:: toggle
 
