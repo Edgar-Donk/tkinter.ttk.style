@@ -20,6 +20,7 @@ achieved in ttktheme.
 .. figure:: figures/08comboarrow_large.png
    :width: 160px
    :height: 240px
+   :align: center
 
 Enlarge an image such as comboarrow-n.png from the Ubuntu theme and see 
 that the outer border is one pixel wide. There are highlights and shadows also 
@@ -300,6 +301,7 @@ are showing.
 .. figure:: figures/08corner_test.png
    :width: 329
    :height: 337
+   :align: center
 
    Top left corner of corner_test1.png
 
@@ -555,6 +557,7 @@ antialiasing obviously affect the appearance but mostly are derived implicitly.
 .. image:: figures/08designer_colour_wheel.png
    :width: 441px
    :height: 478px
+   :align: center
 
 The following guidelines are to be taken as a starting point only, since they 
 are based on internal decorating practice which uses the normal colour wheel,
@@ -592,6 +595,7 @@ so take with a pinch of salt.
 .. figure:: figures/08rgb_hsv.png
    :width: 436
    :height: 332
+   :align: center
 
    RGB and HSV Colour Wheel
 
@@ -601,6 +605,7 @@ so take with a pinch of salt.
 .. figure:: figures/08rgb_hsl.png
    :width: 348
    :height: 244
+   :align: center
 
    RGB and HSL Colour Selector
 
@@ -610,6 +615,7 @@ so take with a pinch of salt.
 .. figure:: figures/08rgb_lch.png
    :width: 417
    :height: 295
+   :align: center
 
    RGB and LCH Colour Selector
    
@@ -640,6 +646,7 @@ Gradients
 .. figure:: figures/08rgb_hsv_grad.png
    :width: 256
    :height: 128
+   :align: center
 
    **Overcomplicated** Gradients
    
@@ -835,6 +842,7 @@ Radial Gradient
 .. figure:: figures/08radial.png
    :width: 94
    :height: 94
+   :align: center
 
 .. sidebar:: Experiment with odd sized Images
 
@@ -880,6 +888,7 @@ horizontal line joined to an arrow tip by two slanting lines.::
 .. figure:: figures/08arrow_test1.png
    :width: 144
    :height: 113
+   :align: center
 
 The result looks lopsided and we should not even consider using it. The 
 righthand slope matches combobox-n.png but the lefthand side has changed the 
@@ -899,6 +908,7 @@ Alter the polygon to include point 6,12 (automatically closing off at 5,11)::
 .. figure:: figures/08arrow_test2.png
    :width: 146
    :height: 112
+   :align: center
 
 It seems we were lucky, both sides match. This works at this sort of line
 size, at larger magnifications this method is no longer applicable. 
@@ -952,6 +962,7 @@ Alternative Arrow
 .. figure:: figures/08alt_arrow.png
    :width: 208
    :height: 195
+   :align: center
 
 If we look at the arrows used throughout the standard themes and in ttktheme
 there are not many we can say are exactly gripping. Most comboboxes are plain
