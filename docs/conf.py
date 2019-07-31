@@ -84,4 +84,4 @@ html_theme_options = {'display_version': True,
 html_static_path = ['_static']
 
 # html_logo = '_static/ben1.png'
-html_favicon = '_static/ben.ico'
+html_favicon = '_static/ben1.ico'
