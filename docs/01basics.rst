@@ -58,6 +58,25 @@ greater so that png files can be used directly.
 
       pip install colorsys
 
+* These words of wisdom
+   Go to github `Putting on the Style! <https://github.com/Edgar-Donk/tkinter.ttk.style/tree/master>`_
+   clone and unzip in your python playground, make sure that ``examples``, 
+   ``tables`` and ``images`` stay at the same level in the directory 
+   structure, the other files and images are not relevant if you are viewing
+   readthedocs.
+   
+   If you want to run it as a sphinx example unzip to your sphinx playground,
+   then install sphinx and sphinx-rtd-theme.::
+
+      pip install sphinx
+
+      pip install sphinx-rtd-theme
+
+   All the necessary files should be present, so from your os system switch
+   to the ``docs`` directory of the unzipped files and run the command
+   ``make html``, which should make a new subdirectory ``_build/html``, 
+   where you can load ``index.html``.
+
 Widgets - General
 =================
 
