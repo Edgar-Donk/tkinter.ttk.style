@@ -32,12 +32,12 @@ class Tree:
             pass
         
         self.fr = Frame(self.fra)
-        self.fr.grid(column=0, row=1, sticky='nsew')
+        self.fr.pack(fill='both', expand=False) #grid(column=0, row=1, sticky='nsew')
         
         lbl = Label(self.fr, text=self.csvFile)
         lbl.grid(column=0, row=0, sticky='n')
      
-        self.tree = Treeview(self.fr,columns=self.treeColumns, show="headings") # ,height =20
+        self.tree = Treeview(self.fr,columns=self.treeColumns, show="headings", style='font.Treeview') # ,height =20
         self.tree.grid(column=0, row=1, sticky='ns')
         
         vsb = Scrollbar(self.fr,orient="vertical", command=self.tree.yview)
@@ -61,16 +61,18 @@ class Tree:
             itemID = self.tree.insert('', 'end', values=item)
         
             for indx, val in enumerate(item):
-                ilen = font.Font().measure(val)*7//9
+                ilen = font.Font().measure(val) *8//9
                 if self.tree.column(self.treeColumns[indx], width=None) < ilen:
                     self.tree.column(self.treeColumns[indx],width=ilen)
                 
 if __name__ == "__main__":
     root = Tk()
-    style = Style()
-    style.theme_use('clam')
+    s = Style()
+    s.theme_use('clam')
+    s.configure('font.Treeview.Heading', font=("DejaVu Sans Mono",'12'))
+    s.configure('font.Treeview', font=("DejaVu Sans Mono",'10'))
     page1 = Frame()
-    page1.grid(sticky='nsew')
-    csvFile = '01style_commands.csv'
+    page1.pack(fill='both', expand=True) # grid(sticky='nsew')
+    csvFile = '../tables/01style_commands.csv'
     app = Tree(page1,csvFile,csvDelimiter=',') 
     root.mainloop()
