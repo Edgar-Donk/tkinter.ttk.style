@@ -83,5 +83,5 @@ html_theme_options = {'display_version': True,
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ['_static']
 
-# html_logo = '_static/ben1.png'
+html_logo = '_static/ben1.png'
 html_favicon = '_static/ben1.ico'

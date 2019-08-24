@@ -1,8 +1,8 @@
 .. _authors:
 
-=======
-Authors
-=======
+============
+Contributors
+============
 
 Edgar Donk
 
@@ -14,7 +14,7 @@ Any comments please forward to
 
 edga.donk@gmx.de
 
-Just to anticipate what you are probably thinking - I know it's about 4 times 
+Just to anticipate what you are probably thinking - I know it's much 
 too long.
 
 Repository
