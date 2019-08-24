@@ -304,7 +304,7 @@ We can see that ubuntu uses theme create without layout.
    a different hue we can substitute a new pivot and target colours - a commented 
    example is included. The 3 colour channels are linearly adjusted based on 
    the two constant points, if the source was white then the sum of the channels 
-   would be 765 and the individual channels of the final colour would would be 255, 
+   would be 765 and the individual channels of the final colour would be 255, 
    the other point we know is that if the source is the same as our pivot colour, 
    then the channel values of the final colour would be the same as our target 
    colour.
@@ -744,13 +744,13 @@ and make the length the same as your trough image.
 Scale
 ^^^^^^
 
-In the scale widget we have a similar situation but we can use the ``command`` 
-property to trigger our external function, which simplifies matters somewhat, 
-we need only to concentrate on obtaining the scale value then trigger the state 
-changes at pre-determined settings. The horizontal scale has several states 
-not only for the slider but the trough as well. This makes the state calls
-more interesting than usual. When calling a state remember to cancel the 
-other states.
+In the scale widget we have a similar situation to progressbar but we can use 
+the ``command`` property to trigger our external function, which simplifies 
+matters somewhat, we need only to concentrate on obtaining the scale value 
+then trigger the state changes at pre-determined settings. The horizontal 
+scale has several states not only for the slider but the trough as well. 
+This makes the state calls more interesting than usual. When calling a state 
+remember to cancel the other states.
 
 .. container:: toggle
 

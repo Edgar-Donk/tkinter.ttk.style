@@ -446,9 +446,9 @@ though it should work, test it and see. Look at 02Entry.py.
 
 .. sidebar:: Just an Exercise 
 
-   There should normally no need to change widgets while they are operating
-   with a windows or mac OS theme, so view this as an exercise, usually to 
-   be avoided.
+   There should normally be no need to change widgets while they are 
+   operating with a windows or mac OS theme, so view this as an exercise, 
+   usually to be avoided.
 
 If we use the clam theme it should create a blue background, 
 however if the clam theme is not used and you are running with windows or 
