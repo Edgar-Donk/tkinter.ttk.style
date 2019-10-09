@@ -273,7 +273,7 @@ To view or hide the code just click on the arrow.
 
    .. literalinclude:: examples/01two_buttons.py
       :linenos:
-      :emphasize-lines: 10
+      :emphasize-lines: 13
    
 If we had left out the line::
 
