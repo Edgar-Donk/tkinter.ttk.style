@@ -77,7 +77,7 @@ hash values.
 As stated at the beginning there are remarkably few instances of the more 
 interesting style changes found when trawling the internet. Up until this 
 point most of the examples could have been made referring `"Tkinter 8.5 
-reference: a GUI for Python" <http://infohost.nmt.edu/tcc/help/pubs/tkinter/tkinter.pdf>`_.
+reference: a GUI for Python" <https://www.hsg-kl.de/faecher/inf/python/tkinter/tkinter.pdf>`_.
 The few instances I did find that displayed rounded corners and shadow 
 effects I will reproduce here.
 
@@ -298,7 +298,7 @@ replaced by ``Search.field``.::
 The other item to note is how he deals with the border width. Originally it 
 was 1 all round, now it is ``border=[22, 7, 14]``. This follows the same 
 convention as used for padding found in `"Tkinter 8.5 reference: a GUI for Python" 
-<http://infohost.nmt.edu/tcc/help/pubs/tkinter/tkinter.pdf>`_, the 
+<https://www.hsg-kl.de/faecher/inf/python/tkinter/tkinter.pdf>`_, the 
 left side is 22 and the right side 7 meanwhile top and bottom sides are 14. 
 Check out table 05padding_border_layout.csv.
 

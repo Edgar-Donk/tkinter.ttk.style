@@ -25,7 +25,7 @@ greater so that png files can be used directly.
 
 * Tkinter reference
    download the pdf version of 
-   `"Tkinter 8.5 reference a GUI for Python" <http://infohost.nmt.edu/tcc/help/pubs/tkinter/tkinter.pdf>`_, 
+   `"Tkinter 8.5 reference a GUI for Python" <https://www.hsg-kl.de/faecher/inf/python/tkinter/tkinter.pdf>`_, 
 * Themed widgets
    See what has already been done with widgets, view and install the external 
    module ttkthemes::
@@ -90,7 +90,7 @@ Where widgets are duplicated be aware that between tkinter and ttk their
 property options do not correspond . For instance ttk Button has a 
 single option ``style`` instead of 24 additional property options in tkinter, 
 the remaining 10 property options are common to both Button widgets. Use
-`"Tkinter 8.5 reference a GUI for Python" <http://infohost.nmt.edu/tcc/help/pubs/tkinter/tkinter.pdf>`_
+`"Tkinter 8.5 reference a GUI for Python" <https://www.hsg-kl.de/faecher/inf/python/tkinter/tkinter.pdf>`_
 to find out which property options are used on all the widgets. 
 
 .. topic:: Property Options
