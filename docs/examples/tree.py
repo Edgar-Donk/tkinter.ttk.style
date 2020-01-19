@@ -55,22 +55,22 @@ class Tree:
         for col in self.treeColumns:
             #print(treeColumns,col,col.title())
             self.tree.heading(col, text=col.title())
-            self.tree.column(col, width=font.Font().measure(col.title()),stretch=False)
+            self.tree.column(col, width=font.Font(family="Segoe UI", size=12, weight="bold").measure(col.title()) + 10,stretch=False)
     
         for ix, item in enumerate(self.treeData):
             itemID = self.tree.insert('', 'end', values=item)
         
             for indx, val in enumerate(item):
-                ilen = font.Font().measure(val) *8//9
-                if self.tree.column(self.treeColumns[indx], width=None) < ilen:
-                    self.tree.column(self.treeColumns[indx],width=ilen)
+                ilen = font.nametofont('TkDefaultFont').measure(val) #*8//9
+                if self.tree.column(self.treeColumns[indx], width=None) < ilen + 10:
+                    self.tree.column(self.treeColumns[indx],width=ilen + 10)
                 
 if __name__ == "__main__":
     root = Tk()
     s = Style()
     s.theme_use('clam')
-    s.configure('font.Treeview.Heading', font=("DejaVu Sans Mono",'12'))
-    s.configure('font.Treeview', font=("DejaVu Sans Mono",'10'))
+    s.configure('font.Treeview.Heading', font=("Segoe UI",'12','bold'))
+    s.configure('font.Treeview', font='TkDefaultFont')
     page1 = Frame()
     page1.pack(fill='both', expand=True) # grid(sticky='nsew')
     csvFile = '../tables/01style_commands.csv'

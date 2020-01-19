@@ -3,7 +3,7 @@
 
 from tkinter import Tk, IntVar, StringVar
 from tkinter.ttk import Frame, Notebook, Separator, Checkbutton, Button, Radiobutton, LabelFrame, Treeview,\
-Scrollbar, Combobox, PanedWindow, Style, Scale, Progressbar, Sizegrip, Label, Entry
+Scrollbar, Combobox, PanedWindow, Style, Scale, Progressbar, Sizegrip, Label, Entry, Spinbox
 from tkinter.font import Font
 #from ttkthemes import themed_style as ts 
 import piratz_theme
@@ -210,8 +210,8 @@ class NotebookDemo:
         scl.grid(row=0,column=0,sticky='nw')
         fr1 = Frame(lF)
         fr1.grid(row=1,column=0,sticky='nsew')
-        from_=100
-        to=0
+        from_=0
+        to=100
         value=0
         step=10
         fontSize = 9
@@ -222,7 +222,8 @@ class NotebookDemo:
         self.sc = Scale(fr1, from_=from_, to=to, variable=self.scvar,
                     orient='vertical', length=scLen, command=self.v_scale)
         self.sc.set(value)
-        l1 = Label(fr1,textvariable=self.scvar,width=5)
+        #l1 = Label(fr1,textvariable=self.scvar,width=5)
+        l1 = Spinbox(fr1, from_=from_, to=to, textvariable=self.scvar, width=4)
         l1.grid(row=1,column=0,padx=5,pady=5)
         self.sc.grid(row=1,column=1,padx=5,pady=5) 
         fr4=Frame(fr1)
@@ -244,7 +245,8 @@ class NotebookDemo:
                          orient='horizontal', command = self.h_scale)
 
         self.sch.set(0)
-        l2 = Label(fr2,textvariable=self.schvar,width=5)
+        #l2 = Label(fr2,textvariable=self.schvar,width=5)
+        l2 = Spinbox(lF, from_=a, to=b, textvariable=self.schvar, width=4)
         l2.grid(row=1,column=1,pady=2) 
         self.sch.grid(row=2,column=1,padx=5,pady=5,sticky='nsew')
         l3 = Label(fr2,text=schRange[0], font=('Courier New', str(fontSize)))

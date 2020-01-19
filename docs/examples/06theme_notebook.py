@@ -7,7 +7,7 @@ collection of themed widgets
 from tkinter import Tk, IntVar, StringVar
 from tkinter.ttk import Frame, Notebook, Separator, Checkbutton, Button, \
 Radiobutton, LabelFrame, Treeview,Scrollbar, Combobox, PanedWindow, Style, \
-Scale, Progressbar, Sizegrip, Label, Entry
+Scale, Progressbar, Sizegrip, Label, Entry, Spinbox
 from tkinter.font import Font
 from ttkthemes import themed_style as ts 
 
@@ -220,7 +220,8 @@ class NotebookDemo:
                     orient='vertical',length=scLen,
                         command=lambda s: scvar.set('%d' % float(s) )) 
         self.sc.set(value)
-        l1 = Label(fr1,textvariable=scvar,width=5)
+        #l1 = Label(fr1,textvariable=scvar,width=5)
+        l1 = Spinbox(fr1, from_=from_, to=to, textvariable=scvar, width=4)
         l1.grid(row=0,column=0,pady=2) 
         self.sc.grid(row=0,column=1) 
         fr=Frame(fr1)
@@ -238,7 +239,8 @@ class NotebookDemo:
                          orient='horizontal',
                          command=lambda s: schvar.set('%d' % float(s) )) 
         self.sch.set(23)
-        l2 = Label(lF,textvariable=schvar)
+        #l2 = Label(lF,textvariable=schvar)
+        l2 = Spinbox(lF, from_=a, to=b, textvariable=schvar, width=4)
         l2.grid(row=1,column=1,pady=2) 
         self.sch.grid(row=2,column=1,pady=2,sticky='nw')
         l3 = Label(lF,text=schRange[0], font=('Courier New', str(fontSize)))
@@ -249,9 +251,9 @@ class NotebookDemo:
         pb1var = IntVar()
         pb2var = IntVar() 
         self.pbar = Progressbar(lF1, variable = pb1var, length = 150, 
-                                mode ="indeterminate", name='pb1')
+                        mode ="indeterminate", name='pb1', orient='horizontal')
         self.pb2 = Progressbar(lF1, variable = pb2var, mode='indeterminate', 
-                               name='pb2')
+                               name='pb2', orient='vertical')
         self.pbar["value"] = 25
         self.pbar.grid(row=1,column=0,padx=5,pady=5,sticky='nw')
         self.pb2.grid(row=1,column=1,padx=5,pady=5,sticky='nw')

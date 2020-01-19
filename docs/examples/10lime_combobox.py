@@ -1,5 +1,5 @@
 '''
-Combobox with an anchor
+Combobox 
 
 Create theme extract for custom widgets, include state selection to view
 the result of changing the state using different images and/or different
