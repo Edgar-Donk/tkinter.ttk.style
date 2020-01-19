@@ -22,9 +22,9 @@ the lime theme, something like: tile-themes/images/lime
 import os
 from glob import glob
 
-from tkinter import PhotoImage, Tk
+from tkinter import PhotoImage
 import tkinter.ttk
-import tkinter.font as tkFont
+# import tkinter.font as tkFont
 
 __all__ = ['install']
 
@@ -39,18 +39,18 @@ colours = {
 
 imgs = {}
 def _load_imgs(imgdir):
-   imgdir = os.path.expanduser(imgdir) 
-   if not os.path.isdir(imgdir):
-       raise Exception("%r is not a directory, can't load images" % imgdir)
-   for f in glob("%s/*.png" % imgdir):
-       img = os.path.split(f)[1]
-       name = img[:-4]
-       imgs[name] = PhotoImage(name, file=f, format="png")
+    imgdir = os.path.expanduser(imgdir) 
+    if not os.path.isdir(imgdir):
+        raise Exception("%r is not a directory, can't load images" % imgdir)
+    for f in glob("%s/*.png" % imgdir):
+        img = os.path.split(f)[1]
+        name = img[:-4]
+        imgs[name] = PhotoImage(name, file=f, format="png")
 
 def install(imgdir):
-   _load_imgs(imgdir)
-   style = tkinter.ttk.Style()
-   style.theme_create("lime", parent="clam", settings={
+    _load_imgs(imgdir)
+    style = tkinter.ttk.Style()
+    style.theme_create("lime", parent="clam", settings={
         # next line refers to common to all widgets
         ".": {
             "configure":
@@ -257,6 +257,30 @@ def install(imgdir):
           ('image', "iprog", 
            {'border':4})
         },
+
+      ## Spinbox - added for Python 3.7+
+         "Spinbox.field": {"element create":
+           ("image", 'combo-n',
+                ('readonly', 'disabled', 'combo-d'),
+                {'sticky': 'nsew',  'border': [4],'padding': 0} # 'padding': 0
+           )
+        },
+        "Spinbox.downarrow": {"element create":
+            ("image", 'arrspd-n',
+                 ('disabled','arrspd-d'),
+                 ('pressed','arrspd-p'),
+                 ('active','arrspd-h'),
+                 {'sticky': 'e','border': [0],'padding': 4} # 'border': [1]
+             )
+        },
+     "Spinbox.uparrow": {"element create":
+            ("image", 'arrspu-n',
+                 ('disabled','arrspu-d'),
+                 ('pressed','arrspu-p'),
+                 ('active','arrspu-h'),
+                 {'sticky': 'e','border': [0],'padding': 4}
+             )
+        },
          
     ## Treeview
         'Treeheading.cell': {"element create":
@@ -271,3 +295,7 @@ def install(imgdir):
                       'foreground': [('selected',colours['selectfg'])]}}
         
     })
+
+
+
+   
