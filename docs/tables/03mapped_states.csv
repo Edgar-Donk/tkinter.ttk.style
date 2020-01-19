@@ -8,4 +8,5 @@
 "Radiobutton";"TRadiobutton";"disabled, pressed";"disabled, pressed";"pressed, selected";"pressed, selected"
 "Scale";"TScale";;;;"{pressed !disabled}"
 "Scrollbar";"TScrollbar";;;"{pressed !disabled}";"disabled"
+"Spinbox"; "TSpinbox"; "readonly, disabled"; "readonly, disabled"; "readonly, disabled"; "readonly, disabled"
 "Treeview";"Treeview";"selected";"selected";"selected";"selected"
