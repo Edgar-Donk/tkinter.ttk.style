@@ -84,7 +84,10 @@ All the widgets previously found in tkinter remain, ttk has many of the
 original widgets and the class Style(). Two of the widgets in ttk, Combobox 
 and Treeview are new, whereas some widgets only exist in tkinter. 
 
-.. note:: Spinbox has been added to ttk - see the latest documentation
+.. note:: Spinbox has been added to ttk - see the latest documentation.
+   If your Python is 3.7 or later then everything should work, if you have 
+   an earlier release then change the import statements and import Spinbox 
+   from tkinter. 
 
 Where widgets are duplicated be aware that between tkinter and ttk their 
 property options do not correspond . For instance ttk Button has a 
@@ -92,6 +95,9 @@ single option ``style`` instead of 24 additional property options in tkinter,
 the remaining 10 property options are common to both Button widgets. Use
 `"Tkinter 8.5 reference a GUI for Python" <https://www.hsg-kl.de/faecher/inf/python/tkinter/tkinter.pdf>`_
 to find out which property options are used on all the widgets. 
+
+:alternative: There is an alternative site
+   https://anzeljg.github.io/rin2/book2/2405/docs/tkinter/index.html
 
 .. topic:: Property Options
 
@@ -179,7 +185,7 @@ Scrollbar Components
 .. sidebar:: Scrollbar
 
    Scrollbar has components that move in relation to each other, whereas 
-   Button is static and can therefore be thought of as a simple widget.
+   Button is static and might be thought of as a simple widget.
 
 The vertical scrollbar has up and down arrows as well as a thumb component 
 all contained in a trough (yet another component). Within the Style class 
@@ -219,13 +225,10 @@ Table 01style_commands.csv
 Buttons in tkinter and ttk
 --------------------------
 
-Let us compare the two diferent types of button widgets, using the script 
-01two_buttons.py - found in the examples directory. Running this script you 
-will see 4 buttons, the upper two buttons are standard tkinter, both the 
-lower two are ttk buttons. 
-
-Two different Buttons
-^^^^^^^^^^^^^^^^^^^^^^
+Using buttons compare the two diferent types of widgets, use the script 
+01two_buttons.py - found in the examples directory. You should see 4 buttons, 
+the upper two buttons are standard tkinter, whilst the lower two are ttk 
+buttons. 
 
 .. |d2| image:: figures/01two_buttons.jpg
    :width: 175px
@@ -257,7 +260,7 @@ buttons was last activated.
 
 Buttons, in common with several other widgets, have what we call states, 
 for example when a cursor passes over the widget its state changes to active, 
-so we have just seen how the ttk button's state together with the theme
+so we have just seen how the ttk button's state together with the theme used
 affects its appearance.
 
 Script 01two_buttons.py

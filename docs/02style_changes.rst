@@ -70,32 +70,11 @@ not only with the widgets, but may change with the theme.
 Table Theme Components
 ----------------------
 
-.. table:: 02components.csv
-
-   ================== ======================================== ======================================== ============================================ ========================================
-   Widget             alt                                      clam                                     classic                                      default
-   ================== ======================================== ======================================== ============================================ ========================================
-   Button             border, focus, padding, label            border, focus, padding, label            highlight, border, padding, label            button, border, focus, padding, label
-   Checkbutton        padding, indicator, focus, label         padding, indicator, focus, label         highlight, border, padding, indicator, label padding, indicator, focus, label
-   Combobox           field, downarrow, padding, textarea      downarrow, field, padding, textarea      field, downarrow, padding, textarea          field, downarrow, padding, textarea
-   Entry              field, padding, textarea                 field, padding, textarea                 highlight, field, padding, textarea          field, padding, textarea
-   Frame              border                                   border                                   border                                       border
-   LabelFrame         border                                   border                                   border                                       border
-   LabelFrame - Label fill, text                               fill, text                               fill, text                                   fill, text
-   Menubutton         border, focus, indicator, padding, label border, focus, indicator, padding, label highlight, border, indicator, padding, label border, focus, indicator, padding, label
-   Notebook           client                                   client                                   client                                       client
-   Notebook - Tab     tab, padding, focus, label               tab, padding, focus, label               tab, padding, label                          tab, padding, focus, label 
-   PanedWindow        background                               background                               background                                   background 
-   PanedWindow - Sash hsash                                    hsash, hgrip                             hsash                                        hsash
-   Progressbar        trough, pbar                             trough, pbar                             trough, pbar                                 trough, pbar 
-   Radiobutton        padding, indicator, focus, label         padding, indicator, focus, label         highlight, border, padding, indicator, label padding, indicator, focus, label
-   Scale              trough, slider                           trough, slider                           trough, slider                               trough, slider 
-   Scrollbar          trough, leftarrow, rightarrow, thumb     trough, leftarrow, rightarrow, thumb     trough, leftarrow, rightarrow, thumb         trough, leftarrow, rightarrow, thumb
-   Separator          separator                                separator                                separator                                    separator 
-   Sizegrip           sizegrip                                 sizegrip                                 sizegrip                                     sizegrip 
-   Treeview           field, padding, treearea                 field, padding, treearea                 field, padding, treearea                     field, padding, treearea 
-   Treeview - Heading cell, border, padding, image, text       cell, border, padding, image, text       cell, border, padding,image, text            cell, border, padding,image, text
-   ================== ======================================== ======================================== ============================================ ========================================
+.. csv-table:: 02components.csv
+   :file: tables/02components.csv
+   :header-rows: 1
+   :delim: ;
+   :widths: 15, 45, 45, 45, 45
 
 .. note:: 
 
@@ -130,8 +109,8 @@ Widget with Orientation
 Scale - Style
 -------------
 
-When we have a widget with an orientation, such as Scale, let's see what 
-changes::
+When we have a widget with an orientation, such as Scale, see what changes.
+Continue with your interactive session.::
 
 	>>>b = ttk.Scale(None)
 	>>>b.winfo_class()
@@ -176,13 +155,14 @@ Let's try a widget with an auxiliary class such as LabelFrame::
 	>>>b=ttk.LabelFrame(None) 
 	>>>b.winfo_class()
 	'TLabelframe' 
-   # you noticed it's a small f didn't you, TLabelframe
+   # you noticed it's a small `f` didn't you, TLabelframe
    
 	>>>St.layout('TLabelframe')
 	[('Labelframe.border', {'sticky': 'nswe'})]  
-	# where is the label part then!!!? OK I cheated, I knew the answer
+	# where is the `label` part then!!!? 
    
-	>>>s.layout('TLabelframe.Label')    
+	>>>s.layout('TLabelframe.Label')
+   #OK I cheated, I knew the answer
 		[('Label.fill',
 	{'children': [('Label.text', {'sticky': 'nswe'})], 'sticky': 'nswe'})]
 
@@ -235,7 +215,7 @@ have orientation need to be prefixed by either 'Horizontal.' or 'Vertical.'.
 Style.configure
 ===============
 
-After all that we now know the class and element names for all widgets for 
+After all that we now know the class and element names for all widgets in 
 our chosen theme. Using this information we can use Style.configure() to
 change the widgets. 
 
@@ -297,14 +277,7 @@ Two Coloured Buttons
    inherits all expressly styled properties not overwritten by our style 
    changes, in our case shades of grey from the parent theme (default). 
 
-.. container:: toggle
-
-   .. container:: header
-
-       *Show/Hide Code* 02two_coloured_buttons.py
-
-   .. literalinclude:: examples/02two_coloured_buttons.py
-
+re
 .. _02scrollbar:
 
 Horizontal Scrollbar - Style
@@ -394,7 +367,7 @@ changes we use 2 treeview widgets, the first has not been customised.
    .. literalinclude:: examples/02treeview.py
       :linenos:
 
-To show the layout I scripted a function, this was then compared to 
+To show the layout I used a function, this was then compared to 
 Pretty Print::
 
    >>> import pprint

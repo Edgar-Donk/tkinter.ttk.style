@@ -231,7 +231,7 @@ box, see that the circle overlaps the the bounding box on all four sides,
 and our case should touch all four sides of the image, in the real world 
 lines have breadth which is why the bounding box is not a simple dimension, 
 this is not quite the same as tkinter canvas shown in *8.11 Canvas Oval Objects* 
-in the `tkinter 8.5 documentation<https://www.hsg-kl.de/faecher/inf/python/tkinter/tkinter.pdf>`_.
+in the `"Tkinter 8.5 reference a GUI for Python" <https://www.hsg-kl.de/faecher/inf/python/tkinter/tkinter.pdf>`_.
 
 Change the ellipse (circle) into 4 arcs::
 

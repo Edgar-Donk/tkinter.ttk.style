@@ -179,7 +179,7 @@ Script Map Button
 In the example 03map_button.py 
 
 .. literalinclude:: examples/03map_button.py
-   :lines: 12-19
+   :lines: 14-21
 
 we have configure which sets up the general widget appearance then uses map 
 to set the active state by changing the background colour. Both configure and 
@@ -226,6 +226,11 @@ settings without the need for Combobox to have a property style setting.
 
 Punctuation in Map
 ^^^^^^^^^^^^^^^^^^
+
+.. sidebar:: Brackets Galore
+
+   If your Python GUI doesn't highlight bracket pairs, all is not lost, try
+   using a text editor, such as Notepad++.
 
 Now is a good time as ever to review the punctuation, in particular all the 
 brackets being used. Theme_settings is a function so it has opening and closing 
