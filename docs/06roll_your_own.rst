@@ -162,6 +162,48 @@ we normally need to translate between tcl and python, use the files plastik.tcl
 and plastik.py to help spot the differences and similarities between the two 
 languages.
 
+Translating between TCL and Python
+----------------------------------
+
+We have been already automatically translating between TCL and Python, 
+probably without our knowledge already, most of the Style() commands have
+done just that. All of the standard themes are programmed in TCL, but the
+output of our queries is in Python. We could equally query the ttkthemes 
+module, but in this case use ``themed_style.ThemedStyle()`` as opposed to
+plain ``Style()``. The commands used are exactly the same in both modules
+are similar. Open an interactive session.::
+
+   import ttkthemes as ts
+   s = ts.themed_style.ThemedStyle()
+   s.theme_use('ubuntu')
+   s.layout('TButton')
+   
+   Out[4]:
+   [('Button.focus',
+  {'sticky': 'nswe',
+   'children': [('Button.button',
+     {'sticky': 'nswe',
+      'children': [('Button.padding',
+        {'sticky': 'nswe',
+         'children': [('Button.label', {'sticky': 'nswe'})]})]})]})]
+
+   # Notice that there is no longer a ``border``, it was used for the image
+
+Let's try with a horizontal scale.::
+
+   s.layout('Horizontal.TScale')
+   Out[5]:
+   [('Horizontal.Scale.trough',
+  {'sticky': 'nswe',
+   'children': [('Horizontal.Scale.slider', {'side': 'left', 'sticky': ''})]})]
+   
+   s.element_options('Horizontal.Scale.slider')
+   Out[6]: ()
+
+No output for the element options - which should come as no surprise, since
+the slider is also an image. (This result is the same with the Windows vista
+theme).
+
 Combobox
 ========
 
