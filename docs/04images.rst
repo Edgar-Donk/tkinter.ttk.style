@@ -33,7 +33,7 @@ You can check out the tkinter version as follows::
    print(tkinter.TkVersion)
 
 Some widgets have a property option called image (it is shown in 
-`Tkinter 8.5 reference: a GUI for Python <https://www.hsg-kl.de/faecher/inf/python/tkinter/tkinter.pdf>`_) 
+`Tkinter 8.5 reference: a GUI for Python <https://anzeljg.github.io/rin2/book2/2405/docs/tkinter/tkinter.pdf>`_) 
 so once the image file is initiated in PhotoImage it can be loaded directly 
 onto the widget. 
 
