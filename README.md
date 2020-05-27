@@ -17,4 +17,4 @@ imagination, where an appreciation of PIL (Pillow) will be useful.
 
 ## See the working copy
 
-https://tkinterttkstyle.readthedocs.io/en/latest/index.html
+[Read the Docs](https://tkinterttkstyle.readthedocs.io/en/latest/index.html)
