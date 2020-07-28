@@ -277,8 +277,8 @@ Two Coloured Buttons
    inherits all expressly styled properties not overwritten by our style 
    changes, in our case shades of grey from the parent theme (default). 
 
-re
-.. _02scrollbar:
+
+.. _02Scrollbar:
 
 Horizontal Scrollbar - Style
 ----------------------------
@@ -413,9 +413,10 @@ though it should work, test it and see. Look at 02Entry.py.
 
    .. container:: header
 
-       *Show/Hide Code* 02Entry.py
+       *Show/Hide Code* 02entry.py
 
-   .. literalinclude:: examples/02Entry.py
+   .. literalinclude:: examples/02entry.py
+
 
 .. sidebar:: Just an Exercise 
 

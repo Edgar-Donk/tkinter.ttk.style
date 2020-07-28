@@ -116,7 +116,7 @@ changed in our button examples, so how to find out what is going on.
 
    Ahha - now we can see that all widgets with a "background" element will 
    react in a similar way, so if you haven't done it see what happens when 
-   you pass the cursor over our scrollbar example :ref:`02scrollbar`.
+   you pass the cursor over our scrollbar example :ref:`02Scrollbar`.
 
 Let's see if we have a common mapping working here::
 
