@@ -25,7 +25,7 @@ greater so that png files can be used directly.
 
 * Tkinter reference
    download the pdf version of 
-   `"Tkinter 8.5 reference a GUI for Python" <https://anzeljg.github.io/rin2/book2/2405/docs/tkinter/tkinter.pdf>`_, 
+   `"Tkinter 8.5 reference a GUI for Python" <https://www.hsg-kl.de/faecher/inf/python/tkinter/tkinter.pdf>`_, 
 * Themed widgets
    See what has already been done with widgets, view and install the external 
    module ttkthemes::
@@ -93,11 +93,11 @@ Where widgets are duplicated be aware that between tkinter and ttk their
 property options do not correspond . For instance ttk Button has a 
 single option ``style`` instead of 24 additional property options in tkinter, 
 the remaining 10 property options are common to both Button widgets. Use
-`"Tkinter 8.5 reference a GUI for Python" <https://anzeljg.github.io/rin2/book2/2405/docs/tkinter/tkinter.pdf>`_
+`"Tkinter 8.5 reference a GUI for Python" <https://www.hsg-kl.de/faecher/inf/python/tkinter/tkinter.pdf>`_
 to find out which property options are used on all the widgets. 
 
 :alternative: There is an alternative site
-   https://www.hsg-kl.de/faecher/inf/python/tkinter/tkinter.pdf
+   https://anzeljg.github.io/rin2/book2/2405/docs/tkinter/index.html
 
 .. topic:: Property Options
 
@@ -225,7 +225,16 @@ Table 01style_commands.csv
 Buttons in tkinter and ttk
 --------------------------
 
-Using buttons compare the two diferent types of widgets, use the script 
+.. warning:: Image Quality
+
+    Some IDEs will not show the images created in tkinter / ttk at the same
+    resolution or quality if you are using an ultra high definition monitor.
+    Standard monitors should be the same no matter which IDE is used. If 
+    there is a difference run the Python script from the command line, Idle
+    or use PyScripter.
+
+
+Using buttons compare the two different types of widgets, use the script 
 01two_buttons.py - found in the examples directory. You should see 4 buttons, 
 the upper two buttons are standard tkinter, whilst the lower two are ttk 
 buttons. 
@@ -238,6 +247,14 @@ buttons.
    :width: 175px
    :height: 238px
 
+.. |t2| image:: figures/01two_buttons_thonny.jpg
+   :width: 299px
+   :height: 188px
+
+.. |p2| image:: figures/01two_buttons_pyscripter.jpg
+   :width: 388px
+   :height: 195px
+
 .. table:: Comparing Client Interaction on Buttons
 
    ==================== ====================
@@ -245,6 +262,14 @@ buttons.
    ==================== ====================
     |d2|                  |v2|
    ==================== ====================
+
+.. table:: Comparing UHD output on 2 different IDEs
+
+   ============================== =========================
+   PyScripter or Idle             Thonny or many other IDEs
+   ============================== =========================
+    |p2|                           |t2|
+   ============================== =========================
 
 .. sidebar:: User Interaction
 
