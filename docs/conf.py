@@ -1,3 +1,4 @@
+# rtd conf.p
 # Configuration file for the Sphinx documentation builder.
 #
 # This file only contains a selection of the most common options. For a full
@@ -54,8 +55,9 @@ templates_path = ['_templates']
 # This pattern also affects html_static_path and html_extra_path.
 exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 
+# option for show/hide code
 def setup(app):
-    app.add_stylesheet('custom.css')
+    app.add_css_file('custom.css') # add_stylesheet
     
 # -- Options for HTML output -------------------------------------------------
 
