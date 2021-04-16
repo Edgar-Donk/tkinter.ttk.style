@@ -247,13 +247,18 @@ buttons.
    :width: 175px
    :height: 238px
 
-.. |t2| image:: figures/01two_buttons_thonny.jpg
-   :width: 299px
-   :height: 188px
+.. |c2| image:: figures/01two_buttons_combined.jpg
+   :width: 753px
+   :height: 315px
 
-.. |p2| image:: figures/01two_buttons_pyscripter.jpg
-   :width: 388px
-   :height: 195px
+..
+    .. |t2| image:: figures/01two_buttons_thonny.jpg
+    :width: 299px
+    :height: 188px
+
+    .. |p2| image:: figures/01two_buttons_pyscripter.jpg
+    :width: 388px
+    :height: 195px
 
 .. table:: Comparing Client Interaction on Buttons
 
@@ -263,13 +268,16 @@ buttons.
     |d2|                  |v2|
    ==================== ====================
 
-.. table:: Comparing UHD output on 2 different IDEs
+..
+    .. table:: Comparing UHD output on 2 different IDEs
 
-   =================================== =========================
-   PyScripter or Idle                  Thonny or many other IDEs
-   =================================== =========================
-   |p2|                                |t2|
-   =================================== =========================
+    =================================== =========================
+    PyScripter or Idle                  Thonny or many other IDEs
+    =================================== =========================
+    |p2|                                |t2|
+    =================================== =========================
+
+|c2|
 
 .. sidebar:: User Interaction
 
