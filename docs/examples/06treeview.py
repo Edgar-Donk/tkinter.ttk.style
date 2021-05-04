@@ -2,9 +2,8 @@
 After creating orange standalone the call to plastik can be changed to orange.
 Run the python script from the os system rather than using python's Idle.
 """
-from tkinter import Tk
-import tkinter.font
-from tkinter.ttk import Treeview, Scrollbar
+from tkinter import Tk, font
+from tkinter.ttk import Frame, Label, Treeview, Scrollbar, Style
 
 tree_columns = ("country", "capital", "currency")
 tree_data = [
@@ -44,9 +43,13 @@ class App(object):
         self.tree = None
         self._setup_widgets()
         self._build_tree()
+        st1 = Style()
+        fact = font.Font(font="TkDefaultFont").metrics('linespace')
+        st1.configure('font.Treeview', rowheight=fact,
+              font=font.nametofont("TkDefaultFont"))
 
     def _setup_widgets(self):
-        msg = tkinter.ttk.Label(wraplength="4i", justify="left", anchor="n",
+        msg = Label(wraplength="4i", justify="left", anchor="n",
             padding=(10, 2, 10, 6),
             text=("Ttk is the new Tk themed widget set. One of the widgets it "
                   "includes is a tree widget, which can be configured to "
@@ -58,14 +61,15 @@ class App(object):
                   "the boundary between them."))
         msg.pack(fill='x')
 
-        container = tkinter.ttk.Frame()
+        container = Frame()
         container.pack(fill='both', expand=True)
 
         # XXX Sounds like a good support class would be one for constructing
         #     a treeview with scrollbars.
-        self.tree = tkinter.ttk.Treeview(columns=tree_columns, show="headings")
-        vsb = tkinter.ttk.Scrollbar(orient="vertical", command=self.tree.yview)
-        hsb = tkinter.ttk.Scrollbar(orient="horizontal", command=self.tree.xview)
+        self.tree = Treeview(columns=tree_columns, show="headings",
+                                         style='font.Treeview')
+        vsb = Scrollbar(orient="vertical", command=self.tree.yview)
+        hsb = Scrollbar(orient="horizontal", command=self.tree.xview)
         self.tree.configure(yscrollcommand=vsb.set, xscrollcommand=hsb.set)
         self.tree.grid(column=0, row=0, sticky='nsew', in_=container)
         vsb.grid(column=1, row=0, sticky='ns', in_=container)
@@ -80,32 +84,32 @@ class App(object):
                 command=lambda c=col: sortby(self.tree, c, 0))
             # XXX tkFont.Font().measure expected args are incorrect according
             #     to the Tk docs
-            self.tree.column(col, width=tkinter.font.Font().measure(col.title()))
+            self.tree.column(col, width=font.Font().measure(col.title()))
 
         for item in tree_data:
             self.tree.insert('', 'end', values=item)
 
             # adjust columns lenghts if necessary
             for indx, val in enumerate(item):
-                ilen = tkinter.font.Font().measure(val)
+                ilen = font.Font().measure(val)
                 if self.tree.column(tree_columns[indx], width=None) < ilen:
                     self.tree.column(tree_columns[indx], width=ilen)
 
 def main():
-    root = tkinter.Tk()
+    root = Tk()
     root.wm_title("Multi-Column List")
     root.wm_iconname("mclist")
     
     # change plastik references to orange following lines
     import plastik_theme
     
-    try:
+    try: # 
         plastik_theme.install('plastik') # change to directory you are using
     except Exception:
         import warnings
         warnings.warn("plastik theme being used without images")
 
-    app = App()
+    App()
     root.mainloop()
 
 if __name__ == "__main__":

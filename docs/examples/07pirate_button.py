@@ -10,8 +10,8 @@ In python it is best to run configure and layout together, in tcl they are
 separated.
 '''
 
-from tkinter import Tk, PhotoImage, StringVar
-from tkinter.ttk import Style, Label, Frame, Button
+from tkinter import Tk, PhotoImage
+from tkinter.ttk import Style, Frame, Button
 import tkinter.font as tkFont
 from RunState import run_state
 

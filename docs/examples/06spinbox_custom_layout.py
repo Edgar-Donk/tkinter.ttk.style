@@ -8,7 +8,7 @@ Spinbox states disabled, readonly;focus, readonly; normal, focus, pressed,
 disabled; normal,readonly,active; normal,pressed,active, disabled
 '''
 
-from tkinter import Tk, PhotoImage, StringVar
+from tkinter import Tk, PhotoImage
 from tkinter.ttk import Style, Frame, Spinbox
 from RunState import run_state
 

@@ -11,8 +11,8 @@ The different images require negative states to ensure that the images
 change as expected.
 '''
 
-from tkinter import Tk, PhotoImage, StringVar
-from tkinter.ttk import Style, Label, Radiobutton, Frame, Progressbar
+from tkinter import Tk, PhotoImage, font
+from tkinter.ttk import Style, Frame, Progressbar
 
 root = Tk()
 
@@ -98,11 +98,13 @@ style.theme_create( "yummy", parent="clam", settings={
      })
 
 style.theme_use('yummy') # 'default'
-widg = Progressbar(fr,length=150,orient='horizontal',mode='indeterminate')
+test_size = font.Font(family="Times", size=12, weight="bold").measure('Test')
+mult = int(test_size / 30)
+widg = Progressbar(fr,length=150*mult,orient='horizontal',mode='indeterminate')
 widg.grid(column=0,row=0,sticky='nsew', padx=5, pady=5)
 steer()
 
-widg1 = Progressbar(fr,length=150,orient='vertical',mode='indeterminate')
+widg1 = Progressbar(fr,length=150*mult,orient='vertical',mode='indeterminate')
 widg1.grid(column=0,row=2, padx=5, pady=5) 
 steer1()
 

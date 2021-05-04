@@ -10,7 +10,7 @@ disabled; normal,readonly,active; normal,pressed,active, disabled
 Do not use directly when making the lime theme.
 '''
 
-from tkinter import Tk, PhotoImage, StringVar
+from tkinter import Tk, PhotoImage
 from tkinter.ttk import Style, Frame, Spinbox
 from RunState import run_state
 

@@ -7,8 +7,8 @@ settings.
 
 '''
 
-from tkinter import Tk, PhotoImage, StringVar
-from tkinter.ttk import Style, Label, Frame, Checkbutton
+from tkinter import Tk, PhotoImage
+from tkinter.ttk import Style, Frame, Checkbutton
 from RunState import run_state
 
 root = Tk()

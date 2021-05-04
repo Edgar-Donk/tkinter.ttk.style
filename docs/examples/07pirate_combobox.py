@@ -9,7 +9,8 @@ disabled; normal,readonly,active; normal,pressed,active, disabled
 '''
 
 from tkinter import Tk, PhotoImage, StringVar
-from tkinter.ttk import Style, Label, Frame, Combobox
+from tkinter.ttk import Style, Frame, Combobox
+from RunState import run_state
 
 root = Tk()
 
@@ -56,11 +57,11 @@ style.theme_settings('alt', {
 
 style.theme_use('alt') # 'yummy'
 sv = StringVar()
-widg = Combobox(fr,values=['apple', 'banana', 'orange'])
+widg = Combobox(fr,values=['apple', 'banana', 'orange'], textvariable=sv)
 widg.grid(column=0,row=10,padx=5,pady=5 )
 sv.set('first')
 sv1 = StringVar()
-widg1 = Combobox(fr,values=['apple', 'banana', 'orange'])
+widg1 = Combobox(fr,values=['apple', 'banana', 'orange'], textvariable=sv1)
 widg1.grid(column=0,row=11,padx=5,pady=5,sticky='ns')
 sv1.set('second really really long')
 run_state(fr,widg,widg1)

@@ -8,7 +8,7 @@ simplified compared to the rounded frame.
 
 It may be necessary to run in Idle or from command line
 """
-from tkinter import Tk, PhotoImage
+from tkinter import Tk, PhotoImage, font
 from tkinter.ttk import Style, Entry
 
 root = Tk()
@@ -72,7 +72,8 @@ style.layout("Search.entry", [
     })]
 )
 
-style.configure("Search.entry", background="#b2b2b2")
+style.configure("Search.entry", background="#b2b2b2",
+                font=font.nametofont("TkDefaultFont"))
 
 root.configure(background="#b2b2b2")
 

@@ -9,7 +9,7 @@ Selection of border and padding a little tricky try the border with
 also experiment with sticky as "ew".
 '''
 
-from tkinter import Tk, PhotoImage, StringVar
+from tkinter import Tk, PhotoImage
 from tkinter.ttk import Style, Label, Frame
 from RunState import run_state
 

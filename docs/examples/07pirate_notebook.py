@@ -8,8 +8,8 @@ Selection of border and padding a little tricky.
 Try with and without the mapping
 '''
 
-from tkinter import Tk, PhotoImage, StringVar
-from tkinter.ttk import Style, Label, Frame, Notebook
+from tkinter import Tk, PhotoImage, font
+from tkinter.ttk import Style, Frame, Notebook
 from RunState import run_state
 
 root = Tk()
@@ -46,9 +46,11 @@ style.theme_create( "yummy", parent="clam", settings={
      })
 
 style.theme_use('yummy') # 'default'
+test_size = font.Font(family="Times", size=12, weight="bold").measure('Test')
+mult = int(test_size / 30)
 widg = Notebook(fr)
-page1 = Frame(widg, width=150, height=150)
-page2 = Frame(widg, width=150, height=150)
+page1 = Frame(widg, width=150*mult, height=150*mult)
+page2 = Frame(widg, width=150*mult, height=150*mult)
 widg.add(page1,text='Piratz!')
 widg.add(page2,text='Piratz!\nextra longish line\nor two')
 widg.grid(column=0,row=11,sticky='nsew', padx=5, pady=5)

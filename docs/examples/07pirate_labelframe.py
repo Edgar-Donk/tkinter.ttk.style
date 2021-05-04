@@ -9,8 +9,9 @@ We need extra internal padding so that the frame is not overwritten by the
 internal widget placed inside of labelframe.
 '''
 
-from tkinter import Tk, PhotoImage, StringVar
+from tkinter import Tk, PhotoImage
 from tkinter.ttk import Style, Label, Frame, LabelFrame
+from RunState import run_state
 
 root = Tk()
 

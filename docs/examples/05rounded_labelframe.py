@@ -3,7 +3,7 @@ Using 05rounded_frame.py to make a similar procedure for labelframe.
 
 If necessary run within Idle or from command line 
 '''
-from tkinter import StringVar, Tk, IntVar, PhotoImage, Text
+from tkinter import StringVar, Tk, PhotoImage, Text
 from tkinter.ttk import Style, LabelFrame, Frame, Entry, Label
     
 

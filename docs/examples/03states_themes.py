@@ -8,7 +8,7 @@ The state selector only applies to the selected widget.
 
 """
 from tkinter import StringVar, Tk
-from tkinter.ttk import Frame, Style, Combobox, Button, Radiobutton, Label
+from tkinter.ttk import Frame, Style, Button, Radiobutton, Label
 
 class App:
     def __init__(self,root):
@@ -64,7 +64,7 @@ or see more by using the radio buttons")
         self.but.grid(column=3,row=ix+2,padx=5,pady=5)
 
 if __name__ == "__main__":
-    root = Tk()
-    root.title("Ttk Theme and State Selector")
-    app = App(root)
-    root.mainloop()
+    Root = Tk()
+    Root.title("Ttk Theme and State Selector")
+    app = App(Root)
+    Root.mainloop()
