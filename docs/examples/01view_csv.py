@@ -1,6 +1,5 @@
-from tkinter import Tk, StringVar, font
-from tkinter.ttk import Frame, Treeview , Label, Scrollbar, Style, Entry, Combobox, Notebook
-import csv
+from tkinter import Tk, StringVar
+from tkinter.ttk import Frame, Style, Combobox, Notebook
 from glob import glob
 from tree import Tree
 
@@ -20,9 +19,9 @@ def csvSel(event):
     Tree(page2,csv_value.get(),csvDelimiter,renew=True)
     
 def on_tab_changed(event):
-        event.widget.update_idletasks()
-        tab = event.widget.nametowidget(event.widget.select())
-        event.widget.configure(height=tab.winfo_reqheight(),width=tab.winfo_reqwidth())
+    event.widget.update_idletasks()
+    tab = event.widget.nametowidget(event.widget.select())
+    event.widget.configure(height=tab.winfo_reqheight(),width=tab.winfo_reqwidth())
 
 root = Tk()
 root.wm_title("Tables with Style")
@@ -31,7 +30,6 @@ root.geometry('+170+200')
 s = Style()
 s.theme_use('clam')
 
-csvDelimiter = ','
 fr = Frame(root) 
 fr.pack(fill='both')
 

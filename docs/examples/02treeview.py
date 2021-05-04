@@ -10,7 +10,7 @@ The content of Text has been formatted to display the layout in a more pleasing
 manner.
 '''
 
-from tkinter import Tk, Text
+from tkinter import Tk, Text, font
 from tkinter.ttk import Style, Combobox, Label, Treeview
 
 # layout refreshed when the theme is changed
@@ -48,6 +48,10 @@ def theme_changed(theme):
             te.insert('end', elo + '\n') 
         step = step + 1
         
+    fact = font.Font(font="TkDefaultFont").metrics('linespace')
+    def_font = font.nametofont('TkDefaultFont')
+    font_family = def_font.actual()['family']
+    font_size = def_font.actual()['size'] + 3
     style.configure(
         'Custom.Treeview.Heading',
         background='#FFFFFF', # White
@@ -59,7 +63,8 @@ def theme_changed(theme):
         fieldbackground='#FF00FF', # Magenta
         troughcolor='#FFFF00', # Yellow
         arrowcolor='#A52A2A', # brown
-        focuscolor='#40E0D0' # turquoise
+        focuscolor='#40E0D0', # turquoise
+        font = (font_family,font_size,'bold')
     )
     
     style.configure(
@@ -73,12 +78,16 @@ def theme_changed(theme):
         fieldbackground='#00FFFF', # Cyan
         troughcolor='#FFFFFF', # White
         arrowcolor='#A52A2A', # brown
-        focuscolor='#40E0D0' # turquoise
+        focuscolor='#40E0D0', # turquoise
+        rowheight=fact, font=font.nametofont("TkDefaultFont")
     )
     return maxsize - adj, step 
 
 root = Tk()
 style = Style()
+test_size = font.Font(family="Times", size=12, weight="bold").measure('Test')
+mult = int(test_size / 30)
+
 la0 =Label(root, text="Treeview layout, may change with the theme")
 la0.pack(pady=5)
 te = Text(root, bg='#FFFFBB')
@@ -100,7 +109,7 @@ treeData = (('alice blue', '#F0F8FF'),
 w = Treeview(root, columns=dataCols, show='headings')
 for col in dataCols:
     w.heading(col, text=col.title())
-    w.column(col, width=75)
+    w.column(col, width=75*mult)
 for ix, item in enumerate(treeData):
     w.insert('', 'end', values=item)
 w.pack(padx=5, pady=5)
@@ -110,7 +119,7 @@ w2 = Treeview(root, columns=dataCols, show='headings',
                     style='Custom.Treeview') # .Heading')
 for col in dataCols:
     w2.heading(col, text=col.title())
-    w2.column(col, width=75)
+    w2.column(col, width=75*mult)
 for ix, item in enumerate(treeData):
     w2.insert('', 'end', values=item)
 w2.pack(padx=5, pady=5)

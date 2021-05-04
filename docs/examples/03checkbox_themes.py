@@ -6,8 +6,8 @@ which elements can be coloured, where they are situated. In this exercise use
 colours that can be easily picked out rather than for final looks.
 '''
 from pprint import pformat
-from tkinter import Tk, Message
-from tkinter.ttk import Style, Combobox, Button, Checkbutton
+from tkinter import Tk, Message, font
+from tkinter.ttk import Style, Combobox, Checkbutton
 
 def theme_changed(theme):
     style.theme_use(theme)
@@ -47,7 +47,10 @@ button.pack()
 button = Checkbutton(root, style="Custom." + tWidg, text="Custom Button")
 button.pack()
 
-mess = Message(root, text='layout \n\n'+out, width=250)
+test_size = font.Font(family="Times", size=12, weight="bold").measure('Test')
+mult = int(test_size / 30)
+
+mess = Message(root, text='layout \n\n'+out, width=250*mult)
 mess.pack()
 
 root.mainloop()
