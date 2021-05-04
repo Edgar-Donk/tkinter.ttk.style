@@ -5,7 +5,7 @@ All slider apart from button-sa
 required padding 4 to compress the buttons
 '''
 
-from tkinter import Tk, PhotoImage, StringVar
+from tkinter import Tk, PhotoImage
 from tkinter.ttk import Style, Frame, Button
 from RunState import run_state
 

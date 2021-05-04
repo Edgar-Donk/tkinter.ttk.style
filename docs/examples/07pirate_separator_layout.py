@@ -4,8 +4,8 @@ Vertical Separator with layout
 differing element names
 '''
 
-from tkinter import Tk, PhotoImage, StringVar
-from tkinter.ttk import Style, Label, Radiobutton, Frame, Separator 
+from tkinter import Tk, PhotoImage
+from tkinter.ttk import Style, Frame, Separator 
 
 root = Tk()
 

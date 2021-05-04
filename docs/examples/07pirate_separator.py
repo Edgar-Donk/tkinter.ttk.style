@@ -9,8 +9,8 @@ line for the second state, change the border value from 3 to 2, uncomment
 the line for widg1 state call.
 '''
 
-from tkinter import Tk, PhotoImage, StringVar
-from tkinter.ttk import Style, Label, Frame, Separator 
+from tkinter import Tk, PhotoImage
+from tkinter.ttk import Style, Frame, Separator 
 
 root = Tk()
 

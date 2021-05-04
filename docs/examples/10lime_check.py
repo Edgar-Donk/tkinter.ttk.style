@@ -7,7 +7,7 @@ settings.
 
 '''
 
-from tkinter import Tk, PhotoImage, StringVar
+from tkinter import Tk, PhotoImage
 from tkinter.ttk import Style, Frame, Checkbutton
 from RunState import run_state
 

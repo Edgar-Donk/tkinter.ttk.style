@@ -6,8 +6,8 @@ Ensure that the vertical and horizontal widgets are run in separate frames,
 or ensure that the second widget does not expand or else the widgets interact.
 '''
 
-from tkinter import Tk, PhotoImage, StringVar
-from tkinter.ttk import Style, Label, Radiobutton, Frame, Scale
+from tkinter import Tk, PhotoImage
+from tkinter.ttk import Style, Frame, Scale
 
 root = Tk()
 

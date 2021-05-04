@@ -7,7 +7,7 @@ settings.
 Selection of border and padding a little tricky.
 '''
 
-from tkinter import Tk, PhotoImage, StringVar
+from tkinter import Tk, PhotoImage, font
 from tkinter.ttk import Style, Frame, Treeview
 from RunState import run_state
 
@@ -26,6 +26,11 @@ img3 = PhotoImage("sail-p", file='../images/piratz/sail-p.png')
 img4 = PhotoImage("sail-s", file='../images/piratz/sail-s.png')
 
 style = Style()
+fact = font.Font(font="TkDefaultFont").metrics('linespace')
+style.configure('font.Treeview', rowheight=fact,
+              font=font.nametofont("TkDefaultFont"))
+test_size = font.Font(family="Times", size=12, weight="bold").measure('Test')
+mult = int(test_size / 30)
 # both theme_create and theme_settings worked
 style.theme_create( "yummy", parent="clam", settings={
 #style.theme_settings('default', {
@@ -46,10 +51,11 @@ style.theme_create( "yummy", parent="clam", settings={
 style.theme_use('yummy') # 'default'
 dataCols = ('Name', 'hash')
 treeData = (('alice blue', '#F0F8FF'),('azure', '#F0FFFF'), ('brown4', '#8B2323'))
-widg = Treeview(fr, columns=dataCols, show='headings',height=6)
+widg = Treeview(fr, columns=dataCols, show='headings',height=6*mult,
+                style='font.Treeview')
 for col in dataCols:
     widg.heading(col, text=col.title())
-    widg.column(col, width=75)
+    widg.column(col, width=75*mult)
 for ix, item in enumerate(treeData):
     widg.insert('', 'end', values=item)    
 widg.grid(column=0,row=11,sticky='nsew', padx=5, pady=5)

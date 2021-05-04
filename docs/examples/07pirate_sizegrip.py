@@ -2,11 +2,13 @@
 Create theme extract for custom widgets.
 '''
 
-from tkinter import Tk, PhotoImage, StringVar
-from tkinter.ttk import Style, Label, Frame, Sizegrip 
+from tkinter import Tk, PhotoImage, font
+from tkinter.ttk import Style, Frame, Sizegrip 
 
 root = Tk()
-fr = Frame(root)
+test_size = font.Font(family="Times", size=12, weight="bold").measure('Test')
+mult = int(test_size / 30)
+fr = Frame(root, height=50*mult)
 fr.grid(column=0,row=0,sticky='nsew')
 
 img1 = PhotoImage("sizegrip", file='../images/piratz/sizegrip.png')
