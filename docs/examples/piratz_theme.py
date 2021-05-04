@@ -23,9 +23,9 @@ the piratz theme, something like: tile-themes/piratz/piratz
 import os
 from glob import glob
 
-from tkinter import PhotoImage, Tk
+from tkinter import PhotoImage #, Tk
 import tkinter.ttk
-import tkinter.font as tkFont
+# import tkinter.font as tkFont
 
 __all__ = ['install']
 
@@ -37,27 +37,27 @@ colors = {
     'bordercolor': '#7FFFD4'
     }
 
-#root = Tk()    
-# AttributeError: 'NoneType' object has no attribute 'call' 
-# can only work after Tk call   
+#root = Tk()
+# AttributeError: 'NoneType' object has no attribute 'call'
+# can only work after Tk call
 #pirate_font = tkFont.Font(family="Backstroke Brush Script MT", size=14) #Palace Script MT Backstroke Brush Script MT
-   
+
 imgs = {}
 def _load_imgs(imgdir):
-   imgdir = os.path.expanduser(imgdir) #(imgdir) ('img') ('blue')
-   #print(imgdir)
-   if not os.path.isdir(imgdir):
-       raise Exception("%r is not a directory, can't load images" % imgdir)
-   for f in glob("%s/*.png" % imgdir):
-       img = os.path.split(f)[1]
-       name = img[:-4]
-       imgs[name] = PhotoImage(name, file=f, format="png")
-       #print(imgs[name])
+    imgdir = os.path.expanduser(imgdir) #(imgdir) ('img') ('blue')
+    #print(imgdir)
+    if not os.path.isdir(imgdir):
+        raise Exception("%r is not a directory, can't load images" % imgdir)
+    for f in glob("%s/*.png" % imgdir):
+        img = os.path.split(f)[1]
+        name = img[:-4]
+        imgs[name] = PhotoImage(name, file=f, format="png")
+        #print(imgs[name])
 
 def install(imgdir):
-   _load_imgs(imgdir)
-   style = tkinter.ttk.Style()
-   style.theme_create("piratz", parent="clam", settings={
+    _load_imgs(imgdir)
+    style = tkinter.ttk.Style()
+    style.theme_create("piratz", parent="clam", settings={
         # next line refers to common to all widgets
         ".": {
             "configure":
@@ -70,21 +70,21 @@ def install(imgdir):
                  "borderwidth": 1},
             "map": {"foreground": [("disabled", colors['disabledfg'])]}
         },
-                
+
         # Label
         'Label.border': {"element create":
           ('image', "label",
            ('disabled', "label-d"),
-           {'border':[19, 9, 7, 7], 'padding':[17,5,3,3], 'sticky': "nsew"}) 
+           {'border':[19, 9, 7, 7], 'padding':[17,5,3,3], 'sticky': "nsew"})
         },
-        
+
         # LabelFrame
         'Labelframe.border': {"element create":
           ('image', "frame",
            ('disabled', "frame-d"),
-           {'border':5, 'sticky': "nsew"}) # 'padding':5, 
+           {'border':5, 'sticky': "nsew"}) # 'padding':5,
         },
-            
+
         # Entry
         'Entry.field': {"element create":
           ('image', "entry-n",
@@ -92,12 +92,12 @@ def install(imgdir):
             ('disabled', 'entry-d'),
            {'height': 18,'border':[10,10],'padding':[3,4], 'sticky': 'nsew'})
         },
-            
+
         # Separator
         'Horizontal.TSeparator': {'layout': [
             ('Horizontal.Separator.separator',{"sticky": "ew"},
         )]},
-    
+
         'Vertical.TSeparator': {'layout': [
             ('Vertical.Separator.separator',{"sticky": "ns"},
         )]},
@@ -109,11 +109,11 @@ def install(imgdir):
         'Vertical.Separator.separator': {"element create":
             ('image', "separator-v",
             {'border':[3],'sticky': 'ns'})},
-        
+
         # Sizegrip
         'sizegrip': {"element create":
           ('image', "sizegrip")},
-          
+
         # Combobox
         "Combobox.field": {"element create":
            ("image", 'combo-n',
@@ -131,8 +131,8 @@ def install(imgdir):
                  ('active','comboarrow-a'),
                  {'sticky': '','border': [1]}
              )
-        }, 
-        
+        },
+
         # Scrollbar
         "Horizontal.TScrollbar": {"layout": [
             ("Horizontal.Scrollbar.leftarrow", {"side": "left", "sticky": ''}),
@@ -145,13 +145,13 @@ def install(imgdir):
                     "children": [("Horizontal.Scrollbar.grip", {"sticky": ''})]
                 })]
             })]},
-        
+
         "Horizontal.Scrollbar.thumb": {"element create":
             ("image", 'hthumb-n',
              ('disabled', 'hthumb-d'),
              ('pressed', 'hthumb-a'),
              ('active', 'hthumb-a'),
-             {"border": [9,2]}) #3 , 'sticky': 'ew', 'padding': [7,2] 
+             {"border": [9,2]}) #3 , 'sticky': 'ew', 'padding': [7,2]
         },
 
         "Horizontal.Scrollbar.grip": {"element create": ("image", 'hgrip')},
@@ -214,15 +214,15 @@ def install(imgdir):
              ('pressed', 'arrowdown-p'),
              ('active', 'arrowdown-a'),
              {"border": 1})
-        },     
+        },
 
         # Radiobutton
         'Radiobutton.indicator': {"element create":
           ('image', "radio",
            ('selected', "radio-s"),
-           {'width':20, 'sticky': "w"}) 
+           {'width':20, 'sticky': "w"})
         },
-            
+
         # Checkbutton
         'Checkbutton.indicator': {"element create":
           ('image', "check-nu",
@@ -233,24 +233,24 @@ def install(imgdir):
            ('selected', "check-nc"),
            ('disabled', "check-du"),
            ('disabled', 'selected', "check-dc"),
-           {'width':24, 'sticky': "w"}) 
+           {'width':24, 'sticky': "w"})
          },
-            
+
         # Notebook
         'TNotebook': {'configure': {'bordercolor': colors['bordercolor'],
                                     'tabmargins':[6,6,6,6]}
        },
-        'TNotebook.tab': {"map":  
+        'TNotebook.tab': {"map":
         {'expand': [('selected', [6,6,6,6])]}},
-        
+
         'tab': {"element create":
           ('image', "sail",
            ('pressed', "sail-p"),
            ('selected', "sail-s"),
            ('disabled', "sail-d"),
-           {'border':[30, 17, 27, 32], 'padding':[13,8,12,13], 'sticky': "nsew"} 
+           {'border':[30, 17, 27, 32], 'padding':[13,8,12,13], 'sticky': "nsew"}
         ) },
-       
+
        # Treeview
        'Treeheading.cell': {"element create":
           ('image', "sail",
@@ -258,11 +258,11 @@ def install(imgdir):
            ('disabled', "sail-d"),
            ('pressed', "sail-s"),
            ('active', "sail-p"),
-           {'border':[30, 17, 27, 32], 'padding':[13,8,18,21], 'sticky': "nsew"} 
+           {'border':[30, 17, 27, 32], 'padding':[13,8,18,21], 'sticky': "nsew"}
         ) },
        'Treeview': {'configure': {'bordercolor': colors['bordercolor']}
-       }, 
-       
+       },
+
        # Button
        'TButton': {
          'configure': {'anchor': 'center', 'font': 'font'},
@@ -281,31 +281,31 @@ def install(imgdir):
            ('selected', "button-s"),
            ('active', "button-s"),
            ('disabled', "button-d"),
-           {'border':[52,65,47,17], 'padding':[12,54,8,16], 'sticky': "nsew"}) 
+           {'border':[52,65,47,17], 'padding':[12,54,8,16], 'sticky': "nsew"})
        },
-           
+
        # Progressbar
        'Horizontal.Progressbar.trough': {"element create":
           ('image', "trough-pbar-horiz",
            {'border':4})},
-           
+
        'Horizontal.Progressbar.pbar': {"element create":
-          ('image', "pbar-boat-a", 
+          ('image', "pbar-boat-a",
            ('background', '!active', "pbar-boat-b"),
            {'border':[2, 9]})
         },
-           
+
        'Vertical.Progressbar.trough': {"element create":
           ('image', "trough-pbar-vert",
            {'border':3})},
-           
+
        'Vertical.Progressbar.pbar': {"element create":
-          ('image', "pbar-gull-a", 
+          ('image', "pbar-gull-a",
            ('background', '!active', '!invalid', "pbar-gull-b"),
            ('invalid', '!active', '!background', "pbar-gull-b"),
            {'border':[9, 2]})
         },
-           
+
         # Scale
         'Horizontal.Scale.trough': {"element create":
           ('image', "trough-tabletop",
@@ -315,9 +315,9 @@ def install(imgdir):
            ('readonly', 'trough-sea'),
            ('selected', 'trough-sea')
            )},
-          
+
         'Horizontal.Scale.slider': {"element create":
-          ('image', "slider-horiz-map", 
+          ('image', "slider-horiz-map",
            ('background', "slider-horiz-c-chest"),
            ('invalid', "slider-horiz-o-chest"),
            ('focus', 'slider-horiz-ben'),
@@ -325,18 +325,18 @@ def install(imgdir):
            ('selected', 'slider-horiz-wheelp'),
            {'border':3})
         },
-         
+
         'Vertical.Scale.trough': {"element create":
           ('image', "trough-scale-vert",
            )},
-           
+
         'Vertical.Scale.slider': {"element create":
-          ('image', "slider-s-vert", 
+          ('image', "slider-s-vert",
            ('background', "slider-s-vert-b"),
            ('invalid', "slider-s-vert-i"),
            ('selected', 'slider-s-vert-s'),
            {'border':3})
         }
         })
-            
-   style.theme_use("piratz")
+
+    style.theme_use("piratz")

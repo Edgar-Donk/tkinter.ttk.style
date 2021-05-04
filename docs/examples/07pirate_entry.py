@@ -10,6 +10,7 @@ Entry states normal, focus; disabled, readonly;focus, readonly; normal, focus;
 
 from tkinter import Tk, PhotoImage, StringVar
 from tkinter.ttk import Style, Label, Frame, Entry
+from RunState import run_state
 
 root = Tk()
 
@@ -30,7 +31,7 @@ style.theme_create( "yummy", parent="clam", settings={
            ('focus', 'entry-f'),
             ('disabled', 'entry-d'),
            {'height': 18,'border':[10,10],'padding':[5,4], 'sticky': 'nsew'})}
-     
+
 # end of theme extract - don't forget to add comma at end when inserting
      })
 
