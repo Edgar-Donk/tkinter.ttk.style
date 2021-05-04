@@ -284,27 +284,27 @@ class Gr_Bi_Base_Rect(Gr_Base_Rect):
 
 if __name__ == "__main__":
     
-    fout = 'test.png'
-    w=25
-    h=25
-    exp = 9 # enlargement, also thickness between radii
-    radius = 4 # gap
+    Fout = 'test.png'
+    W=25
+    H=25
+    Exp = 9 # enlargement, also thickness between radii
+    Radius = 4 # gap
     '''
-    first = '#5D9B90'
-    second = 'white'
-    third = None
+    First = '#5D9B90'
+    Second = 'white'
+    Third = None
     '''
-    first = '#A3CCC4'
-    second = '#5D9B90'
-    third = 'white'
+    First = '#A3CCC4'
+    Second = '#5D9B90'
+    Third = 'white'
     
-    tab = 0
-    startc = (222,247,222)
-    stopc = (143,188,143)
+    Tab = 0
+    Startc = (222,247,222)
+    Stopc = (143,188,143)
     
-    Base_Rect(fout,w,h, exp, radius, first, second,tab) 
-    #Bi_Base_Rect(fout,w,h, exp, radius, first, second,third,tab) 
-    #Gr_Base_Rect(fout,w,h,exp,radius,first,second,startc,stopc,tab)
-    #Gr_Bi_Base_Rect(fout,w,h,exp,radius,first,second,third,startc,stopc,tab)
+    Base_Rect(Fout,W,H, Exp, Radius, First, Second,Tab) 
+    #Bi_Base_Rect(Fout,W,H, Exp, Radius, First, Second,third,Tab) 
+    #Gr_Base_Rect(Fout,W,H,Exp,Radius,First,Second,Startc,Stopc,Tab)
+    #Gr_Bi_Base_Rect(Fout,W,H,Exp,Radius,First,Second,Third,Startc,Stopc,Tab)
 
     

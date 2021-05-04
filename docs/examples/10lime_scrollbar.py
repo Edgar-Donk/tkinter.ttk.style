@@ -10,7 +10,7 @@ that the image expands and does not create multiple images.
 Grip is not included.
 '''
 
-from tkinter import Tk, PhotoImage, StringVar, Listbox
+from tkinter import Tk, PhotoImage, Listbox
 from tkinter.ttk import Style, Frame, Scrollbar
 from RunState import run_state
 root = Tk()
@@ -126,7 +126,7 @@ widg = Scrollbar(fr1, orient="vertical")
 widg1 = Scrollbar(fr1, orient="horizontal")
 mylist = Listbox(fr1)
 for line in range(100):
-   mylist.insert('end', "A really long line. "+ str(line)+" Line number " )
+    mylist.insert('end', "A really long line. "+ str(line)+" Line number " )
 
 mylist.grid( column=0,row=0)
 

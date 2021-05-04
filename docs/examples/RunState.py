@@ -17,12 +17,12 @@ class run_state():
         self.fr = fr
         self.widg = widg
         self.widg1 = widg1
-        
+
         # Create radio buttons which will display widget states
         # except alternate and background
         states = ['active', 'disabled', 'focus', 'invalid', 'pressed',
                   'readonly', 'selected']
-       
+
         self.rb = []
         self.state_val = StringVar()
         for iy, state in enumerate(states):
@@ -33,10 +33,10 @@ class run_state():
             st_rb.state(['disabled'])
 
         self.enabled = IntVar()
-        self.cbOpt = Checkbutton(fr, text='Enabled', variable=self.enabled, 
+        self.cbOpt = Checkbutton(fr, text='Enabled', variable=self.enabled,
                                  command=self.change_state)
         self.cbOpt.grid(column=0,row=0)
-        
+
         sep = Separator(orient='h')
         sep.grid(column=0,row=1,sticky='ew')
 
@@ -46,8 +46,8 @@ class run_state():
         #print(oldstate)
         if self.enabled.get() == 1:
             if len(oldstate) > 0:
-                # convert tuple to string 
-                oldst = " ".join(str(x) for x in oldstate) 
+                # convert tuple to string
+                oldst = " ".join(str(x) for x in oldstate)
                 self.widg.state(['!'+oldst])
                 if self.widg1 != None:
                     self.widg1.state(['!'+oldst])
@@ -55,29 +55,33 @@ class run_state():
             self.widg.state([newstate])
             if self.widg1 != None:
                 self.widg1.state([newstate])
-            for ir,w in enumerate(self.rb):
-                    w['state'] = '!disabled'
+            #for ir,w in enumerate(self.rb):
+            #    w['state'] = '!disabled'
+            for w in self.rb:
+                w['state'] = '!disabled'
         else:
             if len(oldstate) > 0:
-                # convert tuple to string 
+                # convert tuple to string
                 oldst = " ".join(str(x) for x in oldstate)
-                self.widg.state(['disabled',oldst])
+                self.widg.state(['!disabled',oldst])
                 if self.widg1 is not None:
-                    self.widg1.state(['disabled',oldst])
+                    self.widg1.state(['!disabled',oldst])
             else:
-                self.widg.state(['disabled'])
+                self.widg.state(['!disabled'])
                 if self.widg1 is not None:
-                    self.widg1.state(['disabled'])
-            for ir,w in enumerate(self.rb):
-                    w['state'] = 'disabled'
-            
+                    self.widg1.state(['!disabled'])
+            #for ir,w in enumerate(self.rb):
+                #w['state'] = '!disabled'
+            for w in self.rb:
+                w['state'] = '!disabled'
+
 if __name__ == '__main__':
     root = Tk()
-    fr = Frame()
-    fr.grid(column=0,row=0,sticky='nsew')
-    widg = Button(fr,text='widg')
-    widg.grid(column=0,row=11)
-    widg1 = Button(fr,text='widg1')
-    widg1.grid(column=0,row=12)
-    run_state(fr,widg,widg1)
+    fr1 = Frame()
+    fr1.grid(column=0,row=0,sticky='nsew')
+    Widg = Button(fr1,text='widg')
+    Widg.grid(column=0,row=11)
+    Widg1 = Button(fr1,text='widg1')
+    Widg1.grid(column=0,row=12)
+    run_state(fr1,Widg,Widg1)
     root.mainloop()

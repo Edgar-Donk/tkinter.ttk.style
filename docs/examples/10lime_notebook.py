@@ -6,8 +6,8 @@ the result of changing the state using different images and/or different
 settings.
 '''
 
-from tkinter import Tk, PhotoImage, StringVar
-from tkinter.ttk import Style, Label, Radiobutton, Frame, Notebook
+from tkinter import Tk, PhotoImage
+from tkinter.ttk import Style, Frame, Notebook
 from RunState import run_state
 
 root = Tk()
