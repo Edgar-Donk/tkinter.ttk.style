@@ -5,6 +5,7 @@ from tkinter import Tk, IntVar, StringVar, font
 from tkinter.ttk import Frame, Notebook, Separator, Checkbutton, Button, Radiobutton, LabelFrame, Treeview,\
 Scrollbar, Combobox, Style, Scale, Progressbar, Sizegrip, Label, Entry, Spinbox
 from tkinter.font import Font
+from gen_scale_class import TtkScale
 import lime_theme
 
 class NotebookDemo:
@@ -13,6 +14,7 @@ class NotebookDemo:
 
         self.fr = fr
         self.style = Style() # ts.ThemedStyle() # Style()
+        # self.style.configure('my.Horizontal.TScale', sliderlength=32)
         self._create_demo_panel() # run this before allBtns
         self.allBtns = self.ttkbut + self.cbs[1:] + self.rb
         try:
@@ -162,7 +164,7 @@ class NotebookDemo:
         fact = font.Font(font="TkDefaultFont").metrics('linespace')
         self.style.configure('fact.Treeview', rowheight=fact,
                            font=font.nametofont("TkDefaultFont"))
-        
+
         container = Frame(nb)
         container.pack(fill='both', expand=False)
         self.tree = Treeview(container, columns=tree_columns, show="headings",
@@ -223,43 +225,50 @@ class NotebookDemo:
         self.scvar = IntVar()
 
         scRange=self.any_number_range(from_,to,step)
-        scLen = len(scRange[1]) * (fontSize + 10)
-        print('scLen',scLen)
-        self.sc = Scale(fr1, from_=from_, to=to, variable=self.scvar,
-                    orient='vertical', length=scLen)
+        #scLen = len(scRange[1]) * (fontSize + 10)
+        #print('scLen',scLen)
+        self.sc = TtkScale(fr1, from_=from_, to=to, variable=self.scvar,
+                    orient='vertical', length=200, showvalue=False,
+                    tickinterval=5, resolution=5, sliderlength=16)
+        #self.sc = Scale(fr1, from_=from_, to=to, variable=self.scvar,
+                    #orient='vertical', length=scLen)
         self.sc.set(value)
         #l1 = Label(fr1,textvariable=self.scvar,width=5)
         l1 = Spinbox(fr1, from_=from_, to=to, textvariable=self.scvar, width=4)
         l1.grid(row=1,column=0,padx=5,pady=5)
-        self.sc.grid(row=1,column=1,padx=5,pady=5)
+        self.sc.grid(row=1,column=1,padx=40,pady=5)
+
         fr4=Frame(fr1)
         fr4.grid(row=1, column=2)
         sc_split = '\n'.join(scRange[0].split())
-        lb = Label(fr1, text=sc_split, font=('Courier New', str(fontSize)),
-                   width=4*len(scRange[1]))
-        lb.grid(row=1, column=2,padx=5,pady=5)
+        #lb = Label(fr1, text=sc_split, font=('Courier New', str(fontSize)),
+                   #width=4*len(scRange[1]))
+        #lb.grid(row=1, column=2,padx=5,pady=5)
 
-        sep = Separator(lF, orient="vertical")
-        sep.grid(row=1,column=2,sticky='ns')
+        #sep = Separator(lF, orient="vertical")
+        #sep.grid(row=1,column=2,sticky='ns')
         fr2 = Frame(lF, name='fr2')
         fr2.grid(row=1,column=3,sticky='nsew')
         self.schvar = IntVar()
         a=0
         b=100
-        schRange = self.any_number_range(a,b,s=10)
-        schLen = Font().measure(schRange[0])
-        print('schLen',schLen)
-        self.sch = Scale(fr2, from_=a, to=b, length=schLen, variable=self.schvar,
-                         orient='horizontal')
+        #schRange = self.any_number_range(a,b,s=10)
+        #schLen = Font().measure(schRange[0])
+        #print('schLen',schLen)
+        #self.sch = Scale(fr2, from_=a, to=b, length=schLen, variable=self.schvar,
+                         #orient='horizontal')
+        self.sch = TtkScale(lF, from_=a, to=b, length=200, variable=self.schvar,
+                         orient='horizontal', showvalue=False,
+                         tickinterval=5, resolution=5, sliderlength=16)
 
         self.sch.set(0)
         #l2 = Label(fr2,textvariable=self.schvar,width=5)
         l2 = Spinbox(lF, from_=a, to=b, textvariable=self.schvar, width=4)
-        l2.grid(row=1,column=3,pady=2)
-        self.sch.grid(row=2,column=1,padx=5,pady=5,sticky='nsew')
-        l3 = Label(fr2,text=schRange[0], font=('Courier New', str(fontSize)),
-                   width=4*len(schRange[1]))
-        l3.grid(row=3,column=1,padx=5,pady=5)
+        l2.grid(row=1,column=1,pady=2, sticky='s')
+        self.sch.grid(row=2,column=1,padx=5,pady=40,sticky='nsew')
+        #l3 = Label(fr2,text=schRange[0], font=('Courier New', str(fontSize)),
+                   #width=4*len(schRange[1]))
+        #l3.grid(row=3,column=1,padx=5,pady=5)
         lF.grid(row=0,column=0,sticky='nesw',pady=5,padx=5)
 
         lF1 = LabelFrame(fr,text="Progress", name = 'lf')
@@ -414,9 +423,11 @@ class NotebookDemo:
     #========================================================================
 if __name__ == '__main__':
     root = Tk()
+    st = Style()
     #root.geometry("{}x{}+{}+{}".format(w, h, x, y))
     #root.geometry("{}x{}+{}+{}".format(400, 440, 70, 100))
     f = Frame(root,name="fr")
     f.pack(fill='both', expand='y')
     NotebookDemo(f)
+
     root.mainloop()

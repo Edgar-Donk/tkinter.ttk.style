@@ -7,9 +7,10 @@ collection of themed widgets
 from tkinter import Tk, IntVar, StringVar, font
 from tkinter.ttk import Frame, Notebook, Separator, Checkbutton, Button, \
 Radiobutton, LabelFrame, Treeview,Scrollbar, Combobox, PanedWindow, Style, \
-Scale, Progressbar, Sizegrip, Label, Entry, Spinbox
+Progressbar, Sizegrip, Label, Entry, Spinbox
 from tkinter.font import Font
 from ttkthemes import themed_style as ts
+from gen_scale_class import TtkScale
 
 class NotebookDemo:
 
@@ -223,37 +224,46 @@ class NotebookDemo:
         step=11
         fontSize = 9
         scvar = IntVar()
-        scRange=self.any_number_range(from_,to,step)
-        scLen = len(scRange[1]) * (fontSize + 10)
-        self.sc = Scale(fr1, from_=from_, to=to, variable=scvar,
-                    orient='vertical',length=scLen,
-                        command=lambda s: scvar.set('%d' % float(s) ))
+        #scRange=self.any_number_range(from_,to,step)
+        #scLen = len(scRange[1]) * (fontSize + 10)
+        #print(scLen)
+        self.sc = TtkScale(fr1, from_=from_, to=to, variable=scvar,
+                    orient='vertical',length=200, showvalue=True,
+                        command=lambda s: scvar.set('%d' % float(s) ),
+                        tickinterval=5, resolution=5)
+        #self.sc = Scale(fr1, from_=from_, to=to, variable=scvar,
+                    #orient='vertical',length=scLen,
+                        #command=lambda s: scvar.set('%d' % float(s) ))
         self.sc.set(value)
         #l1 = Label(fr1,textvariable=scvar,width=5)
         l1 = Spinbox(fr1, from_=from_, to=to, textvariable=scvar, width=4)
         l1.grid(row=0,column=0,pady=2)
-        self.sc.grid(row=0,column=1)
+        self.sc.grid(row=0,column=1, pady=5, padx=40)
         fr=Frame(fr1)
         fr.grid(row=0, column=2)
-        for ix,sR in enumerate(scRange[1]):
-            lb = Label(fr, text=sR, font=('Courier New', str(fontSize)))
-            lb.grid(row=ix, column=1)
+        #for ix,sR in enumerate(scRange[1]):
+            #lb = Label(fr, text=sR, font=('Courier New', str(fontSize)))
+            #lb.grid(row=ix, column=1)
 
         schvar = IntVar()
         a=-5
         b=105
-        schRange = self.any_number_range(a,b,s=11)
-        schLen = Font().measure(schRange[0])
-        self.sch = Scale(lF, from_=a, to=b, length=schLen, variable=schvar,
-                         orient='horizontal',
-                         command=lambda s: schvar.set('%d' % float(s) ))
+        #schRange = self.any_number_range(a,b,s=11)
+        #schLen = Font().measure(schRange[0])
+        self.sch = TtkScale(lF, from_=a, to=b, length=200, variable=schvar,
+                         orient='horizontal', showvalue=True,
+                         command=lambda s: schvar.set('%d' % float(s) ),
+                         tickinterval=5, resolution=5)
+        #self.sch = Scale(lF, from_=a, to=b, length=schLen, variable=schvar,
+                         #orient='horizontal',
+                         #command=lambda s: schvar.set('%d' % float(s) ))
         self.sch.set(23)
         #l2 = Label(lF,textvariable=schvar)
         l2 = Spinbox(lF, from_=a, to=b, textvariable=schvar, width=4)
         l2.grid(row=1,column=1,pady=2)
-        self.sch.grid(row=2,column=1,pady=2,sticky='nw')
-        l3 = Label(lF,text=schRange[0], font=('Courier New', str(fontSize)))
-        l3.grid(row=3,column=1,pady=2)
+        self.sch.grid(row=2,column=1, pady=40, padx=5,sticky='nw')
+        #l3 = Label(lF,text=schRange[0], font=('Courier New', str(fontSize)))
+        #l3.grid(row=3,column=1,pady=2)
         self.pw.add(lF)
 
         lF1 = LabelFrame(self.pw,text="Progress", name = 'lf')
@@ -422,7 +432,7 @@ class NotebookDemo:
     #========================================================================
 if __name__ == '__main__':
     root = Tk()
-    
+
     #root.geometry("{}x{}+{}+{}".format(w, h, x, y))
     #root.geometry("{}x{}+{}+{}".format(400, 440, 70, 100))
     f = Frame(root,name="fr")
