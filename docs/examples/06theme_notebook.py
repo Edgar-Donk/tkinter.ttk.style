@@ -167,7 +167,7 @@ class NotebookDemo:
         #test_length = font.Font(family="Times", size=12, weight="bold").measure('Test')
         #fact = int(test_length / 30 * 20.45) # 30 is the length of Test in Idle
         fact = font.Font(font="TkDefaultFont").metrics('linespace')
-        # print(fact)
+
         self.st0.configure('fact.Treeview', rowheight=fact,
                            font=font.nametofont("TkDefaultFont"))
 
@@ -226,7 +226,7 @@ class NotebookDemo:
         scvar = IntVar()
         #scRange=self.any_number_range(from_,to,step)
         #scLen = len(scRange[1]) * (fontSize + 10)
-        #print(scLen)
+
         self.sc = TtkScale(fr1, from_=from_, to=to, variable=scvar,
                     orient='vertical',length=200, showvalue=True,
                         command=lambda s: scvar.set('%d' % float(s) ),
@@ -264,6 +264,7 @@ class NotebookDemo:
         self.sch.grid(row=2,column=1, pady=40, padx=5,sticky='nw')
         #l3 = Label(lF,text=schRange[0], font=('Courier New', str(fontSize)))
         #l3.grid(row=3,column=1,pady=2)
+        self.sch.bind("<ButtonRelease-1>", self.show_x)
         self.pw.add(lF)
 
         lF1 = LabelFrame(self.pw,text="Progress", name = 'lf')
@@ -287,7 +288,6 @@ class NotebookDemo:
         start.grid(row=2,column=0,padx=5,pady=5,sticky='nw')
         stop.grid(row=3,column=0,padx=5,pady=5,sticky='nw')
         self.pw.add(lF1)
-
 
         # add to notebook (underline = index for short-cut character)
         nb.add(self.pw, text='Sliders & Others', underline=0)
@@ -389,7 +389,7 @@ class NotebookDemo:
                             output = output + str(res) + " "
                         else:
                             output = output + str(res)
-            #print(output)
+
             return output,result
 
     def _do_bars(self, op):
@@ -426,8 +426,6 @@ class NotebookDemo:
 
         tab = event.widget.nametowidget(event.widget.select())
         event.widget.configure(height=tab.winfo_reqheight(),width=tab.winfo_reqwidth())
-
-
 
     #========================================================================
 if __name__ == '__main__':
