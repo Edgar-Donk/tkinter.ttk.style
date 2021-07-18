@@ -53,14 +53,14 @@ Linking Python to Arduino
 .. image:: _static/arduino.png
    :target: ard_
 
+.. |car| image:: _static/flying_carpet2.png
+
 Basics and working with VPython, then create a digital gauge.
 
 .. hint:: 
 
-    .. raw:: html
-
-        <img align="Right" src="_static/flying_carpet2.png">
-        
-    Just click on one of the images to get whisked away.on the html 
-    magic carpet.
+    Just click on one of the images |car| 
+    
+    to get whisked away on the html magic carpet.
+    
 
