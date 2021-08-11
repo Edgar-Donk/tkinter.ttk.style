@@ -35,6 +35,38 @@ Where you'll find the explanations.
 More
 ====
 
+.. raw:: html
+
+   <head>
+   <link rel="stylesheet" href="_static/imagehover_min.css">
+   <style type="text/css">
+   .aligncenter {
+         text-align: left;
+   }
+   figure, figurecaption {
+
+      display: block;
+      font-family: Aladdin, Seagull, Vivaldi, Times;
+      /*font-style: italic;
+      font-variant: small-caps;*/
+
+   }
+   </style>
+   </head>
+   <p class="aligncenter">
+   Hover over the carpet
+   <figure class="imghvr-zoom-out-right">
+      <img src="_static/flying_carpet1.png">
+         <figcaption>
+            Just click on one of the images  
+            to get whisked away on the html magic carpet.
+         </figcaption>
+   </figure>
+   </p>
+   </body>
+
+
+
 Some of the trickier parts of tkinter.ttk
 -----------------------------------------
 
@@ -43,7 +75,7 @@ Some of the trickier parts of tkinter.ttk
 .. image:: _static/frothy_brew.png
    :target: froth_
 
-From notebook to scale, with canvas move and colour picker.
+From ttk.notebook to ttk.scale, with canvas move and create a colour picker.
 
 Linking Python to Arduino
 -------------------------
@@ -57,10 +89,6 @@ Linking Python to Arduino
 
 Basics and working with VPython, then create a digital gauge.
 
-.. hint:: 
 
-    Just click on one of the images |car| 
-    
-    to get whisked away on the html magic carpet.
-    
+
 
