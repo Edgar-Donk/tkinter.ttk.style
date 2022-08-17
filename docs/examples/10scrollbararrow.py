@@ -34,7 +34,7 @@ rdraw.polygon([st[0],st[1]+(width-1),st[0]+(height-1),st[1]+(width-1)/2,
 
 img.save('../images/lime/arrowright-n.png')
 
-aimg = img.point(lambda p: p * 1.1)
+aimg = img.point(lambda p: int(p * 1.1))
 aimg.save('../images/lime/arrowright-a.png')
 
 dimg = img.convert('L')
@@ -46,7 +46,7 @@ img.transpose(Image.ROTATE_90).save('../images/lime/arrowup-n.png')
 #uimg = img.rotate(90)
 uimg = Image.open('../images/lime/arrowup-n.png')
 
-auimg = uimg.point(lambda p: p * 1.1)
+auimg = uimg.point(lambda p: int(p * 1.1))
 auimg.save('../images/lime/arrowup-a.png')
 
 duimg = uimg.convert('L')
@@ -73,7 +73,7 @@ pimg.transpose(Image.FLIP_LEFT_RIGHT).save('../images/lime/arrowleft-p.png')
 
 limg = Image.open('../images/lime/arrowleft-n.png')
 
-alimg = limg.point(lambda p: p * 1.1)
+alimg = limg.point(lambda p: int(p * 1.1))
 alimg.save('../images/lime/arrowleft-a.png')
 
 dlimg = limg.convert('L')
@@ -85,13 +85,13 @@ dlimg.save('../images/lime/arrowleft-d.png')
 img.transpose(Image.ROTATE_270).save('../images/lime/arrowdown-n.png')
 ndimg = Image.open('../images/lime/arrowdown-n.png')
 
-adimg = ndimg.point(lambda p: p * 1.1)
+adimg = ndimg.point(lambda p: int(p * 1.1))
 adimg.save('../images/lime/arrowdown-a.png')
 
 ddimg = ndimg.convert('L')
 ddimg = ddimg.convert('RGBA')
 transx(ddimg,w,h)
-ddimg.save('../images/lime/arrowdown-d.png') 
+ddimg.save('../images/lime/arrowdown-d.png')
 
 plimg = Image.open('../images/lime/arrowleft-p.png')
 plimg.transpose(Image.ROTATE_90).save('../images/lime/arrowdown-p.png')

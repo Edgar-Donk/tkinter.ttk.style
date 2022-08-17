@@ -42,10 +42,10 @@ style.theme_settings('default', {
            ('pressed', "slider-hp"),
            ('active', "slider-ha"),
            ('selected', "button-sa"),
-           ('disabled', "slider-hd"),           
+           ('disabled', "slider-hd"),
            {'border':[5,12,5,12], 'padding': 4,  'sticky': "nsew"}) # "nsew"
          }
-      
+
 # end of theme extract - don't forget to add comma at end when inserting
      })
 

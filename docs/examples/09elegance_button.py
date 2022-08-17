@@ -19,10 +19,10 @@ h = he-6 #27
 centreX = (w-1)/2
 centreY = (h-1)/2
 hypotSq = (w-1)*(w-1) + (h-1)*(h-1)
-    
+
 to_colour = (239, 240, 239)
 from_colour = (184, 183, 183)
-    
+
 idraw.line([0,0,we-1,0],fill=(164,164,164))
 idraw.line([0,0,0,he-1],fill=(164,164,164))
 idraw.line([1,he-1,we-1,he-1],fill=(231,231,231))
@@ -36,16 +36,16 @@ idraw.line([we-3,2,we-3,he-3],fill=(176,175,175))
 for y in range(3,h+3):
     rise = centreY - y
     rise *= rise
-    
+
     for x in range(3,w+3):
         run = centreX - x
         run *= run
-    
+
         distSq = run + rise
         dist = 4 * distSq / hypotSq
-    
+
         idraw.point([x,y],fill=LerpColour(from_colour,to_colour,dist))
-    
+
 # darken image in lower half
 pixdata = img.load()
 for y in range(int(centreY+4),h+4):
@@ -54,5 +54,5 @@ for y in range(int(centreY+4),h+4):
         pixdata[x,y] = r-20,g-20,b-20
 
 
-#img.show()    
-img.save('../figures/09eleg_button.png')
+img.show()
+#img.save('../figures/09eleg_button.png')

@@ -40,18 +40,18 @@ igrad = ImageDraw.Draw(grad)
 for j in range(steps):
     cr,cg,cb = LerpColour(startc,stopc,j/(steps-1))
     igrad.line([0,j,we-1,j],fill=(cr,cg,cb))
-    
-#grad.save('../images/lime/grad.png') 
+
+#grad.save('../images/lime/grad.png')
 
 limg = ImageChops.lighter(grad,img)
 limg = limg.resize((w,h),Image.LANCZOS)
 trans(limg,w,h,radius)
-limg.save('../images/lime/button-n.png') 
+limg.save('../images/lime/button-n.png')
 
 pimg = limg.rotate(180)
 pimg.save('../images/lime/button-p.png')
 
-aimg = limg.point(lambda p: p * 1.1)
+aimg = limg.point(lambda p: int(p * 1.1))
 aimg.save('../images/lime/button-a.png')
 
 dimg = limg.convert('L')

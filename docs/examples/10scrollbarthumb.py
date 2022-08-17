@@ -49,8 +49,11 @@ dimg = dimg.convert('RGBA')
 trans(dimg,w,h,radius)
 dimg.save('../images/lime/slider-hd.png')
 
-aimg = img.point(lambda p: p * 1.1)
+aimg = img.point(lambda p: int(p * 1.1))
 aimg.save('../images/lime/slider-ha.png')
 
-arimg = rimg.point(lambda p: p * 1.1)
+arimg = rimg.point(lambda p: p * int(1.1))
+
 arimg.save('../images/lime/slider-va.png')
+
+
