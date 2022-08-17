@@ -1,0 +1,5 @@
+sphinx
+numpydoc
+Pillow
+numpy
+pydata_sphinx_theme
