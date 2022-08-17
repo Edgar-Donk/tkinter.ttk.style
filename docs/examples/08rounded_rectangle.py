@@ -1,12 +1,13 @@
+# Rounded Rectangle
 from PIL import Image, ImageDraw
 
 e = 9 # enlargement, also thickness between rectangles
-w=23
-h=23
+w = 23
+h = 23
 we = h*e  # based on circle sizes
 he = w*e
-j = 2 # gap size
-s=j*e # space
+j = 5 # gap size
+s = j*e # space
 
 # create pieslice with centre and radius, assume only fill used
 def create_pie(idraw,c,r,fill='#888888',start=180,end=270):
@@ -20,7 +21,7 @@ def round_corner(radius, outline, fill):
     create_pie(idraw,[s,s],s,fill=outline)
     create_pie(idraw,[s,s],s-e,fill=fill)
     return corner
- 
+
 def round_rectangle(size, radius, outline, fill):
     """Draw a rounded rectangle"""
     width, height = size
@@ -39,7 +40,11 @@ def round_rectangle(size, radius, outline, fill):
     rect.paste(corner.rotate(180), (width - radius, height - radius))
     rect.paste(corner.rotate(270), (width - radius, 0))
     return rect
- 
-img = round_rectangle((we, he), s, "blue", "lightblue")
+
+img = round_rectangle((we, he), s, "blue", "white")
 #img.show()
-img.save('rounded_rect'+str(j)+'.png')
+img.save('../figures/08rounded_rect'+str(j)+'.png')
+
+limg = img.resize((w,h),Image.LANCZOS)
+#limg.show()
+limg.save('../figures/08rounded_rect_L'+str(j)+'.png')
