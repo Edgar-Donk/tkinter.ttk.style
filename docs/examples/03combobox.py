@@ -8,21 +8,22 @@ from tkinter import Tk
 root = Tk()
 style = Style()
 # this is needed even though we are using 'default' in theme_settings
-style.theme_use('default') 
+style.theme_use('default')
 style.theme_settings("default", {
    "TCombobox": {          # widget class name
        # note how style.configure and style.map are formatted
-       "configure": {"padding": 5}, 
+       "configure": {"padding": 5},
        "map": {
         # background refers to downarrow
-           "background": [("active", "sky blue"), 
+           "background": [("active", "sky blue"),
                           ("!disabled", "cyan")],
-                # on first selecting from list the text background is grey, 
+                # on first selecting from list the text background is grey,
                 # inherited from default theme
                 # fieldbackground refers to field
-               "fieldbackground": [("!disabled", "green3")], 
+               "fieldbackground": [("!disabled", "green3")],
                "foreground": [("focus", "OliveDrab1"),
-                          ("!disabled", "OliveDrab2")]
+                          ("!disabled", "OliveDrab2")],
+               "font": ('Gigi 12')
            }
    }
 })

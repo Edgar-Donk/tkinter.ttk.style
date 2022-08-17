@@ -17,7 +17,7 @@ def getit() :
     elif value[0].isdigit():
         valuei = tuple(int(item) for item in value.split(',') if item.strip())
         tvalue = '#%02x%02x%02x' % valuei
-        value = make_tuple(value) # normal tuple(value) --> ('0', ',', '0', ',', '0') 
+        value = make_tuple(value) # normal tuple(value) --> ('0', ',', '0', ',', '0')
         if contrast(value) < 0.5:
             lbl2["foreground"]='white'
         value = tvalue
@@ -33,10 +33,10 @@ def getit() :
         tvalue = tuple(int(h[i:i+2], 16) for i in (0, 2 ,4))
         if contrast(tvalue) < 0.5:
             lbl2["foreground"]='white'
-        
+
     lbl2["text"]=tvalue
     lbl2["background"]=value
-    
+
 root = Tk()
 fr = Frame(root)
 fr.grid(column=0,row=0)
@@ -48,7 +48,7 @@ lbl.grid(column=0,row=0,padx=5,pady=10)
 
 ey = Entry(fr2)
 ey.grid(column=0,row=0,padx=5,pady=10)
-out=StringVar(ey.get())
+#out=StringVar(ey.get())
 
 lf=LabelFrame(fr,text='Colour')
 lf.grid(column=0,row=1)

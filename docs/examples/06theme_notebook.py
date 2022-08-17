@@ -264,7 +264,7 @@ class NotebookDemo:
         self.sch.grid(row=2,column=1, pady=40, padx=5,sticky='nw')
         #l3 = Label(lF,text=schRange[0], font=('Courier New', str(fontSize)))
         #l3.grid(row=3,column=1,pady=2)
-        self.sch.bind("<ButtonRelease-1>", self.show_x)
+        #self.sch.bind("<ButtonRelease-1>", self.show_x)
         self.pw.add(lF)
 
         lF1 = LabelFrame(self.pw,text="Progress", name = 'lf')

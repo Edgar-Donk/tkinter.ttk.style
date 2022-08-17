@@ -6,7 +6,7 @@ combobox change font
 
 Using the widget Text to display the customised colours, their hash
 representation and to which element they have been assigned. The combobox font
-cannot be easily modified with style, hence the element_options used with a CustomBox
+cannot be easily modified, hence the element_options used with a CustomBox
 (modified combobox). The alternative is to use option_add.
 '''
 
@@ -49,8 +49,8 @@ def theme_changed(theme):
             width = element_options['width'],
             font = element_options['font']
     )
-    #print (ppout)
-    #return ppout
+    print (ppout)
+    return ppout
 
 
 element_options = {
@@ -76,15 +76,14 @@ element_options = {
                 'sashthickness': 10, 'width': 20, 'font': 'Gigi 12'}
 
 root = Tk()
-#try:
-    #import ttkthemes as ts
-    #style = ts.themed_style.ThemedStyle()
-#except (NameError, AttributeError):
-    #style = Style()
-style = Style()
+try:
+    import ttkthemes as ts
+    style = ts.themed_style.ThemedStyle()
+except (NameError, AttributeError):
+    style = Style()
 tWidg = 'TCombobox'
 
-
+'''
 class CustomBox(Combobox):
     def __init__(self, *args, **kwargs):
         #   initialisation of the combobox entry
@@ -118,7 +117,7 @@ class CustomBox(Combobox):
 
     #   keep overridden shortcut
     config = configure
-
+'''
 fra = Frame(root, height=150, width=100)
 fra.grid(row=0, column=1, padx=5, pady=5)
 
@@ -167,20 +166,20 @@ combo1.set('Apple')
 lab2 = Label(fra, text='Normal Widget ▶')
 lab2.grid(row=2, column=0, padx=5, pady=5)
 
-'''
+
 # try uncommenting these lines, and comment out the cb lines following
 combo2 = Combobox(fra, style="Custom." + tWidg, values=("Milk","Water","Juice"))
-combo2.grid(row=3, column=0, padx=5, pady=5)
+combo2.grid(row=3, column=1, padx=5, pady=5)
 combo2.option_add('*TCombobox*Listbox.font', element_options['font'])
 combo2.set('Milk')
 # this affects all comboboxes
 '''
-cb = CustomBox(fra, font=element_options['font'], style="Custom." + tWidg,
+cb = CustomBox(fra, font=element_options['font'], style="Custom." + tWidg, # CustomBox
                       values=("Milk","Water","Juice"))
 cb.grid(row=3, column=1, padx=5, pady=5,sticky='ne')
 cb.set('Milk')
 #print("Custom." + tWidg)
-
+'''
 lab3 = Label(fra, text='Widget with Style ▶')
 lab3.grid(row=3, column=0, padx=5, pady=5)
 lab4 = Label(fra, text='Widget Layout ▼')
