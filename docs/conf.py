@@ -22,7 +22,7 @@ copyright = "2022, 'Edga Donk'"
 author = "'Edga Donk'"
 
 # The full version, including alpha/beta/rc tags
-release = "'1'"
+release = "'2'"
 
 
 # -- General configuration ---------------------------------------------------
