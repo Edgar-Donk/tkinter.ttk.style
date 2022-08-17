@@ -99,15 +99,15 @@ def main():
     root = Tk()
     root.wm_title("Multi-Column List")
     root.wm_iconname("mclist")
-    
+
     # change plastik references to orange following lines
-    import plastik_theme
-    
-    try: # 
-        plastik_theme.install('plastik') # change to directory you are using
+    import orange_theme
+
+    try: #
+        orange_theme.install('../images/orange') # directory of images
     except Exception:
         import warnings
-        warnings.warn("plastik theme being used without images")
+        warnings.warn("orange theme being used without images")
 
     App()
     root.mainloop()

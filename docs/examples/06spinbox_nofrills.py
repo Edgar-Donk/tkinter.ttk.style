@@ -4,7 +4,7 @@ Spinbox - based on Combobox
 Create theme extract for custom widgets, include state selection to view
 the result of changing the state using different images and/or different
 settings.
-Spinbox states disabled, readonly;focus, readonly; normal, focus, pressed, 
+Spinbox states disabled, readonly;focus, readonly; normal, focus, pressed,
 disabled; normal,readonly,active; normal,pressed,active, disabled
 
 Do not use directly when making the lime theme.
@@ -59,7 +59,7 @@ style.theme_create( "yummy", parent="clam", settings={
              )
         }
 
-     
+
 # end of theme extract - don't forget to add comma at end when inserting
      })
 

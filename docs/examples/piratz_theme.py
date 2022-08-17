@@ -219,7 +219,9 @@ def install(imgdir):
         # Radiobutton
         'Radiobutton.indicator': {"element create":
           ('image', "radio",
+          ('active', "radio-a"),
            ('selected', "radio-s"),
+           ('disabled', "radio-d"),
            {'width':20, 'sticky': "w"})
         },
 
@@ -260,7 +262,10 @@ def install(imgdir):
            ('active', "sail-p"),
            {'border':[30, 17, 27, 32], 'padding':[13,8,18,21], 'sticky': "nsew"}
         ) },
-       'Treeview': {'configure': {'bordercolor': colors['bordercolor']}
+       # added map to treeview for selection
+       'Treeview': {'configure': {'bordercolor': colors['bordercolor']},
+          "map": {"background": [("selected", colors["selectbg"])],
+            "foreground": [("selected", colors["selectfg"])]}
        },
 
        # Button

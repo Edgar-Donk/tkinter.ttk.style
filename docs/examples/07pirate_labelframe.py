@@ -18,14 +18,21 @@ root = Tk()
 fr = Frame(root)
 fr.grid(column=0,row=0,sticky='nsew')
 
-img2 = PhotoImage("frame-d", file='../images/piratz/frame-d.png')
-img1 = PhotoImage("frame", file='../images/piratz/frame.png')
+img1 = PhotoImage("label", file='../images/piratz/label.png')
+img2 = PhotoImage("label-d", file='../images/piratz/label-d.png')
+img3 = PhotoImage("frame-d", file='../images/piratz/frame-d.png')
+img4 = PhotoImage("frame", file='../images/piratz/frame.png')
 
 style = Style()
 # both theme_create and theme_settings worked
 style.theme_create( "yummy", parent="clam", settings={
 #style.theme_settings('default', {
 # start of theme extract
+      'Label.border': {"element create":
+          ('image', "label",
+           ('disabled', "label-d"),
+           {'border':[19, 9, 7, 7],  'sticky': "nsew"}) # [19, 9, 7, 7]'padding':[19,3,3,3],
+        },
      'Labelframe.border': {"element create":
           ('image', "frame",
            ('disabled', "frame-d"),

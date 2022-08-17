@@ -19,10 +19,10 @@ width,height = im.size
 s.element_create("ship", "image", tkim)
 s.layout("ship", [("ship", {"sticky": "nsew"})])
 
-fr=Frame(root, style="ship", height=height,width=width) 
+fr=Frame(root, style="ship", height=height,width=width)
 fr.grid(column=0, row=1, sticky='nsew')
 
-il = Label(fr, text= 'Label')
+il = Label(fr, text= 'Enter your text below')
 il.place(relx=0.1, rely=0.1, anchor='center') # using place to position widget
 
 en = Entry(fr, width=15)

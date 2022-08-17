@@ -17,8 +17,8 @@ root = Tk()
 def change_state():
     oldstate = widg.state()
     if len(oldstate) > 0:
-        # convert tuple to string 
-        oldst = " ".join(str(x) for x in oldstate) 
+        # convert tuple to string
+        oldst = " ".join(str(x) for x in oldstate)
         widg.state(['!'+oldst])
         widg1.state(['!'+oldst])
     newstate = state_val.get()
@@ -41,6 +41,7 @@ for iy, state in enumerate(states):
 img1 = PhotoImage("label", file='../images/piratz/label.png')
 img2 = PhotoImage("label-d", file='../images/piratz/label-d.png')
 img3 = PhotoImage("frame", file='../images/piratz/frame.png')
+img4 = PhotoImage("frame-d", file='../images/piratz/frame-d.png')
 
 style = Style()
 # both theme_create and theme_settings worked
@@ -54,6 +55,7 @@ style.theme_create( "yummy", parent="clam", settings={
         },
      'Labelframe.border': {"element create":
           ('image', "frame",
+           ('disabled', "frame-d"),
            {'border':7, 'padding':5, 'sticky': "nsew"}) }
 # end of theme extract - don't forget to add comma at end when inserting
      })

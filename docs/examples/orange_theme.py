@@ -1,7 +1,7 @@
 """This demonstrates good part of the syntax accepted by theme_create.
 
 This is a translation of plastik.tcl to python.
-You will need the images used by the plastik theme to test this. The
+You will need the images used by the orange theme to test this. The
 images (and other tile themes) can be retreived by doing:
 
 $ cvs -z3 -d:pserver:anonymous@tktable.cvs.sourceforge.net:/cvsroot/tktable \
@@ -9,15 +9,15 @@ $ cvs -z3 -d:pserver:anonymous@tktable.cvs.sourceforge.net:/cvsroot/tktable \
 
 To test this module you should do, for example:
 
-import Tkinter
-import plastik_theme
+import tkinter
+import orange_theme
 
-root = Tkinter.Tk()
-plastik_theme.install(plastik_image_dir)
+root = tkinter.Tk()
+orange_theme.install(orange_image_dir)
 ...
 
-Where plastik_image_dir contains the path to the images directory used by
-the plastik theme, something like: tile-themes/plastik
+Where orange_image_dir contains the path to the images directory used by
+the orange theme, something like: '../images/orange'
 """
 
 import os
@@ -37,7 +37,7 @@ colors = {
 
 imgs = {}
 def _load_imgs(imgdir):
-    imgdir = os.path.expanduser(imgdir) #('img') ('blue')
+    imgdir = os.path.expanduser(imgdir) # ('img') ('blue')
     if not os.path.isdir(imgdir):
         raise Exception("%r is not a directory, can't load images" % imgdir)
     for f in glob("%s/*.gif" % imgdir):
@@ -48,7 +48,7 @@ def _load_imgs(imgdir):
 def install(imgdir):
     _load_imgs(imgdir)
     style = tkinter.ttk.Style()
-    style.theme_create("plastik", "default", settings={
+    style.theme_create("orange", "default", settings={ # "clam"
 	# next line refers to common to all widgets
         ".": {
             "configure":
@@ -87,10 +87,10 @@ def install(imgdir):
         },
 
         "TButton": {
-            "configure": {"width": 10, "anchor": "center"},
+            "configure": {"width": 10, "anchor": "center", "padding": [10, 0]},
             "layout": [
-                ("Button.button", {"children":
-                    [("Button.focus", {"children":
+                ("Button.focus", {"children":
+                    [("Button.button", {"children":
                         [("Button.padding", {"children":
                             [("Button.label", {"side": "left", "expand": 1})]
                         })]
@@ -231,19 +231,25 @@ def install(imgdir):
             ("image", 'arrow-d', {"sticky": "e", "border": [15, 0, 0, 0]})
         },
 
-        "Combobox.field": {"element create":
-            ("image", 'combo-n',
-                ('readonly', 'active', 'combo-ra'),
-                ('focus', 'active', 'combo-fa'),
-                ('active', 'combo-a'), ('!readonly', 'focus', 'combo-f'),
-                ('readonly', 'combo-r'),
-                {'border': [4, 6, 24, 15], 'padding': [4, 4, 5],
-                 'sticky': 'news'}
-            )
+           "TCombobox": {
+       "configure": {"selectbackground": "#657a9e"}}, # 'light blue'
+       "Combobox.field": {"element create":
+           ("image", 'combo-n',
+                ('readonly', 'disabled', 'combo-rd'),
+                ('readonly', 'pressed', 'combo-rp'),
+                ('readonly', 'focus', 'combo-rf'),
+                ('readonly',  'combo-rn'),
+                {'sticky': 'ew',  'border': [4]}
+           )
         },
         "Combobox.downarrow": {"element create":
-            ("image", 'arrow-d', {'sticky': 'e', 'border': [15, 0, 0, 0]})
-         },
+            ("image", 'comboarrow-n',
+                 ('disabled','comboarrow-d'),
+                 ('pressed','comboarrow-p'),
+                 ('active','comboarrow-a'),
+                 {'sticky': '','border': [1]}
+             )
+   },
 
         "Notebook.client": {"element create":
             ("image", 'notebook-c', {'border': 4})
@@ -273,4 +279,4 @@ def install(imgdir):
         }
 
     })
-    style.theme_use("plastik")
+    style.theme_use("orange")

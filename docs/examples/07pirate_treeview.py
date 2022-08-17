@@ -13,8 +13,10 @@ from RunState import run_state
 
 root = Tk()
 
-colours = {'bordercolor': '#7FFFD4'}
-    
+colors = {'bordercolor': '#7FFFD4',
+            "selectbg": "#2d2d66",
+            "selectfg": "#ffffff"}
+
 
 fr = Frame(root)
 fr.grid(column=0,row=0,sticky='nsew')
@@ -41,10 +43,13 @@ style.theme_create( "yummy", parent="clam", settings={
            ('disabled', "sail-d"),
            ('pressed', "sail-s"),
            ('active', "sail-p"),
-           {'border':[30, 17, 27, 32], 'padding':[13,8,18,21], 'sticky': "nsew"} 
+           {'border':[30, 17, 27, 32], 'padding':[13,8,18,21], 'sticky': "nsew"}
         ) },
-       'Treeview': {'configure': {'bordercolor': colours['bordercolor']}}, 
-         
+       # added map to treeview for selection
+       'Treeview': {'configure': {'bordercolor': colors['bordercolor']},
+          "map": {"background": [("selected", colors["selectbg"])],
+            "foreground": [("selected", colors["selectfg"])]}},
+
 # end of theme extract - don't forget to add comma at end when inserting
      })
 
@@ -57,7 +62,7 @@ for col in dataCols:
     widg.heading(col, text=col.title())
     widg.column(col, width=75*mult)
 for ix, item in enumerate(treeData):
-    widg.insert('', 'end', values=item)    
+    widg.insert('', 'end', values=item)
 widg.grid(column=0,row=11,sticky='nsew', padx=5, pady=5)
 run_state(fr,widg)
 

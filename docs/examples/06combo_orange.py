@@ -2,17 +2,17 @@ import tkinter as tk
 from tkinter import ttk
 import orange_theme # when using theme the style is not required
 
-    
+
 values = ['car', 'house', 'computer']
 root = tk.Tk()
 labels = dict((value, ttk.Label(root, text=value)) for value in values)
 
 try:
-    orange_theme.install('orange') 
+    orange_theme.install('../images/orange')
 except Exception:
     import warnings
     warnings.warn("orange theme being used without images")
-    
+
 def handler(event):
     current = combobox.current()
     if current != -1:
