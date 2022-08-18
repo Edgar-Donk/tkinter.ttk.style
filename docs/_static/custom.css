@@ -19,11 +19,11 @@ rem units based on 16px base html size
 }
 
 .toggle .header:after {
-    content: "▼";
+    content: "▶";
 }
 
 .toggle .header.open:after {
-    content: "▶";
+    content: "▼";
 }
 
 div.topic {
