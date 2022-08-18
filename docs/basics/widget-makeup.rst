@@ -30,7 +30,7 @@ Scrollbar Elements
 --------------------
 
 .. figure::
-   /figures/01scrollbar_elements.png
+   ../figures/01scrollbar_elements.png
    :width: 462px
    :height: 373px
    :align: center
