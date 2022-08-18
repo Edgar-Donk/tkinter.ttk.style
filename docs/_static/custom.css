@@ -1,3 +1,18 @@
+/*
+rem units based on 16px base html size
+
+    10px = 0.625rem
+    12px = 0.75rem
+    14px = 0.875rem
+    16px = 1rem (base)
+    18px = 1.125rem
+    20px = 1.25rem
+    24px = 1.5rem
+    30px = 1.875rem
+    32px = 2rem
+
+*/
+
 .toggle .header {
     display: block;
     clear: both;
@@ -8,11 +23,47 @@
 }
 
 .toggle .header.open:after {
-    content: "►";
+    content: "▶";
 }
 
 div.topic {
     background-color: #E8FFF8;
+	border-radius: 5px;
 }
 
+div.sidebar {
+    border-radius: 5px;
+}
 
+div.highlight {
+    background-color: #D2FFC4;
+    border-radius: 5px;
+}
+
+div.body p.caption {
+    font-size: 1.2em;
+}
+
+div.code, pre {
+    background-color: #eeffcc;
+    border-radius: 5px;
+}
+
+div.sphinxsidebarwrapper p.caption {
+    font-size: 1.4em;
+}
+
+div.sphinxsidebarwrapper ul {
+    font-size: .8em;
+    padding-left: 1em;
+}
+
+a:link {color:#4DC3D1;
+        hover:#4B61AA;
+} 
+
+.pre {
+    font-weight: bolder;
+    color: #B70C2F;
+    font-size: 16px;
+}
