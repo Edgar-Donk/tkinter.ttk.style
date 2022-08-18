@@ -71,3 +71,7 @@ are called individually.
 
 Each widget has its own generation and separate test script. The latter are 
 similar to the 07pirate scripts. 
+
+.. note:: roundrect.py and tools.py
+
+   both these scripts are the subjects of the Documentation.
