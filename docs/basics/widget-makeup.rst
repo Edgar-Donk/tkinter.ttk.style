@@ -15,7 +15,7 @@ elements, starting from the outside - border, focus, spacing and label.
 Button Elements
 -----------------
 
-.. figure:: /figures/01button_elements.png
+.. figure:: ../figures/01button_elements.png
    :width: 473px
    :height: 246px
    :align: center
@@ -29,8 +29,7 @@ While we are thinking of elements look at the vertical scrollbar.
 Scrollbar Elements
 --------------------
 
-.. figure::
-   ../figures/01scrollbar_elements.png
+.. figure:: ../figures/01scrollbar_elements.png
    :width: 462px
    :height: 373px
    :align: center
