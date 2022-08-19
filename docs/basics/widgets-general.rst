@@ -40,9 +40,9 @@ To view or hide the code just click on the arrow.
 
    .. container:: header
 
-       *Show/Hide Code* 01Label_config.py
+       *Show/Hide Code* 01label_config.py
        
-   .. literalinclude:: ../examples/01Label_config.py
+   .. literalinclude:: ../examples/01label_config.py
 
 The script displays the attributes available in tkinter and ttk, there are
 fewer attributes in ttk as the
