@@ -1,4 +1,4 @@
-/*
+﻿/*
 rem units based on 16px base html size
 
     10px = 0.625rem
@@ -12,7 +12,6 @@ rem units based on 16px base html size
     32px = 2rem
 
 */
-
 .toggle .header {
     display: block;
     clear: both;
@@ -31,9 +30,10 @@ div.topic {
     border-radius: 5px;
 }
 
+/* #eeffcc */
 div.code, pre {
-    background-color: #eeffcc;
-	 border-radius: 5px;
+    background-color: #f0f0f0;
+    border-radius: 5px;
 }
 
 .pre {
@@ -64,11 +64,18 @@ div.sphinxsidebarwrapper ul {
     padding-left: 1em;
 }
 
-a:link {color:#4DC3D1;
+a:link {color:#7787D2;
         hover:#4B61AA;
 } 
 
 table.align-center {
     margin-left: auto;
     margin-right: auto;
+}
+
+/* color 89323A; */
+p.logo__title {
+   font-size: 40px;
+   color: #ff073a;
+   text-shadow: 0 0 3px #ccff02;
 }
