@@ -83,5 +83,14 @@ html_sidebars = {
 def setup(app):
     app.add_css_file('custom.css')
 
-html_logo = '_static/ben_style.png'
+# html_logo = '_static/ben_style.png'
+
+html_theme_options = {
+   "logo": {
+      "text": "Putting on the Style",
+      "image_light": 'bigbenc.png',
+      "image_dark": "bigbencneon.png",
+   }
+}
+
 html_favicon = '_static/ben1.ico'
