@@ -282,7 +282,7 @@ Summary of Options
 Below are 2 tables to show what is generally available to change, the first 
 lists by widget and the options available, the second takes the option and
 shows what is being changed. These are based on 
-`Tk/Tcl8.6.11 Documentation <https://www.tcl.tk/man/tcl/TkCmd/contents.html>`
+`Tk/Tcl8.6.11 Documentation <https://www.tcl.tk/man/tcl/TkCmd/contents.html>`_
 select the **ttk::widgetname** then select **STYLING OPTIONS**.
 
 .. raw:: html
