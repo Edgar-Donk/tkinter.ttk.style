@@ -39,9 +39,9 @@ style.theme_create( "yummy", parent="clam", settings={
 
 style.theme_use('yummy') # 'default'
 widg = Radiobutton(fr,text='Piratz!')
-widg.grid(column=0,row=11,sticky='nsew', padx=5, pady=5)
+widg.grid(column=0,row=13,sticky='nsew', padx=5, pady=5)
 widg1 = Radiobutton(fr,text='Piratz!\nextra line')
-widg1.grid(column=0,row=12,sticky='nsew', padx=5, pady=5)
+widg1.grid(column=0,row=14,sticky='nsew', padx=5, pady=5)
 run_state(fr,widg,widg1)
 
 root.mainloop()

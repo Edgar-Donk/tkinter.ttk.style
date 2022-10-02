@@ -25,7 +25,7 @@ img6 = PhotoImage("check-du", file='../images/lime/check-du.png')
 
 style = Style()
 # both theme_create and theme_settings worked
-style.theme_create( "yummy", parent="clam", settings={
+style.theme_create( "yummy", parent="clam", settings={ # clam, alt worked
 #style.theme_settings('default', {
 # start of theme extract
      'Checkbutton.indicator': {"element create":
@@ -40,12 +40,12 @@ style.theme_create( "yummy", parent="clam", settings={
 # end of theme extract - don't forget to add comma at end when inserting
      })
 
-style.theme_use('yummy') # 'default'
+style.theme_use( 'yummy') # 'default' 'yummy'
 
 widg = Checkbutton(fr, text='Cheese' ,width=-8)
 widg1 = Checkbutton(fr, text='Tomato' ,width=-8)
-widg.grid(column=0,row=11,sticky='nsew', padx=5, pady=5)
-widg1.grid(column=0,row=12,sticky='nsew', padx=5, pady=5)
+widg.grid(column=0,row=13,sticky='nsew', padx=5, pady=5)
+widg1.grid(column=0,row=14,sticky='nsew', padx=5, pady=5)
 run_state(fr,widg,widg1)
 
 root.mainloop()

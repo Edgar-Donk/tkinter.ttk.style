@@ -4,7 +4,7 @@ Combobox with an anchor
 Create theme extract for custom widgets, include state selection to view
 the result of changing the state using different images and/or different
 settings.
-Combobox states disabled, readonly;focus, readonly; normal, focus, pressed, 
+Combobox states disabled, readonly;focus, readonly; normal, focus, pressed,
 disabled; normal,readonly,active; normal,pressed,active, disabled
 '''
 
@@ -51,18 +51,18 @@ style.theme_settings('alt', {
                  {'sticky': '','border': [1]}
              )
         }
-     
+
 # end of theme extract - don't forget to add comma at end when inserting
      })
 
 style.theme_use('alt') # 'yummy'
 sv = StringVar()
 widg = Combobox(fr,values=['apple', 'banana', 'orange'], textvariable=sv)
-widg.grid(column=0,row=10,padx=5,pady=5 )
+widg.grid(column=0,row=13,padx=5,pady=5 )
 sv.set('first')
 sv1 = StringVar()
 widg1 = Combobox(fr,values=['apple', 'banana', 'orange'], textvariable=sv1)
-widg1.grid(column=0,row=11,padx=5,pady=5,sticky='ns')
+widg1.grid(column=0,row=14,padx=5,pady=5,sticky='ns')
 sv1.set('second really really long')
 run_state(fr,widg,widg1)
 

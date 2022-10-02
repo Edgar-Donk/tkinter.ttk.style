@@ -26,7 +26,7 @@ style.theme_create( "yummy", parent="clam", settings={
           ('image', "label",
            ('disabled', "label-d"),
            {'border':[17, 9, 3, 7], 'padding':[17,5,3,3], 'sticky': "nsew"})
-                      
+
         }
 # end of theme extract - don't forget to add comma at end when inserting
      })
@@ -36,9 +36,9 @@ style.theme_use('yummy') # 'default'
 fr = Frame(root)
 fr.grid(column=0,row=0,sticky='nsew')
 widg = Label(fr,text='Piratz! make it long')
-widg.grid(column=0,row=11,sticky='nsew', padx=5, pady=5)
+widg.grid(column=0,row=13,sticky='nsew', padx=5, pady=5)
 widg1 = Label(fr,text='Piratz!\nextra line')
-widg1.grid(column=0,row=12,sticky='nsew', padx=5, pady=5)
+widg1.grid(column=0,row=14,sticky='nsew', padx=5, pady=5)
 run_state(fr,widg,widg1)
 
 root.mainloop()

@@ -42,11 +42,11 @@ style.theme_create( "yummy", parent="clam", settings={
 
 style.theme_use('yummy') # 'default'
 widg = LabelFrame(fr,text='Piratz!')
-widg.grid(column=0,row=11,sticky='nsew', padx=5, pady=5, ipadx=5, ipady=5)
+widg.grid(column=0,row=13,sticky='nsew', padx=5, pady=5, ipadx=5, ipady=5)
 f0 = Label(widg,text='Something to say')
 f0.grid()
 widg1 = LabelFrame(fr,text='Piratz!\nextra line')
-widg1.grid(column=0,row=12,sticky='nsew',padx=5,pady=5,ipadx=5,ipady=5) #  ipadx=5, ipady=5
+widg1.grid(column=0,row=14,sticky='nsew',padx=5,pady=5,ipadx=5,ipady=5) #  ipadx=5, ipady=5
 f1 = Label(widg1,text='Something else to say\nwith an extra line')
 f1.grid()
 run_state(fr,widg,widg1)

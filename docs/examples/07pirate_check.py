@@ -35,7 +35,7 @@ style.theme_create( "yummy", parent="clam", settings={
            ('selected', "check-nc"),
            ('disabled', "check-du"),
            ('disabled', 'selected', "check-dc"),
-           {'width':24, 'sticky': "w"}) 
+           {'width':24, 'sticky': "w"})
          }
 # end of theme extract - don't forget to add comma at end when inserting
      })
@@ -44,7 +44,7 @@ style.theme_use('yummy') # 'default'
 
 widg = Checkbutton(fr, text='Cheese')
 widg1 = Checkbutton(fr, text='Tomato')
-widg.grid(column=0,row=11,sticky='nsew', padx=5, pady=5)
-widg1.grid(column=0,row=12,sticky='nsew', padx=5, pady=5)
+widg.grid(column=0,row=13,sticky='nsew', padx=5, pady=5)
+widg1.grid(column=0,row=14,sticky='nsew', padx=5, pady=5)
 run_state(fr,widg,widg1)
 root.mainloop()

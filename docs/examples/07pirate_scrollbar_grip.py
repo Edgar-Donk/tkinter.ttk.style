@@ -65,13 +65,13 @@ style.theme_create( "yummy", parent="clam", settings={
                     "children": [("Horizontal.Scrollbar.grip", {"sticky": ''})]
                 })]
             })]},
-        
+
         "Horizontal.Scrollbar.thumb": {"element create":
             ("image", 'hthumb-n',
              ('disabled', 'hthumb-d'),
              ('pressed', 'hthumb-a'),
              ('active', 'hthumb-a'),
-             {"border": [9,2]}) #3 , 'sticky': 'ew', 'padding': [7,2] 
+             {"border": [9,2]}) #3 , 'sticky': 'ew', 'padding': [7,2]
         },
 
         "Horizontal.Scrollbar.grip": {"element create": ("image", 'hgrip')},
@@ -79,7 +79,7 @@ style.theme_create( "yummy", parent="clam", settings={
         "Horizontal.Scrollbar.trough": {"element create":
             ('image', 'trough-horiz',
              {"border": 2, 'width': 32, 'height':21})},
-        
+
         'Scrollbar.leftarrow': {"element create":
             ("image", 'arrowleft-n',
              ('disabled', 'arrowleft-d'),
@@ -87,7 +87,7 @@ style.theme_create( "yummy", parent="clam", settings={
              ('active', 'arrowleft-a'),
              {"border": 1})
             },
-        
+
         'Scrollbar.rightarrow': {"element create":
             ("image", 'arrowright-n',
              ('disabled', 'arrowright-d'),
@@ -127,14 +127,14 @@ style.theme_create( "yummy", parent="clam", settings={
              ('active', 'arrowup-a'),
              {"border": 1})
             },
-                                
+
         'Scrollbar.downarrow': {"element create":
             ("image", 'arrowdown-n',
              ('disabled', 'arrowdown-d'),
              ('pressed', 'arrowdown-p'),
              ('active', 'arrowdown-a'),
              {"border": 1})
-            }   
+            }
 
 # end of theme extract - don't forget to add comma at end when inserting
      })
@@ -142,7 +142,7 @@ style.theme_create( "yummy", parent="clam", settings={
 style.theme_use('yummy') # 'default'
 
 fr1 = Frame(fr,height=250,width=250)
-fr1.grid(column=0,row=11,sticky='nsew')
+fr1.grid(column=0,row=14,sticky='nsew')
 
 widg = Scrollbar(fr1, orient="vertical")
 widg1 = Scrollbar(fr1, orient="horizontal")
@@ -153,11 +153,11 @@ for line in range(100):
 mylist.grid( column=0,row=0)
 
 widg.grid(column=1,row=0,sticky='ns')
-widg.configure( command = mylist.yview )   
+widg.configure( command = mylist.yview )
 
 widg1.grid(column=0,row=1,sticky='ew')
 widg1.configure( command = mylist.xview )
-mylist.configure(yscrollcommand = widg.set, xscrollcommand = widg1.set) 
+mylist.configure(yscrollcommand = widg.set, xscrollcommand = widg1.set)
 run_state(fr,widg,widg1)
 
 root.mainloop()

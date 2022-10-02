@@ -19,9 +19,10 @@ class run_state():
         self.widg1 = widg1
 
         # Create radio buttons which will display widget states
-        # except alternate and background
-        states = ['active', 'disabled', 'focus', 'invalid', 'pressed',
-                  'readonly', 'selected']
+        
+        states = ['active', 'alternate', 'background', 'disabled', 
+                  ('disabled', 'alternate'), 'focus', 'invalid', 'pressed', 
+                  'readonly', ('disabled', 'selected'), 'selected']
 
         self.rb = []
         self.state_val = StringVar()
@@ -30,50 +31,26 @@ class run_state():
                 variable=self.state_val, command=self.change_state)
             st_rb.grid(column=0,row=iy+2,padx=5,pady=5, sticky='nw')
             self.rb.append(st_rb)
-            st_rb.state(['disabled'])
 
-        self.enabled = IntVar()
-        self.cbOpt = Checkbutton(fr, text='Enabled', variable=self.enabled,
-                                 command=self.change_state)
-        self.cbOpt.grid(column=0,row=0)
-
-        sep = Separator(orient='h')
+        sep = Separator(fr, orient='h')
         sep.grid(column=0,row=1,sticky='ew')
-
+        
     def change_state(self):
         ''' used to enable state change'''
         oldstate = self.widg.state()
-        #print(oldstate)
-        if self.enabled.get() == 1:
-            if len(oldstate) > 0:
-                # convert tuple to string
-                oldst = " ".join(str(x) for x in oldstate)
-                self.widg.state(['!'+oldst])
-                if self.widg1 != None:
-                    self.widg1.state(['!'+oldst])
-            newstate = self.state_val.get()
-            self.widg.state([newstate])
-            if self.widg1 != None:
-                self.widg1.state([newstate])
-            #for ir,w in enumerate(self.rb):
-            #    w['state'] = '!disabled'
-            for w in self.rb:
-                w['state'] = '!disabled'
-        else:
-            if len(oldstate) > 0:
-                # convert tuple to string
-                oldst = " ".join(str(x) for x in oldstate)
-                self.widg.state(['!disabled',oldst])
-                if self.widg1 is not None:
-                    self.widg1.state(['!disabled',oldst])
-            else:
-                self.widg.state(['!disabled'])
-                if self.widg1 is not None:
-                    self.widg1.state(['!disabled'])
-            #for ir,w in enumerate(self.rb):
-                #w['state'] = '!disabled'
-            for w in self.rb:
-                w['state'] = '!disabled'
+        # Checkbuttons and Radiobuttons start with alternate state
+        if len(oldstate) > 0:
+            # prefix oldstate with !
+            oldst = [f"!{s}" for s in oldstate]
+            # convert tuple to string
+            oldst = " ".join(oldst)
+            self.widg.state([oldst])
+            if self.widg1 is not None:
+                self.widg1.state([oldst])
+        newstate = self.state_val.get()
+        self.widg.state([newstate])
+        if self.widg1 is not None:
+            self.widg1.state([newstate])
 
 if __name__ == '__main__':
     root = Tk()
