@@ -1,9 +1,11 @@
 '''
 Create theme extract for custom widgets, states are selected according to
 one of two functions which change the state according to the value of
-the scale. 
+the scale.
 Ensure that the vertical and horizontal widgets are run in separate frames,
 or ensure that the second widget does not expand or else the widgets interact.
+
+The slider is 9 pixels wide, the trough has a border 6 pixels wide
 '''
 
 from tkinter import Tk, PhotoImage
@@ -32,17 +34,17 @@ style.theme_create( "yummy", parent="clam", settings={
      'Horizontal.Scale.trough': {"element create":
           ('image', "scale-nt",
            ('disabled', "scale-dt"),
-            {'border':[6,0,6,0],'sticky': 'wes'})},
+            {'border':[6,0,6,0],'sticky': 'wes'})}, # [6,0,6,0]
      'Horizontal.Scale.slider': {"element create":
-          ('image', "slider", 
+          ('image', "slider",
            ('pressed','!disabled', "slider-p"),
            {'border':3})
         },
      'Vertical.Scale.trough': {"element create":
           ('image', "vslider-t",
-           {'border':[0,6,0,6],'sticky': 'nes'})},
+           {'border':[0,6,0,6],'sticky': 'nes'})}, # [0,6,0,6]
      'Vertical.Scale.slider': {"element create":
-          ('image', "vslider", 
+          ('image', "vslider",
            ('pressed','!disabled', "vslider-p"),
            {'border':3})
         }
@@ -51,10 +53,10 @@ style.theme_create( "yummy", parent="clam", settings={
 
 style.theme_use('yummy') # 'default'
 widg = Scale(fr,from_=0, to=100, length=200,orient='horizontal')
-widg.grid(column=0,row=11,sticky='nsew', padx=5, pady=5)
+widg.grid(column=0,row=13,sticky='nsew', padx=5, pady=5)
 
 widg1 = Scale(fr,from_=100, to=0, length=200,orient='vertical')
-widg1.grid(column=0,row=12, padx=5, pady=5) 
+widg1.grid(column=0,row=14, padx=5, pady=5)
 run_state(fr,widg,widg1)
 
 root.mainloop()

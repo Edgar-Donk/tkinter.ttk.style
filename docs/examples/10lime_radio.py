@@ -8,7 +8,7 @@ settings.
 '''
 
 from tkinter import Tk, PhotoImage, StringVar
-from tkinter.ttk import Style, Radiobutton, Frame
+from tkinter.ttk import Style, Radiobutton, Frame, Separator
 from RunState import run_state
 
 root = Tk()
@@ -31,20 +31,23 @@ style.theme_create( "yummy", parent="clam", settings={
            ('disabled','selected', "radio-ds"),
          ('disabled', "radio-d"),
            ('selected', "radio-s"),
-           {'width':20, 'sticky': "w"}) 
+           {'width':20, 'sticky': "w"})
         }
 # end of theme extract - don't forget to add comma at end when inserting
      })
 
 
 style.theme_use('yummy') # 'default'
+
+sep = Separator(fr)
+sep.grid(column=0,row=15, sticky='ew')
 happy = ['Great', 'Good', 'OK', 'Poor', 'Awful']
 happiness = StringVar()
 for ix,s in enumerate(happy):
     widg = Radiobutton(fr, text=s, value=s,
             variable=happiness)
-    widg.grid(column=0,row=11+ix,sticky='nw')
-    
+    widg.grid(column=0,row=16+ix,sticky='nw',pady=5)
+
 run_state(fr,widg)
 
 root.mainloop()

@@ -34,15 +34,15 @@ style.theme_create( "yummy", parent="clam", settings={
            ('active', "slider-ha"),
            ('focus', "slider-ha"),
            ('disabled', "slider-hd"),
-           
-           
-           {'border':[4,12,4,12], 'padding':4, 'sticky': "nsew"} 
+
+
+           {'border':[4,12,4,12], 'padding':4, 'sticky': "nsew"}
         ) },
          'Treeview': {'map':{'background':[('selected', colours['selectbg'])],
                       'foreground': [('selected',colours['selectfg'])]}}
-     
-       #'Treeview': {'configure': {'bordercolor': colours['bordercolor']}}, 
-         
+
+       #'Treeview': {'configure': {'bordercolor': colours['bordercolor']}},
+
 # end of theme extract - don't forget to add comma at end when inserting
      })
 
@@ -55,8 +55,8 @@ for col in dataCols:
     widg.heading(col, text=col.title())
     widg.column(col, width=75)
 for ix, item in enumerate(treeData):
-    widg.insert('', 'end', values=item)    
-widg.grid(column=0,row=11,sticky='nsew', padx=5, pady=5)
+    widg.insert('', 'end', values=item)
+widg.grid(column=0,row=14,sticky='nsew', padx=5, pady=5)
 run_state(fr,widg)
 
 

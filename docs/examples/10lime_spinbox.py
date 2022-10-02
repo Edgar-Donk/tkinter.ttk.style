@@ -4,7 +4,7 @@ Spinbox - based on Combobox
 Create theme extract for custom widgets, include state selection to view
 the result of changing the state using different images and/or different
 settings.
-Spinbox states disabled, readonly;focus, readonly; normal, focus, pressed, 
+Spinbox states disabled, readonly;focus, readonly; normal, focus, pressed,
 disabled; normal,readonly,active; normal,pressed,active, disabled
 '''
 
@@ -58,15 +58,15 @@ style.theme_create( "yummy", parent="clam", settings={
              )
         }
 
-     
+
 # end of theme extract - don't forget to add comma at end when inserting
      })
 
 style.theme_use('yummy') # 'alt'
 widg = Spinbox(fr,from_=0, to=100,width=4)
-widg.grid(column=0,row=10,padx=5,pady=5 )
+widg.grid(column=0,row=13,padx=5,pady=5 )
 widg1 = Spinbox(fr,from_=0, to=100)
-widg1.grid(column=0,row=11,padx=5,pady=5,sticky='ns')
+widg1.grid(column=0,row=14,padx=5,pady=5,sticky='ns')
 run_state(fr,widg,widg1)
 
 root.mainloop()

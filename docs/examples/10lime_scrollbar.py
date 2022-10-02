@@ -54,13 +54,13 @@ style.theme_create( "yummy", parent="clam", settings={
                  ("Horizontal.Scrollbar.rightarrow", {"side": "right"}),
                  ("Horizontal.Scrollbar.thumb", {"side": "left","expand": 1,"sticky": "ew"})]
             })]},
-        
+
      "Horizontal.Scrollbar.thumb": {"element create":
             ("image", 'slider-hn',
              ('disabled', 'slider-hd'),
              ('pressed', 'slider-hp'),
              ('active', 'slider-ha'),
-             {"border": 3}) #[9,2] , 'sticky': 'ew', 'padding': [7,2] 
+             {"border": 3}) #[9,2] , 'sticky': 'ew', 'padding': [7,2]
         },
 
      'Scrollbar.leftarrow': {"element create":
@@ -78,14 +78,14 @@ style.theme_create( "yummy", parent="clam", settings={
              ('active', 'arrowright-a'),
              {"border": 1})
             },
-        
+
      "Vertical.TScrollbar": {"layout": [
             ("Vertical.Scrollbar.trough", {"sticky": "ns", "children":
                  [("Vertical.Scrollbar.uparrow", {"side": "top"}),
                  ("Vertical.Scrollbar.downarrow", {"side": "bottom"}),
                  ("Vertical.Scrollbar.thumb", {"side": "top","expand": 1,"sticky": "ns"})]
             })]},
-        
+
      "Vertical.Scrollbar.thumb": {"element create":
             ("image", 'slider-vn',
              ('disabled', 'slider-vd'),
@@ -109,18 +109,18 @@ style.theme_create( "yummy", parent="clam", settings={
              ('active', 'arrowdown-a'),
              {"border": 1})
             },
-        
+
     'TCombobox': {
         'configure': {'selectborderwidth': 1, 'padding': 2,
                       'insertwidth': 2, 'font': 'TkTextFont'}}
-        
+
 # end of theme extract - don't forget to add comma at end when inserting
      })
 
 style.theme_use('yummy') # 'default'
 
 fr1 = Frame(fr,height=250,width=250)
-fr1.grid(column=0,row=11,sticky='nsew')
+fr1.grid(column=0,row=14,sticky='nsew')
 
 widg = Scrollbar(fr1, orient="vertical")
 widg1 = Scrollbar(fr1, orient="horizontal")
@@ -131,12 +131,12 @@ for line in range(100):
 mylist.grid( column=0,row=0)
 
 widg.grid(column=1,row=0,sticky='ns')
-widg.configure( command = mylist.yview )   
+widg.configure( command = mylist.yview )
 
 widg1.grid(column=0,row=1,sticky='ew')
 widg1.configure( command = mylist.xview )
-mylist.configure(yscrollcommand = widg.set, xscrollcommand = widg1.set) # 
+mylist.configure(yscrollcommand = widg.set, xscrollcommand = widg1.set) #
 
-run_state(fr,widg,widg1)                   
+run_state(fr,widg,widg1)
 root.mainloop()
 

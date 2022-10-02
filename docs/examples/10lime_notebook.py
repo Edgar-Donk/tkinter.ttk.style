@@ -31,19 +31,19 @@ style.theme_create( "yummy", parent="clam", settings={
     'TNotebook': {'configure': {'tabmargins': [0,3,0,0]}}, # [2,7,5,5]
     'TNotebook.tab': {
         'configure': { 'foreground': '#8b0a50'},
-        "map":  
-        {'expand': [('selected', [0,3,0,0]),('!selected', [0,0,2])]}}, 
-         
-    
+        "map":
+        {'expand': [('selected', [0,3,0,0]),('!selected', [0,0,2])]}},
+
+
      'tab': {"element create":
           ('image', "tab-n",
            ('active', "tab-h"),
            ('selected', "tab-p"),
            ('disabled', "tab-d"),
-           {'border':[4, 15, 4, 15], 'padding':[7,3],'sticky': "nsew"} # ,'height':12 
+           {'border':[4, 15, 4, 15], 'padding':[7,3],'sticky': "nsew"} # ,'height':12
         ) }
-        
-         
+
+
 # end of theme extract - don't forget to add comma at end when inserting
      })
 
@@ -53,7 +53,7 @@ page1 = Frame(widg, width=150, height=150)
 page2 = Frame(widg, width=150, height=150)
 widg.add(page1,text='Piratz!')
 widg.add(page2,text='Piratz! two')
-widg.grid(column=0,row=11,sticky='nsew', padx=5, pady=5)
+widg.grid(column=0,row=14,sticky='nsew', padx=5, pady=5)
 run_state(fr,widg)
 
 root.mainloop()
