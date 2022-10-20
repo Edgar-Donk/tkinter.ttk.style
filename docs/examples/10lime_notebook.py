@@ -53,7 +53,7 @@ page1 = Frame(widg, width=150, height=150)
 page2 = Frame(widg, width=150, height=150)
 widg.add(page1,text='Piratz!')
 widg.add(page2,text='Piratz! two')
-widg.grid(column=0,row=14,sticky='nsew', padx=5, pady=5)
+widg.grid(column=0,row=18,sticky='nsew', padx=5, pady=5)
 run_state(fr,widg)
 
 root.mainloop()

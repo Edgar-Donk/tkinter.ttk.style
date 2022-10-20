@@ -1,5 +1,5 @@
 from tkinter import Tk, StringVar, IntVar
-from tkinter.ttk import Frame, Radiobutton, Button, Checkbutton, Separator
+from tkinter.ttk import Frame, Radiobutton, Button, Checkbutton, Separator, Label
 
 class run_state():
     def __init__(self, fr,widg,widg1=None):
@@ -19,9 +19,9 @@ class run_state():
         self.widg1 = widg1
 
         # Create radio buttons which will display widget states
-        
-        states = ['active', 'alternate', 'background', 'disabled', 
-                  ('disabled', 'alternate'), 'focus', 'invalid', 'pressed', 
+
+        states = ['active', 'alternate', 'background', 'disabled',
+                  ('disabled', 'alternate'), 'focus', 'invalid', 'pressed',
                   'readonly', ('disabled', 'selected'), 'selected']
 
         self.rb = []
@@ -34,23 +34,30 @@ class run_state():
 
         sep = Separator(fr, orient='h')
         sep.grid(column=0,row=1,sticky='ew')
-        
+
+        spacer1 = Label(fr, text="")
+        spacer1.grid(row=len(states)+4, column=0)
+
     def change_state(self):
         ''' used to enable state change'''
+        newstate = self.state_val.get()
         oldstate = self.widg.state()
         # Checkbuttons and Radiobuttons start with alternate state
-        if len(oldstate) > 0:
-            # prefix oldstate with !
-            oldst = [f"!{s}" for s in oldstate]
-            # convert tuple to string
-            oldst = " ".join(oldst)
-            self.widg.state([oldst])
-            if self.widg1 is not None:
-                self.widg1.state([oldst])
-        newstate = self.state_val.get()
-        self.widg.state([newstate])
-        if self.widg1 is not None:
-            self.widg1.state([newstate])
+        # prefix oldstate with !
+        oldst = [f"!{s}" for s in oldstate]
+        # convert tuple to string
+        oldst = " ".join(oldst)
+        self.widg.state([oldst])
+        # if newstate is compound run each part separately
+        if ' ' in newstate:
+            newstate, nstate = newstate.split()
+            #print(self.widg.state([nstate]), self.widg.state([newstate]))
+            self.widg.state([nstate])
+            self.widg.state([newstate])
+
+        else:
+            self.widg.state([newstate])
+
 
 if __name__ == '__main__':
     root = Tk()

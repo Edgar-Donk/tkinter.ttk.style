@@ -50,10 +50,10 @@ style.theme_settings('default', {
 
 style.theme_use ('default') #('yummy') #
 widg = Button(fr,text='Piratz!')
-widg.grid(column=0,row=13, padx=5, pady=5) #sticky='nsew',
+widg.grid(column=0,row=18, padx=5, pady=5) #sticky='nsew',
 widg1 = Button(fr,text='Piratz!\nextra line made longer')
 # sticky='nsew', makes no difference
-widg1.grid(column=0,row=14, padx=5, pady=5) # sticky='nsew',
+widg1.grid(column=0,row=19, padx=5, pady=5) # sticky='nsew',
 run_state(fr,widg,widg1)
 
 root.mainloop()

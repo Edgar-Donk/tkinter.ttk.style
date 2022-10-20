@@ -53,9 +53,9 @@ style.theme_create( "yummy", parent="clam", settings={
 
 style.theme_use('yummy') # 'alt'
 widg = Combobox(fr,values=['apple', 'banana', 'orange'])
-widg.grid(column=0,row=13,padx=5,pady=5 )
+widg.grid(column=0,row=18,padx=5,pady=5 )
 widg1 = Combobox(fr,values=['apple', 'banana', 'orange'])
-widg1.grid(column=0,row=14,padx=5,pady=5,sticky='ns')
+widg1.grid(column=0,row=19,padx=5,pady=5,sticky='ns')
 run_state(fr,widg,widg1)
 
 root.mainloop()

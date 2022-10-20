@@ -56,7 +56,7 @@ for col in dataCols:
     widg.column(col, width=75)
 for ix, item in enumerate(treeData):
     widg.insert('', 'end', values=item)
-widg.grid(column=0,row=14,sticky='nsew', padx=5, pady=5)
+widg.grid(column=0,row=18,sticky='nsew', padx=5, pady=5)
 run_state(fr,widg)
 
 

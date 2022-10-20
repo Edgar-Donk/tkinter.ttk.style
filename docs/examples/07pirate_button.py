@@ -17,7 +17,7 @@ from RunState import run_state
 
 root = Tk()
 
-pirate_font = tkFont.Font(family="Palace Script MT", size=14) 
+pirate_font = tkFont.Font(family="Palace Script MT", size=14)
 fr = Frame(root)
 fr.grid(column=0,row=0,sticky='nsew')
 
@@ -49,18 +49,18 @@ style.theme_settings('default', {
            ('selected', "button-s"),
            ('active', "button-s"),
            ('disabled', "button-d"),
-           {'border':[52,65,47,17], 'padding':[12,54,8,16], 'sticky': "nsew"}) 
+           {'border':[52,65,47,17], 'padding':[12,54,8,16], 'sticky': "nsew"})
          }
-      
+
 # end of theme extract - don't forget to add comma at end when inserting
      })
 
 style.theme_use ('default') #('yummy') #
 
 widg = Button(fr,text='Piratz!')
-widg.grid(column=0,row=11, padx=5, pady=5) #sticky='nsew',
+widg.grid(column=0,row=18, padx=5, pady=15) #sticky='nsew',
 widg1 = Button(fr,text='Piratz!\nextra line made longer')
-widg1.grid(column=0,row=12, padx=5, pady=5) # sticky='nsew',
+widg1.grid(column=0,row=19, padx=5, pady=15) # sticky='nsew',
 run_state(fr,widg,widg1)
 
 root.mainloop()

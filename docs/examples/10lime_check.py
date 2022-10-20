@@ -44,8 +44,8 @@ style.theme_use( 'yummy') # 'default' 'yummy'
 
 widg = Checkbutton(fr, text='Cheese' ,width=-8)
 widg1 = Checkbutton(fr, text='Tomato' ,width=-8)
-widg.grid(column=0,row=13,sticky='nsew', padx=5, pady=5)
-widg1.grid(column=0,row=14,sticky='nsew', padx=5, pady=5)
+widg.grid(column=0,row=18,sticky='nsew', padx=5, pady=5)
+widg1.grid(column=0,row=19,sticky='nsew', padx=5, pady=5)
 run_state(fr,widg,widg1)
 
 root.mainloop()

@@ -64,9 +64,9 @@ style.theme_create( "yummy", parent="clam", settings={
 
 style.theme_use('yummy') # 'alt'
 widg = Spinbox(fr,from_=0, to=100,width=4)
-widg.grid(column=0,row=13,padx=5,pady=5 )
+widg.grid(column=0,row=18,padx=5,pady=5 )
 widg1 = Spinbox(fr,from_=0, to=100)
-widg1.grid(column=0,row=14,padx=5,pady=5,sticky='ns')
+widg1.grid(column=0,row=19,padx=5,pady=5,sticky='ns')
 run_state(fr,widg,widg1)
 
 root.mainloop()

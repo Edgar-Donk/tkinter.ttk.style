@@ -58,11 +58,11 @@ style.theme_settings('alt', {
 style.theme_use('alt') # 'yummy'
 sv = StringVar()
 widg = Combobox(fr,values=['apple', 'banana', 'orange'], textvariable=sv)
-widg.grid(column=0,row=13,padx=5,pady=5 )
+widg.grid(column=0,row=18,padx=5,pady=5 )
 sv.set('first')
 sv1 = StringVar()
 widg1 = Combobox(fr,values=['apple', 'banana', 'orange'], textvariable=sv1)
-widg1.grid(column=0,row=14,padx=5,pady=5,sticky='ns')
+widg1.grid(column=0,row=19,padx=5,pady=5,sticky='ns')
 sv1.set('second really really long')
 run_state(fr,widg,widg1)
 
