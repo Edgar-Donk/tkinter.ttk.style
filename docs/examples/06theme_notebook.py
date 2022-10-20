@@ -85,7 +85,7 @@ class NotebookDemo:
         # checkbuttons
         self.cbOpt = Checkbutton(lf1, text='Enabled', variable=self.enabled,
                                  command=self._toggle_opt)
-        cbCheese = Checkbutton(text='Cheese', variable=self.cheese,
+        self.cbCheese = cbCheese = Checkbutton(text='Cheese', variable=self.cheese,
                                command=self._show_vars)
         cbTomato = Checkbutton(text='Tomato', variable=self.tomato,
                                command=self._show_vars)
@@ -303,6 +303,7 @@ class NotebookDemo:
             self.en.state(['!disabled'])
             self.pbar.state(['!disabled'])
             self.pb2.state(['!disabled'])
+            print(self.cbCheese.state())
         else:
             self.sc.state(['disabled'])
             self.sch.state(['disabled'])

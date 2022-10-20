@@ -121,7 +121,7 @@ class NotebookDemo:
         self.vb2 = Label(right, font=('Courier', 10))
         self.vb3 = Label(right, font=('Courier', 10))
         self.vb4 = Label(right, font=('Courier', 10))
-        self.vb5 = Label(right, font=('Courier', 10))
+        self.vb5 = Label(right, font=('Courier', 10)) # happiness
 
         self.vb0.pack(anchor='nw', pady=5,padx=5)
         self.vb1.pack(anchor='nw', pady=5,padx=5)
