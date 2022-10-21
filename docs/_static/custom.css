@@ -25,8 +25,13 @@ rem units based on 16px base html size
     content: "▼";
 }
 
-div.topic {
+div.topic[data-theme="light"] {
     background-color: #effcf9;
+    border-radius: 5px;
+}
+
+div.topic[data-theme="dark"] {
+    foreground-color: #A6A6A6;
     border-radius: 5px;
 }
 
