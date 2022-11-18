@@ -38,32 +38,31 @@ More
 
 .. hint:: Try flying the carpet - it's magic afterall!
 
+|
+
 .. raw:: html
 
-   <head>
-   <link rel="stylesheet" href="_static/imagehover_min.css">
-   <style type="text/css">
-   
-   figure, figurecaption {
+    <head>
+      <link rel="stylesheet" href="_static/night.css">
+    </head>
+    <div class="main-container">
+      <div class="sky">
+        <div class="stars"></div>
+        <div class="stars2"></div>
+        <div class="stars3"></div>
+        <div class="comet"></div>
+        <figure class="carpet"> 
+          <img src="_static/magic_carpet4.png"  alt=""/>
+        </figure>
+          <figcaption class="capt">
+            Click on one of the images below<br>to get whisked away<br>
+            on the magic carpet of the Internet
+          </figcaption>  
+      </div>
+    </div>   
 
-      display: block;
-      font-family: Aladdin, Seagull, Vivaldi, Times;
-      font-size: 32px;
-      /*font-style: italic;
-      font-variant: small-caps;*/
-      text-align: center;
-
-   }
-   </style>
-   </head>
-   <figure class="imghvr-zoom-out-right">
-      <img src="_static/magic_carpet3.png" class="center">
-         <figcaption>
-            Just click on one of the images<br>  
-            to get whisked away<br> on the html magic carpet.
-         </figcaption>
-   </figure>
-   
+Thanks to `Sobhan Dash <https://dev.to/sobhandash/lets-build-a-night-sky-using-pure-scss-2g0n>`_
+for the night sky.
 
 
 Some of the trickier parts of tkinter.ttk
