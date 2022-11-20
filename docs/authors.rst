@@ -51,15 +51,17 @@ More
         <div class="stars2"></div>
         <div class="stars3"></div>
         <div class="comet"></div>
-        <figure class="carpet"> 
-          <img src="_static/magic_carpet4.png"  alt=""/>
-        </figure>
+        <div class="carpet"> 
+          <div class="pict"></div>
+        </div>
           <figcaption class="capt">
             Click on one of the images below<br>to get whisked away<br>
             on the magic carpet of the Internet
           </figcaption>  
       </div>
-    </div>   
+    </div>
+
+|
 
 Thanks to `Sobhan Dash <https://dev.to/sobhandash/lets-build-a-night-sky-using-pure-scss-2g0n>`_
 for the night sky.
