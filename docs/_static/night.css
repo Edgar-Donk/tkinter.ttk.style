@@ -25,6 +25,7 @@ html {
   animation: float 4s cubic-bezier(0.390, 0.575, 0.565, 1.000) infinite alternate;
   transition: 1s 999999s;
   cursor: pointer;
+  background: transparent;
 }
 
 .stars {
@@ -88,9 +89,10 @@ html {
   box-shadow: 445px 1797px #FFF , 2545px 155px #FFF , 969px 1656px #FFF , 1710px 1919px #FFF , 1239px 2015px #FFF , 2211px 1486px #FFF , 480px 771px #FFF , 2445px 1890px #FFF , 1699px 2092px #FFF , 1978px 2234px #FFF , 2001px 208px #FFF , 2383px 2282px #FFF , 2001px 1306px #FFF , 2466px 1128px #FFF , 241px 2089px #FFF , 669px 663px #FFF , 2388px 2022px #FFF , 367px 1722px #FFF , 350px 2487px #FFF , 262px 2543px #FFF , 2389px 938px #FFF , 1023px 1619px #FFF , 1881px 210px #FFF , 1313px 533px #FFF , 2137px 4px #FFF , 225px 1147px #FFF , 645px 2355px #FFF , 844px 2167px #FFF , 324px 1885px #FFF , 159px 2083px #FFF , 2375px 2062px #FFF , 1075px 945px #FFF , 2090px 2455px #FFF , 328px 2174px #FFF , 1917px 2443px #FFF , 1305px 1662px #FFF , 986px 1357px #FFF , 369px 911px #FFF , 116px 825px #FFF , 108px 1893px #FFF , 441px 2350px #FFF , 1182px 301px #FFF , 1721px 2135px #FFF , 1996px 2278px #FFF , 1775px 1177px #FFF , 2055px 2212px #FFF , 2317px 287px #FFF , 987px 856px #FFF , 634px 707px #FFF , 2368px 1580px #FFF , 2362px 2452px #FFF , 1487px 1360px #FFF , 838px 1973px #FFF , 1413px 1998px #FFF , 868px 197px #FFF , 197px 1684px #FFF , 334px 1505px #FFF , 702px 957px #FFF , 1803px 1328px #FFF , 114px 481px #FFF , 1542px 974px #FFF , 1149px 1703px #FFF , 573px 1762px #FFF , 2316px 1646px #FFF , 1494px 2559px #FFF , 2156px 1714px #FFF , 1539px 1270px #FFF , 555px 1988px #FFF , 1279px 798px #FFF , 511px 1678px #FFF , 2059px 1441px #FFF , 1649px 150px #FFF , 301px 1435px #FFF , 481px 773px #FFF , 697px 1259px #FFF , 76px 735px #FFF , 1440px 1477px #FFF , 889px 814px #FFF , 1503px 2501px #FFF , 1473px 532px #FFF , 2027px 2429px #FFF , 1680px 1145px #FFF , 715px 2197px #FFF , 1294px 334px #FFF , 745px 2399px #FFF , 2130px 1701px #FFF , 1653px 1431px #FFF , 2156px 1089px #FFF , 2084px 1189px #FFF , 1346px 877px #FFF , 839px 2206px #FFF , 1697px 2512px #FFF , 885px 2550px #FFF , 995px 1432px #FFF , 2306px 1575px #FFF , 180px 1632px #FFF , 1377px 155px #FFF , 757px 23px #FFF , 2443px 940px #FFF , 1671px 2379px #FFF , 458px 2553px #FFF , 495px 1258px #FFF , 318px 793px #FFF , 249px 390px #FFF , 640px 1635px #FFF , 2153px 528px #FFF , 1172px 147px #FFF , 1483px 900px #FFF , 2366px 384px #FFF , 751px 2175px #FFF , 518px 92px #FFF , 2137px 2171px #FFF , 444px 452px #FFF , 1301px 500px #FFF , 1031px 175px #FFF , 2402px 365px #FFF , 1144px 2537px #FFF , 136px 2490px #FFF , 298px 1251px #FFF , 323px 1217px #FFF , 666px 187px #FFF , 1015px 673px #FFF , 1667px 582px #FFF , 252px 358px #FFF , 1535px 529px #FFF , 50px 2000px #FFF , 1072px 1799px #FFF , 1390px 1156px #FFF , 1253px 1036px #FFF , 866px 201px #FFF , 2106px 1531px #FFF , 987px 887px #FFF , 1200px 2267px #FFF , 2247px 2019px #FFF , 1492px 654px #FFF , 1830px 1121px #FFF , 1970px 442px #FFF , 318px 433px #FFF , 1290px 1275px #FFF , 2153px 2048px #FFF , 505px 1588px #FFF , 435px 2182px #FFF , 1803px 1848px #FFF , 2018px 1615px #FFF , 358px 1822px #FFF , 1456px 273px #FFF , 1310px 1132px #FFF , 1737px 2399px #FFF , 1728px 2439px #FFF , 2536px 944px #FFF , 2557px 1909px #FFF , 384px 692px #FFF , 1878px 363px #FFF , 2500px 2071px #FFF , 802px 649px #FFF , 1416px 1260px #FFF , 123px 2356px #FFF , 1806px 1308px #FFF , 402px 2357px #FFF , 574px 2411px #FFF , 1120px 1333px #FFF , 1801px 375px #FFF , 135px 1718px #FFF , 85px 1750px #FFF , 2377px 916px #FFF , 1179px 851px #FFF , 1214px 400px #FFF , 120px 1461px #FFF , 690px 1470px #FFF , 1290px 2559px #FFF , 538px 1019px #FFF , 1002px 754px #FFF , 134px 945px #FFF , 1350px 2394px #FFF , 2438px 447px #FFF , 871px 1899px #FFF , 36px 61px #FFF , 2530px 1555px #FFF , 247px 196px #FFF , 1039px 299px #FFF , 1185px 2527px #FFF , 2355px 1789px #FFF , 726px 889px #FFF , 28px 697px #FFF , 227px 1409px #FFF , 1605px 1652px #FFF , 2454px 1284px #FFF , 86px 1176px #FFF , 207px 598px #FFF , 922px 1167px #FFF , 1324px 195px #FFF , 612px 695px #FFF , 1778px 556px #FFF , 2403px 2429px #FFF , 1428px 1535px #FFF , 539px 1537px #FFF , 902px 1843px #FFF , 1273px 2384px #FFF , 222px 265px #FFF , 982px 1229px #FFF;
 }
 
-.carpet img{
+.carpet .pict{
   width: 506px;
   height: 274px;
+  background: url("magic_carpet4.png");
   //margin: auto;
   //display: block;
   //position: absolute;
@@ -124,7 +126,7 @@ html {
   animation: animShootingStar 100s linear infinite;
 }
 
-.main-container:hover img{
+.main-container:hover .pict{
   animation: moveToRight 2s cubic-bezier(0.390, 0.575, 0.565, 1.000);
   animation-fill-mode: forwards;
 }
