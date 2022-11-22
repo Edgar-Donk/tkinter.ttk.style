@@ -12,14 +12,23 @@ Having sorted out the widget outline it is important to fix its
 colouration and maybe a colour gradient. Remember colours created through 
 antialiasing obviously affect the appearance but mostly are derived implicitly.
 
-.. image:: ../figures/08designer_colour_wheel.png
-   :width: 441px
-   :height: 478px
-   :align: center
+.. figure:: ../figures/08ryb-wheel.png
+    :width: 350px
+    :height: 350px
+    :align: center
+
+    Red Yellow Blue colour wheel
+
+    At the centre of the wheel, where all three colours come together, 
+    the resulting colour is a muddy brown. (If in doubt try it with coloured 
+    pencils).
+
 
 The following guidelines are to be taken as a starting point only, since they 
-are based on internal decorating practice which uses the normal colour wheel,
-so take with a pinch of salt. 
+are based on internal decorating practice which uses the RYB colour wheel,
+so take with a pinch of salt. When printing the 
+`CMYK colour wheel <https://warrenmars.com/visual_art/theory/colour_wheel/colour_wheel.htm>`_
+is truer.
 
 :One Hue: Stick to one hue adjusting the saturation and value - which lends itself
    to the hsv colour space. Neutral colours probably work best, which means 
@@ -58,7 +67,7 @@ so take with a pinch of salt.
    RGB and HSV Colour Wheel
 
    This colour wheel comes from paint.net. Notice how the selection on the 
-   perimeter of the rgb wheel and shows up on the individual components.
+   perimeter of the rgb wheel shows up on the individual components.
 
 .. figure:: ../figures/08rgb_hsl.png
    :width: 348
@@ -67,8 +76,8 @@ so take with a pinch of salt.
 
    RGB and HSL Colour Selector
 
-   This colour selector comes from tkinter on Windows. HSL has much the same
-   limitations as HSV except that the number range changes.
+   This colour selector comes from tkinter on Windows. HSL has similar
+   properties to HSV except that the number range changes.
 
 .. figure:: ../figures/08rgb_lch.png
    :width: 417
@@ -140,14 +149,14 @@ gradients will be created in RGB, so some adjustment may be required.
 
 White, black and grey can be used as end colours in any option to produce 
 gradients. As already stated, if grey is produced as an intermediate colour 
-then the gradient normally needs adjustment. 
+then the colour gradient normally needs adjustment. 
 
 Simple Gradient using Line
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 You should be able to detect the use of gradients in some of the widgets. 
 Since we are dealing with small images we should be able to make
-gradioents by drawing lines that change colour using simple linear 
+gradients by drawing lines that change colour using simple linear 
 interpolation. The colour is simply RGB, rather than HSV, HSL or CIELAB. 
 
 We have a starting and a finishing colour separated into their rgb components. 
