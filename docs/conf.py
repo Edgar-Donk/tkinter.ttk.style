@@ -36,7 +36,8 @@ extensions = ["sphinx.ext.autodoc",
     #'hidden_code_block'
     'sphinx.ext.autosectionlabel',
     # "numpydoc",
-    'sphinx.ext.mathjax'
+    'sphinx.ext.mathjax',
+    'sphinx_copybutton'
 ]
 
 napoleon_google_docstring = False
@@ -68,7 +69,7 @@ html_static_path = ['_static']
 
 html_theme_options = {
   "show_prev_next": True,
-  # search bar options are ‘navbar’ and ‘sidebar’.
+  # search bar options are â€˜navbarâ€™ and â€˜sidebarâ€™.
   "search_bar_position": "sidebar",
   #  "use_edit_page_button": True,
 
