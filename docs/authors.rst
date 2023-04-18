@@ -97,3 +97,13 @@ Adding dimensions to PIL
 
 Add dimensions with either arrows or tailed lines, dashed lines and all
 made with antialiasing if required.
+
+Water Properties
+----------------
+
+.. _ale: https://adams-ale.readthedocs.io/en/latest/index.html
+
+.. image:: _static/ben_ale.png
+   :target: ale_
+
+Simplified but accurate water proerties with interactive altair plots.
