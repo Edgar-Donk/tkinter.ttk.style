@@ -73,6 +73,8 @@ Some of the trickier parts of tkinter.ttk
 .. _froth: https://frothy-brew.readthedocs.io/en/latest/index.html
 
 .. image:: _static/frothy_brew.png
+   :width: 700
+   :height: 132
    :target: froth_
 
 From ttk.notebook to ttk.scale, with canvas move and create a colour picker.
@@ -83,6 +85,8 @@ Linking Python to Arduino
 .. _ard: https://electronic-python.readthedocs.io/en/latest/index.html
 
 .. image:: _static/arduino.png
+   :width: 798
+   :height: 145
    :target: ard_
 
 Basics and working with VPython, then create a digital gauge.
@@ -93,6 +97,8 @@ Adding dimensions to PIL
 .. _dims: https://pil-dimensions.readthedocs.io/en/latest/index.html
 
 .. image:: _static/ben_dim.png
+   :width: 960
+   :height: 104
    :target: dims_
 
 Add dimensions with either arrows or tailed lines, dashed lines and all
@@ -104,6 +110,8 @@ Water Properties
 .. _ale: https://adams-ale.readthedocs.io/en/latest/index.html
 
 .. image:: _static/ben_ale.png
+   :width: 798
+   :height: 145
    :target: ale_
 
 Simplified but accurate water proerties with interactive altair plots.
