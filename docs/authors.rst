@@ -73,9 +73,16 @@ Some of the trickier parts of tkinter.ttk
 .. _froth: https://frothy-brew.readthedocs.io/en/latest/index.html
 
 .. image:: _static/frothy_brew.png
-   :width: 700
-   :height: 132
+   :width: 552
+   :height: 104
    :target: froth_
+   :class: only-light
+
+.. image:: _static/frothy_brewneon.png
+   :width: 552
+   :height: 104
+   :target: froth_
+   :class: only-dark
 
 From ttk.notebook to ttk.scale, with canvas move and create a colour picker.
 
@@ -85,9 +92,16 @@ Linking Python to Arduino
 .. _ard: https://electronic-python.readthedocs.io/en/latest/index.html
 
 .. image:: _static/arduino.png
-   :width: 798
-   :height: 145
+   :width: 572
+   :height: 104
    :target: ard_
+   :class: only-light
+
+.. image:: _static/arduinoneon.png
+   :width: 572
+   :height: 104
+   :target: ard_
+   :class: only-dark
 
 Basics and working with VPython, then create a digital gauge.
 
@@ -97,9 +111,16 @@ Adding dimensions to PIL
 .. _dims: https://pil-dimensions.readthedocs.io/en/latest/index.html
 
 .. image:: _static/ben_dim.png
-   :width: 960
+   :width: 955
    :height: 104
    :target: dims_
+   :class: only-light   
+
+.. image:: _static/ben_dimneon.png
+   :width: 955
+   :height: 104
+   :target: dims_
+   :class: only-dark
 
 Add dimensions with either arrows or tailed lines, dashed lines and all
 made with antialiasing if required.
@@ -110,8 +131,15 @@ Water Properties
 .. _ale: https://adams-ale.readthedocs.io/en/latest/index.html
 
 .. image:: _static/ben_ale.png
-   :width: 798
-   :height: 145
+   :width: 533
+   :height: 104
    :target: ale_
+   :class: only-light
 
-Simplified but accurate water proerties with interactive altair plots.
+.. image:: _static/ben_aleneon.png
+   :width: 533
+   :height: 104
+   :target: ale_
+   :class: only-dark
+
+Simplified but accurate water properties with interactive altair plots.
