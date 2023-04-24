@@ -143,3 +143,23 @@ Water Properties
    :class: only-dark
 
 Simplified but accurate water properties with interactive altair plots.
+
+Iterative Solutions
+-------------------
+
+.. _imps: https://pesky-imps.readthedocs.io/en/latest/index.html
+
+.. image:: _static/ben_imps.png
+   :width: 533
+   :height: 104
+   :target: imps_
+   :class: only-light
+
+.. image:: _static/ben_impsneon.png
+   :width: 533
+   :height: 104
+   :target: imps_
+   :class: only-dark
+
+Iterative methods used for interpolation, extrapolation, root finding and 
+equation optimisation, many of the methods are similar.
