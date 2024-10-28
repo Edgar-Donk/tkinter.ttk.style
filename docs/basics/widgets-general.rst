@@ -16,7 +16,7 @@ property options do not correspond between tkinter and ttk. For instance ttk
 Button has a 
 single option ``style`` instead of 24 additional property options in tkinter, 
 the remaining 10 property options are common to both Button widgets. Use
-`"Tkinter 8.5 reference a GUI for Python" <https://www.hsg-kl.de/faecher/inf/python/tkinter/tkinter.pdf>`_
+`"Tkinter 8.5 reference a GUI for Python" <https://tkdocs.com/shipman/tkinter.pdf>`_
 to find out which property options are used on all the widgets. 
 
 .. topic:: Property Options
@@ -41,7 +41,7 @@ To view or hide the code just click on the arrow.
    .. container:: header
 
        *Show/Hide Code* 01label_config.py
-       
+
    .. literalinclude:: ../examples/01label_config.py
 
 The script displays the attributes available in tkinter and ttk, there are

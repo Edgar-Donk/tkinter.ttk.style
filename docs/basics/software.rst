@@ -13,17 +13,37 @@ a tkinter version needs to have themed widgets (ttk). If tkinter is 8.6 or
 greater png files can be used directly. Open a python session and import
 ttk to confirm all will run. 
 
+.. warning:: Python2 is no longer supported, so unless there are backward
+    compatability issues work with Python3.
+
 ============================= =============================
  Python3                      Python2
 ============================= =============================
  ``import tkinter.ttk``        ``import Tkinter.ttk``
 ============================= =============================
 
-* Tkinter reference
+* Windows Directory
+   When working in Windows I found it useful to use directories within the
+   user working directory ``C:\Users\edgar\programs\python312`` for the
+   Python 3.12 installation, ``C:\Users\edgar\python`` for general python 
+   scripts and ``C:\Users\edgar\sphinx`` for sphinx specific scripts, this 
+   avoids editing issues if the programs were installed in ``C:\Program Files``
+   or ``C:\Program Files (x86)``.
+
+* Newer Tkinter 8.6 reference
+   `"Tkinter Class API Reference" <https://tkdocs.com/pyref/>`_
+* Older Tkinter reference
    download the pdf version of 
-   `"Tkinter 8.5 reference a GUI for Python" <https://www.hsg-kl.de/faecher/inf/python/tkinter/tkinter.pdf>`_, 
-* There is an alternative site
+   `"Tkinter 8.5 reference a GUI for Python" <https://tkdocs.com/shipman/tkinter.pdf>`_, 
+* There is an alternative site 8.5 refrerence
    https://anzeljg.github.io/rin2/book2/2405/docs/tkinter/index.html
+
+.. sidebar:: External Python Modules
+
+   Additional python modules can be installed from a system window,
+   in Windows use the command module ``cmd`` found under 
+   **C:\Windows\Sytem32\cmd.exe**. Once Python is installed and running open 
+   the system window and type in ``pip install module``.
 
 * Themed widgets
    See what has already been done with widgets, view and install the external 
@@ -76,3 +96,13 @@ ttk to confirm all will run.
    to the ``docs`` directory of the unzipped files and run the command
    ``make html``, which should make a new subdirectory ``_build/html``, 
    where you can load ``index.html``.
+
+* Python IDE or code editor
+   An IDE is an Integrated Development Environment, used to control projects -
+   probably most inexperienced users only need a code editor, certainly they 
+   are easier to learn. Idle and Thonny come with the Python installation,
+   my choice would be Thonny. A second lightweight code editor is PyScripter
+   (only available for Windows). More experienced users require an IDE and
+   these are best for the individual to try, judge and select according to
+   personal requirements.
+
