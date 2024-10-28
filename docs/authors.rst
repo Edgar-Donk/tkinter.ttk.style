@@ -1,4 +1,4 @@
-.. _authors:
+﻿.. _authors:
 
 ============
 Contributors

@@ -37,7 +37,10 @@ extensions = ["sphinx.ext.autodoc",
     'sphinx.ext.autosectionlabel',
     # "numpydoc",
     'sphinx.ext.mathjax',
-    'sphinx_copybutton'
+    'sphinx_exec_code',
+    'sphinx.ext.duration',
+    'sphinx.ext.doctest',
+    'sphinx_copybutton',
 ]
 
 napoleon_google_docstring = False
