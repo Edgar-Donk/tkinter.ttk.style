@@ -1,4 +1,4 @@
-tools Class Module
+﻿tools Class Module
 ==================
 
 toolsClass module

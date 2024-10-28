@@ -1,4 +1,4 @@
-Documentation
+﻿Documentation
 =============
 
 Create a directory ``myproject`` with two subdirectories ``docs`` and ``scripts``.
