@@ -1,4 +1,4 @@
-Progressbar and Scale
+﻿Progressbar and Scale
 ---------------------
 
 .. |p-prog| image:: ../figures/07piratz_prog.jpg

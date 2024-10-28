@@ -1,4 +1,4 @@
-Piratz Sizegrip
+﻿Piratz Sizegrip
 ---------------
 
 .. image:: ../figures/07piratz_sizegrip.jpg

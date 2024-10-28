@@ -1,4 +1,4 @@
-Button
+﻿Button
 ------
 
 .. |b-active| image:: ../figures/07piratz_button-a.jpg

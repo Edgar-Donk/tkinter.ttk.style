@@ -1,4 +1,4 @@
-Piratz Label Frame
+﻿Piratz Label Frame
 ------------------
 
 .. image:: ../figures/07piratz_labelframe.png

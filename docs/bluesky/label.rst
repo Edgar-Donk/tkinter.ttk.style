@@ -1,4 +1,4 @@
-Piratz Label
+﻿Piratz Label
 ------------
 
 .. image:: ../figures/07piratz_label.jpg

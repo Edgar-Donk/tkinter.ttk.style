@@ -1,4 +1,4 @@
-Radio and Check Buttons
+﻿Radio and Check Buttons
 -----------------------
 
 .. |radio| image:: ../figures/07piratz_radio.jpg

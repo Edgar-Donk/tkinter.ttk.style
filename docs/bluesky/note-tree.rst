@@ -1,4 +1,4 @@
-Notebook and Treeview
+﻿Notebook and Treeview
 -----------------------
 
 .. |note| image:: ../figures/07piratz_note.jpg

@@ -1,4 +1,4 @@
-Piratz Separator
+﻿Piratz Separator
 ----------------
 
 Let's choose the Separator as the next widget. At first glance it may seem 

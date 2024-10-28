@@ -1,4 +1,4 @@
-Piratz Combobox
+﻿Piratz Combobox
 ---------------
 
 .. image:: ../figures/07piratz_combobox.jpg

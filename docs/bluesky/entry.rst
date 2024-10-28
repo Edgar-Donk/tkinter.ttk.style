@@ -1,4 +1,4 @@
-Piratz Entry
+﻿Piratz Entry
 ------------
 
 .. image:: ../figures/07piratz_entry.jpg

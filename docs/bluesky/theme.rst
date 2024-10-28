@@ -1,4 +1,4 @@
-Piratz Theme
+﻿Piratz Theme
 ------------
 
 .. image:: ../figures/07pir_theme.png

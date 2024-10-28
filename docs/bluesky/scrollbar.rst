@@ -1,4 +1,4 @@
-Piratz Scrollbar
+﻿Piratz Scrollbar
 ----------------
 
 .. image:: ../figures/07piratz_scrollbar_grip.jpg
