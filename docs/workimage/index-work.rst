@@ -1,4 +1,4 @@
-.. _04images:
+﻿.. _04images:
 
 ======================
 04 Working with Images
@@ -35,8 +35,8 @@ so once the image file is initiated in PhotoImage it can be loaded directly
 onto the widget. 
 
 .. note:: All the images used with the examples will be found in the 
-	directory "images". and the programs can be run using the same directory 
-	structure on your computer.
+    directory "images". and the programs can be run using the same directory 
+    structure on your computer.
 
 .. toctree::
     :maxdepth: 3
