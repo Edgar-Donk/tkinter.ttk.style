@@ -4,7 +4,7 @@ Spinbox - based on Combobox
 Create theme extract for custom widgets, include state selection to view
 the result of changing the state using different images and/or different
 settings.
-Spinbox states disabled, readonly;focus, readonly; normal, focus, pressed, 
+Spinbox states disabled, readonly;focus, readonly; normal, focus, pressed,
 disabled; normal,readonly,active; normal,pressed,active, disabled
 '''
 
@@ -16,6 +16,8 @@ root = Tk()
 
 fr = Frame(root)
 fr.grid(column=0,row=0,sticky='nsew')
+fr0 = Frame(root)
+fr0.grid(column=1,row=0,sticky='nsew')
 
 img1 = PhotoImage("combo-n", file='../images/lime/combo-n.png')
 img3 = PhotoImage("combo-d", file='../images/lime/combo-d.png')
@@ -35,21 +37,21 @@ style.theme_create( "yummy", parent="clam", settings={
 #style.theme_settings('alt', {
 # start of theme extract
     'TSpinbox': {
-        'layout': [('Spinbox.field', {'side': 'left', 'sticky': 'we', 'children': 
-      [('null', {'side': 'right', 'sticky': '', 'children': 
-         [('Spinbox.uparrow', {'side': 'top', 'sticky': 'e'}), 
-            ('Spinbox.downarrow', {'side': 'bottom', 'sticky': 'e'})]}), 
-               ('Spinbox.padding', {'sticky': 'nswe', 'children': 
+        'layout': [('Spinbox.field', {'side': 'left', 'sticky': 'we', 'children':
+      [('null', {'side': 'right', 'sticky': '', 'children':
+         [('Spinbox.uparrow', {'side': 'top', 'sticky': 'e'}),
+            ('Spinbox.downarrow', {'side': 'bottom', 'sticky': 'e'})]}),
+               ('Spinbox.padding', {'sticky': 'nswe', 'children':
                   [('Spinbox.textarea', {'sticky': 'nswe'})]})]})]
         },
-    
+
      "Spinbox.field": {"element create":
            ("image", 'combo-n',
                 ('readonly', 'disabled', 'combo-d'),
                 {'sticky': 'ew',  'border': [4],'padding': 0}
            )
         },
-    
+
         "Spinbox.downarrow": {"element create":
             ("image", 'arrowdown-n',
                  ('disabled','arrowdown-d'),
@@ -58,7 +60,7 @@ style.theme_create( "yummy", parent="clam", settings={
                  {'sticky': 'e','border': [0],'padding': 4} # 'border': [1]
              )
         },
-    
+
      "Spinbox.uparrow": {"element create":
             ("image", 'arrowup-n',
                  ('disabled','arrowup-d'),
@@ -68,33 +70,33 @@ style.theme_create( "yummy", parent="clam", settings={
              )
         }
 
-     
+
 # end of theme extract - don't forget to add comma at end when inserting
      })
 
 style.theme_use('yummy') # 'alt'
-widg = Spinbox(fr,from_=0, to=100,width=4)
+widg = Spinbox(fr0,from_=0, to=100,width=4)
 widg.grid(column=0,row=10,padx=5,pady=5 )
-widg1 = Spinbox(fr,from_=0, to=100)
+widg1 = Spinbox(fr0,from_=0, to=100)
 widg1.grid(column=0,row=11,padx=5,pady=5,sticky='ns')
 run_state(fr,widg,widg1)
 
 root.mainloop()
 
 '''
-# creates field and arrows in a horizontal row 
+# creates field and arrows in a horizontal row
 'layout': [('Spinbox.downarrow', {'side': 'right', 'sticky': 'ns'}),
                    ('Spinbox.uparrow', {'side': 'right', 'sticky': 'ns'}),
                    ('Spinbox.field', {'side': 'top', 'sticky': 'we', 'children':
                         [('Spinbox.padding', {'sticky': 'nswe', 'children':
                             [('Spinbox.textarea', {'sticky': 'nswe'})]})]})]
 
-# creates field and arrows in a vertical row 
+# creates field and arrows in a vertical row
 'TSpinbox': {
         'layout': [('Spinbox.field', {'side': 'top', 'sticky': 'we'}),
                    ('null', {'side': 'right', 'sticky': '', 'children':
                        [('Spinbox.uparrow', {'side': 'top', 'sticky': 'ns'}),
-                        ('Spinbox.downarrow', {'side': 'bottom', 'sticky': 'ns'}), 
+                        ('Spinbox.downarrow', {'side': 'bottom', 'sticky': 'ns'}),
                         ('Spinbox.padding', {'sticky': 'nswe', 'children':
-                            [('Spinbox.textarea', {'sticky': 'nswe'})]})]})]                            
-'''                            
+                            [('Spinbox.textarea', {'sticky': 'nswe'})]})]})]
+'''

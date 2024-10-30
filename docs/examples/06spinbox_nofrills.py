@@ -18,6 +18,8 @@ root = Tk()
 
 fr = Frame(root)
 fr.grid(column=0,row=0,sticky='nsew')
+fr0 = Frame(root)
+fr0.grid(column=1,row=0,sticky='nsew')
 
 img1 = PhotoImage("combo-n", file='../images/lime/combo-n.png')
 img3 = PhotoImage("combo-d", file='../images/lime/combo-d.png')
@@ -64,9 +66,9 @@ style.theme_create( "yummy", parent="clam", settings={
      })
 
 style.theme_use('yummy') # 'alt'
-widg = Spinbox(fr,from_=0, to=100,width=4)
+widg = Spinbox(fr0,from_=0, to=100,width=4)
 widg.grid(column=0,row=10,padx=5,pady=5 )
-widg1 = Spinbox(fr,from_=0, to=100)
+widg1 = Spinbox(fr0,from_=0, to=100)
 widg1.grid(column=0,row=11,padx=5,pady=5,sticky='ns')
 run_state(fr,widg,widg1)
 

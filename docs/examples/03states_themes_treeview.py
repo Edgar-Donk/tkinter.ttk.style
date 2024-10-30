@@ -15,13 +15,13 @@ class App:
         self.fr = Frame(root)
         self.fr.pack(fill='both', expand=1)
         ## uncomment following 5 lines if using ttkthemes
-        
+
         try:
             import ttkthemes as ts
             self.style = ts.themed_style.ThemedStyle()
         except (NameError, AttributeError):
             self.style = Style()
-        
+
         #self.style = Style() ## comment out if using ttkthemes
         self._setup_widgets()
 
@@ -82,3 +82,5 @@ if __name__ == "__main__":
     Root.title("Ttk Theme and State Selector")
     app = App(Root)
     Root.mainloop()
+# worked on thonny not pyscripter? could not find ttkthemes
+# changed PyScripter>>Tools>>Options>>Custom Parameters to current version
