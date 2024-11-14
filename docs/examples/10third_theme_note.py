@@ -3,7 +3,7 @@
 
 from tkinter import Tk, IntVar, StringVar, font
 from tkinter.ttk import Frame, Notebook, Separator, Checkbutton, Button, Radiobutton, LabelFrame, Treeview,\
-Scrollbar, Combobox, Style, Scale, Progressbar, Sizegrip, Label, Entry, Spinbox
+Scrollbar, Combobox, Style, Progressbar, Sizegrip, Label, Entry, Spinbox
 from tkinter.font import Font
 from gen_scale_class import TtkScale
 import lime_theme
@@ -220,11 +220,11 @@ class NotebookDemo:
         from_=0
         to=100
         value=0
-        step=10
-        fontSize = 9
+        #step=10
+        #fontSize = 9
         self.scvar = IntVar()
 
-        scRange=self.any_number_range(from_,to,step)
+        #scRange=self.any_number_range(from_,to,step)
         #scLen = len(scRange[1]) * (fontSize + 10)
         #print('scLen',scLen)
         self.sc = TtkScale(fr1, from_=from_, to=to, variable=self.scvar,
@@ -240,7 +240,7 @@ class NotebookDemo:
 
         fr4=Frame(fr1)
         fr4.grid(row=1, column=2)
-        sc_split = '\n'.join(scRange[0].split())
+        #sc_split = '\n'.join(scRange[0].split())
         #lb = Label(fr1, text=sc_split, font=('Courier New', str(fontSize)),
                    #width=4*len(scRange[1]))
         #lb.grid(row=1, column=2,padx=5,pady=5)

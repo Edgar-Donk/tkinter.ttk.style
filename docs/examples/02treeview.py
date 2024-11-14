@@ -17,7 +17,7 @@ from tkinter.ttk import Style, Combobox, Label, Treeview
 def theme_changed(theme): 
     style.theme_use(theme)
     lay = style.layout('Treeview')
-    lay1 = style.layout('Treeview.Heading')
+    #lay1 = style.layout('Treeview.Heading')
     # this can be changed to lay1 if looking at heading layout
     data = " ".join(str(x) for x in lay)
     spos = 0

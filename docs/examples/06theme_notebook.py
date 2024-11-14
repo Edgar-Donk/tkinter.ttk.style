@@ -221,8 +221,8 @@ class NotebookDemo:
         from_=-5
         to=105
         value=19
-        step=11
-        fontSize = 9
+        #step=11
+        #fontSize = 9
         scvar = IntVar()
         #scRange=self.any_number_range(from_,to,step)
         #scLen = len(scRange[1]) * (fontSize + 10)
