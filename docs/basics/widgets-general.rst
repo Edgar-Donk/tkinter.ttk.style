@@ -49,3 +49,12 @@ fewer attributes in ttk as the
 missing attributes are replaced by the options for the style attribute, this
 should be useful when multiple widgets are used in a project.
 Later it will be seen just how flexible ttk is. 
+
+Tix is Deprecated
+-----------------
+
+Tix widgets have been deprecated since Python version 3.6, but they still 
+exist on later versions of Python under the tcl folder. In the Python 
+`standard library <https://docs.python.org/3.12/library/tkinter.tix.html>`_
+they advise to use ttk instead, since there are more than 40 widgets quite 
+a tall order.
