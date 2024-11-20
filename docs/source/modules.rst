@@ -75,16 +75,17 @@ Each python script will become our modules, so we require separate rst files
 for each of the modules within the source directory. Each module file will 
 look a bit like part of the original `scripts.rst`::
 
-    Tree Class Module
+    tools Class Module
     ==================
 
-    tree\_class class
-    ----------------------
+    toolsClass module
+    -------------------
 
-    .. automodule:: tree_class
-       :members:
-       :undoc-members:
-       :show-inheritance:
+    .. automodule:: toolsClass
+        :members:
+        :undoc-members:
+        :show-inheritance:
+
 
 .. note:: In the heading escape any underscores.
 
