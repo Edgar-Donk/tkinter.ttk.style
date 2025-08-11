@@ -52,6 +52,7 @@ imagination, where an appreciation of PIL (Pillow) will be useful.
         * Arrows
 9. Replicating the Widgets
     *  See how well we can replicate the widget images from ttktheme
-10.  Lime Theme
-    *   Create your own theme using tools to standardise the overall appearance    
+10. Lime Theme
+    * Create your own theme using tools to standardise the overall appearance    
+
 
