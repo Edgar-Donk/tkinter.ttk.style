@@ -53,7 +53,7 @@ Simple Style Changes
 ====================
 
 Use tkinter commands to make simple style changes to button, orientated 
-widgets, widgets with an axiliary part and finally some more examples with
+widgets, widgets with an auxiliary part and finally some more examples with
 the Style class.
 
 .. toctree::

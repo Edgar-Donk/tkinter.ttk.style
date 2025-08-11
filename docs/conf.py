@@ -41,6 +41,7 @@ extensions = ["sphinx.ext.autodoc",
     'sphinx.ext.duration',
     'sphinx.ext.doctest',
     'sphinx_copybutton',
+    'sphinx_jinja2',
 ]
 
 napoleon_google_docstring = False
