@@ -10,5 +10,6 @@ python:
     - requirements: docs/requirements.txt
 #    - method: pip
 
+# in read the docs still old layout
 sphinx:
-  configuration: docs/source/conf.py
+  configuration: docs/conf.py
