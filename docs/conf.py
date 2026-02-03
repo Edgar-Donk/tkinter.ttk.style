@@ -1,4 +1,4 @@
-# Configuration file for the Sphinx documentation builder.
+﻿# Configuration file for the Sphinx documentation builder.
 #
 # This file only contains a selection of the most common options. For a full
 # list see the documentation:
@@ -22,7 +22,7 @@ copyright = "2022, 'Edga Donk'"
 author = "Edga Donk"
 
 # The full version, including alpha/beta/rc tags
-release = "2"
+release = "3"
 
 
 # -- General configuration ---------------------------------------------------
@@ -37,15 +37,20 @@ extensions = ["sphinx.ext.autodoc",
     'sphinx.ext.autosectionlabel',
     # "numpydoc",
     'sphinx.ext.mathjax',
-    #'sphinx_exec_code',
-    'sphinx.ext.duration',
-    'sphinx.ext.doctest',
+    'sphinx_exec_code',
+    #'sphinx.ext.duration',
+    #'sphinx.ext.doctest',
     'sphinx_copybutton',
-    'sphinx_jinja2',
+    #'autoapi.extension',
+    'sphinx_jinja'
 ]
 
 napoleon_google_docstring = False
 napoleon_numpy_docstring = True
+
+#autoapi_dirs = ['scripts']
+
+#autoapi_add_toctree_entry = False
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
