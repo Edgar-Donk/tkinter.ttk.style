@@ -4,6 +4,6 @@ Pillow
 numpy
 pydata_sphinx_theme
 sphinx-copybutton
-sphinx_exec_code
-sphinx.ext.duration
-sphinx.ext.doctest
+sphinx-exec-code
+# sphinx.ext.duration
+# sphinx.ext.doctest
