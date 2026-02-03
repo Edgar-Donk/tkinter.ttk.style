@@ -7,3 +7,4 @@ sphinx-copybutton
 sphinx-exec-code
 # sphinx.ext.duration
 # sphinx.ext.doctest
+sphinx-jinja
