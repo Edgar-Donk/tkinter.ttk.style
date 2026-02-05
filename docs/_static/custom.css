@@ -12,6 +12,19 @@ rem units based on 16px base html size
     32px = 2rem
 
 */
+
+@font-face {
+     font-family: "Kingofthieves";
+     src: url(Kingofthieves-v6mL.ttf);
+}
+
+.keys {
+    font-family: "Kingofthieves";
+	font-size: 60px;
+	color: #ff073a;
+    text-shadow: 0 0 3px #ccff02;
+} 
+
 .toggle .header {
     display: block;
     clear: both;
