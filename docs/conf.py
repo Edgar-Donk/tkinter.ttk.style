@@ -1,4 +1,4 @@
-﻿# Configuration file for the Sphinx documentation builder.
+# Configuration file for the Sphinx documentation builder.
 #
 # This file only contains a selection of the most common options. For a full
 # list see the documentation:
@@ -22,7 +22,7 @@ copyright = "2022, 'Edga Donk'"
 author = "Edga Donk"
 
 # The full version, including alpha/beta/rc tags
-release = "3"
+release = "2"
 
 
 # -- General configuration ---------------------------------------------------
@@ -37,20 +37,14 @@ extensions = ["sphinx.ext.autodoc",
     'sphinx.ext.autosectionlabel',
     # "numpydoc",
     'sphinx.ext.mathjax',
-    'sphinx_exec_code',
-    #'sphinx.ext.duration',
-    #'sphinx.ext.doctest',
+    #'sphinx_exec_code',
+    'sphinx.ext.duration',
+    'sphinx.ext.doctest',
     'sphinx_copybutton',
-    #'autoapi.extension',
-    'sphinx_jinja'
 ]
 
 napoleon_google_docstring = False
 napoleon_numpy_docstring = True
-
-#autoapi_dirs = ['scripts']
-
-#autoapi_add_toctree_entry = False
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
@@ -75,6 +69,7 @@ html_theme = "pydata_sphinx_theme"
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ['_static']
+html_css_files = ['custom.css']
 
 html_theme_options = {
   "show_prev_next": True,
@@ -98,9 +93,16 @@ def setup(app):
 html_theme_options = {
    "logo": {
       "text": "Putting on the Style",
-      "image_light": 'bigbenc.png',
-      "image_dark": "bigbencneon.png",
+      "image_light": 'bigbenc.avif',
+      "image_dark": "bigbencneon.avif",
    }
 }
 
 html_favicon = '_static/ben1.ico'
+
+smartquotes = False
+
+rst_prolog = f"""
+.. role:: AL
+    :class: keys
+"""
