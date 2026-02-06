@@ -13,7 +13,9 @@ its styling changes on your own ideas and scripts.
 An even more lightning tour through the themes from tkinter.ttk and ttkthemes.
 
 Create a few specials to show what can be achieved then create a standalone version, after that you are only limited by your
-imagination, where an appreciation of PIL (Pillow) will be useful.
+imagination, where an appreciation of PIL (Pillow) will be useful
+
+![piratz theme](./docs/images/piratz_theme.png)
 
 ## See the working copy
 
@@ -51,8 +53,9 @@ imagination, where an appreciation of PIL (Pillow) will be useful.
         * Colour schemes and gradients
         * Arrows
 9. Replicating the Widgets
-    *  See how well we can replicate the widget images from ttktheme
+    * See how well we can replicate the widget images from ttktheme
 10. Lime Theme
-    * Create your own theme using tools to standardise the overall appearance    
-
+    * Create your own theme using tools to standardise the overall appearance 
+ 
+	
 
