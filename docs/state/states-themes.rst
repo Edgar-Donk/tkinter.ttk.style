@@ -15,14 +15,20 @@ Script 03states_themes.py
    The additional themes from ttkthemescan can be enabled, the standard 
    themes will still be available whether ttkthemescan are enabled or not.
 
-.. container:: toggle
+.. raw:: html
 
-   .. container:: header
+   <details>
+   <summary style="color: MediumSlateBlue;">
+   <b><i> Show/Hide Code </i> 03states_themes.py </b></summary>
 
-       *Show/Hide Code* 03states_themes.py
-
-   .. literalinclude:: /examples/03states_themes.py
+.. literalinclude:: /examples/03states_themes.py
       :emphasize-lines: 17-25
+
+.. raw:: html
+
+   </details>
+
+|
 
 there is no problem changing themes, however when changing states we need to 
 cancel the previous state by applying the opposite state (you remember the 
@@ -41,7 +47,8 @@ which widget.
 .. raw:: html
 
    <details>
-   <summary><a>Show/Hide <b> Table </b> 03mapped_states.csv </a></summary>
+   <summary style="color: MediumSlateBlue;">
+   <b><i>Show/Hide </i>  Table  03mapped_states.csv </b></summary>
 
 .. csv-table:: 03mapped_states.csv
    :file: /tables/03mapped_states.csv

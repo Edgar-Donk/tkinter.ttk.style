@@ -19,13 +19,19 @@ Checkbox themes
    :height: 261px
    :align: center
 
-.. container:: toggle
+.. raw:: html
 
-   .. container:: header
+   <details>
+   <summary style="color: MediumSlateBlue;">
+   <b><i> Show/Hide Code </i> 03checkbox_themes.py </b></summary>
 
-       *Show/Hide Code* 03checkbox_themes.py
+.. literalinclude:: /examples/03checkbox_themes.py
 
-   .. literalinclude:: /examples/03checkbox_themes.py
+.. raw:: html
+
+   </details>
+
+|
 
 As you can see not only do we have an excess of element names, but we can 
 also display the layout of the widget and change the theme. Remember 
@@ -59,13 +65,19 @@ rather than through style. 03combobox_text_themes.py has a special method
 that allows style to change font - whether it is required or not depends on 
 the application.
 
-.. container:: toggle
+.. raw:: html
 
-   .. container:: header
+   <details>
+   <summary style="color: MediumSlateBlue;">
+   <b><i> Show/Hide Code </i> 03combobox_text_themes.py </b></summary>
 
-       *Show/Hide Code* 03combobox_text_themes.py
+.. literalinclude:: /examples/03combobox_text_themes.py
 
-   .. literalinclude:: /examples/03combobox_text_themes.py
+.. raw:: html
+
+   </details>
+
+|
 
 When using font we can refer to each instance of the font directly - such as 
 'Helvetica 12 Bold' - or we can use the generic names used by Tk,

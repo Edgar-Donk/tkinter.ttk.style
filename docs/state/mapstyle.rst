@@ -18,7 +18,8 @@ States are a fundamental part of styles and themes.
 .. raw:: html
 
    <details>
-   <summary><a>Show/Hide <b> Table </b> 03states.csv </a></summary>
+   <summary style="color: MediumSlateBlue;">
+   <b><i>Show/Hide </i>  Table  03states.csv </b></summary>
 
 .. csv-table:: 03states.csv
    :file: /tables/03states.csv
@@ -195,13 +196,19 @@ hash value. Simple colour manipulations are straightforward in the RGB scheme.
 A further frill is that we use a white foreground for a dark background and 
 a black foreground for a yellow background.
 
-.. container:: toggle
+.. raw:: html
 
-   .. container:: header
+   <details>
+   <summary style="color: MediumSlateBlue;">
+   <b><i> Show/Hide Code </i> 03map_button.py </b></summary>
 
-       *Show/Hide Code* 03map_button.py
+.. literalinclude:: /examples/03map_button.py
 
-   .. literalinclude:: /examples/03map_button.py
+.. raw:: html
+
+   </details>
+
+|
 
 Script Combobox in a Theme
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -221,13 +228,19 @@ When using Style.configure and Style.map you would normally run as
 separate clauses within the program, however if we use theme_settings the 
 commands configure and map can be run together into a single clause. 
 
-.. container:: toggle
+.. raw:: html
 
-   .. container:: header
+   <details>
+   <summary style="color: MediumSlateBlue;">
+   <b><i> Show/Hide Code </i> 03combobox.py </b></summary>
 
-       *Show/Hide Code* 03combobox.py
+.. literalinclude:: /examples/03combobox.py
 
-   .. literalinclude:: /examples/03combobox.py
+.. raw:: html
+
+   </details>
+
+|
 
 .. note:: See how configure and map are used in theme_settings - with quotes 
    and followed by a full colon. 
