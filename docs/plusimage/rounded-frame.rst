@@ -128,6 +128,12 @@ apart from telling the widget to change itself by creating an element and
 placing our image at the border we did not change a thing, the only sizing
 command was the standard ``expand=1`` found in pack.
 
+    .. warning:: File Size when Working with base64 or pybase64
+
+   Use really small images otherwise not only do we produce really huge files,
+   but the computor ties up a large amount of resources. Using pybase64 
+   should be faster using much the same commands.
+
 What happens when we adapt the above method for a labelframe? What about the 
 top part of the frame where the text is written between a visible frame? Will 
 we need a special method to create the gap? Ah well, fools rush in where 
@@ -163,10 +169,16 @@ and style.layout remain the same as for the frame example.** ::
 
 The grey image was modified to create a red widget which was then encoded.
 
-.. container:: toggle
+.. raw:: html
 
-   .. container:: header
+   <details>
+   <summary style="color: MediumSlateBlue;">
+   <b><i> Show/Hide Code </i> 05rounded_labelframe.py </b></summary>
 
-       *Show/Hide Code* 05rounded_labelframe.py
+.. literalinclude:: /examples/05rounded_labelframe.py
 
-   .. literalinclude:: /examples/05rounded_labelframe.py
+.. raw:: html
+
+   </details>
+
+|
