@@ -12,14 +12,20 @@ we pass the cursor over it, and press the button. Load up 04button_image.py
 Script 04button_image.py
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. container:: toggle
+.. raw:: html
 
-   .. container:: header
+   <details>
+   <summary style="color: MediumSlateBlue;">
+   <b><i> Show/Hide Code </i> 04button_image.py </b></summary>
 
-       *Show/Hide Code* 04button_image.py
-
-   .. literalinclude:: ../examples/04button_image.py 
+.. literalinclude:: ../examples/04button_image.py 
       :emphasize-lines: 25-40
+
+.. raw:: html
+
+   </details>
+
+|
 
 Using 04button_image.py you should see three buttons, the top one with just 
 an image, the second uses the same image with the centre made transparent - 
@@ -80,15 +86,21 @@ Check out the example 04button_pictograms.py.
 Script 04button_pictograms.py
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. container:: toggle
+.. raw:: html
 
-   .. container:: header
+   <details>
+   <summary style="color: MediumSlateBlue;">
+   <b><i> Show/Hide Code </i> 04button_pictograms.py </b></summary>
 
-       *Show/Hide Code* 04button_pictograms.py
-
-   .. literalinclude:: ../examples/04button_pictograms.py
+.. literalinclude:: ../examples/04button_pictograms.py
       :emphasize-lines: 18-19
       :linenos:
+
+.. raw:: html
+
+   </details>
+
+|
 
 Look at lines 18-19, this has three pictograms linked to 3 states which must 
 have the active state listed last, just as we needed to do in the mapping 
