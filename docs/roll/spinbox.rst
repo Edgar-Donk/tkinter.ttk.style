@@ -80,11 +80,17 @@ used for padding in Spinbox.field (element create) from 1 to 0, save and run.
 This eliminates the extended field component, so we can use this later on in 
 the lime theme. 
 
-.. container:: toggle
+.. raw:: html
 
-   .. container:: header
+   <details>
+   <summary style="color: MediumSlateBlue;">
+   <b><i> Show/Hide Code </i> 06spinbox_nofrills.py </b></summary>
 
-       *Show/Hide Code* 06spinbox_nofrills.py
+.. literalinclude:: ../examples/06spinbox_nofrills.py
 
-   .. literalinclude:: ../examples/06spinbox_nofrills.py
+.. raw:: html
+
+   </details>
+
+|
 

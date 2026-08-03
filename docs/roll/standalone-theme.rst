@@ -22,14 +22,20 @@ from your os system. First **import plastik_theme** then we call
 variable, so *'plastik'* is the subdirectory where the images from plastik 
 have been copied to.
 
-.. container:: toggle
+.. raw:: html
 
-   .. container:: header
+   <details>
+   <summary style="color: MediumSlateBlue;">
+   <b><i> Show/Hide Code </i> 06treeview.py </b></summary>
 
-       *Show/Hide Code* 06treeview.py
-
-   .. literalinclude:: ../examples/06treeview.py
+.. literalinclude:: ../examples/06treeview.py
       :lines: 94-112
+
+.. raw:: html
+
+   </details>
+
+|
 
 When that works, rename the *plastik* directory and subdirectory, to your 
 theme name, say *orange*, then wherever we find *plastik* referenced in 

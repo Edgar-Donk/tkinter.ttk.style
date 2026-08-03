@@ -63,13 +63,13 @@ this by finding out the component and their element names from an active session
 We can change the button layout of the green theme by adding ``Button.padding -children {`` 
 and test again. It works! 
 
-.. container:: toggle
+.. raw:: html
 
-   .. container:: header
+   <details>
+   <summary style="color: MediumSlateBlue;">
+   <b><i> Show/Hide Code </i> green button </b></summary>
 
-       *Show/Hide Code* altered green Button
-
-   .. code-block:: tcl
+.. code-block:: tcl
       :emphasize-lines: 1, 5
 
       ttk::style configure TButton -padding {10 0}
@@ -82,16 +82,30 @@ and test again. It works!
             }
          }
       }
+      
+.. raw:: html
+
+   </details>
+
+|
+
+
 
 Test the green button
 
-.. container:: toggle
+.. raw:: html
 
-   .. container:: header
+   <details>
+   <summary style="color: MediumSlateBlue;">
+   <b><i> Show/Hide Code </i> 06show_green_button.py </b></summary>
 
-       *Show/Hide Code* 06show_green_button.py
+.. literalinclude:: ../examples/06show_green_button.py
 
-   .. literalinclude:: ../examples/06show_green_button.py
+.. raw:: html
+
+   </details>
+
+|
 
 Let's try it out on the orange theme. Checking out the button we see we have 
 a configure and a layout that already has padding, so hopefully it works with 
@@ -99,16 +113,16 @@ only minimal changes. First we add padding to configure. When testing this
 does not work, so swop the Button.button and Button.padding positions in
 the layout.
 
-.. container:: toggle
+.. raw:: html
 
-   .. container:: header
+   <details>
+   <summary style="color: MediumSlateBlue;">
+   <b><i> Show/Hide Code </i> original orange Button </b></summary>
 
-       *Show/Hide Code* original orange Button
-
-   .. code-block:: python
+.. code-block:: python
       :emphasize-lines: 4,5
 
-        "TButton": {
+           "TButton": {
             "configure": {"width": 10, "anchor": "center"},
             "layout": [
                 ("Button.button", {"children":
@@ -121,11 +135,19 @@ the layout.
             ]
         },
 
-.. container:: toggle
+.. raw:: html
 
-   .. container:: header
+   </details>
 
-       *Show/Hide Code* altered orange Button
+|
+
+
+
+.. raw:: html
+
+   <details>
+   <summary style="color: MediumSlateBlue;">
+   <b><i> Show/Hide Code </i> altered orange Button </b></summary>
 
    .. code-block:: python
       :emphasize-lines: 4,5
@@ -143,17 +165,29 @@ the layout.
          ]
       },
 
+.. raw:: html
+
+   </details>
+
+|
+
 This works. The conclusion is that one may have to test the configure and 
 layout options with a small script such as 06widget_orange_test.py adapted to 
 suit your needs. When the orange script is ready test the orange button.
 
-.. container:: toggle
+.. raw:: html
 
-   .. container:: header
+   <details>
+   <summary style="color: MediumSlateBlue;">
+   <b><i> Show/Hide Code </i> 06show_orange_button.py </b></summary>
 
-       *Show/Hide Code* 06show_orange_button.py
+.. literalinclude:: ../examples/06show_orange_button.py
 
-   .. literalinclude:: ../examples/06show_orange_button.py
+.. raw:: html
+
+   </details>
+
+|
 
 When dealing with states it helps to keep in mind what will be required in 
 the program in relation to that widget. It certainly helps to view how various 

@@ -11,13 +11,19 @@ like
    :height: 99px
    :align: center
 
-.. container:: toggle
+.. raw:: html
 
-   .. container:: header
+   <details>
+   <summary style="color: MediumSlateBlue;">
+   <b><i> Show/Hide Code </i> 06show_green_combo.py </b></summary>
 
-       *Show/Hide Code* 06show_green_combo.py
+.. literalinclude:: ../examples/06show_green_combo.py
 
-   .. literalinclude:: ../examples/06show_green_combo.py
+.. raw:: html
+
+   </details>
+
+|
 
 whereas radiance looks like
 
@@ -26,13 +32,13 @@ whereas radiance looks like
    :height: 82px
    :align: center
 
-.. container:: toggle
+.. raw:: html
 
-   .. container:: header
+   <details>
+   <summary style="color: MediumSlateBlue;">
+   <b><i> Show/Hide Code </i> 06show_radiance_combo.py </b></summary>
 
-       *Show/Hide Code* 06show_radiance_combo.py
-
-   .. literalinclude:: ../examples/06show_radiance_combo.py
+.. literalinclude:: ../examples/06show_radiance_combo.py
 
 Say we prefer the radiance combobox and want to run it in our green theme.
 
@@ -143,15 +149,21 @@ It's probably best to run a python test file such as 06widget_orange_test.py.
 
 .. _06widget_orange_test.py:
 
-.. container:: toggle
+.. raw:: html
 
-   .. container:: header
+   <details>
+   <summary style="color: MediumSlateBlue;">
+   <b><i> Show/Hide Code </i> 06widget_orange_test.py </b></summary>
 
-       *Show/Hide Code* 06widget_orange_test.py
-
-   .. literalinclude:: ../examples/06widget_orange_test.py
+.. literalinclude:: ../examples/06widget_orange_test.py
       :emphasize-lines: 25-43
       :linenos:
+
+.. raw:: html
+
+   </details>
+
+|
 
 .. sidebar:: What about line 44?
 
@@ -169,13 +181,19 @@ be similar to those given in the green.tcl test. The resulting python script
 within theme_create (lines25-43) can be used to overwrite the combobox part of orange.py. 
 Remember to change any ``combor`` to ``combo``. We can test whether orange.py is correct using 06combo_orange.py. 
 
-.. container:: toggle
+.. raw:: html
 
-   .. container:: header
+   <details>
+   <summary style="color: MediumSlateBlue;">
+   <b><i> Show/Hide Code </i> 06combo_orange.py </b></summary>
 
-       *Show/Hide Code* 06combo_orange.py
+.. literalinclude:: ../examples/06combo_orange.py
 
-   .. literalinclude:: ../examples/06combo_orange.py
+.. raw:: html
+
+   </details>
+
+|
 
 .. tip:: If the down arrow of the orange combobox is misplaced, as we saw
    above for the green theme, find the theme_create line in the orange theme
