@@ -49,13 +49,19 @@ just list the extra element after the handle name.::
 We can modify /examples/01two_buttons.py to incorporate the colour changes, 
 we should see something like /examples/02two_coloured_buttons.py. 
 
-.. container:: toggle
+.. raw:: html
 
-   .. container:: header
+   <details>
+   <summary style="color: MediumSlateBlue;">
+   <b><i> Show/Hide Code </i> 02two_coloured_buttons.py </b></summary>
 
-       *Show/Hide Code* 02two_coloured_buttons.py
+.. literalinclude:: /examples/02two_coloured_buttons.py
 
-   .. literalinclude:: /examples/02two_coloured_buttons.py
+.. raw:: html
+
+   </details>
+
+|
 
 Two Coloured Buttons
 --------------------
@@ -99,13 +105,19 @@ element candidates for the classic theme. We need to use **place** and **set**
 remains squashed and you can't see your results. If we make the scrollbar 
 green with a light blue trough the result should look like 02scrollbar.py. 
 
-.. container:: toggle
+.. raw:: html
 
-   .. container:: header
+   <details>
+   <summary style="color: MediumSlateBlue;">
+   <b><i> Show/Hide Code </i> 02scrollbar.py</b> </summary>
 
-       *Show/Hide Code* 02scrollbar.py
+.. literalinclude:: /examples/02scrollbar.py
 
-   .. literalinclude:: /examples/02scrollbar.py
+.. raw:: html
+
+   </details>
+
+|
 
 Creat a second scrollbar where the borderwidth is the default value, 
 otherwise configure background and troughcolor the same as the first 
@@ -142,13 +154,19 @@ The default theme has no bordercolor, whilst alt only changes the right hand
 and lower border parts of arrow and thumb, whereas clam changes all the 
 borders including the grip colour.
 
-.. container:: toggle
+.. raw:: html
 
-   .. container:: header
+   <details>
+   <summary style="color: MediumSlateBlue;">
+   <b><i> Show/Hide Code </i> 02scrollbar_theme.py </b></summary>
 
-       *Show/Hide Code* 02scrollbar_theme.py
+.. literalinclude:: /examples/02scrollbar_theme.py
 
-   .. literalinclude:: /examples/02scrollbar_theme.py
+.. raw:: html
+
+   </details>
+
+|
 
 LabelFrame - Style
 ------------------
@@ -167,13 +185,19 @@ TLabelframe.Label, depending whether we wish to alter the label or the frame,
 but in both cases the `style` property only refers to TLabelframe with no 
 suffix. This is illustrated in /examples/02labelframe.py.
 
-.. container:: toggle
+.. raw:: html
 
-   .. container:: header
+   <details>
+   <summary style="color: MediumSlateBlue;">
+   <b><i> Show/Hide Code </i> 02labelframe.py </b></summary>
 
-       *Show/Hide Code* 02labelframe.py
+.. literalinclude:: /examples/02labelframe.py
 
-   .. literalinclude:: /examples/02labelframe.py
+.. raw:: html
+
+   </details>
+
+|
 
 Treeview - Style
 ----------------
@@ -195,14 +219,20 @@ first part of the script displays the widget layout in a form that is easy
 to read - there probably is an easier way to do this! To view the colour 
 changes we use 2 treeview widgets, the first has not been customised.
 
-.. container:: toggle
+.. raw:: html
 
-   .. container:: header
+   <details>
+   <summary style="color: MediumSlateBlue;">
+   <b><i> Show/Hide Code </i> 02treeview.py </b></summary>
 
-       *Show/Hide Code* 02treeview.py
-
-   .. literalinclude:: /examples/02treeview.py
+.. literalinclude:: /examples/02treeview.py
       :linenos:
+
+.. raw:: html
+
+   </details>
+
+|
 
 To show the layout I used a function, this was then compared to 
 Pretty Print::
@@ -246,13 +276,19 @@ Entry - Style
 Generally try to keep it simple, try looking for an element that looks as 
 though it should work, test it and see. Look at 02Entry.py. 
 
-.. container:: toggle
+.. raw:: html
 
-   .. container:: header
+   <details>
+   <summary style="color: MediumSlateBlue;">
+   <b> <i> Show/Hide Code </i> 02entry.py </b></summary>
 
-       *Show/Hide Code* 02entry.py
+.. literalinclude:: /examples/02entry.py
 
-   .. literalinclude:: /examples/02entry.py
+.. raw:: html
+
+   </details>
+
+|
 
 
 .. sidebar:: Just an Exercise 
@@ -288,7 +324,8 @@ select the **ttk::widgetname** then select **STYLING OPTIONS**.
 .. raw:: html
 
    <details>
-   <summary><a>Show/Hide <b> Table </b> 02style_options.csv </a></summary>
+   <summary style="color: MediumSlateBlue;">
+   <b> <i>Show/Hide </i>  Table  02style_options.csv </b></summary>
 
 .. csv-table::
    :file: /tables/02style_options.csv
@@ -316,7 +353,8 @@ select the **ttk::widgetname** then select **STYLING OPTIONS**.
 .. raw:: html
 
    <details>
-   <summary><a>Show/Hide <b> Table </b> 02style_option_change.csv </a></summary>
+   <summary style="color: MediumSlateBlue;">
+   <b><i>Show/Hide </i>  Table  02style_option_change.csv </b></summary>
 
 .. csv-table::
    :file: /tables/02style_option_change.csv
