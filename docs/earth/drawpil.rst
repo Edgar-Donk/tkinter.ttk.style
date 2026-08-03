@@ -23,13 +23,22 @@ the screen y increases down the screen. Note that all coordinates are given
 to the drawing methods as a list (square brackets) [x0,y0,x1,y1 ...] or a 
 list of tuples (round brackets) [(x0,y0),(x1,y1) ...].
 
-.. container:: toggle
+.. sidebar:: PIL show()
 
-   .. container:: header
+    When working it is useful to see the results at an intermediate stage, so
+    use ``show``, this displays on the default image viewer for bmp images.
+    Before the viewer is used load an image file, so the temporary file
+    can be quickly displayed, it also does not disrupt the workflow.
+    
+    Clean out any temporary files afterwards.
 
-       *Show/Hide Code*
+.. raw:: html
 
-   .. code-block:: python
+   <details>
+   <summary style="color: MediumSlateBlue;">
+   <b><i> Show/Hide Code </i> python </b></summary>
+
+.. code-block:: python
       :emphasize-lines: 15 - 22
       :linenos:
    
@@ -59,6 +68,12 @@ list of tuples (round brackets) [(x0,y0),(x1,y1) ...].
       idraw.ellipse([0,0,w-1,h-1],outline='red')
 
       img.save('line_test.png') # save to file
+
+.. raw:: html
+
+   </details>
+
+|
 
 Start by making a square formed from four black lines one pixel wide. 
 Note that we needed to use the coordinates width-1 and height-1 (w-1, h-1), 
@@ -159,13 +174,13 @@ In the first configuration the two borders run along the outside edges then
 are joined by pieslices with radii corresponding to the width of the border. 
 Let's start a new file.
 
-.. container:: toggle
+.. raw:: html
 
-   .. container:: header
+   <details>
+   <summary style="color: MediumSlateBlue;">
+   <b><i> Show/Hide Code </i> python </b></summary>
 
-       *Show/Hide Code*
-
-   .. code-block:: python
+.. code-block:: python
       :linenos:
       :emphasize-lines: 16,18
 
@@ -192,6 +207,12 @@ Let's start a new file.
       img.save('corner_test'+str(g)+'.png') 
       # save to file - seeing what we have drawn in the enlarged size
 
+.. raw:: html
+
+   </details>
+
+|
+
 Not quite right, the lines are thick but the full width does not show 
 (magnify until you can see the pixels), therefore we need to adjust both 
 lines. The line width was given as 9 pixels (enlargement factor) but only 5 
@@ -214,13 +235,13 @@ displacement.
 After adding the line displacement (d) to the line, add a pieslice, with a
 different colour, allowing us to trace errors a little easier ...
 
-.. container:: toggle
+.. raw:: html
 
-   .. container:: header
+   <details>
+   <summary style="color: MediumSlateBlue;">
+   <b><i> Show/Hide Code </i> python </b></summary>
 
-       *Show/Hide Code*
-
-   .. code-block:: python
+.. code-block:: python
       :emphasize-lines: 1,3
 
       idraw.line([s,d,we-1,d],fill='black',width=e) 
@@ -250,6 +271,12 @@ different colour, allowing us to trace errors a little easier ...
       imgL=img.resize((w,h),Image.LANCZOS)
       imgL.save('corner_testL'+str(g)+'.png', quality=95) 
       # save to file using lanczos filter
+
+.. raw:: html
+
+   </details>
+
+|
 
 The image was saved after being resized with a filter. A reference to the 
 gap size is given in the image name. Small differences in the antialiasing
@@ -373,13 +400,19 @@ Simple Rectangle in PIL
    .. note:: If we only use ``fill`` then the rectangle is drawn the same 
       size as if we had used outline - this differs from tkinter canvas.
 
-   .. container:: toggle
+   .. raw:: html
 
-      .. container:: header
+      <details>
+      <summary style="color: MediumSlateBlue;">
+      <b><i> Show/Hide Code </i> 08rectangle.py </b></summary>
 
-         *Show/Hide Code* 08rectangle.py
+   .. literalinclude:: ../examples/08rectangle.py
 
-      .. literalinclude:: ../examples/08rectangle.py
+   .. raw:: html
+
+      </details>
+
+   |
 
    Apart from the initial size adjustment to the box size, the script has no 
    variable requiring ``-1``. All the changes required for the inner rectangles
@@ -423,13 +456,19 @@ on its centre and radius, rather than a bounding box.
 
    Blue Rectangle with Rounded Corners Resized and enlarged
 
-.. container:: toggle
+.. raw:: html
 
-   .. container:: header
+   <details>
+   <summary style="color: MediumSlateBlue;">
+   <b><i> Show/Hide Code </i> 08rounded_rectangle.py </b></summary>
 
-       *Show/Hide Code* 08rounded_rectangle.py
+.. literalinclude:: ../examples/08rounded_rectangle.py
 
-   .. literalinclude:: ../examples/08rounded_rectangle.py
+.. raw:: html
+
+   </details>
+
+|
 
 We have three functions, the first function is our helping function for the 
 pieslice. The next two functions are more interesting. In round_corner 
@@ -456,13 +495,19 @@ we draw three rectangles and two pieslices, which in turn match up with
 the inner rectangle. The corner mask is enlarged slightly so that the dark
 blue rectangle matches the simple border.
 
-.. container:: toggle
+.. raw:: html
 
-   .. container:: header
+   <details>
+   <summary style="color: MediumSlateBlue;">
+   <b><i> Show/Hide Code </i> 08rounded_rectangle_inner.py </b></summary>
 
-       *Show/Hide Code* 08rounded_rectangle_inner.py
+.. literalinclude:: ../examples/08rounded_rectangle_inner.py
 
-   .. literalinclude:: ../examples/08rounded_rectangle_inner.py
+.. raw:: html
+
+   </details>
+
+|
 
 Double Border both Joined
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -480,13 +525,19 @@ rectangles and three pieslices, which in turn match up to the rectangles.
 The corner mask is enlarged slightly so that the dark
 blue rectangle matches the simple border.
 
-.. container:: toggle
+.. raw:: html
 
-   .. container:: header
+   <details>
+   <summary style="color: MediumSlateBlue;">
+   <b><i> Show/Hide Code </i> 08rounded_rectangle_both.py </b></summary>
 
-       *Show/Hide Code* 08rounded_rectangle_both.py
+.. literalinclude:: ../examples/08rounded_rectangle_both.py
 
-   .. literalinclude:: ../examples/08rounded_rectangle_both.py
+.. raw:: html
+
+   </details>
+
+|
 
 08rounded_rectangle.py, 08rounded_rectangle_inner.py 
 and 08rounded_rectangle_both.py are the three scripts on which we can base 

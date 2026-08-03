@@ -87,13 +87,19 @@ pixels to these selected pixels. Use these subtotals to determine what the
 antialias colour should be for each construction line. The result should look
 like the "constructed" image above.
 
-.. container:: toggle
+.. raw:: html
 
-   .. container:: header
+   <details>
+   <summary style="color: MediumSlateBlue;">
+   <b><i> Show/Hide Code </i> 08arrow_anti.py </b></summary>
 
-       *Show/Hide Code* 08arrow_anti.py
+.. literalinclude:: ../examples/08arrow_anti.py
 
-   .. literalinclude:: ../examples/08arrow_anti.py
+.. raw:: html
+
+   </details>
+
+|
 
 Alternative Arrow
 -----------------
@@ -115,10 +121,16 @@ is the best of the bunch (piratz with an anchor and palm tree are excluded).
 When a state changes, the colours can be shifted around to give the sense of 
 being pressed. 
 
-.. container:: toggle
+.. raw:: html
 
-   .. container:: header
+   <details>
+   <summary style="color: MediumSlateBlue;">
+   <b><i> Show/Hide Code </i> 08alt_arrow.py </b></summary>
 
-       *Show/Hide Code* 08alt_arrow.py
+.. literalinclude:: ../examples/08alt_arrow.py
 
-   .. literalinclude:: ../examples/08alt_arrow.py
+.. raw:: html
+
+   </details>
+
+|

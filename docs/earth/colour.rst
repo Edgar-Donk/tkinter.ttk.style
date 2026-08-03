@@ -36,14 +36,16 @@ is truer.
 
    Gradients should be straightforward. 
 
+   Also known as monochromatic.
+
 :Side by Side: two adjacent colours. 
-   
-:Opposites: two complimentary colours, which are exactly opposite in the normal 
+
+:Opposites: two complementary colours, which are exactly opposite in the normal 
    colour wheel, vibrant colours are produced especially if both have a large 
    saturation. 
-   
+
    They will automatically give a warm and a cool colour. 
-   
+
    Gradients will be tricky when both colours are used as the end colours. 
    Intermediate colours may need to be defined to avoid bad looking gradients. 
    If you should use the HSV colour scheme it will produce the perimeter rgb 
@@ -51,13 +53,15 @@ is truer.
    
 :Three Together: three colours - choosing adjacent colours should look harmonious, it 
    works best if one colour dominates.
-   
+
+   Also called analagous.
+
 :Spaced Three: three colours - evenly spaced around the normal wheel. As with 
-   complimentary colours gradients may not be so straightforward.
-   
+   complementary colours gradients may not be so straightforward.
+
 :Opposite Three: three colours - choose one colour then select the adjacent 
-   colours to the complimentary colour. This should produce a toned down 
-   complimentary colour scheme. Still be careful of gradients.
+   colours to the complementary colour. This should produce a toned down 
+   complementary colour scheme. Still be careful of gradients.
 
 .. figure:: ../figures/08rgb_hsv.png
    :width: 436
@@ -106,6 +110,22 @@ is truer.
    black  (0,  0,  0)   (0,  0,  0)     (160,0,  0)     (0,    0,     0)
    white  (255,255,255) (0,0,100)       (160,0,  240)   (100,  0,     141.2)
    ====== ============= =============== =============== ====================
+   
+   To see what is happening check out an RGBHSV colour wheel as found at
+   `Putting on the Style <https://frothy-brew.readthedocs.io/en/latest/colour_picker/joining_rgb_hsv.html>`_
+   better still run the Python script found from its .../examples/colours/12rgbandhsv.py.
+   Look closely at an RGB colour wheel the complementary colours(opposites)
+   are cyan, magenta and yellow. White is at the centre of the wheel made by 
+   adding red, green and blue, this works on our monitors. The complementary
+   colour wheel CMYK, is used by printers working on white paper, if we 
+   print cyan, magenta and yellow together the result is black - better 
+   printers have a separate black cartridge (the K in CMYK). The complementary 
+   colours in a CMYK colour wheel are RGB. Compare the RYB and CMYK colour 
+   wheels at
+   `The Colours Meaning Website <https://thecolorsmeaning.com/color-harmony/>`_
+   scroll down to the section ``Color Harmony``
+   then look at the figure **Complementary Colors**. 
+
 
 Gradients
 ---------
@@ -161,13 +181,13 @@ interpolation. The colour is simply RGB, rather than HSV, HSL or CIELAB.
 
 We have a starting and a finishing colour separated into their rgb components. 
 
-.. container:: toggle
+.. raw:: html
 
-   .. container:: header
+   <details>
+   <summary style="color: MediumSlateBlue;">
+   <b><i> Show/Hide Code </i> gradient snippet </b></summary>
 
-       *Show/Hide Code* gradient snippet
-
-   .. code-block:: python
+.. code-block:: python
 
       r,g,b = start_colour
       dr = float(stop_colour[0] - r)/steps 
@@ -181,18 +201,24 @@ We have a starting and a finishing colour separated into their rgb components.
          r,g,b = r+dr, g+dg, b+db # first colour in gradient
          idraw.line([x0, y0+i, x0+wi, y0+i], fill=(int(r),int(g),int(b)))
 
+.. raw:: html
+
+   </details>
+
+|
+
 The above snippet of code might be used on images larger than our widgets, 
 if used as it stands the first colour will be slightly different to our starting 
 colour. After the start colour is corrected the finishing colour will then need 
 to be corrected. At our image sizes this small error can be quite noticeable.
 
-.. container:: toggle
+.. raw:: html
 
-   .. container:: header
+   <details>
+   <summary style="color: MediumSlateBlue;">
+   <b><i> Show/Hide Code </i> corrected gradient snippet </b></summary>
 
-       *Show/Hide Code* corrected gradient snippet
-
-   .. code-block:: python
+.. code-block:: python
       :emphasize-lines: 2,4,6,8
 
       r,g,b = start_colour
@@ -208,6 +234,12 @@ to be corrected. At our image sizes this small error can be quite noticeable.
       for i in range(steps):
          r,g,b = r+dr, g+dg, b+db
          idraw.line([x0, y0+i, x0+wi, y0+i], fill=(int(r),int(g),int(b)))
+
+.. raw:: html
+
+   </details>
+
+|
 
 The starting colour has been changed so that the first line depicts the 
 right colour, so now we need to adjust the last line to be on the finishing 
@@ -284,13 +316,19 @@ highlight. Test for yourself by commenting and uncommenting the appropriate
 figure, also see what happens when the colours start_colour and stop_colour 
 are swopped.
 
-.. container:: toggle
+.. raw:: html
 
-   .. container:: header
+   <details>
+   <summary style="color: MediumSlateBlue;">
+   <b><i> Show/Hide Code </i> 08test_gradients.py </b></summary>
 
-       *Show/Hide Code* 08test_gradients.py
+.. literalinclude:: ../examples/08test_gradients.py
 
-   .. literalinclude:: ../examples/08test_gradients.py
+.. raw:: html
+
+   </details>
+
+|
 
 .. topic:: Finding the Ellipse that Encloses the Rectangle
 
@@ -319,10 +357,16 @@ Radial Gradient
 Use points to make a radial gradient, creating a similar effect to the 
 ellipse method above, but is easier to apply. 
 
-.. container:: toggle
+.. raw:: html
 
-   .. container:: header
+   <details>
+   <summary style="color: MediumSlateBlue;">
+   <b><i> Show/Hide Code </i> 08radial_gradient.py </b></summary>
 
-       *Show/Hide Code* 08radial_gradient.py
+.. literalinclude:: ../examples/08radial_gradient.py
 
-   .. literalinclude:: ../examples/08radial_gradient.py
+.. raw:: html
+
+   </details>
+
+|
