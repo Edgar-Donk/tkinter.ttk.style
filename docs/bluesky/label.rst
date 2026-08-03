@@ -42,11 +42,13 @@ The padding [17,5,3,3] is required to position the text.
    
    Look at the image below, it is enlarged to show the pixels, we can estimate 
    the border sizes. After the border is set the padding can be sorted out. If 
-   there is a surrounding area around the image (maybe needed for shading) 
-   include this in your calculations. The top and left measurements are
-   border those on the right and bottom refer to padding.
+   there is a surrounding area around the image ( could be needed for shading) 
+   include this in your calculations. The top and left measurements in blue are
+   border those in green on the right and bottom refer to padding.
    
-   Remember the first line is 0 and we count from left to right on the first 
+   It helps to think that we are defining bounding boxes created by the top 
+   left and bottom right corners. Remember the first line is 0 and we count 
+   from left to right on the first 
    entry but right to left on the third, look at the image to get a feel. Yes
    we are counting the top to bottom on the second entry and bottom to top on
    the fourth entry.
@@ -67,10 +69,16 @@ Run the script and see whether the states look right. As you see we can test
 more than one widget and prove that the settings and widgets operate as 
 expected.
 
-.. container:: toggle
+.. raw:: html
 
-   .. container:: header
+   <details>
+   <summary style="color: MediumSlateBlue;">
+   <b><i> Show/Hide Code </i> 07pirate_label.py </b></summary>
 
-       *Show/Hide Code* 07pirate_label.py
+.. literalinclude:: ../examples/07pirate_label.py
 
-   .. literalinclude:: ../examples/07pirate_label.py
+.. raw:: html
+
+   </details>
+
+|

@@ -29,23 +29,35 @@ be maintained.
 Radio Buttons
 ^^^^^^^^^^^^^^
 
-.. container:: toggle
+.. raw:: html
 
-   .. container:: header
+   <details>
+   <summary style="color: MediumSlateBlue;">
+   <b><i> Show/Hide Code </i> 07pirate_radio.py </b></summary>
 
-       *Show/Hide Code* 07pirate_radio.py
-
-   .. literalinclude:: ../examples/07pirate_radio.py
+.. literalinclude:: ../examples/07pirate_radio.py
       :start-after: style = Style()
+
+.. raw:: html
+
+   </details>
+
+|
 
 Check Buttons
 ^^^^^^^^^^^^^^
 
-.. container:: toggle
+.. raw:: html
 
-   .. container:: header
+   <details>
+   <summary style="color: MediumSlateBlue;">
+   <b><i> Show/Hide Code </i> 07pirate_check.py </b></summary>
 
-       *Show/Hide Code* 07pirate_check.py
-
-   .. literalinclude:: ../examples/07pirate_check.py
+.. literalinclude:: ../examples/07pirate_check.py
       :start-after: style = Style()
+
+.. raw:: html
+
+   </details>
+
+|

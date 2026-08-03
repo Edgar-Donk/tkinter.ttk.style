@@ -38,11 +38,17 @@ not work if run as separate clauses, it is best to run them under a single
 call to the button class "TButton". This differs from the tcl scripts where 
 configure and layout are run separately.
 
-.. container:: toggle
+.. raw:: html
 
-   .. container:: header
+   <details>
+   <summary style="color: MediumSlateBlue;">
+   <b><i> Show/Hide Code </i> 07pirate_button.py </b></summary>
 
-       *Show/Hide Code* 07pirate_button.py
-
-   .. literalinclude:: ../examples/07pirate_button.py
+.. literalinclude:: ../examples/07pirate_button.py
       :start-after: style = Style()
+
+.. raw:: html
+
+   </details>
+
+|

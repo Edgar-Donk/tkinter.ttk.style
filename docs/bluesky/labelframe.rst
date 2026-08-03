@@ -11,14 +11,20 @@ labelframe required padding in the layout management to ensure that any
 widget placed inside the frame did not affect the frame and cleared the outer 
 borders.
 
-.. container:: toggle
+.. raw:: html
 
-   .. container:: header
+   <details>
+   <summary style="color: MediumSlateBlue;">
+   <b><i> Show/Hide Code </i> 07pirate_labelframe.py </b></summary>
 
-       *Show/Hide Code* 07pirate_labelframe.py
-
-   .. literalinclude:: ../examples/07pirate_labelframe.py
+.. literalinclude:: ../examples/07pirate_labelframe.py
       :start-after: style = Style()
+
+.. raw:: html
+
+   </details>
+
+|
 
 .. note:: All the pirate scripts are similar at the beginning upto 
    ``style = Style()``, and is only fully shown in 07pirate_label

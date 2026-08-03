@@ -32,15 +32,21 @@ a vertical component, so first of all let's improvise. There are
 
    Look closely at the vertical separator
 
-.. container:: toggle
+.. raw:: html
 
-   .. container:: header
+   <details>
+   <summary style="color: MediumSlateBlue;">
+   <b><i> Show/Hide Code </i> 07pirate_separator.py </b></summary>
 
-       *Show/Hide Code* 07pirate_separator.py
-
-   .. literalinclude:: ../examples/07pirate_separator.py
+.. literalinclude:: ../examples/07pirate_separator.py
       :start-after: style = Style()
       :emphasize-lines: 7,8,19
+
+.. raw:: html
+
+   </details>
+
+|
 
 .. topic:: Attempts using no layout
 

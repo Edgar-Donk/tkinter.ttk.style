@@ -17,11 +17,18 @@ probably make you say "With a little effort I could do better" - good have a
 go, in general the images are the most time consuming, but the whole is 
 surprisingly straightforward.
 
-.. container:: toggle
+.. raw:: html
 
-   .. container:: header
+   <details>
+   <summary style="color: MediumSlateBlue;">
+   </b><i> Show/Hide Code </i> 07piratz_notebook.py </b></summary>
 
-       *Show/Hide Code* 07piratz_notebook.py
-
-   .. literalinclude:: ../examples/07piratz_notebook.py
+.. literalinclude:: ../examples/07piratz_notebook.py
       :emphasize-lines: 20
+
+.. raw:: html
+
+   </details>
+
+|
+      

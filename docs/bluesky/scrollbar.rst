@@ -42,11 +42,17 @@ in the layout in this script.
 The flexibility of the tkinter theme is shown to its full limits - quite 
 impressive.
 
-.. container:: toggle
+.. raw:: html
 
-   .. container:: header
+   <details>
+   <summary style="color: MediumSlateBlue;">
+   <b><i> Show/Hide Code </i> 07pirate_scrollbar_grip.py </b></summary>
 
-       *Show/Hide Code* 07pirate_scrollbar_grip.py
-
-   .. literalinclude:: ../examples/07pirate_scrollbar_grip.py
+.. literalinclude:: ../examples/07pirate_scrollbar_grip.py
       :start-after: style = Style()
+
+.. raw:: html
+
+   </details>
+
+|

@@ -22,14 +22,20 @@ Try this with and without the optional map. If we did not have images the
 tab would have moved. You could experiment with different sized images to 
 give the same effect.
 
-.. container:: toggle
+.. raw:: html
 
-   .. container:: header
+   <details>
+   <summary style="color: MediumSlateBlue;">
+   <b><i> Show/Hide Code </i> 07pirate_notebook.py </b></summary>
 
-       *Show/Hide Code* 07pirate_notebook.py
-
-   .. literalinclude:: ../examples/07pirate_notebook.py
+.. literalinclude:: ../examples/07pirate_notebook.py
       :start-after: style = Style()
+
+.. raw:: html
+
+   </details>
+
+|
 
 Treeview
 ^^^^^^^^^
@@ -65,11 +71,17 @@ enlarge **colors** to include background and foreground::
 Treeview required a ``map`` command to create the selected row, together
 with two additional colours.
 
-.. container:: toggle
+.. raw:: html
 
-   .. container:: header
+   <details>
+   <summary style="color: MediumSlateBlue;">
+   <b><i> Show/Hide Code </i> 07pirate_treeview.py </b></summary>
 
-       *Show/Hide Code* 07pirate_treeview.py
-
-   .. literalinclude:: ../examples/07pirate_treeview.py
+.. literalinclude:: ../examples/07pirate_treeview.py
       :start-after: style = Style()
+
+.. raw:: html
+
+   </details>
+
+|

@@ -26,11 +26,16 @@ to see what I mean, use a jpg image of your choice as backdrop, typically a
 panoramic view. Since these may be downloaded from many digital cameras and 
 are usually half the size of a png or gif of equivalent size.
 
-.. container:: toggle
+.. raw:: html
 
-   .. container:: header 
+   <details>
+   <summary style="color: MediumSlateBlue;">
+   <b><i> Show/Hide Code </i> 07frame_background_image.py </b></summary>
 
+.. literalinclude:: ../examples/07frame_background_image.py
 
-       *Show/Hide Code* 07frame_background_image.py
+.. raw:: html
 
-   .. literalinclude:: ../examples/07frame_background_image.py
+   </details>
+
+|

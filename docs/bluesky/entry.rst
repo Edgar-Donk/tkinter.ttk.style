@@ -15,11 +15,17 @@ If required we could impose an old font such as the equivalent of
 "Palace Script MT" in Windows. As with pirate label there was no need to 
 create a layout, ``"element create"`` is all we need.
 
-.. container:: toggle
+.. raw:: html
 
-   .. container:: header
+   <details>
+   <summary style="color: MediumSlateBlue;">
+   <b><i> Show/Hide Code </i> 07pirate_entry.py </b></summary>
 
-       *Show/Hide Code* 07pirate_entry.py
-
-   .. literalinclude:: ../examples/07pirate_entry.py
+.. literalinclude:: ../examples/07pirate_entry.py
       :start-after: style = Style()
+
+.. raw:: html
+
+   </details>
+
+|

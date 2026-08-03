@@ -44,11 +44,17 @@ We can see that ubuntu uses theme create without layout.
    then the channel values of the final colour would be the same as our target 
    colour.
 
-.. container:: toggle
+.. raw:: html
 
-   .. container:: header
+   <details>
+   <summary style="color: MediumSlateBlue;">
+   <b><i> Show/Hide Code </i> 07pirate_combobox.py </b></summary>
 
-       *Show/Hide Code* 07pirate_combobox.py
-
-   .. literalinclude:: ../examples/07pirate_combobox.py
+.. literalinclude:: ../examples/07pirate_combobox.py
       :start-after: style = Style()
+
+.. raw:: html
+
+   </details>
+
+|

@@ -76,14 +76,20 @@ seagull, therefore we require 3 states, and each state has to include both
 the other two negative states. Run both progressbars in "indeterminate" mode 
 and make the length the same as your trough image. 
 
-.. container:: toggle
+.. raw:: html
 
-   .. container:: header
+   <details>
+   <summary style="color: MediumSlateBlue;">
+   <b><i> Show/Hide Code </i> 07pirate_progressbar.py </b></summary>
 
-       *Show/Hide Code* 07pirate_progressbar.py
-
-   .. literalinclude:: ../examples/07pirate_progressbar.py
+.. literalinclude:: ../examples/07pirate_progressbar.py
       :start-after: style = Style()
+
+.. raw:: html
+
+   </details>
+
+|
 
 
 Scale
@@ -97,14 +103,20 @@ scale has several states not only for the slider but the trough as well.
 This makes the state calls more interesting than usual. When calling a state 
 remember to cancel the other states.
 
-.. container:: toggle
+.. raw:: html
 
-   .. container:: header
+   <details>
+   <summary style="color: MediumSlateBlue;">
+   <b><i> Show/Hide Code </i> 07pirate_scale.py </b></summary>
 
-       *Show/Hide Code* 07pirate_scale.py
-
-   .. literalinclude:: ../examples/07pirate_scale.py
+.. literalinclude:: ../examples/07pirate_scale.py
       :start-after: style = Style()
+
+.. raw:: html
+
+   </details>
+
+|
 
 Alright we needed customised functions but I think it a small price to pay - 
 or else you would need to build customised widgets and that is another 
