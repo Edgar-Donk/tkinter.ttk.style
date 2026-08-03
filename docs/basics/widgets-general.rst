@@ -36,13 +36,19 @@ Script 01Label_config.py
 
 To view or hide the code just click on the arrow.
 
-.. container:: toggle
+.. raw:: html
 
-   .. container:: header
+   <details>
+   <summary style="color:MediumSlateBlue"> 
+   <i> Show/Hide Code </i> 01label_config.py </summary>
 
-       *Show/Hide Code* 01label_config.py
+.. literalinclude:: ../examples/01label_config.py
 
-   .. literalinclude:: ../examples/01label_config.py
+.. raw:: html
+
+   </details>
+
+|
 
 The script displays the attributes available in tkinter and ttk, there are
 fewer attributes in ttk as the
