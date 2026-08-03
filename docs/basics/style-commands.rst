@@ -14,7 +14,7 @@ Table 01style_commands.csv
 .. raw:: html
 
    <details>
-   <summary><a>Show/Hide <b> Table </b> 01style_commands.csv </a></summary>
+   <summary style="color:MediumSlateBlue"><i>Show/Hide </i> Table </b> 01style_commands.csv </a></summary>
 
 .. csv-table::
    :file: /tables/01style_commands.csv
@@ -111,7 +111,7 @@ buttons was last activated.
 .. raw:: html
 
    <details>
-   <summary><a>Show/Hide <b> Video </b> two_buttons </a></summary>
+   <summary style="color:MediumSlateBlue"><i>Show/Hide </i> Video </b> two_buttons </a></summary>
 
 .. raw:: html
 
@@ -135,15 +135,21 @@ Script 01two_buttons.py
 
 To view or hide the code just click on the arrow.
 
-.. container:: toggle
+.. raw:: html
 
-   .. container:: header
+   <details>
+   <summary style="color: MediumSlateBlue;"> 
+   <i> Show/Hide Code </i> 01two_buttons.py </summary>
 
-       *Show/Hide Code* 01two_buttons.py
-
-   .. literalinclude:: /examples/01two_buttons.py
+.. literalinclude:: /examples/01two_buttons.py
       :linenos:
       :emphasize-lines: 13
+
+.. raw:: html
+
+   </details>
+
+|
 
 If we had left out the line::
 
