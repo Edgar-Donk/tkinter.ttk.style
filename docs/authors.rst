@@ -267,3 +267,30 @@ Polars Dataframe
 :AL:`Big Bucks`
 
 Load larger dataframes, find out its properties then change as necessary.
+
+HTML Sliders
+------------
+
+.. _range: https://slip-sliding.readthedocs.io/en/latest/
+
+.. image:: ../_static/bigben.avif
+   :width: 200
+   :height: 196
+   :align: left
+   :target: range_
+   :class: only-light
+
+.. image:: ../_static/bigbenneon.avif
+   :width: 200
+   :height: 196
+   :align: left
+   :target: range_
+   :class: only-dark
+
+|
+
+:AL:`Slip Sliding`
+
+Review how to treat HTML sliders, mix and match with other inputs, other
+sliders all running on a single listener. Use anchor to tie the slider thumb
+to its output (bubble).

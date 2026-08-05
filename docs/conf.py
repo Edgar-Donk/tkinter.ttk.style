@@ -93,8 +93,8 @@ def setup(app):
 html_theme_options = {
    "logo": {
       "text": "Putting on the Style",
-      "image_light": 'bigbenc.avif',
-      "image_dark": "bigbencneon.avif",
+      "image_light": '_static/bigbenc.avif',
+      "image_dark": "_static/bigbencneon.avif",
    }
 }
 
@@ -102,7 +102,7 @@ html_favicon = '_static/ben1.ico'
 
 smartquotes = False
 
-rst_prolog = f"""
+rst_prolog = """
 .. role:: AL
     :class: keys
 """
